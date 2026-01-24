@@ -1,0 +1,117 @@
+---
+---
+
+<div class="relative w-full max-w-7xl">
+    <div class="relative h-56 overflow-hidden md:h-96">
+        <div x-show="activeSlide === 1"
+            class="duration-700 ease-in-out relative flex items-start md:items-center justify-center min-h-[500px]">
+            <img src="./images/carrusel/01_floresSecas.jpg" class="absolute inset-0 w-full h-full object-cover"
+                alt="Diseño Floral">
+            <div
+                class="relative z-54 text-center px-4 py-2 md:px-5 md:py-10 mx-16 md:mx-0 my-8 md:my-0 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+                <h2
+                    class="text-1xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-white mb-4 italic leading-tight">
+                    Donde las flores se convierten en recuerdos.
+                </h2>
+                <p class="text-stone-200 text-base md:text-xl font-light italic">
+                    Diseño floral creado por Sara Laínez.
+                </p>
+            </div>
+        </div>
+        <div x-show="activeSlide === 2"
+            class="duration-700 ease-in-out relative flex items-start md:items-center justify-center min-h-[500px]">
+            <img src="images/carrusel/02_ceremoniaBoda.jpg" class="absolute inset-0 w-full h-full object-cover"
+                alt="Bodas y Eventos">
+            <div
+                class="relative z-54 text-center px-4 py-2 md:px-5 md:py-10 mx-16 md:mx-0 my-8 md:my-0 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+                <h2
+                    class="text-1xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-white mb-4 italic leading-tight">
+                    Haciendo florecer tus mejores recuerdos.
+                </h2>
+                <p class="text-stone-200 text-base md:text-xl font-light italic uppercase">
+                    Bodas y Eventos
+                </p>
+            </div>
+        </div>
+        <div x-show="activeSlide === 3"
+            class="duration-700 ease-in-out relative flex items-start md:items-center justify-center min-h-[500px]">
+            <img src="images/carrusel/03_cursoFlores.jpg" class="absolute inset-0 w-full h-full object-cover"
+                alt="Cursos">
+            <div
+                class="relative z-54 text-center px-4 py-2 md:px-5 md:py-10 mx-16 md:mx-0 my-8 md:my-0 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+                <h2
+                    class="text-1xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-white mb-4 italic leading-tight">
+                    Aprendiendo de las flores.
+                </h2>
+                <p class="text-stone-200 text-base md:text-xl font-light italic uppercase">
+                    Cursos
+                </p>
+            </div>
+        </div>
+        <div x-show="activeSlide === 4"
+            class="duration-700 ease-in-out relative flex items-start md:items-center justify-center min-h-[500px]">
+            <img src="images/carrusel/04_ramosFlores.jpg" class="absolute inset-0 w-full h-full object-cover"
+                alt="Ramos personalizados">
+            <div
+                class="relative z-54 text-center px-4 py-2 md:px-5 md:py-10 mx-16 md:mx-0 my-8 md:my-0 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+                <h2
+                    class="text-1xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-white mb-4 italic leading-tight">
+                    Cada flor, un recuerdo que florece.
+                </h2>
+                <p class="text-stone-200 text-base md:text-xl font-light italic uppercase">
+                    Ramos personalizados
+                </p>
+            </div>
+        </div>
+        <div x-show="activeSlide === 5"
+            class="duration-700 ease-in-out relative flex items-start md:items-center justify-center min-h-[500px]">
+            <img src="images/carrusel/05_centroMesa.jpg" class="absolute inset-0 w-full h-full object-cover"
+                alt="Blog">
+            <div
+                class="relative z-54 text-center px-4 py-2 md:px-5 md:py-10 mx-16 md:mx-0 my-8 md:my-0 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
+                <h2
+                    class="text-1xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-white mb-4 italic leading-tight">
+                    Compartir experiencias con las flores.
+                </h2>
+                <p class="text-stone-200 text-base md:text-xl font-light italic uppercase">
+                    Blog
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+        <button @click="activeSlide = 1" :class="activeSlide === 1 ? 'bg-white' : 'bg-black/75'"
+            class="w-3 h-3 rounded-full"></button>
+        <button @click="activeSlide = 2" :class="activeSlide === 2 ? 'bg-white' : 'bg-black/75'"
+            class="w-3 h-3 rounded-full"></button>
+        <button @click="activeSlide = 3" :class="activeSlide === 3 ? 'bg-white' : 'bg-black/75'"
+            class="w-3 h-3 rounded-full"></button>
+        <button @click="activeSlide = 4" :class="activeSlide === 4 ? 'bg-white' : 'bg-black/75'"
+            class="w-3 h-3 rounded-full"></button>
+        <button @click="activeSlide = 5" :class="activeSlide === 5 ? 'bg-white' : 'bg-black/75'"
+            class="w-3 h-3 rounded-full"></button>
+    </div>
+
+    <button @click="activeSlide = activeSlide === 1 ? 5 : activeSlide - 1"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/40 backdrop-blur-md group-hover:bg-black/60 text-bolder">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                </path>
+            </svg>
+        </span>
+    </button>
+
+    <button @click="activeSlide = activeSlide === 5 ? 1 : activeSlide + 1"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none">
+        <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/40 backdrop-blur-md group-hover:bg-black/60 text-bolder">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+            </svg>
+        </span>
+    </button>
+</div>

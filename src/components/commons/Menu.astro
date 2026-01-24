@@ -1,0 +1,51 @@
+---
+---
+<nav class="px-4 pb-4" id="MenuPrincipal">
+    <ul class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8">
+        <li>
+            <a href="#home" @click="activeSlide = 1"
+            class="group relative inline-flex flex-col items-center justify-center hover:font-bold"
+            :class="{ 'font-bold': activeSlide === 1 }">
+            Inicio
+            <span class="invisible block h-0 overflow-hidden font-bold"
+                aria-hidden="true">Inicio</span>
+            </a>
+        </li>
+        <li>
+            <a href="#events" @click="activeSlide = 2"
+            class="group relative inline-flex flex-col items-center justify-center hover:font-bold"
+            :class="{ 'font-bold': activeSlide === 2 }">
+            Bodas y Eventos
+            <span class="invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Bodas y
+                Eventos</span>
+            </a>
+        </li>
+        <li>
+            <a href="#courses" @click="activeSlide = 3"
+            class="group relative inline-flex flex-col items-center justify-center hover:font-bold"
+            :class="{ 'font-bold': activeSlide === 3 }">
+            Cursos
+            <span class="invisible block h-0 overflow-hidden font-bold"
+                aria-hidden="true">Cursos</span>
+        </a>
+        </li>
+        <li>
+            <a href="#bouquets" @click="activeSlide = 4"
+            class="group relative inline-flex flex-col items-center justify-center hover:font-bold"
+            :class="{ 'font-bold': activeSlide === 4 }">
+            Ramos Personalizados
+            <span class="invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Ramos
+                Personalizados</span>
+        </a>
+        </li>
+        <li>
+            <a href="#blog" @click="activeSlide = 4"
+            class="group relative inline-flex flex-col items-center justify-center hover:font-bold"
+            :class="{ 'font-bold': activeSlide === 4 }">
+            Blog
+            <span class="invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Ramos
+                Blog</span>
+        </a>
+        </li>
+    </ul>
+</nav>
