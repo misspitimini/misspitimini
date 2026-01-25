@@ -8,7 +8,7 @@ import Menu from "./Menu.astro";
 	<div x-data="{ open: false, activeSlide: 1, slides: [1, 2, 3, 4, 5] }" >
     <div class="flex justify-center">
         <a href="#" target="_self" rel="noopener noreferrer">
-            <img src="./images/logos/logo.png" alt="Logotipo" class="w-100 md:w-1/3 h-auto">
+            <img src="/images/logos/logo.png" alt="Logotipo" class="w-100 md:w-1/3 h-auto">
         </a>
             <div x-show="!open" class="p-4 my-8 flex flex-row items-start justify-between">
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
