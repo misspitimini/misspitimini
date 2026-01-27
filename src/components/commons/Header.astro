@@ -2,11 +2,19 @@
 import Carrusel from "./Carrusel.astro";
 import Menu from "./Menu.astro";
 
+interface Props {
+    activeSlide: number;
+    href: string;
+}
+const { href, activeSlide } = Astro.props;
 ---
+
 
 <header>
 
-<div x-data="{ open: false, activeSlide: 1, slides: [1, 2, 3, 4, 5] }" >
+    <div x-data={`{ open: false, activeSlide: ${Number(activeSlide)} }`}>
+
+  
     <div  class="flex flex-row items-center" >
 
     <div class="flex items-center justify-center px-4">

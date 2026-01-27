@@ -1,15 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/commons/Header.astro';
-import CoursesComponent from '../components/CoursesComponent.astro';
+import WorkshopsComponent from '../components/WorkshopsComponent.astro';
 import Footer from '../components/commons/Footer.astro';
 ---
 
 <Layout title="Misspitimini: Floral Design by Sara Laínez">
 	<div class="bg-white p-0 shadow-soft-elevation border border-gray-50 text-center">
-	<Header />
+	<Header activeSlide={3} href="/workshops/"/>
 	<main>
-		<CoursesComponent />
+		<WorkshopsComponent />
 	</main>
 	<Footer />
 	</div>
