@@ -8,6 +8,10 @@ export default {
       },
       boxShadow: {
         'soft-elevation': '0 30px 60px -12px rgba(0, 0, 0, 0.1), 0 0 36px 0px rgba(0.10, 0.10, 0.10, 0.10)',
+      },
+      fontFamily: {
+        'display': ['"Cormorant Garamond"', 'serif'],
+        'body': ['Montserrat', 'sans-serif'],
       }
     },
   },
