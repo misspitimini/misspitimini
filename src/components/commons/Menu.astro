@@ -1,55 +1,53 @@
 ---
 ---
-<div class="fixed top-0 left-0 right-0 z-50 md:relative md:top-auto md:z-auto flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-
-	<nav :class="{'flex': open, 'hidden': !open}" 
-		 class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-white/95 backdrop-blur-md md:bg-transparent md:backdrop-blur-none shadow-lg md:shadow-none border-b md:border-none">
-		 <div x-show="open" class="p-4 my-8 flex flex-row items-start justify-end">
-			<button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-			  <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-				 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-			  </svg>
-			</button>
-			
+<div class="fixed top-0 left-0 right-0 z-50 md:relative md:top-auto md:z-auto w-full">
+	<div class="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between">
+	  
+	  <nav :class="{'flex': open, 'hidden': !open}" 
+		   class="fixed inset-0 h-screen w-full bg-white/98 backdrop-blur-xl z-[60] flex-col items-center justify-center space-y-6 md:relative md:inset-auto md:h-auto md:w-auto md:bg-transparent md:backdrop-blur-none md:flex md:flex-row md:space-y-0 md:flex-grow md:justify-end transition-all duration-300">
+		
+		<div x-show="open" class="absolute top-6 right-6 md:hidden">
+		  <button class="p-2 text-gray-500 hover:text-black focus:outline-none" @click="open = false">
+			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+			</svg>
+		  </button>
 		</div>
-	  <a href="/" @click="activeSlide = 1" 
-		 class="font-display px-4 py-3 md:py-2 mt-2 text-sm bg-transparent md:mt-0 md:ml-4 hover:font-bold transition-all" 
-		 :class="{ 'font-bold text-black': activeSlide === 1, 'text-gray-600': activeSlide !== 1 }">
-		Inicio
-		<span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Inicio</span>
-	  </a>
   
-	  <a @click="activeSlide = 2" 
-		 class="font-display px-4 py-3 md:py-2 mt-2 text-sm bg-transparent md:mt-0 md:ml-4 hover:font-bold transition-all" 
-		 :class="{ 'font-bold text-black': activeSlide === 2, 'text-gray-600': activeSlide !== 2 }" 
-		 href="/events/">
-		Bodas y Eventos
-		<span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Bodas y Eventos</span>
-	  </a>
+		<a href="/" @click="activeSlide = 1" 
+		   class="font-display text-lg md:text-sm tracking-widest uppercase md:capitalize md:tracking-normal px-4 py-2 transition-all duration-300 md:ml-4" 
+		   :class="{ 'font-bold text-black border-b-2 border-black md:border-none': activeSlide === 1, 'text-gray-500 hover:text-black': activeSlide !== 1 }">
+		  Inicio
+		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Inicio</span>
+		</a>
   
-	  <a @click="activeSlide = 3" 
-		 class="font-display px-4 py-3 md:py-2 mt-2 text-sm bg-transparent md:mt-0 md:ml-4 hover:font-bold transition-all" 
-		 :class="{ 'font-bold text-black': activeSlide === 3, 'text-gray-600': activeSlide !== 3 }" 
-		 href="/workshops/">
-		Talleres
-		<span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Talleres</span>
-	  </a>
+		<a href="/events/" @click="activeSlide = 2" 
+		   class="font-display text-lg md:text-sm tracking-widest uppercase md:capitalize md:tracking-normal px-4 py-2 transition-all duration-300 md:ml-4" 
+		   :class="{ 'font-bold text-black border-b-2 border-black md:border-none': activeSlide === 2, 'text-gray-500 hover:text-black': activeSlide !== 2 }">
+		  Bodas y Eventos
+		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Bodas y Eventos</span>
+		</a>
   
-	  <a @click="activeSlide = 4" 
-		 class="font-display px-4 py-3 md:py-2 mt-2 text-sm bg-transparent md:mt-0 md:ml-4 hover:font-bold transition-all" 
-		 :class="{ 'font-bold text-black': activeSlide === 4, 'text-gray-600': activeSlide !== 4 }" 
-		 href="/bouquets/">
-		Ramos
-		<span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Ramos</span>
-	  </a>
+		<a href="/workshops/" @click="activeSlide = 3" 
+		   class="font-display text-lg md:text-sm tracking-widest uppercase md:capitalize md:tracking-normal px-4 py-2 transition-all duration-300 md:ml-4" 
+		   :class="{ 'font-bold text-black border-b-2 border-black md:border-none': activeSlide === 3, 'text-gray-500 hover:text-black': activeSlide !== 3 }">
+		  Talleres
+		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Talleres</span>
+		</a>
   
-	  <a @click="activeSlide = 5" 
-		 class="font-display px-4 py-3 md:py-2 mt-2 text-sm bg-transparent md:mt-0 md:ml-4 hover:font-bold transition-all" 
-		 :class="{ 'font-bold text-black': activeSlide === 5, 'text-gray-600': activeSlide !== 5 }" 
-		 href="/blog/">
-		Blog
-		<span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Blog</span>
-	  </a>      
-	</nav>
-
+		<a href="/bouquets/" @click="activeSlide = 4" 
+		   class="font-display text-lg md:text-sm tracking-widest uppercase md:capitalize md:tracking-normal px-4 py-2 transition-all duration-300 md:ml-4" 
+		   :class="{ 'font-bold text-black border-b-2 border-black md:border-none': activeSlide === 4, 'text-gray-500 hover:text-black': activeSlide !== 4 }">
+		  Ramos
+		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Ramos</span>
+		</a>
+  
+		<a href="/blog/" @click="activeSlide = 5" 
+		   class="font-display text-lg md:text-sm tracking-widest uppercase md:capitalize md:tracking-normal px-4 py-2 transition-all duration-300 md:ml-4" 
+		   :class="{ 'font-bold text-black border-b-2 border-black md:border-none': activeSlide === 5, 'text-gray-500 hover:text-black': activeSlide !== 5 }">
+		  Blog
+		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Blog</span>
+		</a>      
+	  </nav>
+	</div>
   </div>
