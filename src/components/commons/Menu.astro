@@ -1,53 +1,19 @@
 ---
 ---
-<div class="fixed top-0 left-0 right-0 z-50 md:relative md:top-auto md:z-auto w-full">
-	<div class="max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between">
-	  
-	  <nav :class="{'flex': open, 'hidden': !open}" 
-		   class="fixed inset-0 h-screen w-full bg-white/98 backdrop-blur-xl z-[60] flex-col items-center justify-center space-y-6 md:relative md:inset-auto md:h-auto md:w-auto md:bg-transparent md:backdrop-blur-none md:flex md:flex-row md:space-y-0 md:flex-grow md:justify-end transition-all duration-300">
-		
-		<div x-show="open" class="absolute top-6 right-6 md:hidden">
-		  <button class="p-2 text-gray-500 hover:text-black focus:outline-none" @click="open = false">
-			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
-			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
-			</svg>
-		  </button>
-		</div>
-  
-		<a href="/" @click="activeSlide = 1" 
-		   class="font-display px-4 py-2 transition-all duration-300 md:ml-4" 
-		   :class="{ '': activeSlide === 1, ' hover:font-bold': activeSlide !== 1 }">
-		  Inicio
-		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Inicio</span>
+<button class="md:hidden z-50 p-2" @click="open = !open">
+	<svg x-show="!open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+	<svg x-show="open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
+
+<nav :class="open ? 'flex' : 'hidden'" 
+	 class="fixed inset-0 bg-white/95 backdrop-blur-md z-40 flex-col items-center justify-center space-y-8 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8 md:h-auto transition-all">
+	
+	<template x-for="slide in slides" :key="slide.id">
+		<a :href="slide.url" 
+		   @click="activeSlide = slide.id"
+		   class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
+		   :class="activeSlide === slide.id ? 'font-bold' : ''">
+			<span x-text="slide.title"></span>
 		</a>
-  
-		<a href="/events/" @click="activeSlide = 2" 
-		   class="font-display px-4 py-2 transition-all duration-300 md:ml-4" 
-		   :class="{ '': activeSlide === 2, ' hover:font-bold': activeSlide !== 2 }">
-		  Bodas y Eventos
-		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Bodas y Eventos</span>
-		</a>
-  
-		<a href="/workshops/" @click="activeSlide = 3" 
-		   class="font-display px-4 py-2 transition-all duration-300 md:ml-4" 
-		   :class="{ '': activeSlide === 3, ' hover:font-bold': activeSlide !== 3 }">
-		  Talleres
-		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Talleres</span>
-		</a>
-  
-		<a href="/bouquets/" @click="activeSlide = 4" 
-		   class="font-display px-4 py-2 transition-all duration-300 md:ml-4" 
-		   :class="{ '': activeSlide === 4, ' hover:font-bold': activeSlide !== 4 }">
-		  Ramos
-		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Ramos</span>
-		</a>
-  
-		<a href="/blog/" @click="activeSlide = 5" 
-		   class="font-display px-4 py-2 transition-all duration-300 md:ml-4" 
-		   :class="{ '': activeSlide === 5, ' hover:font-bold': activeSlide !== 5 }">
-		  Blog
-		  <span class="font-display invisible block h-0 overflow-hidden font-bold" aria-hidden="true">Blog</span>
-		</a>      
-	  </nav>
-	</div>
-  </div>
+	</template>
+</nav>
