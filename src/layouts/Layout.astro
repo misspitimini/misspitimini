@@ -5,15 +5,16 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/images/logos/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>misspitimini | Floral Design by Sara Laínez</title>
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-white flex items-center justify-center font-sans antialiased tracking-wide text-gray-800">
 		<h1 class="sr-only">
-			Sara Laínez, misspitimini, apasionada por crear experiencias únicas con nuestros diseños florales.
+			Diseño floral para bodas, eventos y talleres | misspitimini | Sara Laínez
 		</h1>
 		<div class="w-full md:max-w-7xl">
-		<slot />
+			<div class="bg-white p-0 shadow-soft-elevation border border-gray-50 text-center">
+				<slot />
+			</div>
 		</div>
 	</body>
 </html>

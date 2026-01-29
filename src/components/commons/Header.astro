@@ -9,9 +9,9 @@ interface Props {
 const { href, activeSlide } = Astro.props;
 ---
 <header>
-    <div x-data="{ 
+    <div x-data={`{ 
         open: false, 
-        activeSlide: 1,
+        activeSlide: ${activeSlide},
         slides: [
             { id: 1, title: 'Inicio', url: '/', img: '/images/carrusel/01_floresSecas.jpg', phrase: 'Donde las flores se convierten en recuerdos' },
             { id: 2, title: 'Bodas y Eventos', url: '/events/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },
@@ -19,16 +19,15 @@ const { href, activeSlide } = Astro.props;
             { id: 4, title: 'Ramos', url: '/bouquets/', img: '/images/carrusel/04_ramosFlores.jpg', phrase: 'Cada flor, un recuerdo que florece' },
             { id: 5, title: 'Blog', url: '/blog/', img: '/images/carrusel/05_centroMesa.jpg', phrase: 'Compartir experiencias con las flores' }
         ]
-    }" class="relative w-full">
+    }`} class="relative w-full">
         
         <div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
             <a href="/" class="z-50">
                 <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
             </a>
-
-            <Menu />
+            <Menu activeSlide={activeSlide} href={href} />
         </div>
-        <Carrusel />
+        <Carrusel activeSlide={activeSlide} href={href} />
 
     </div>
 </header>
