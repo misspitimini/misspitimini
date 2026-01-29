@@ -1,9 +1,4 @@
 ---
-interface Props {
-    activeSlide: number;
-    href: string;
-}
-const { href, activeSlide } = Astro.props;
 ---
 <button class="md:hidden z-50 p-2" @click="open = !open">
 	<svg x-show="!open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
