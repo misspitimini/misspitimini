@@ -1,4 +1,29 @@
 ---
+import BlogCard from '../components/BlogCard.astro';
+
+const blogs = [
+  {
+    imgSrc: "/images/body/blog/floresSecas.jpg",
+    imgAlt: "Cómo cuidar tus flores secas",
+    title: "Cómo cuidar tus flores secas",
+    description: "Aprende a mantener tus flores secas en perfecto estado durante mucho tiempo.",
+    link: "/workshops/centerpieces",
+  },
+  {
+    imgSrc: "/images/body/blog/tendenciasBoda.jpg",
+    imgAlt: "Flores para bodas: tendencias 2026",
+    title: "Flores para bodas: tendencias 2026",
+    description: "Descubre las últimas tendencias en arreglos florales para bodas y elige el estilo que más te guste.",
+    link: "/workshops/centerpieces",
+  },
+  {
+    imgSrc: "/images/body/blog/rosasSivestres.jpg",
+    imgAlt: "DIY: crea tu propio ramo de flores",
+    title: "DIY: crea tu propio ramo de flores",
+    description: "Aprende a crear un ramo de flores espectacular con tus propias manos y sorprende a todos.",
+    link: "/workshops/centerpieces",
+  },
+];
 ---
 <section>
   <div class="flex flex-col lg:flex-row items-center gap-7 p-4 rounded-xl shadow-sm">
@@ -17,47 +42,15 @@
 <section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/blog/floresSecas.jpg" alt="Cómo cuidar tus flores secas">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">Cómo cuidar tus flores secas</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Aprende a mantener tus flores secas en perfecto estado durante mucho tiempo.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Leer más &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/blog/tendenciasBoda.jpg" alt="Flores para bodas: tendencias 2024">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">Flores para bodas: tendencias 2024</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Descubre las últimas tendencias en arreglos florales para bodas y elige el estilo que más te guste.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Leer más &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/blog/rosasSivestres.jpg" alt="DIY: crea tu propio ramo de flores">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">DIY: crea tu propio ramo de flores</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Aprende a crear un ramo de flores espectacular con tus propias manos y sorprende a todos.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Leer más &rarr;
-            </a>
-          </div>
-        </div>
+      {blogs.map((blog) => (
+        <BlogCard
+          imgSrc={blog.imgSrc}
+          imgAlt={blog.imgAlt}
+          title={blog.title}
+          description={blog.description}
+          link={blog.link}
+        />
+      ))}
       </div>
     </div>
   </div>

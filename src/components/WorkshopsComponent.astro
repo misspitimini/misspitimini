@@ -1,4 +1,37 @@
 ---
+
+import WorkshopCard from '../components/WorkshopCard.astro';
+
+const workshops = [
+  {
+    imgSrc: "/images/body/talleres/ramosFlores.jpg",
+    imgAlt: "Taller de ramos de flores",
+    title: "Ramos de Flores",
+    description: "Aprende a crear ramos de flores únicos y personalizados, combinando colores, texturas y aromas.",
+    link: "/workshops/flower-bouquets",
+  },
+  {
+    imgSrc: "/images/body/talleres/centroMesa.jpg",
+    imgAlt: "Taller de centros de mesa",
+    title: "Centros de Mesa",
+    description: "Diseña centros de mesa espectaculares para tus eventos más especiales, desde cenas íntimas hasta grandes celebraciones.",
+    link: "/workshops/centerpieces",
+  },
+  {
+    imgSrc: "/images/body/talleres/floresSecas.jpg",
+    imgAlt: "Taller de flores secas",
+    title: "Flores Secas",
+    description: "Descubre el arte de trabajar con flores secas y crea composiciones duraderas y llenas de encanto.",
+    link: "/workshops/dry-flowers",
+  },
+  {
+    imgSrc: "/images/body/talleres/decoracionBoda.jpg",
+    imgAlt: "Taller de decoración de bodas",
+    title: "Decoración de Bodas",
+    description: "Aprende a decorar cada rincón de una boda, desde la ceremonia hasta el banquete, con un estilo único y personal.",
+    link: "/workshops/wedding-decoration",
+  },
+];
 ---
 <section>
   <div class="flex flex-col lg:flex-row items-center gap-7 p-4 rounded-xl shadow-sm">
@@ -16,48 +49,15 @@
 <section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/talleres/ceremoniaBoda.jpg" alt="Curso de ramos de novia">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">Ramos de Novia</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Aprende a crear ramos de novia espectaculares, desde los más clásicos a los más atrevidos.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Más información &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/talleres/centroMesa.jpg" alt="Curso de centros de mesa">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">Centros de Mesa</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Descubre cómo crear centros de mesa que se conviertan en el alma de cualquier celebración.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Más información &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="shadow-soft-elevation">
-        <img class="w-full h-56 object-cover" src="/images/body/talleres/floresSecas.jpg" alt="Curso de coronas florales">
-        <div class="p-6">
-          <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide">Coronas Florales</h3>
-          <p class="mt-2 text-base text-gray-500">
-            Aprende a confeccionar coronas florales para bodas, festivales o simplemente para lucir un look bohemio y romántico.
-          </p>
-          <div class="mt-4">
-            <a href="#" class="text-base font-medium text-pink-500 hover:text-pink-600">
-              Más información &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
+      {workshops.map((workshop) => (
+        <WorkshopCard
+          imgSrc={workshop.imgSrc}
+          imgAlt={workshop.imgAlt}
+          title={workshop.title}
+          description={workshop.description}
+          link={workshop.link}
+        />
+      ))}
     </div>
   </div>
 </section>
