@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             const resultado = await respuesta.text();
-            alert('Formulario enviado correctamente');
+            alert('Formulario enviado correctamente [' + resultado + ']');
         } catch (error) {
             alert('Error al enviar el formulario [' + error + ']');
         }
