@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     
         try {
-            const respuesta = await fetch('http://www.misspitimini.com/SendForm.php', {
+            const urlDominio = "https://www.misspitimini.com/SendForm.php5";
+            const respuesta = await fetch(urlDominio, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
