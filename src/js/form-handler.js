@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             const resultado = await respuesta.text();
-            alert('Formulario enviado correctamente [' + resultado + ']');
+            alert('Formulario enviado correctamente');
         } catch (error) {
-            alert('Error al enviar el formulario [' + error + ']');
+            alert('Error al enviar el formulario de contacto');
         }
     });
 });
