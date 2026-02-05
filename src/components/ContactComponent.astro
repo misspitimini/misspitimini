@@ -1,34 +1,73 @@
 ---
 ---
-
-
 <section>
     <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
-        <form  id="formularioContacto" class="w-full">
       <div class="flex-1 text-center">
         <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
-            Ponte en contacto con Sara Laínez
-        </h2>
-        <br />
+          Ponte en contacto con Sara Laínez
+      </h2>
+      <br />
+      <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        Cada proyecto comienza con una <b>conversación</b>. Si buscas <b>una mirada experta</b>  que transforme tu idea en una atmósfera viva, estás en el lugar adecuado. <b>Sara Laínez</b>  te ofrece un <b>asesoramiento</b> personalizado para dar con la narrativa floral que tu evento o espacio necesita. Cuéntanos qué tienes en mente y permítenos <b>guiarte</b> en el proceso de dar vida a tu visión.
+      </p>
+      <br />
+  </div>
+</div>
+</section>
+
+<div class="flex flex-col lg:flex-row items-center gap-7 p-4">
+  <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
+    <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
+      Medianta una llamada telefónica:
+    </h3>
+    <div class="text-center">
+      <a href="tel:+34684340789" 
+      class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
+      +34 684 34 07 89
+      </a>
+    </div>
+  </div>
+</div>
+<br />
+<div class="flex flex-col lg:flex-row items-center gap-7 px-8">
+  <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
+   o mediante un mensaje:
+  </h3>
+  <form  id="formularioContacto" class="w-full">
+  <div class="flex-1 text-center">
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre (*):</label>
+      <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+    <label for="telefono" class="block text-[#2c3e50] mb-2">Teléfono (*):</label>
+    <input type="tel" id="telefono" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="email" class="block text-[#2c3e50] mb-2">Email (*):</label>
+      <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="mensaje" class="block text-[#2c3e50] mb-2">Comentario:</label>
+      <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
+  </p>       
+</div>
+<div class="text-center">
+  <p id="error-nombre" class="hidden text-red-500 text-xs mt-1 italic">Deben rellenarse los campos obligatorios</p>
+  <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full">Enviar</button>
+</div>
+</form>  
+</div>
+  <section>
+    <div class="flex flex-col lg:flex-row items-center gap-7 p-4 md:p-14">
+      <div class="flex-1 text-center lg:text-left">
         <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-            <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre:</label>
-            <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+          Aunque su estética vanguardista ha encontrado en <b>Madrid</b> el ecosistema perfecto para crecer, la influencia de <b>Sara Laínez</b> se extiende por <b>toda la geografía española</b>. Su porfolio respira la diversidad de paisajes donde ha trabajado, desde la sofisticación de <b>Barcelona</b> y <b>Valencia</b> hasta el encanto histórico de <b>Toledo</b>, <b>Segovia</b> y <b>Valladolid</b> . Esta movilidad geográfica le permite adaptar su narrativa floral a cualquier entorno, reafirmando su presencia en los enclaves más vibrantes del país.
         </p>
-        <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-            <label for="email" class="block text-[#2c3e50] mb-2">Email:</label>
-            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
-        </p>
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-            <label for="mensaje" class="block text-[#2c3e50] mb-2">Mensaje:</label>
-            <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
-        </p>       
       </div>
-      <div class="text-center">
-        <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full">Enviar</button>
-      </div>
-    </form>  
-      
     </div>
   </section>
 
