@@ -1,0 +1,63 @@
+---
+---
+<section>
+    <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
+      <div class="flex-1 text-center">
+        <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
+          Reserva tu asistencia al taller
+      </h2>
+      <br />
+      <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+          Una vez enviada la resverva, recibiras un correo electrónio con los pasos que se deben seguir. 
+      </p>
+      <br />
+  </div>
+</div>
+</section>
+<section>
+<div class="flex flex-col lg:flex-row items-center gap-7 px-8">
+<form id="formularioReserva" class="w-full">
+  <div class="flex-1 text-center">
+  <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-0 sm:pb-12 md:pb-12">
+   Datos necesarios para la reserva:
+  </h3>
+    <p id="error-nombre" class="hidden italic"></p>
+  
+  <div class="flex-1 text-center">
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre (*):</label>
+      <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+    <label for="telefono" class="block text-[#2c3e50] mb-2">Teléfono (*):</label>
+    <input type="tel" id="telefono" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="email" class="block text-[#2c3e50] mb-2">Email (*):</label>
+      <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+  </p>
+  <br />
+  <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+      <label for="mensaje" class="block text-[#2c3e50] mb-2">Observacones:</label>
+      <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
+  </p>
+  </div>
+  <div class="md:flex">
+    <div class="my-8 md:flex-1 md:text-center  md:text-end md:mx-8">
+      <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase">Reservar</button>
+    </div>
+    <div class="my-8 md:flex-1 text-center md:text-start md:mx-8">
+      <a href="/talleres/" 
+      class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
+      Cancelar
+      </a>
+    </div>
+  </div>
+
+</form>  
+</div>
+</section>
+
+

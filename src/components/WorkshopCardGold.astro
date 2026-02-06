@@ -1,0 +1,30 @@
+---
+interface Props {
+  imgSrc: string;
+  imgAlt: string;
+  date: string
+  title: string;
+  description: string;
+  link: string;
+}
+
+const { imgSrc, imgAlt, date, title, description, link } = Astro.props;
+---
+
+<div class="shadow-soft-elevation">
+  <img class="w-full h-56 object-cover" src={imgSrc} alt={imgAlt}>
+  <div class="p-6">
+    <h3 class="font-display text-4xl font-semibold  mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
+    <p class="font-display text-4xl font-semibold  mb-4 tracking-wide text-red-600/60">{date}</p>
+    <h4 class="font-display text-4xl font-semibold  mb-4 tracking-wide">Taller "{title}"</h3>
+    <p class="mt-2 text-base text-white">
+      {description}
+    </p>
+    <div class="mt-4">
+      <a href='/reservaTaller/' 
+      class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 uppercase">
+      Reservar asistencia
+      </a>
+    </div>
+  </div>
+</div>
