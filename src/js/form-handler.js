@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const resultado = await respuesta.text();
             let mensajeExito;
-            if (!campos.email.value.trim())
+            if (campos.email.value.trim())
             {
                 mensajeExito = "Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '"+campos.email.value+"'";
             }
