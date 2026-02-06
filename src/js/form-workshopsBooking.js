@@ -36,12 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     
             const resultado = await respuesta.text();
-
+            let mensajeExito;
+            if (!campos.email.value.trim())
+            {
+                mensajeExito = "Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '"+campos.email.value+"'";
+            }
+            else
+            {
+                mensajeExito = "Formulario enviado correctamente.";
+            }
+            mostrarExito('error-nombre', mensajeExito);
+            
+            
             nombre.value='';
             email.value='';
             telefono.value='';
             mensaje.value='';
-            mostrarExito('error-nombre', 'Formulario enviado correctamente');
+
         } catch (error) {
             mostrarError(null, 'error-nombre', 'Error al enviar el formulario de contacto');
         }
@@ -95,7 +106,7 @@ function mostrarExito(idError, mensajeCustom) {
     // 2. Cambiar texto y mostrar el error
     const txtError = document.getElementById(idError);
     if (txtError) {
-        txtError.classList.add('border-green-500', 'bg-green-50','text-green-100');
+        txtError.classList.add('border-green-500', 'bg-green-50');
         if (mensajeCustom) {
             txtError.textContent = mensajeCustom; // Aquí cambiamos el texto
         }
