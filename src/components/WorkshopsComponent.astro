@@ -1,18 +1,7 @@
 ---
 
 import WorkshopCard from '../components/WorkshopCard.astro';
-import WorkshopCardGold from '../components/WorkshopCardGold.astro';
-
-const nextWorkshop =
-{
-    imgSrc: "/images/body/talleres/ramosFlores.jpg",
-    imgAlt: "Taller de ramos de flores",
-    date: "7 de Marzo de 2026",
-    title: "Ramos de Flores",
-    description: "Aprende a crear ramos de flores únicos y personalizados, combinando colores, texturas y aromas.",
-    link: "/workshops/flower-bouquets",
-}
-
+import Hero from '../components/commons/Hero.astro';
 
 const workshops = [
   {
@@ -51,6 +40,7 @@ const workshops = [
       <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
         Talleres de Diseño Floral
       </h2>
+      <Hero />
       <br />
       <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
         Aprende a crear arreglos florales únicos y llenos de estilo con nuestros talleres presenciales.
@@ -60,18 +50,6 @@ const workshops = [
 </section>
 
 
-<section class="min-h-screen flex items-center justify-center p-4">
-  <div class="relative p-[1px] rounded-xl bg-gradient-to-br from-yellow-200 via-yellow-500 to-yellow-700 shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-transform duration-300 hover:scale-105">
-      <WorkshopCardGold
-          imgSrc={nextWorkshop.imgSrc}
-          imgAlt={nextWorkshop.imgAlt}
-          date={nextWorkshop.date}
-          title={nextWorkshop.title}
-          description={nextWorkshop.description}
-          link={nextWorkshop.link}
-      />
-      </div>
-</section>
 <section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
     <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
