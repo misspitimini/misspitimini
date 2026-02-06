@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://misspitimini.com/sitemap-index.xml
