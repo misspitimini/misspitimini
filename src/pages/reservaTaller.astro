@@ -15,16 +15,8 @@ import Footer from '../components/commons/Footer.astro';
 			</div>
 			<div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
 				<div class="relative h-[150px] md:h-[150px]">
-					<template x-for="slide in slides" :key="slide.id">
-						<div x-show="activeSlide === slide.id" 
-							 x-transition:enter="transition ease-out duration-500"
-							 x-transition:enter-start="opacity-0 scale-105"
-							 x-transition:enter-end="opacity-100 scale-100"
-							 class="absolute inset-0">
-							<img src="/images/carrusel/05_ramosFlores.jpg" alt="Reserva asistencia" class="w-full h-full object-cover" />
-							<div class="absolute inset-0 bg-black/10"></div>
-						</div>
-					</template>
+					<img src="/images/carrusel/05_ramosFlores.jpg" alt="Reserva asistencia" class="w-full h-full object-cover" />
+					<div class="absolute inset-0 bg-black/10"></div>
 				</div>
 			</div>
 		</div>
