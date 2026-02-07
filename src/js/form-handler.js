@@ -77,6 +77,14 @@ function validarFormulario(campos) {
         quitarError('error-email');
         quitarError('error-telefono');
     }
+    
+    if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
+        mostrarError('error-telefono','El teléfono introducido no es válido.');
+        marcarInputError(campos.telefono);
+        return false; 
+    } else {
+        quitarError('error-telefono');
+    }
 
     if (campos.email.value.trim() && !validarEmail(campos.email.value.trim())){
         mostrarError( 'error-email','El email introducido no es válido.');
@@ -84,14 +92,6 @@ function validarFormulario(campos) {
         return false; 
     } else {
         quitarError('error-email');
-    }
-
-    if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
-        mostrarError('error-telefono','El teléfono introducido no es válido.');
-        marcarInputError(campos.telefono);
-        return false; 
-    } else {
-        quitarError('error-telefono');
     }
 
     if (!campos.mensaje.value.trim()) {
