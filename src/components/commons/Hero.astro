@@ -5,7 +5,7 @@ import WorkshopCardGold from './WorkshopCardGold.astro';
 <div 
   x-data="{visible: true}" 
   x-init="setTimeout(() => visible = false, 5000)" 
-  x-show="visible || always"
+  x-show="visible"
   x-transition:leave="transition ease-in duration-1000"
   x-transition:leave-start="opacity-100"
   x-transition:leave-end="opacity-0"
