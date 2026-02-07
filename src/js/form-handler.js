@@ -4,27 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evita que la página se refresque
 
-        let nombre = document.getElementById('nombre');
-        let email = document.getElementById('email');
-        let telefono = document.getElementById('telefono');
-        let mensaje = document.getElementById('mensaje');
-    
+        // 1. Captura de elementos (Cacheamos los elementos, no solo el valor)
         const campos = {
-            nombre: nombre,
-            email: email,
-            telefono: telefono,
-            mensaje: mensaje
+            nombre: document.getElementById('nombre'),
+            email: document.getElementById('email'),
+            telefono: document.getElementById('telefono'),
+            mensaje: document.getElementById('mensaje')
         };
+
+        // 2. Limpiar estados previos (Éxito y Errores)
+        ocultarElemento('message-success');
+        Object.keys(campos).forEach(key => quitarError(`error-${key}`, campos[key]));
 
         if ( !validarFormulario(campos)) return;
 
-        const datos = {
-            nombre: nombre.value,
-            email: email.value,
-            telefono: telefono.value,
-            mensaje: mensaje.value
-        };
-
+        // 4. Preparar datos
+        const datos = Object.fromEntries(Object.entries(campos).map(([k, v]) => [k, v.value.trim()]));
+        
         try {
             const urlDominio = "https://www.misspitimini.com/SendForm.php5";
             const respuesta = await fetch(urlDominio, {
@@ -34,86 +30,122 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(datos)
             });
-    
-            const resultado = await respuesta.text();
-            let mensajeExito;
-            if (campos.email.value.trim())
-            {
-                mensajeExito = "Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '"+campos.email.value+"'";
-            }
-            else
-            {
-                mensajeExito = "Formulario enviado correctamente.";
-            }
-            mostrarExito('error-nombre', mensajeExito);
+            
+            if (!respuesta.ok) throw new Error('Error en el servidor');
+            // const resultado = await respuesta.text();
 
-            nombre.value='';
-            email.value='';
-            telefono.value='';
-            mensaje.value='';
+            // 5. Gestión de Éxito
+            const mensajeExito = (campos.email.value.trim())? 
+                "Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '"+datos.email+"'."
+                : "Formulario enviado correctamente.";
+            
+            mostrarExito('message-success', mensajeExito);
+
+            Object.keys(campos).forEach(key => {
+                if (campos[key] && 'value' in campos[key]) {
+                    campos[key].value = '';
+                }
+            });
+
         } catch (error) {
-            mostrarError(null, 'error-nombre', 'Error al enviar el formulario de contacto');
+            mostrarError('error-nombre', 'Hubo un problema al enviar. Inténtalo de nuevo.');
         }
     });
 });
 
-// Funciones auxiliares para no repetir código
+/**
+ * LÓGICA DE VALIDACIÓN
+ */
 function validarFormulario(campos) {
 
-    // 1. Validar Nombre (Obligatorio)
     if (!campos.nombre.value.trim()) {
-        mostrarError(campos.nombre, 'error-nombre', 'Deben rellenarse los campos obligatorios');
+        mostrarError('error-nombre', 'Este campo es obligatorio.');
+        marcarInputError(campos.nombre);
         return false;
     } else {
-        quitarError(campos.nombre, 'error-nombre');
+        quitarError('error-nombre');
     }
 
     // 2. Validar Email O Teléfono (Al menos uno debe existir)
     if (!campos.email.value.trim() && !campos.telefono.value.trim()){
-        mostrarError(campos.email, 'error-nombre','Deben rellenarse los campos obligatorios'); // Solo marcamos el borde
-        mostrarError(campos.telefono, 'error-nombre','Deben rellenarse los campos obligatorios');
-        return false;
-        //alert('Debes dejarnos al menos una forma de contacto (Email o Teléfono)'); // Unico alert permitido o usa un toast
+        mostrarError( 'error-email','Debes dejarnos al menos una forma de contacto (Email o Teléfono).'); 
+        mostrarError('error-telefono','Debes dejarnos al menos una forma de contacto (Email o Teléfono).');
+        marcarInputError(campos.email);
+        marcarInputError(campos.telefono);
+        return false; 
     } else {
-        quitarError(campos.email, 'error-nombre');
-        quitarError(campos.telefono, 'error-nombre');
+        quitarError('error-email');
+        quitarError('error-telefono');
     }
+
+    if (campos.email.value.trim() && !validarEmail(campos.email.value.trim())){
+        mostrarError( 'error-email','El email introducido no es válido.');
+        marcarInputError(campos.email);
+        return false; 
+    } else {
+        quitarError('error-email');
+    }
+
+    if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
+        mostrarError('error-telefono','El teléfono introducido no es válido.');
+        marcarInputError(campos.telefono);
+        return false; 
+    } else {
+        quitarError('error-telefono');
+    }
+
+    if (!campos.mensaje.value.trim()) {
+        mostrarError('error-mensaje', 'Este campo es obligatorio.');
+        marcarInputError(campos.mensaje);
+        return false;
+    } else {
+        quitarError('error-mensaje');
+    }
+
     return true;
 }
 
+/**
+ * UTILIDADES DE UI (Tailwind)
+ */
 // Funciones auxiliares para no repetir código
-function mostrarError(elemento, idError, mensajeCustom) {
-    // 1. Estilos del input
-    if(elemento) {
-        elemento.classList.add('border-red-500', 'bg-red-50');
-    }
-    
-    // 2. Cambiar texto y mostrar el error
-    const txtError = document.getElementById(idError);
-    if (txtError) {
-        txtError.classList.add('border-red-500', 'bg-red-50');
-        if (mensajeCustom) {
-            txtError.textContent = mensajeCustom; // Aquí cambiamos el texto
-        }
-        txtError.classList.remove('hidden');
+function mostrarExito(idElemento, mensaje) {
+    const el = document.getElementById(idElemento); 
+    if (el) {
+        const span = el.querySelector('span.text-sm.font-medium');
+        if (span) span.textContent = mensaje;
+        el.classList.remove('hidden');
     }
 }
-
-function mostrarExito(idError, mensajeCustom) {
-
-    // 2. Cambiar texto y mostrar el error
-    const txtError = document.getElementById(idError);
-    if (txtError) {
-        txtError.classList.add('border-green-500', 'bg-green-50');
-        if (mensajeCustom) {
-            txtError.textContent = mensajeCustom; // Aquí cambiamos el texto
-        }
-        txtError.classList.remove('hidden');
+function mostrarError(idElemento, mensaje) {
+    const el = document.getElementById(idElemento);
+    if (el) {
+        const span = el.querySelector('span.text-xs.font-medium.italic');
+        if (span) span.textContent = mensaje;
+        el.classList.remove('hidden');
     }
 }
 
-function quitarError(elemento, idError) {
-    elemento.classList.remove('border-red-500', 'bg-red-50');
-    elemento.classList.add('border-gray-300', 'focus:border-black');
-    if(idError) document.getElementById(idError).classList.add('hidden');
+function marcarInputError(input) {
+    input.classList.add('border-red-500', 'ring-1', 'ring-red-500');
 }
+
+function quitarError(idError, input) {
+    ocultarElemento(idError);
+    if (input) input.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+}
+
+function ocultarElemento(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+}
+
+function validarEmail (email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
+function validarTelefono (telefono) {
+    const telefonoRegex = /^\+?[\d\s]{7,15}$/
+    return telefonoRegex.test(telefono);
+};
