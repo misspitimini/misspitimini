@@ -1,0 +1,73 @@
+---
+---
+
+<div x-data="{ openPolicy: false, valuePrivacy: false }" @abrir-modal-privacidad.window="openPolicy = true">
+    <div class="flex items-start">
+      <div class="flex items-center h-5">
+        <input id="privacy" name="privacy" x-model="valuePrivacy" type="checkbox" required class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500 cursor-pointer">
+      </div>
+      <div class="ml-3 items-start"> 
+        <label for="privacy" class="cursor-pointer">
+          He leído y acepto la 
+          <button @click="openPolicy = true" type="button" class="text-blue-600 font-medium hover:underline focus:outline-none">
+            Política de Privacidad
+          </button>.
+        </label>
+      </div>
+    </div>
+    <div class="flex items-start">
+      <div class="flex items-center h-5">
+        <input 
+        id="newsletter" 
+        name="newsletter" 
+        type="checkbox" 
+        class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500 cursor-pointer" checked / >
+      </div>  
+      <div class="ml-3 items-start">
+        <label for="newsletter" class="cursor-pointer">Deseo recibir comunicaciones comerciales y noticias sobre 
+          <span class="font-semibold text-slate-800">Misspitimini</span> 
+          por correo electrónico.
+        </label>
+      </div> 
+    </div>
+    <br />
+    <div 
+    x-show="openPolicy" 
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-cloak
+    style="display:none">
+    <div 
+      @click.away="openPolicy = false" 
+      class="bg-white w-full max-w-2xl  shadow-2xl flex flex-col max-h-[80vh]"
+    >
+      <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+        <h4 class="text-xl font-bold text-slate-800">Política de Privacidad</h4>
+      </div>
+    
+      <div class="p-6 overflow-y-auto text-slate-600 text-sm leading-relaxed space-y-4">
+        <h5 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
+          Consentimiento para el envío de comunicaciones comerciales
+        </h5>
+        <p class="font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">En cumplimiento de lo previsto en el <b>RGPD</b>, le informamos que los datos facilitados, como dirección de correo electrónico o télefono facilitados, será incorporada a un tratamiento titularidad de <b>Misspitimini</b> con la única finalidad de gestionar el envío de la <b>newsletter</b>.</p>
+        <p class="font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">Una newsletter o <b>boletín informativo</b> es una publicación digital que se envía a través del correo electrónico con una frecuencia determinada (diaria, semanal, mensual).</p>
+        <p class="font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">Los datos se conservarán mientras exista un interés mutuo para mantener el fin del tratamiento y, cuando ya no sea necesario para tal fin, se suprimirán con medidas de seguridad adecuadas. No se comunicarán los datos a terceros, salvo obligación legal.</p>
+        <p class="font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">Podrá rectificar o eliminar este consentimiento en cualquier momento escribiendo a <b>hola@misspitimini.com</b></p>
+      </div>
+    
+      <div class="p-6 border-t border-slate-100  rounded-b-2xl flex justify-end">
+        <div class="text-center">
+          <button @click="openPolicy = false;valuePrivacy = true;" type="button" class="bg-black text-white font-bold py-3 px-8 rounded-full">He leído y entiendo</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div> 
+    <div x-show="valuePrivacy" x-cloak x-transition >
+      <slot />
+    </div>
+</div>
+
+

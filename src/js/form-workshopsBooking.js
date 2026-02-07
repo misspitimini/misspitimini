@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
             nombre: document.getElementById('nombre'),
             email: document.getElementById('email'),
             telefono: document.getElementById('telefono'),
-            mensaje: document.getElementById('mensaje')
+            mensaje: document.getElementById('mensaje'),
+            privacy: document.getElementById('privacy'),
+            newsletter: document.getElementById('newsletter')
         };
 
         // 2. Limpiar estados previos (Éxito y Errores)
@@ -88,6 +90,11 @@ function validarFormulario(campos) {
         return false;
     } else {
         quitarError('error-email');
+    }
+
+    if (campos.privacy.checked === false) {
+        window.dispatchEvent(new CustomEvent('abrir-modal-privacidad', { detail: true }));
+        return false;
     }
 
     return true;

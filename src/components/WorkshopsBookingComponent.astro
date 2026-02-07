@@ -1,4 +1,5 @@
 ---
+import PrivacyPolicy from './commons/PrivacyPolicy.astro';
 ---
 <section>
     <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
@@ -15,7 +16,7 @@
 </section>
 <section>
 <div class="flex flex-col lg:flex-row items-center gap-7 px-8">
-<form id="formularioReserva" class="w-full">
+<form id="formularioReserva" class="w-full" novalidate>
   <div class="flex-1 text-center">
   <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-0 sm:pb-12 md:pb-12">
    Datos necesarios para la reserva:
@@ -90,18 +91,19 @@
     </div>
   </p>
   </div>
-  <div class="md:flex">
-    <div class="my-8 md:flex-1 md:text-center  md:text-end md:mx-8">
-      <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase px-10">Reservar</button>
+  <PrivacyPolicy>
+    <div class="md:flex">
+      <div class="my-8 md:flex-1 md:text-center  md:text-end md:mx-8">
+        <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase px-10">Reservar</button>
+      </div>
+      <div class="my-8 md:flex-1 text-center md:text-start md:mx-8">
+        <a href="/talleres/" 
+        class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
+        Volver
+        </a>
+      </div>
     </div>
-    <div class="my-8 md:flex-1 text-center md:text-start md:mx-8">
-      <a href="/talleres/" 
-      class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
-      Volver
-      </a>
-    </div>
-  </div>
-
+  </PrivacyPolicy>
 </form>  
 </div>
 </section>
