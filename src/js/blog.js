@@ -3,14 +3,6 @@ async function renderBlogs() {
     const container = document.getElementById('blog-container');
     const template = document.getElementById('card-blog-template');
     
-    //title: 'Mi primera publicación en el blog'
-    //pubDate: 2022-07-01
-    //description: 'Este es la primera publicación de mi nuevo blog Astro.'
-    //author: 'Alumno de Astro'
-    //image:
-    //    url: 'https://docs.astro.build/assets/rose.webp'
-    //    alt: 'El logotipo de Astro sobre un fondo oscuro con un brillo rosado.'
-
     try {
         const response = await fetch("https://misspitimini.com/GetBlogs.php5");
         const files = await response.json();
@@ -29,7 +21,7 @@ async function renderBlogs() {
           const link = clone.querySelector('.card-link');
   
           // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-          img.src = post.data.url || 'https://via.placeholder.com/400x250?text=No+Image';
+          img.src = post.data.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
           img.alt = post.data.alt || 'Post sin título';
           title.textContent = post.data.title || 'Post sin título';
           desc.textContent = post.data.description || 'Haz clic para leer más...';
@@ -41,7 +33,7 @@ async function renderBlogs() {
         });
       } catch (error) {
         console.error("Error cargando el blog:", error);
-        container.innerHTML = '<p>Lo sentimos, no se pudieron cargar los posts.</p>';
+        container.innerHTML = '<p>Lo sentimos, no se pudieron cargar los blogs.</p>';
       }
    
   }

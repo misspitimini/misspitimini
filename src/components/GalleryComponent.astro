@@ -1,47 +1,7 @@
 ---
-import BouquetCard from '../components/GalleryCard.astro';
+import GalleryCard from '../components/GalleryCard.astro';
 
-const bouquets = [
-  {
-    imgSrc: "/images/body/ramos/ramo01.jpg",
-    imgAlt: "Ramo de flores silvestres",
-    title: "Ramo Silvestre",
-    description: " Un ramo de flores silvestres, perfecto para un look bohemio y natural.",
-
-  },
-  {
-    imgSrc: "/images/body/ramos/ramo02.jpg",
-    imgAlt: "Ramo de flores secas",
-    title: "Ramo de Flores Secas",
-    description: "Un ramo de flores secas que perdurará en el tiempo, ideal para decorar tu hogar.",
-
-  },
-  {
-    imgSrc: "/images/body/ramos/ramo03.jpg",
-    imgAlt: "Ramo de novia",
-    title: "Ramo de Novia",
-    description: "El ramo de novia de tus sueños, diseñado a medida para tu día más especial.",
-
-  },
-  {
-    imgSrc: "/images/body/ramos/ramo04.jpg",
-    imgAlt: "Centro de mesa",
-    title: "Centro de Mesa",
-    description: "Un centro de mesa elegante y sofisticado para tus cenas y eventos más especiales.",
-  },
-  {
-    imgSrc: "/images/body/ramos/ramo05.jpg",
-    imgAlt: "Ramo personalizado",
-    title: "Ramo Personalizado",
-    description: "Crea tu ramo a medida, elige tus flores favoritas y nosotros nos encargamos del resto.",
-  },
-  {
-    imgSrc: "/images/body/ramos/floresSecas.jpg",
-    imgAlt: "Ramo de temporada",
-    title: "Ramo de Temporada",
-    description: "Un ramo con las flores más frescas y bonitas de cada temporada.",
-  },
-];
+const galleries:any[] = [];
 
 ---
 
@@ -61,16 +21,26 @@ const bouquets = [
 
 <section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
-    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {bouquets.map((bouquet) => (
-        <BouquetCard
-          imgSrc={bouquet.imgSrc}
-          imgAlt={bouquet.imgAlt}
-          title={bouquet.title}
-          description={bouquet.description}
+    <div id="gallery-container" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {galleries.map((gallery) => (
+        <GalleryCard
+          imgSrc={gallery.imgSrc}
+          imgAlt={gallery.imgAlt}
+          title={gallery.title}
+          description={gallery.description}
+          link={gallery.link}
         />
       ))}
     </div>
   </div>
 </section>
+<template id="card-gallery-template" class="hidden">
+  <GalleryCard
+    imgSrc=""
+    imgAlt=""
+    title=""
+    description=""
+    link=""
+  />
+</template>
 
