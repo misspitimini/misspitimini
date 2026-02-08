@@ -49,11 +49,11 @@ async function renderGalleryImages() {
   }
 
   const container = document.createElement('div');
-  container.className = 'custom-carousel-container';
+  container.className = 'flex transition-transform duration-500 ease-in-out';
   
   images.forEach(img => {
     const item = document.createElement('div');
-    item.className = 'custom-carousel-item';
+    item.className = 'min-w-full box-border';
     
     const imagen = document.createElement('img');
     imagen.src = img.url;
