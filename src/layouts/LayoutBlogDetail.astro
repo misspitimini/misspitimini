@@ -21,19 +21,22 @@
 	<style is:global>
 		/* Usamos is:global para que afecte al HTML que mete el JS */
 		#post-content-main h1 {
-		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0 text-center;
+		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
 		}
 		#post-content-main h2 {
-		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0 text-center;
+		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
 		}
 		#post-content-main h3 {
-		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0 text-center;
+		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
 		}
 		#post-content-main hr {
-		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0 text-center;
+		  @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
 		}
 		#post-content-main p {
-		  @apply indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide my-6 text-center;
+		  @apply indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide  m-2 md:m-6 text-center;
+		}
+		#post-content-main p.card-title {
+		  @apply text-xl md:text-2xl font-serif italic text-gray-800 text-center;
 		}
 		#post-content-main ul {
 		  @apply list-disc ml-6 mb-4;
