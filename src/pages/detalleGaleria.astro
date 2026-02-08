@@ -1,6 +1,7 @@
 ---
 import LayoutGalleryDetail from '../layouts/LayoutGalleryDetail.astro';
 import Footer from '../components/commons/Footer.astro';
+import '../styles/carousel.css';
 ---
 
 <LayoutGalleryDetail title="misspitimini | Blog de Sara Laínez">
@@ -33,7 +34,8 @@ import Footer from '../components/commons/Footer.astro';
 			  </div>
 			</div>
 		</section>
-		<div id="card-content-images" >Cargando imagenes</div>
+		<div id="card-content-images" class="custom-carousel">
+		</div>
 		<hr/>
 		  <div class="text-center">
 			<a href="/galeria/" 

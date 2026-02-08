@@ -31,46 +31,72 @@ async function renderGalleryDetail() {
 }
 
 async function renderGalleryImages() {
-  // Obtenemos el ID de la URL (?id=lo-que-sea)
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
 
   if (!id) return;
 
   const response = await fetch(`https://misspitimini.com/GetGallery?id=${id}`);
-  const images = await response.json();
+  const imagesData = await response.json();
+  const images = imagesData.images;
   
-  const contenedor = document.getElementById('card-content-images');
+  const carousel = document.getElementById('card-content-images');
 
-  // Limpiamos el contenedor por si acaso
-  contenedor.innerHTML = '';
-  images.images.forEach(img => {
-    // Creamos un contenedor para cada imagen (opcional, ayuda con el diseño)
-    const figure = document.createElement('figure');
-    figure.className = 'foto-item';
+  carousel.innerHTML = '';
+  if (!images || images.length === 0) {
+    carousel.innerHTML = 'No hay imágenes para mostrar.';
+    return;
+  }
+
+  const container = document.createElement('div');
+  container.className = 'custom-carousel-container';
+  
+  images.forEach(img => {
+    const item = document.createElement('div');
+    item.className = 'custom-carousel-item';
     
-    // Creamos la etiqueta img
     const imagen = document.createElement('img');
     imagen.src = img.url;
     imagen.alt = img.name;
-    imagen.width = img.width;
-    imagen.height = img.height;
-    imagen.loading = "lazy"; // Mejora el rendimiento de carga
+    imagen.loading = "lazy";
     
-    // Añadimos un pie de foto con el nombre (opcional)
-    //const caption = document.createElement('figcaption');
-    //caption.textContent = img.name;
-
-    // Montamos la estructura
-    figure.appendChild(imagen);
-    //figure.appendChild(caption);
-    contenedor.appendChild(figure);
+    item.appendChild(imagen);
+    container.appendChild(item);
   });
 
+  carousel.appendChild(container);
+
+  const prevButton = document.createElement('button');
+  prevButton.className = 'custom-carousel-button prev';
+  prevButton.innerHTML = '&#10094;';
+
+  const nextButton = document.createElement('button');
+  nextButton.className = 'custom-carousel-button next';
+  nextButton.innerHTML = '&#10095;'; 
+
+  carousel.appendChild(prevButton);
+  carousel.appendChild(nextButton);
+
+  let currentIndex = 0;
+  const totalItems = images.length;
+
+  function updateCarousel() {
+    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
+    updateCarousel();
+  });
+
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
+    updateCarousel();
+  });
 }
 
 // Ejecutar automáticamente cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-  renderGalleryDetail(); // Asumiendo que 'data' es tu JSON
+  renderGalleryDetail();
   renderGalleryImages();
 });
