@@ -1,14 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutBlog from '../layouts/LayoutBlog.astro';
 import Header from '../components/commons/Header.astro';
 import BlogComponent from '../components/BlogComponent.astro';
 import Footer from '../components/commons/Footer.astro';
 ---
 
-<Layout title="misspitimini | Blog de Sara Laínez">
+<LayoutBlog title="misspitimini | Blog de Sara Laínez">
 	<Header activeSlide={7} href="/blog/"/>
 	<main>
 		<BlogComponent />
 	</main>
 	<Footer />
-</Layout>
+</LayoutBlog>

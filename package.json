@@ -12,6 +12,8 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.15.9"
+    "astro": "^5.15.9",
+    "front-matter": "^4.0.2",
+    "marked": "^17.0.1"
   }
 }

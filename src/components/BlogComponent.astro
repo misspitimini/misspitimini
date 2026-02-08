@@ -1,29 +1,7 @@
 ---
 import BlogCard from '../components/BlogCard.astro';
 
-const blogs = [
-  {
-    imgSrc: "/images/body/blog/floresSecas.jpg",
-    imgAlt: "Cómo cuidar tus flores secas",
-    title: "Cómo cuidar tus flores secas",
-    description: "Aprende a mantener tus flores secas en perfecto estado durante mucho tiempo.",
-    link: "/workshops/centerpieces",
-  },
-  {
-    imgSrc: "/images/body/blog/tendenciasBoda.jpg",
-    imgAlt: "Flores para bodas: tendencias 2026",
-    title: "Flores para bodas: tendencias 2026",
-    description: "Descubre las últimas tendencias en arreglos florales para bodas y elige el estilo que más te guste.",
-    link: "/workshops/centerpieces",
-  },
-  {
-    imgSrc: "/images/body/blog/rosasSivestres.jpg",
-    imgAlt: "DIY: crea tu propio ramo de flores",
-    title: "DIY: crea tu propio ramo de flores",
-    description: "Aprende a crear un ramo de flores espectacular con tus propias manos y sorprende a todos.",
-    link: "/workshops/centerpieces",
-  },
-];
+const blogs:any[] = [];
 ---
 <section>
   <div class="flex flex-col lg:flex-row items-center gap-7 p-4 rounded-xl shadow-sm">
@@ -41,7 +19,7 @@ const blogs = [
 
 <section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto">
-    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div id="blog-container" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {blogs.map((blog) => (
         <BlogCard
           imgSrc={blog.imgSrc}
@@ -55,3 +33,12 @@ const blogs = [
     </div>
   </div>
 </section>
+<template id="card-blog-template" class="hidden">
+    <BlogCard
+      imgSrc=""
+      imgAlt=""
+      title=""
+      description=""
+      link=""
+    />
+</template>
