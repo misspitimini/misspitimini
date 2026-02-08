@@ -1,15 +1,14 @@
 import fm from 'front-matter';
 import { marked } from 'marked';
 
-async function renderGalleriesDetail() {
+async function renderGalleryDetail() {
   // Obtenemos el ID de la URL (?id=lo-que-sea)
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
 
-
   if (!id) return;
 
-  const res = await fetch(`https://misspitimini.com/detalleBlogs/${id}.md`);
+  const res = await fetch(`https://misspitimini.com/detalleGalerias/${id}.md`);
   const text = await res.text();
   const { attributes, body } = fm(text);
   
@@ -28,34 +27,50 @@ async function renderGalleriesDetail() {
   img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y talleres | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
-  author.textContent = attributes.author || 'Sara Laínez';
-  console.log(attributes.pubDate.toString());
-  pubDate.textContent = formatearCaracterFecha(formatearFecha(attributes.pubDate)) || formatearCaracterFecha(formatearFecha(new Date()));
+
 }
 
-function formatearCaracterFecha(fechaStr) {
+async function renderGalleryImages() {
+  // Obtenemos el ID de la URL (?id=lo-que-sea)
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
 
-  // 1. Dividimos la cadena para evitar errores de zona horaria
-  const [year, month, day] = fechaStr.split('-').map(Number);
+  if (!id) return;
+
+  const response = await fetch(`https://misspitimini.com/GetGallery?id=${id}`);
+  const images = await response.json();
   
-  // 2. Creamos el objeto fecha (el mes en JS es 0-index, por eso month - 1)
-  const fecha = new Date(year, month - 1, day);
+  const contenedor = document.getElementById('card-content-images');
 
-  // 3. Formateamos usando la API de Internacionalización
-  return new Intl.DateTimeFormat('es-ES', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  }).format(fecha);
-};
+  // Limpiamos el contenedor por si acaso
+  contenedor.innerHTML = '';
+  images.images.forEach(img => {
+    // Creamos un contenedor para cada imagen (opcional, ayuda con el diseño)
+    const figure = document.createElement('figure');
+    figure.className = 'foto-item';
+    
+    // Creamos la etiqueta img
+    const imagen = document.createElement('img');
+    imagen.src = img.url;
+    imagen.alt = img.name;
+    imagen.width = img.width;
+    imagen.height = img.height;
+    imagen.loading = "lazy"; // Mejora el rendimiento de carga
+    
+    // Añadimos un pie de foto con el nombre (opcional)
+    //const caption = document.createElement('figcaption');
+    //caption.textContent = img.name;
 
-function formatearFecha(fechaStr) {
-  const fechaLocal = new Date();
-  const yyyy = fechaLocal.getFullYear();
-  const mm = String(fechaLocal.getMonth() + 1).padStart(2, '0'); // Meses van de 0 a 11
-  const dd = String(fechaLocal.getDate()).padStart(2, '0');
-  return `${yyyy}-${mm}-${dd}`;
-};
+    // Montamos la estructura
+    figure.appendChild(imagen);
+    //figure.appendChild(caption);
+    contenedor.appendChild(figure);
+  });
+
+}
 
 // Ejecutar automáticamente cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', renderGalleriesDetail);
+document.addEventListener('DOMContentLoaded', () => {
+  renderGalleryDetail(); // Asumiendo que 'data' es tu JSON
+  renderGalleryImages();
+});
