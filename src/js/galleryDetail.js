@@ -67,11 +67,11 @@ async function renderGalleryImages() {
   carousel.appendChild(container);
 
   const prevButton = document.createElement('button');
-  prevButton.className = 'custom-carousel-button prev';
+  prevButton.className = 'absolute left-[10px] top-1/2 -translate-y-1/2 z-10 bg-white/50 hover:bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all';
   prevButton.innerHTML = '&#10094;';
 
   const nextButton = document.createElement('button');
-  nextButton.className = 'custom-carousel-button next';
+  nextButton.className = 'absolute right-[10px] top-1/2 -translate-y-1/2 z-10 bg-white/50 hover:bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all';
   nextButton.innerHTML = '&#10095;'; 
 
   carousel.appendChild(prevButton);
