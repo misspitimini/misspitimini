@@ -16,18 +16,46 @@ async function renderBlogDetail() {
   const containerHeader = document.getElementById('post-content-header');
   const containerMain = document.getElementById('post-content-main');
   
-  console.log(attributes);
   // Rellenamos con los datos del "data" que extrae tu PHP
   const img = containerHeader.querySelector('.card-img');
   const title = containerMain.querySelector('.card-title');
   const content = containerMain.querySelector('.card-content');
+  const author = containerMain.querySelector('.card-author');
+  const pubDate = containerMain.querySelector('.card-date');
 
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-  img.src = attributes.image.url || 'https://via.placeholder.com/400x250?text=No+Image';
-  img.alt = attributes.image.alt || 'Post sin título';
-  title.textContent = attributes.title || 'Post sin título';
+  img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
+  img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y talleres | misspitimini | Sara Laínez';
+  title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
+  author.textContent = attributes.author || 'Sara Laínez';
+  console.log(attributes.pubDate.toString());
+  pubDate.textContent = formatearCaracterFecha(formatearFecha(attributes.pubDate)) || formatearCaracterFecha(formatearFecha(new Date()));
 }
+
+function formatearCaracterFecha(fechaStr) {
+
+  // 1. Dividimos la cadena para evitar errores de zona horaria
+  const [year, month, day] = fechaStr.split('-').map(Number);
+  
+  // 2. Creamos el objeto fecha (el mes en JS es 0-index, por eso month - 1)
+  const fecha = new Date(year, month - 1, day);
+
+  // 3. Formateamos usando la API de Internacionalización
+  return new Intl.DateTimeFormat('es-ES', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(fecha);
+};
+
+function formatearFecha(fechaStr) {
+  const fechaLocal = new Date();
+  const yyyy = fechaLocal.getFullYear();
+  const mm = String(fechaLocal.getMonth() + 1).padStart(2, '0'); // Meses van de 0 a 11
+  const dd = String(fechaLocal.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+};
 
 // Ejecutar automáticamente cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', renderBlogDetail);
