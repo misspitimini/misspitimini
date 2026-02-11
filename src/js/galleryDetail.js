@@ -42,7 +42,7 @@ async function renderGalleryImages() {
   
   const carousel = document.getElementById('card-content-images');
 
-  carousel.innerHTML = '';
+  //carousel.innerHTML = '';
   if (!images || images.length === 0) {
     carousel.innerHTML = 'No hay imágenes para mostrar.';
     return;
@@ -66,23 +66,12 @@ async function renderGalleryImages() {
 
   carousel.appendChild(container);
 
-  const prevButton = document.createElement('button');
-  prevButton.className = 'absolute left-[10px] top-1/2 -translate-y-1/2 z-10 bg-white/50 hover:bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all';
-  prevButton.innerHTML = '&#10094;';
+  const prevButton = carousel.querySelector('button');
 
   const nextButton = document.createElement('button');
-  nextButton.className = 'absolute right-[10px] top-1/2 -translate-y-1/2 z-10 bg-white/50 hover:bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all';
-  nextButton.innerHTML = '&#10095;'; 
-
-  carousel.appendChild(prevButton);
-  carousel.appendChild(nextButton);
 
   let currentIndex = 0;
   const totalItems = images.length;
-
-  function updateCarousel() {
-    container.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
 
   prevButton.addEventListener('click', () => {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
@@ -93,6 +82,12 @@ async function renderGalleryImages() {
     currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
     updateCarousel();
   });
+}
+
+function updateCarousel() {
+  const carousel = document.getElementById('card-content-images');
+  const container = carousel.querySelector('.flex.transition-transform.duration-500.ease-in-out');
+  container.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
 // Ejecutar automáticamente cuando el DOM esté listo

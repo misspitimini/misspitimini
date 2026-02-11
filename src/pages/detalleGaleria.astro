@@ -34,6 +34,20 @@ import Footer from '../components/commons/Footer.astro';
 			</div>
 		</section>
 		<div id="card-content-images" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
+			<button 
+            @click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1"
+            :href="slides[activeSlide - 1].url"
+        class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button :href="slides[activeSlide === slides.length ? 0 : activeSlide].url"
+        class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
 		</div>
 		<hr/>
 		  <div class="text-center">
