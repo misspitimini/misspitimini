@@ -66,14 +66,6 @@ async function renderGalleryImages() {
 
   carousel.appendChild(container);
 
-  const prevButton = carousel.querySelector('button');
-
-  const nextButton = document.createElement('button');
-
-  let currentIndex = 0;
-  const totalItems = images.length;
-
-
 }
 
 window.updateCarousel = function(index) {
