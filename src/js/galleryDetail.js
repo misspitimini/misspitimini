@@ -24,7 +24,7 @@ async function renderGalleryDetail() {
 
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
   img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
-  img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y talleres | misspitimini | Sara Laínez';
+  img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
 

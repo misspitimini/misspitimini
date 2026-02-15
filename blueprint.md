@@ -4,7 +4,7 @@ Este proyecto es una aplicación web de static-first construida con Astro.js y d
 
 ## Resumen del Proyecto
 
-El proyecto se centra en la creación de una floristería online llamada "Sara Laínez". El sitio web mostrará información sobre la floristería, sus productos (ramos, etc.), talleres y eventos. También contará con una sección de blog para compartir consejos e inspiración sobre arreglos florales.
+El proyecto se centra en la creación de una floristería online llamada "Sara Laínez". El sitio web mostrará información sobre la floristería, sus productos (ramos, etc.), experiencias y eventos. También contará con una sección de blog para compartir consejos e inspiración sobre arreglos florales.
 
 ### Estilo y Diseño
 
@@ -17,10 +17,10 @@ El proyecto se centra en la creación de una floristería online llamada "Sara L
 
 - **Página de inicio:** La página de inicio da la bienvenida a los usuarios con una presentación de la floristería y sus servicios.
 - **Página de ramos:** Muestra una galería de los ramos de flores disponibles para su compra.
-- **Página de talleres:** Informa sobre los próximos talleres florales y permite a los usuarios inscribirse.
+- **Página de experiencias:** Informa sobre los próximos experiencias florales y permite a los usuarios inscribirse.
 - **Página de eventos:** Presenta los servicios de decoración floral para bodas y otros eventos.
 - **Página de blog:** Ofrece artículos con consejos y tendencias sobre el mundo de las flores.
-- **Componentes reutilizables:** Se han creado componentes reutilizables para las tarjetas de ramos, talleres y entradas de blog para mejorar la mantenibilidad del código.
+- **Componentes reutilizables:** Se han creado componentes reutilizables para las tarjetas de ramos, experiencias y entradas de blog para mejorar la mantenibilidad del código.
 
 ## Plan Actual
 
