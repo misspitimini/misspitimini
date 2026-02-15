@@ -41,6 +41,8 @@ async function renderGalleryImages() {
   const images = imagesData.images;
   
   const carousel = document.getElementById('card-content-images');
+  const contentThumb = document.querySelector('.card-content-thumb');
+  const template = document.getElementById('thumb-template');
 
   //carousel.innerHTML = '';
   if (!images || images.length === 0) {
@@ -62,6 +64,7 @@ async function renderGalleryImages() {
     
     item.appendChild(imagen);
     container.appendChild(item);
+    
   });
 
   carousel.appendChild(container);

@@ -69,14 +69,14 @@ import Footer from '../components/commons/Footer.astro';
             </svg>
         </button>
 		</div>
-		<div class="flex justify-center gap-2 mt-4">
+		<div class="card-content-thumb flex justify-center gap-2 mt-4">
 			<template x-for="(img, index) in images" :key="'thumb-' + index">
-				<button 
+				<button  id="thumb-template" class="hidden"
 					@click="load(index)"
 					class="relative w-20 h-20 overflow-hidden rounded-md border-2 transition-all"
 					:class="activeSlideGallery === index ? 'border-black scale-105' : 'border-transparent opacity-60 hover:opacity-100'"
 				>
-					<img :src="img" class="w-full h-full object-cover">
+					<img :src="img" class="card-img w-full h-full object-cover">
 				</button>
 			</template>
 		</div>
