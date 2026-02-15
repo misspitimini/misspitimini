@@ -1,16 +1,15 @@
 ---
 const nextWorkshop =
 {
-    imgSrc: "/images/body/experiencias/ramosFlores.jpg",
-    imgAlt: "Taller de ramos de flores",
+    imgSrc: "/images/body/experiencias/tallerMimosas.jpg",
+    imgAlt: "Taller de primareva y verano - Taller de Mimosas",
     date: "7 de Marzo de 2026",
-    title: "Ramos de Flores",
-    description: "Aprende a crear ramos de flores únicos y personalizados, combinando colores, texturas y aromas.",
-    link: "/workshops/flower-bouquets",
+    title4: "Taller de primavera y verano",
+    title5: "Taller de Mimosas",
+    description: "El objetivo será mezclar diferentes especies vegetales y al finalizar cada participante se llevará a casa su propia corona.",
 }
-const { imgSrc, imgAlt, date, title, description, link } = nextWorkshop;
+const { imgSrc, imgAlt, date, title4, title5, description} = nextWorkshop;
 ---
-
 
 
 <section class="min-h-screen flex items-center justify-center p-4">
@@ -20,14 +19,15 @@ const { imgSrc, imgAlt, date, title, description, link } = nextWorkshop;
       <div class="p-6">
         <h3 class="font-display text-4xl font-semibold  mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
         <p class="font-display text-4xl font-semibold  mb-4 tracking-wide text-red-600/60">{date}</p>
-        <h4 class="font-display text-4xl font-semibold  mb-4 tracking-wide">Taller "{title}"</h3>
+        <h4 class="font-display text-4xl font-semibold  mb-4 tracking-wide uppercase">{title4}</h4>
+        <h5 class="font-display text-4xl font-semibold  mb-4 tracking-wide">{title5}</h5>
         <p class="mt-2 text-base">
           {description}
         </p>
         <div class="mt-4">
-          <a href='/reservaTaller/' 
+          <a href='/solicitaPresupuesto/' 
           class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 uppercase">
-          Reservar asistencia
+          Solicitar presupuesto
           </a>
         </div>
       </div>
