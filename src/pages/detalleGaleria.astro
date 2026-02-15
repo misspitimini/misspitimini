@@ -20,7 +20,19 @@ import Footer from '../components/commons/Footer.astro';
 			</div>
 		</div>
 	</header>
-	<main id="post-content-main">
+	<main id="post-content-main" x-data="{ 
+        activeSlideGallery: 0,
+        galleryLength: 2,
+		next() {
+       	 	this.activeSlideGallery = (this.activeSlideGallery + 1) % this.galleryLength;
+			window.updateCarousel(this.activeSlideGallery);
+		},
+    	prev() {
+        	this.activeSlideGallery = (this.activeSlideGallery - 1 + this.galleryLength) % this.galleryLength;
+			window.updateCarousel(this.activeSlideGallery);
+		}
+    }"
+	>
 		<div class="flex flex-col items-center gap-7">
 			<p class="card-title">
 				Donde las flores se convierten en recuerdos
@@ -29,21 +41,21 @@ import Footer from '../components/commons/Footer.astro';
 		<section>
 			<div class="flex flex-col lg:flex-row items-center gap-7 p-2 md:p-4">
 			  <div class="flex-1">
-				<div class="card-content">Cargando contenido...</div>
+				<div class="card-content" >Cargando contenido...</div>
 			  </div>
 			</div>
 		</section>
-		<div id="card-content-images" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
+		<div id="card-content-images" x-ref="slider" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
 			<button 
-            @click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1"
-            :href="slides[activeSlide - 1].url"
-        class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+            @click="prev()"
+        	class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
         </button>
-        <button :href="slides[activeSlide === slides.length ? 0 : activeSlide].url"
-        class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+        <button
+		 	@click="next()"
+        	class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>

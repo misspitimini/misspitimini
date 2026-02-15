@@ -73,21 +73,15 @@ async function renderGalleryImages() {
   let currentIndex = 0;
   const totalItems = images.length;
 
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1;
-    updateCarousel();
-  });
 
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0;
-    updateCarousel();
-  });
 }
 
-function updateCarousel() {
+window.updateCarousel = function(index) {
   const carousel = document.getElementById('card-content-images');
   const container = carousel.querySelector('.flex.transition-transform.duration-500.ease-in-out');
-  container.style.transform = `translateX(-${currentIndex * 100}%)`;
+  if (container) {
+    container.style.transform = `translateX(-${index * 100}%)`;
+  }
 }
 
 // Ejecutar automáticamente cuando el DOM esté listo
