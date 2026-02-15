@@ -48,7 +48,7 @@ function formatearCaracterFecha(fechaStr) {
 };
 
 function formatearFecha(fechaStr) {
-  const fechaLocal = new Date();
+  const fechaLocal = new Date(fechaStr);
   const yyyy = fechaLocal.getFullYear();
   const mm = String(fechaLocal.getMonth() + 1).padStart(2, '0'); // Meses van de 0 a 11
   const dd = String(fechaLocal.getDate()).padStart(2, '0');
