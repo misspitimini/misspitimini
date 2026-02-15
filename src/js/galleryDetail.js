@@ -43,6 +43,8 @@ async function renderGalleryImages() {
   const carousel = document.getElementById('card-content-images');
   const contentThumb = document.querySelector('.card-content-thumb');
   const template = document.getElementById('thumb-template');
+  template.remove();
+  const clonTemplate = document.importNode(template, true);
 
   //carousel.innerHTML = '';
   if (!images || images.length === 0) {
@@ -53,7 +55,7 @@ async function renderGalleryImages() {
   const container = document.createElement('div');
   container.className = 'flex transition-transform duration-500 ease-in-out';
   
-  images.forEach(img => {
+  images.forEach((img, index) => {
     const item = document.createElement('div');
     item.className = 'min-w-full box-border';
     
@@ -64,7 +66,18 @@ async function renderGalleryImages() {
     
     item.appendChild(imagen);
     container.appendChild(item);
-    
+
+    const clone = document.importNode(clonTemplate, true);
+
+    const imgThumb = clone.querySelector('.card-img');
+    imgThumb.removeAttribute(':src');
+    imgThumb.removeAttribute(':class');
+    imgThumb.removeAttribute('@click');
+    imgThumb.setAttribute(':class', 'changeClass('+index+')');
+    imgThumb.setAttribute('@click', 'load('+index+')');
+    imgThumb.src = img.url;
+ 
+    contentThumb.appendChild(clone);
   });
 
   carousel.appendChild(container);
