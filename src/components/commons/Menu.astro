@@ -16,7 +16,8 @@
 		   x-transition:enter-start="opacity-0 scale-95"
   		x-transition:enter-end="opacity-100 scale-100"
 		   >
-			<span x-text="slide.title"></span>
+			<span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
+			<span class="md:hidden" x-text="slide.description"></span>
 		</a>
 	</template>
 </nav>
