@@ -3,23 +3,22 @@
 
 <template x-for="slide in slides" :key="slide.id" 
     >
-<div class="w-full mb-0">
-    <div class="inset-0 mb-2 overflow-hidden">
-        <a :href="slide.url" class="group block relative">
-            <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"> 
-        </a>            
-    </div>
-    <div class="relative bottom-[100px] md:bottom-[100px] backdrop-blur-md w-full">
+<div :class="slide.id==1 ? 'mb-20' : 'my-[-20px]'"  >
+    <a :href="slide.url" class="group block relative">
+        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"> 
+    </a>
+   
+    <div class="relative bottom-[60px] md:bottom-[80px] backdrop-blur-md">
         <a :href="slide.url">
             <p class="text-xl md:text-3xl font-serif italic text-white right-1/3" x-text="slide.id==1 ? 'Sara Laínez, diseñadora floral' : slide.description"></p>
             <p class="text-base md:text-2xl font-serif italic text-white" x-text="slide.phrase"></p>
         </a>  
     </div>
-    <div :class="slide.id==1 ? 'flex' : 'hidden'" class="flex flex-row items-center justify-center relative bottom-[50px]">
+    <div :class="slide.id==1 ? 'flex' : 'hidden'" class="flex flex-row items-center justify-center relative ">
         <a href="/" >
-            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
+            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-64 h-auto">
         </a>
-    </div>
-</div>
+    </div>  
+</div>  
 </template>
 
