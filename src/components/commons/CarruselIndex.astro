@@ -5,10 +5,10 @@
     >
 <div :class="slide.id==1 ? 'mb-20' : 'my-[-20px]'"  >
     <a :href="slide.url" class="group block relative">
-        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"> 
+        <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-y-[1.02]"> 
     </a>
    
-    <div class="relative bottom-[60px] md:bottom-[80px] backdrop-blur-md">
+    <div class="relative bottom-[70px] md:bottom-[80px] backdrop-blur-md">
         <a :href="slide.url">
             <p class="text-xl md:text-3xl font-serif italic text-white right-1/3" x-text="slide.id==1 ? 'Sara Laínez, diseñadora floral' : slide.description"></p>
             <p class="text-base md:text-2xl font-serif italic text-white" x-text="slide.phrase"></p>
