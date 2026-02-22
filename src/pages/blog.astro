@@ -1,14 +1,18 @@
 ---
 import LayoutBlog from '@layouts/LayoutBlog.astro';
-import Header from '@components/commons/Header.astro';
+import HeaderIndex from '@components/commons/HeaderIndex.astro';
+import HeroIndex from '@components/commons/HeroIndex.astro';
 import BlogComponent from '@components/BlogComponent.astro';
-import Footer from '@components/commons/Footer.astro';
+import Footer from '@components//commons/Footer.astro';
 ---
 
 <LayoutBlog title="misspitimini | Blog de Sara Laínez">
-	<Header activeSlide={7} href="/blog/"/>
-	<main>
-		<BlogComponent />
+	<HeaderIndex activeSlide={7} href="/blog/" />
+	<main class="relative pt-20 pb-32">
+		<HeroIndex activeSlide={7} href="/blog/" />
+		<div class="px-6 py-20 space-y-24">
+			<BlogComponent />
+		</div>
 	</main>
 	<Footer />
 </LayoutBlog>

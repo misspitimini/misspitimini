@@ -3,7 +3,7 @@
 import MenuIndex from "@components/commons/MenuIndex.astro";
 
 interface Props {
-
+    activeSlide: number;
     href: string;
 }
 const { href} = Astro.props;
@@ -24,7 +24,7 @@ x-data={`{
 }`} 
 >
     <div class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
-    <MenuIndex />
+        <MenuIndex />
     </div>
 
     <div 

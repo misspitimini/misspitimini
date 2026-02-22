@@ -1,14 +1,19 @@
 ---
 import LayoutGallery from '@layouts/LayoutGallery.astro';
-import Header from '@components/commons/Header.astro';
+import HeaderIndex from '@components/commons/HeaderIndex.astro';
+import HeroIndex from '@components/commons/HeroIndex.astro';
 import GalleryComponent from '@components/GalleryComponent.astro';
-import Footer from '@components/commons/Footer.astro';
+import Footer from '@components//commons/Footer.astro';
 ---
 
 <LayoutGallery title="misspitimini | Galería de fotos de eventos de Sara Laínez">
-	<Header activeSlide={5} href="/galeria/"/>
-	<main>
-		<GalleryComponent />
+	<HeaderIndex activeSlide={5} href="/galeria/" />
+	<main class="relative pt-20 pb-32">
+		<HeroIndex activeSlide={5} href="/galeria/"/>
+		
+		<div class="px-6 py-20 space-y-24">
+			<GalleryComponent />
+		</div>
 	</main>
 	<Footer />
 </LayoutGallery>

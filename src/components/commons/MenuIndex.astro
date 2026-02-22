@@ -1,15 +1,17 @@
 ---
 ---
 
-<div class="flex flex-row items-center justify-center h-20 max-w-7xl mx-auto px-4">
+<div class="flex flex-row items-center h-20 max-w-7xl mx-auto px-6">
 
+    <div class="flex flex-1 justify-start">
 	<button class="flex md:hidden z-40  flex items-center justify-center p-2 -ml-2 rounded-full active:scale-95 transition-transform" @click="open = !open">
 		<svg x-show="!open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
 		<svg x-show="open" class="w-8 h-8"  fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-	</button>	
-    <div class="flex flex-col items-center ml-6 md:ml-0">
-        <a href="/">
-            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-48 h-full">
+	</button>
+    </div>	
+    <div class="flex-none">
+        <a href="/" class="block">
+            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-40 md:w-48 h-auto">
         </a>
     </div>
 
@@ -31,6 +33,6 @@
            </template>
        </nav>
 
-    <div class="flex items-center justify-center p-2 -mr-2 active:scale-95 transition-transform">
-	</div>
+    <div class="flex flex-1 justify-end">
+    </div>
 </div>

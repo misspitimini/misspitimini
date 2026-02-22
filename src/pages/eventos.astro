@@ -1,14 +1,19 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Header from '@components/commons/Header.astro';
+import HeaderIndex from '@components/commons/HeaderIndex.astro';
+import HeroIndex from '@components/commons/HeroIndex.astro';
 import EventsComponent from '@components/EventsComponent.astro';
-import Footer from '@components/commons/Footer.astro';
+import Footer from '@components//commons/Footer.astro';
 ---
 
 <Layout title="misspitimini | Decoración floral para Eventos con Sara Laínez">
-	<Header activeSlide={3} href="/eventos/" />
-	<main>
-		<EventsComponent />
+	<HeaderIndex activeSlide={3} href="/eventos/" />
+	<main class="relative pt-20 pb-32">
+		<HeroIndex activeSlide={3} href="/eventos/" />
+		
+		<div class="px-6 py-20 space-y-24">
+			<EventsComponent />
+		</div>
 	</main>
 	<Footer />
 </Layout>
