@@ -11,8 +11,12 @@ const currentYear = new Date().getFullYear();
     </div>
     <SocialNetworks />
 
-    <p class="text-lg leading-relaxed flex flex-wrap items-center justify-center gap-4">
-            <span>misspitimini • Madrid</span>
-            <span>&copy; {currentYear} • Todos los derechos reservados.</span>
-    </p>
+    <div class="flex flex-col items-center gap-2 border-t border-gray-100 pt-6">
+        <p class="text-lg font-serif italic text-gray-800">
+            misspitimini <span class="text-gray-400 font-sans not-italic text-sm mx-2">|</span> Madrid
+        </p>
+        <p class="text-xs text-gray-500 uppercase tracking-tighter">
+            &copy; {currentYear} &bull; Hecho con flores y detalles
+        </p>
+    </div>
 </footer>
