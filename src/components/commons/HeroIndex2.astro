@@ -16,10 +16,12 @@
           loading="lazy" 
           src="/images/carrusel/04_cursoFlores.jpg"
         />
-        <div class="absolute inset-0 flex items-end justify-center pb-[54px]">
-          <button class="bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
-            Información y Resumen
-          </button>
+        <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+          <a 
+          href="/experiencias/" 
+          class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
+            > Información y Resumen
+          </a>
         </div>
       </div>
       <div class="flex justify-between items-center">
@@ -33,16 +35,24 @@
     <div class="grid grid-cols-2 gap-6">
       <div class="space-y-4">
       <div class="aspect-square rounded-2xl overflow-hidden">
-      <img alt="Bodas" class="w-full h-full object-cover" loading="lazy" src="/images/carrusel/02_ceremoniaBoda.jpg"/>
-      </div>
-      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">Bodas</h3>
+        <a href="/bodas/" target="_blank" >
+            <img alt="Bodas" class="w-full h-full object-cover" loading="lazy" src="/images/carrusel/02_ceremoniaBoda.jpg"/>
+        </a>
+         </div>
+      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
+        <a href="/bodas/" target="_blank" >Bodas</a>
+      </h3>
       <p class="text-[16px] text-floral-dark/60">Haciendo florecer tus mejores recuerdos</p>
       </div>
       <div class="space-y-4">
       <div class="aspect-square rounded-2xl overflow-hidden">
-      <img alt=" Eventos" class="w-full h-full object-cover" loading="lazy" src="/images/carrusel/03_eventos.jpg"/>
+      <a href="/eventos/" target="_blank" >
+          <img alt="Eventos" class="w-full h-full object-cover" loading="lazy" src="/images/carrusel/03_eventos.jpg"/>
+      </a>
       </div>
-      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">Eventos</h3>
+      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
+        <a href="/eventos/" target="_blank" >Eventos</a>
+      </h3>
       <p class="text-[16px] text-floral-dark/60">Aportando frescura en un entorno profesional</p>
       </div>
     </div>
