@@ -1,5 +1,5 @@
 ---
-
+import CustomLink from '@components/commons/CustomLink.astro';
 ---
 
     <section class="bg-white -mx-6 px-10 py-6 text-center">
@@ -8,9 +8,19 @@
     </div>
     <div class="space-y-4">
       <h2 class="text-2xl font-serif"> Floral Designer</h2>
-      <p class="text-floral-dark/70 text-sm leading-relaxed font-light italic max-w-xs mx-auto">
-                "Creo que cada flor cuenta una historia. Mi misión es traducir tus emociones en una poesía botánica deslumbrante."
-              </p>
+
+      <p class="text-floral-dark/70 text-sm leading-relaxed font-light italic max-w-md mx-auto text-justify">
+        <b>Sara Laínez</b> es una diseñadora floral apasionada por crear experiencias únicas e
+        inolvidables a través del <b>arte de la floristería</b>. Con un ojo atento al detalle y una
+        dedicación a la calidad, transforma flores en <b>arreglos florales</b> impactantes que cuentan
+        una historia.
+      </p>
+      <p class="text-floral-dark/70 text-sm leading-relaxed font-light italic max-w-md mx-auto text-justify">
+        Su obra se inspira en la belleza natural del mundo que nos rodea y cree que las flores tienen el
+        poder de <b>evocar emociones</b> y <b>crear impresiones duraderas</b>. Ya sea una <b><CustomLink href="/bodas/">boda</CustomLink></b>,
+        un <b><CustomLink href="/eventos/">evento especial</CustomLink></b> o un simple <b><CustomLink href="/experiencias/">gesto de amor</CustomLink></b>, Sara pone todo su corazón en cada
+        creación.
+      </p>
       <p class="text-[10px] font-bold tracking-widest uppercase text-primary">Sara Laínez</p>
       </div>
     </section>
