@@ -1,23 +1,36 @@
 ---
 ---
-<button class="md:hidden z-50 p-2" @click="open = !open">
-	<svg x-show="!open" class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-	<svg x-show="open" class="w-8 h-8"  fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-</button>
 
-<nav :class="open ? 'flex' : 'hidden'" 
-	 class="fixed inset-0 bg-white/95 backdrop-blur-md z-40 flex-col items-center justify-center space-y-8 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8 md:h-auto transition-all">
-	
-	<template x-for="slide in slides" :key="slide.id">
-		<a :href="slide.url" 
-		   @click="activeSlide = slide.id"
-		   class="relative font-display text-xl md:text-base transition-all duration-300 hover:font-bold md:text-white md:pr-6"
-		   :class="activeSlide === slide.id ? 'font-bold' : ''"
-		    x-transition:enter-start="opacity-0 scale-95"
-  			x-transition:enter-end="opacity-100 scale-100"
-		   >
-			<span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
-			<span class="md:hidden" x-text="slide.description"></span>
-		</a>
-	</template>
-</nav>
+<div class="flex flex-row items-center justify-center h-20 max-w-7xl mx-auto px-4">
+
+	<button class="flex md:hidden z-40  flex items-center justify-center p-2 -ml-2 rounded-full active:scale-95 transition-transform" @click="open = !open">
+		<svg x-show="!open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+		<svg x-show="open" class="w-8 h-8"  fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+	</button>	
+    <div class="flex flex-col items-center ml-6 md:ml-0">
+        <a href="/">
+            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-48 h-full">
+        </a>
+    </div>
+
+    <nav :class="open ? 'flex' : 'hidden'" 
+    class="fixed inset-0 z-40 flex-col items-center justify-center space-y-8 
+            md:relative md:inset-auto md:flex md:flex-row md:justify-end md:items-center md:space-y-0 md:space-x-8 md:h-auto md:w-full transition-all">
+   
+           <template x-for="slide in slides" :key="slide.id">
+               <a :href="slide.url" 
+               @click="activeSlide = slide.id"
+               class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
+               :class="activeSlide === slide.id ? 'font-bold' : ''"
+               x-transition:enter-start="opacity-0 scale-95"
+               x-transition:enter-end="opacity-100 scale-100"
+               >
+                   <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
+                   <span class="md:hidden" x-text="slide.description"></span>
+               </a>
+           </template>
+       </nav>
+
+    <div class="flex items-center justify-center p-2 -mr-2 active:scale-95 transition-transform">
+	</div>
+</div>

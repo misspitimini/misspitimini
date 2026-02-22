@@ -1,19 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        brandCyan: '#000000',
-      },
-      boxShadow: {
-        'soft-elevation': '0 30px 60px -12px rgba(0, 0, 0, 0.1), 0 0 36px 0px rgba(0.10, 0.10, 0.10, 0.10)',
+          "primary": "#8B5E3C",
+          "primary-grey": "#b5b1ae",
+          "floral-beige": "#FAF9F6",
+          "floral-dark": "#1C1C1C",
+          "accent-sage": "#7A8471"
       },
       fontFamily: {
-        'display': ['"Cormorant Garamond"', 'serif'],
-        'body': ['Montserrat', 'sans-serif'],
+          'display': ['"Cormorant Garamond"', 'serif'],
+          'body': ['Montserrat', 'sans-serif'],
+          "sans": ["Plus Jakarta Sans", "sans-serif"],
+          "serif": ["Crimson Pro", "serif"]
       }
-    },
+  }
   },
   plugins: [],
 }
