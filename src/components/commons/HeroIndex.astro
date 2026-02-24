@@ -23,7 +23,7 @@ const currentSlide = slides[activeSlide - 1] || slides[0];
   </div>
   <div class="absolute inset-0 bg-black/10"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-  <div class="absolute inset-0 flex flex-col justify-end p-8 pb-20 text-center items-center">
+  <div class="absolute inset-0 flex flex-col justify-end p-8 pb-15 text-center items-center">
         <h1 class="text-white text-4xl font-serif italic leading-tight mb-8">
           {currentSlide.id === 1 && (
             <span>Sara Laínez,<br/>diseñadora floral</span>
@@ -31,7 +31,7 @@ const currentSlide = slides[activeSlide - 1] || slides[0];
           {currentSlide.id !== 1 && (
             <>
               <span class="uppercase">{currentSlide.title}</span>
-              <span class="block text-sm tracking-widest mt-2">
+              <span class="block text-sm md:text-lg tracking-widest mt-2">
                 {currentSlide.phrase}
               </span>
             </>

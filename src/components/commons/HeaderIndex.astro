@@ -52,6 +52,7 @@ x-data={`{
             <a :href="slide.url" 
                 @click="activeSlide = slide.id"
                 class="relative font-display text-2xl md:text-4xl transition-all duration-300 hover:scale-110 hover:font-bold"
+                :class="activeSlide === slide.id ? 'font-bold' : ''"
                 x-transition:enter-start="opacity-0 scale-95"
                 x-transition:enter-end="opacity-100 scale-100"
                 >
