@@ -6,12 +6,12 @@ interface Props {
     activeSlide: number;
     href: string;
 }
-const { href} = Astro.props;
+const { href, activeSlide } = Astro.props;
 ---
 <header 
 x-data={`{ 
 	open: false,
-    activeSlide: 0, 
+    activeSlide: ${activeSlide}, 
 	slides: [
 		{ id: 1, title: 'Home', description:'Home', url: '/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
 		{ id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },

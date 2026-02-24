@@ -2,20 +2,19 @@
 import CustomLink from '@components/commons/CustomLink.astro';
 ---
 
-    <section class="bg-white -mx-6 px-10 py-6 text-center">
-    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-floral-beige shadow-lg">
+    <section class="-mx-6 px-10 text-center">
+    <div class="w-32 h-32 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-floral-beige shadow-lg">
       <img alt="Sara Laínez" class="w-full h-full object-cover" src="/images/carrusel/01_misspitimini.jpg"/>
     </div>
     <div class="space-y-4">
-      <h2 class="text-2xl font-serif"> Floral Designer</h2>
-
-      <p class="text-floral-dark/70 text-sm leading-relaxed font-light italic max-w-md mx-auto text-justify">
+      <h2 class="text-2xl font-serif mt-6"> Floral Designer</h2>
+      <p class="text-floral-dark/80 text-sm leading-relaxed italic max-w-md mx-auto text-justify">
         <b>Sara Laínez</b> es una diseñadora floral apasionada por crear experiencias únicas e
         inolvidables a través del <b>arte de la floristería</b>. Con un ojo atento al detalle y una
         dedicación a la calidad, transforma flores en <b>arreglos florales</b> impactantes que cuentan
         una historia.
       </p>
-      <p class="text-floral-dark/70 text-sm leading-relaxed font-light italic max-w-md mx-auto text-justify">
+      <p class="text-floral-dark/80 text-sm leading-relaxed italic max-w-md mx-auto text-justify">
         Su obra se inspira en la belleza natural del mundo que nos rodea y cree que las flores tienen el
         poder de <b>evocar emociones</b> y <b>crear impresiones duraderas</b>. Ya sea una <b><CustomLink href="/bodas/">boda</CustomLink></b>,
         un <b><CustomLink href="/eventos/">evento especial</CustomLink></b> o un simple <b><CustomLink href="/experiencias/">gesto de amor</CustomLink></b>, Sara pone todo su corazón en cada
@@ -25,25 +24,28 @@ import CustomLink from '@components/commons/CustomLink.astro';
       </div>
     </section>
     <section class="space-y-10">
-      <div class="flex items-end justify-between">
-        <div>
-          <h2 class="text-2xl font-serif">
-            <a href="/blog/" rel="noopener noreferrer">Blog</a>
-          </h2>
-          <p class="text-floral-dark/40 text-xs mt-1">Compartir experiencias con las flores</p>
-        </div>
-        <a class="text-[10px] font-bold tracking-widest border-b border-primary pb-1 uppercase" href="/galeria/">Galeria</a>
-      </div>
       <div class="columns-2 gap-4 space-y-4">
-        <div class="rounded-xl overflow-hidden">
+        <div>
+        <div class=" overflow-hidden">
           <a href="/blog/" rel="noopener noreferrer">
               <img alt="Sara Lñinez sonriente sentada en la base de una farola monumental de la plaza Mayor de Madrid. Viste un vestido blanco largo de estilo veraniego, sandalias rojas y un sombrero de paja decorado con flores." class="w-full h-[300px] object-cover" src="/images/carrusel/07_blog.jpg"/>
           </a>
+        </div>
+          <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
+            <a href="/blog/" rel="noopener noreferrer">Blog</a>
+          </h3>
+          <p class="text-[16px] text-floral-dark/60">Compartir experiencias con las flores</p>
          </div>
-        <div class="rounded-xl overflow-hidden">
+         <div>
+        <div class=" overflow-hidden">
           <a href="/galeria/" rel="noopener noreferrer">
             <img alt="Un hermoso y abundante ramo de flores que destaca por su variedad y colorido" class="w-full h-[300px] object-cover " src="/images/carrusel/05_ramosFlores.jpg"/>
           </a>
+        </div>
+          <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
+            <a href="/galeria/" rel="noopener noreferrer">Galería</a>
+          </h3>
+          <p class="text-[16px] text-floral-dark/60">Cada flor, una memoria que florece</p>
         </div>
       </div>
     </section>
