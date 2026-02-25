@@ -13,7 +13,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
 	</head>
-	<body class="bg-white flex items-center justify-center font-sans antialiased tracking-wide text-gray-800">
+	<body class="selection:bg-primary/10 flex items-center justify-center font-sans antialiased tracking-wide text-gray-800">
 		<h1 class="sr-only">
 			Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez
 		</h1>
@@ -23,4 +23,15 @@
 			</div>
 		</div>
 	</body>
+	<style is:global>
+		@tailwind base;
+		@tailwind components;
+		@tailwind utilities;
+	
+		@layer base {
+			body {
+				@apply bg-floral-beige text-floral-dark antialiased;
+			}
+		}
+		</style>
 </html>
