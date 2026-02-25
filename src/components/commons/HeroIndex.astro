@@ -6,7 +6,7 @@ interface Props {
 const { activeSlide, href} = Astro.props;
 
 const slides = [
-		{ id: 1, title: 'Home', description:'Home', url: '/home/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
+		{ id: 1, title: 'Home', description:'Home', url: '/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
 		{ id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },
 		{ id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', img: '/images/carrusel/03_eventos.jpg', phrase: 'Aportando frescura en un entorno profesional' },
 		{ id: 4, title: 'Experiencias', description:'Talleres: Experiencias Florales y Gastronómicas', url: '/experiencias/', img: '/images/carrusel/04_cursoFlores.jpg', phrase: 'Aprendiendo de las flores' },
@@ -16,6 +16,18 @@ const slides = [
 	];
 
 const currentSlide = slides[activeSlide - 1] || slides[0];
+
+// Encontramos el índice actual en el array (0 a 6)
+const currentIndex = slides.findIndex(s => s.id === activeSlide);
+
+// Lógica Circular:
+// Si es el primero, el anterior es el último. Si es el último, el siguiente es el primero.
+const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+const nextIndex = (currentIndex + 1) % slides.length;
+
+const prevUrl = slides[prevIndex].url;
+const nextUrl = slides[nextIndex].url;
+
 ---
 <section class="relative h-[85vh] w-full overflow-hidden">
   <div class="absolute inset-0">
@@ -51,15 +63,48 @@ const currentSlide = slides[activeSlide - 1] || slides[0];
   </div>
   </section>
   <div class="flex items-center justify-between w-full">
-    <a aria-label="Anterior" 
-    :href="slides[currentSlide.id-1].url"
-  class="material-symbols-outlined text-primary p-2 hover:bg-gray-100 rounded-full transition-colors">
-  arrow_back
-  </a>
-  <a aria-label="Siguiente"
-    :href="slides[currentSlide.id === slides.length ? 0 : currentSlide.id].url"
-  class="material-symbols-outlined text-primary p-2 hover:bg-gray-100 rounded-full transition-colors">
-  arrow_forward
-  </a>
+    <a 
+      href={prevUrl} 
+      aria-label="Anterior" 
+      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
+    >
+      arrow_back
+    </a>
+  
+    <a 
+      href={nextUrl} 
+      aria-label="Siguiente" 
+      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
+    >
+      arrow_forward
+    </a>
   </div>
+  <script define:vars={{ prevUrl, nextUrl }}>
+    let touchstartX = 0;
+    let touchendX = 0;
+      
+    // Umbral mínimo para que se considere "deslizar" y no un simple toque (en píxeles)
+    const threshold = 70;
+  
+    function handleGesture() {
+      if (touchendX < touchstartX - threshold) {
+        // Deslizó a la izquierda -> Ir a Siguiente
+        window.location.href = nextUrl;
+      }
+      if (touchendX > touchstartX + threshold) {
+        // Deslizó a la derecha -> Ir a Anterior
+        window.location.href = prevUrl;
+      }
+    }
+  
+    // Escuchar eventos en el documento o en un contenedor específico
+    document.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+  
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      handleGesture();
+    }, { passive: true });
+  </script>
 
