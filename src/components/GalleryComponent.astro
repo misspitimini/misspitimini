@@ -15,11 +15,7 @@ const galleries:any[] = [];
       </p>
     </div>
   </div>
-</section>
-
-<section class="bg-white py-8 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
-    <div id="gallery-container" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+  <div id="gallery-container" class="columns-2 gap-4 space-y-4">
       {galleries.map((gallery) => (
         <GalleryCard
           imgSrc={gallery.imgSrc}
@@ -29,7 +25,6 @@ const galleries:any[] = [];
           link={gallery.link}
         />
       ))}
-    </div>
   </div>
 </section>
 <template id="card-gallery-template" class="hidden">
