@@ -3,14 +3,14 @@ import GalleryCard from '@components/GalleryCard.astro';
 
 const galleries:any[] = [];
 ---
-<section>
-  <div class="flex flex-col lg:flex-row items-center gap-7 p-4 rounded-xl shadow-sm">
-    <div class="flex-1 text-center p-4">
-      <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-24 md:pb-0">
-        Nuestros Recuerdos
-      </h2>
-      <br />
-      <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+<section class="space-y-10">
+  <div class="text-center space-y-2">
+    <h2 class="text-3xl font-serif">Nuestros Recuerdos</h2>
+    <div class="h-px w-12 bg-primary mx-auto"></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
+    <div class="flex-1 text-center">
+      <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
         Hay palabras que solo las flores saben decir. <b>Nuestra galería</b> es un recorrido por las emociones que hemos ayudado a cultivar. Desde <b>bodas</b> en en tonos pastel, hasta la energía vibrante de un <b>taller</b> en colores cítricos. Cada pétalo aquí presente cuenta una historia; <b>te invitamos a encontrar la tuya</b>.
       </p>
     </div>
