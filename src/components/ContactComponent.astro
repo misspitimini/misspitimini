@@ -16,7 +16,7 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
 </div>
 </section>
 <section>
-<div class="flex flex-col lg:flex-row items-center gap-7 px-8">
+<div class="flex flex-col lg:flex-row items-center gap-7 px-1 md:px-8">
 <form id="formularioContacto" class="w-full" novalidate>
   <div class="flex-1 text-center">
   <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-0 sm:pb-12 md:pb-12">
@@ -98,31 +98,47 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
 </form>  
 </div>
 </section>
-<section>
-  <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
-    <div class="flex-1 text-center">
-      <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide sm:pb-12 md:pb-12">
-        También puedes contactar medianta una llamada telefónica o un correo electrónico:
-      </h3>
-      <div class="md:flex">
-        <div class="my-8 md:flex-1 md:text-center  md:text-end md:mx-8">
-          <a href="tel:+34684340789" 
-          class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
-          (+34) 684 34 07 89
-          </a>
-        </div>
-        <div class="my-8 md:flex-1 text-center md:text-start md:mx-8">
-          <a href="mailto:hola@misspitimini.com" 
-          class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
-          hola@misspitimini.com
-          </a>
-        </div>
+<section class="space-y-10">
+  <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide sm:pb-12 md:pb-12">
+    También puedes contactar medianta una llamada telefónica o un correo electrónico:
+  </h3>
+  <div class="columns-2 gap-4 space-y-4">
+
+
+    <div class="relative overflow-hidden shadow-sm group">
+      <img 
+        alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
+        class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+        loading="lazy" 
+        src="/images/body/experiencias/centroMesa.jpg"
+      />
+      <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+        <a 
+        href="tel:+34684340789" 
+        class="inline-block bg-white text-black font-bold py-3 px-8 rounded-full transition-transform active:scale-95"
+          > (+34) 684 34 07 89
+        </a>
       </div>
     </div>
-  </div>
-  </section>
-  <br />
-  <section>
+
+    <div class="relative overflow-hidden shadow-sm group">
+      <img 
+        alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
+        class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+        loading="lazy" 
+        src="/images/body/experiencias/floresSecas.jpg"
+      />
+      <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+        <a 
+        href="mailto:hola@misspitimini.com" 
+        class="inline-block bg-white text-black font-bold py-3 px-8 rounded-full transition-transform active:scale-95"
+          > hola@misspitimini.com
+        </a>
+      </div>
+    </div>
+</div>
+</section>
+<section>
     <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
       <div class="flex-1 text-center">
         <h3 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide sm:pb-12 md:pb-12">
@@ -133,29 +149,55 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
           El universo de <b>Sara Laínez</b> es una ventana abierta a la naturaleza y la creatividad. Te invitamos a seguir nuestro día a día, donde compartimos procesos creativos, la llegada de nuevas temporadas y el detrás de escena de nuestros montajes más especiales. <b>Únete a nuestra comunidad</b> y deja que la inspiración floral forme parte de tu rutina.
         </p>
         <br />
-        <div class="md:flex">
-          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+        <div class="relative overflow-hidden shadow-sm group">
+          <img 
+            alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
+            class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+            loading="lazy" 
+            src="/images/body/experiencias/floresSecas.jpg"
+          />
+          <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.facebook.com/misspitimini/?locale=es_ES" 
-               class="inline-flex items-center justify-center gap-x-3 bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 w-full max-w-xs">
+               class="inline-block bg-white text-black font-bold py-3 px-32 rounded-full transition-transform active:scale-95">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 9.34 18" fill="currentColor" class="shrink-0">
                 <path d="M28.76,24.46V16.27h2.76l.41-3.21H28.76V11c0-.92.25-1.56,1.58-1.56H32V6.59a22.71,22.71,0,0,0-2.47-.13,3.87,3.87,0,0,0-4.12,4.24v2.35H22.69v3.21h2.75v8.2Z" transform="translate(-22.69 -6.46)"></path>
               </svg>
               <span>Facebook</span>
             </a>
           </div>
-          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+        </div>
+
+        <div class="relative overflow-hidden shadow-sm group">
+          <img 
+            alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
+            class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+            loading="lazy" 
+            src="/images/body/experiencias/floresSecas.jpg"
+          />
+          <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.tiktok.com/@misspitimini_official?hl=es" 
-               class="inline-flex items-center justify-center gap-x-3 bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 w-full max-w-xs">
-               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-               fill="currentColor" class="transform translate-x-[0.7px]">
-               <path transform="scale(0.7)" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"></path>
-               </svg>
+              class="inline-block bg-white text-black font-bold py-3 px-32 rounded-full transition-transform active:scale-95">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="currentColor" class="transform translate-x-[0.7px]">
+              <path transform="scale(0.7)" d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"></path>
+              </svg>
               <span>Tiktok</span>
             </a>
           </div>
-          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+        </div>
+
+
+        
+        <div class="relative overflow-hidden shadow-sm group">
+          <img 
+            alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
+            class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+            loading="lazy" 
+            src="/images/body/experiencias/floresSecas.jpg"
+          />
+          <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.instagram.com/misspitimini_official/?hl=es" 
-               class="inline-flex items-center justify-center gap-x-3 bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 w-full max-w-xs">
+               class="inline-block bg-white text-black font-bold py-3 px-32 rounded-full transition-transform active:scale-95">
                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                fill="currentColor" class="transform translate-x-[0.7px]">
                <path
@@ -163,6 +205,19 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
                </svg>
               <span>Instagram</span>
             </a>
+          </div>
+        </div>
+
+
+        <div class="md:flex">
+          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+
+          </div>
+          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+
+          </div>
+          <div class="my-8 md:flex-1 md:text-center md:mx-8">
+
           </div>
         </div>
       </div>
