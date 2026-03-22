@@ -46,6 +46,8 @@ import Footer from '@components/commons/Footer.astro';
 		},
 		images: ['']
     }"
+	@touchstart="touchstartX = $event.changedTouches[0].screenX"
+	@touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
 		<div class="flex flex-col items-center gap-7">
 			<p class="card-title">
