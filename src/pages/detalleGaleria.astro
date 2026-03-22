@@ -77,14 +77,15 @@ import Footer from '@components/commons/Footer.astro';
             </svg>
         </button>
 		</div>
-		<div class="card-content-thumb flex justify-center gap-2 mt-4">
-			<template x-for="(img, index) in images" :key="'thumb-' + index" >
-				<button  id="thumb-template"
+		<div class="card-content-thumb flex justify-center gap-2 mt-4" x-ref="galleryContainer">
+			<template x-for="(img, index) in images" id="thumb-template">
+				<button 
+					type="button"
 					@click="load(index)"
 					class="relative w-20 h-20 overflow-hidden rounded-md border-2 transition-all"
 					:class="changeClass(index)"
 				>
-					<img :src="img" class="card-img w-full h-full object-cover">
+					<img :src="img" class="card-img w-full h-full object-cover" loading="lazy">
 				</button>
 			</template>
 		</div>

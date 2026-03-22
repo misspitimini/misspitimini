@@ -69,7 +69,7 @@ async function renderGalleryImages() {
 
     const clone = document.importNode(clonTemplate, true);
 
-    const imgThumb = clone.querySelector('.card-img');
+    const imgThumb = clone.content.querySelector('.card-img');
     imgThumb.removeAttribute(':src');
     imgThumb.removeAttribute(':class');
     imgThumb.removeAttribute('@click');
