@@ -31,7 +31,13 @@ const nextUrl = slides[nextIndex].url;
 ---
 <section class="relative h-[85vh] w-full overflow-hidden">
   <div class="absolute inset-0">
-    <img alt={currentSlide.phrase} class="h-full w-full object-cover object-top" decoding="async" loading="eager" src={currentSlide.img}/>
+    <img 
+      alt={currentSlide.phrase} 
+      class="h-full w-full object-cover object-center" 
+      decoding="async" 
+      loading="eager" 
+      src={currentSlide.img}
+    />
   </div>
   <div class="absolute inset-0 bg-black/10"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
