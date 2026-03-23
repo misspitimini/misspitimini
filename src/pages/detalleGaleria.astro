@@ -44,6 +44,30 @@ import Footer from '@components/commons/Footer.astro';
 				return 'border-transparent opacity-60 hover:opacity-100';
 			} 
 		},
+		handleGesture()  {
+			// Calculamos la distancia del deslizamiento
+			const deltaX = this.touchendX - this.touchstartX;
+
+			// Si el deslizamiento supera el umbral (threshold)
+			if (Math.abs(deltaX) > this.threshold) {
+				if (deltaX < 0) {
+					// Deslizó a la izquierda -> Siguiente
+					this.next();
+				} else {
+					// Deslizó a la derecha -> Anterior
+					this.prev();
+				}
+
+				// Sincronización con el DOM (Evita el error de querySelector nulo)
+				this.$nextTick(() => {
+					const currentImg = document.querySelectorAll('.card-img')[this.activeSlideGallery];
+					if (currentImg) {
+						// Aquí ya puedes manipular la imagen sin que sea null
+						console.log('Imagen activa actual:', currentImg.src);
+					}
+				});
+			}
+		},
 		images: ['']
     }"
 	@touchstart="touchstartX = $event.changedTouches[0].screenX"
@@ -78,7 +102,7 @@ import Footer from '@components/commons/Footer.astro';
         </button>
 		</div>
 		<div class="card-content-thumb flex justify-center gap-2 mt-4" x-ref="galleryContainer">
-			<template x-for="(img, index) in images" id="thumb-template">
+			<template x-for="(img, index) in images" :key="`thumb-template_${index}`">
 				<button 
 					type="button"
 					@click="load(index)"

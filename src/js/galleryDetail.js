@@ -42,7 +42,8 @@ async function renderGalleryImages() {
   
   const carousel = document.getElementById('card-content-images');
   const contentThumb = document.querySelector('.card-content-thumb');
-  const template = document.getElementById('thumb-template');
+  const template = contentThumb.querySelector("template");
+  const molde = template.content;
   template.remove();
   const clonTemplate = document.importNode(template, true);
 
@@ -67,16 +68,22 @@ async function renderGalleryImages() {
     item.appendChild(imagen);
     container.appendChild(item);
 
-    const clone = document.importNode(clonTemplate, true);
+    const clone = molde.cloneNode(true);
 
-    const imgThumb = clone.content.querySelector('.card-img');
+    const buttonThumb = clone.querySelector('button');
+    buttonThumb.removeAttribute(' @click');
+    buttonThumb.removeAttribute(':class');
+    buttonThumb.setAttribute(':class', 'changeClass('+index+')');
+    buttonThumb.setAttribute('@click', 'load('+index+')');
+
+    const imgThumb = clone.querySelector('.card-img');
     imgThumb.removeAttribute(':src');
     imgThumb.removeAttribute(':class');
     imgThumb.removeAttribute('@click');
     imgThumb.setAttribute(':class', 'changeClass('+index+')');
     imgThumb.setAttribute('@click', 'load('+index+')');
     imgThumb.src = img.url;
- 
+
     contentThumb.appendChild(clone);
   });
 
