@@ -69,7 +69,7 @@ import Footer from '@components/commons/Footer.astro';
 	@touchstart="touchstartX = $event.touches[0].screenX;"
     @touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
-	<hr style="margin-bottom:10px; padding-bottom:2px"/>
+	<hr style="margin-bottom:2px; padding-bottom:2px"/>
 		<div id="card-content-images" x-ref="slider" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
 		<button 
             @click="prev()"
