@@ -6,7 +6,6 @@ import Footer from '@components/commons/Footer.astro';
 <LayoutGalleryDetail title="misspitimini | Blog de Sara Laínez">
 	<header id="post-content-header">
 		<div class="relative w-full">
-			
 			<div class="flex flex-row items-center justify-center px-4 py-4 max-w-7xl mx-auto">
 				<a href="/" class="z-50">
 					<img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
@@ -70,16 +69,7 @@ import Footer from '@components/commons/Footer.astro';
 	@touchstart="touchstartX = $event.touches[0].screenX;"
     @touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
-	<br/>
-	<div class="text-center">
-		<a href="/galeria/" 
-		class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
-		Volver
-		</a>
-	</div>
-	<br/>
-	<hr/>
-		
+	<hr style="margin-bottom:10px; padding-bottom:2px"/>
 		<div id="card-content-images" x-ref="slider" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
 		<button 
             @click="prev()"
