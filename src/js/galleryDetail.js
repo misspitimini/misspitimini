@@ -12,19 +12,19 @@ async function renderGalleryDetail() {
   const text = await res.text();
   const { attributes, body } = fm(text);
   
-  const containerHeader = document.getElementById('post-content-header');
+  //const containerHeader = document.getElementById('post-content-header');
   const containerMain = document.getElementById('post-content-main');
   
   // Rellenamos con los datos del "data" que extrae tu PHP
-  const img = containerHeader.querySelector('.card-img');
+ // const img = containerHeader.querySelector('.card-img');
   const title = containerMain.querySelector('.card-title');
   const content = containerMain.querySelector('.card-content');
   const author = containerMain.querySelector('.card-author');
   const pubDate = containerMain.querySelector('.card-date');
 
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-  img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
-  img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
+ // img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
+ // img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
 

@@ -7,22 +7,19 @@ import Footer from '@components/commons/Footer.astro';
 	<header id="post-content-header">
 		<div class="relative w-full">
 			
-			<div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
+			<div class="flex flex-row items-center justify-center px-4 py-4 max-w-7xl mx-auto">
 				<a href="/" class="z-50">
 					<img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
 				</a>
-			</div>
-			<div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
-				<div class="relative h-[350px] md:h-[500px]">
-					<img src="/images/carrusel/05_ramosFlores.jpg" alt="Reserva asistencia" class="card-img w-full h-full object-cover" />
-					<div class="absolute inset-0 bg-black/10"></div>
-				</div>
 			</div>
 		</div>
 	</header>
 	<main id="post-content-main" x-data="{ 
         activeSlideGallery: 0,
         galleryLength: 2,
+		touchstartX: 0,
+		touchendX: 0,
+		threshold: 50,
 		next() {
        	 	this.activeSlideGallery = (this.activeSlideGallery + 1) % this.galleryLength;
 			window.updateCarousel(this.activeSlideGallery);
@@ -70,23 +67,21 @@ import Footer from '@components/commons/Footer.astro';
 		},
 		images: ['']
     }"
-	@touchstart="touchstartX = $event.changedTouches[0].screenX"
-	@touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
+	@touchstart="touchstartX = $event.touches[0].screenX;"
+    @touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
-		<div class="flex flex-col items-center gap-7">
-			<p class="card-title">
-				Donde las flores se convierten en recuerdos
-			</p>
-		 </div>
-		<section>
-			<div class="flex flex-col lg:flex-row items-center gap-7 p-2 md:p-4">
-			  <div class="flex-1">
-				<div class="card-content" >Cargando contenido...</div>
-			  </div>
-			</div>
-		</section>
+	<br/>
+	<div class="text-center">
+		<a href="/galeria/" 
+		class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
+		Volver
+		</a>
+	</div>
+	<br/>
+	<hr/>
+		
 		<div id="card-content-images" x-ref="slider" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
-			<button 
+		<button 
             @click="prev()"
         	class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,6 +96,11 @@ import Footer from '@components/commons/Footer.astro';
             </svg>
         </button>
 		</div>
+		<div class="flex flex-col items-center gap-7">
+			<p class="card-title">
+				Donde las flores se convierten en recuerdos
+			</p>
+		 </div>
 		<div class="card-content-thumb flex justify-center gap-2 mt-4" x-ref="galleryContainer">
 			<template x-for="(img, index) in images" :key="`thumb-template_${index}`">
 				<button 
@@ -113,8 +113,15 @@ import Footer from '@components/commons/Footer.astro';
 				</button>
 			</template>
 		</div>
+		<section>
+			<div class="flex flex-col lg:flex-row items-center gap-7 p-2 md:p-4">
+			  <div class="flex-1">
+				<div class="card-content" >Cargando contenido...</div>
+			  </div>
+			</div>
+		</section>
 		<hr/>
-		  <div class="text-center">
+		<div class="text-center">
 			<a href="/galeria/" 
 			class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
 			Volver
