@@ -4,7 +4,7 @@ import BlogCard from '@components/BlogCard.astro';
 const blogs:any[] = [];
 ---
 
-<section class="space-y-10">
+<section class="space-y-10 px-6">
   <div class="text-center space-y-2">
     <h2 class="text-3xl font-serif">Nuestro Blog</h2>
     <div class="h-px w-12 bg-primary mx-auto"></div>
@@ -16,7 +16,7 @@ const blogs:any[] = [];
       </p>
     </div>
   </div>
-
+</section>
   <div id="blog-container" class="columns-2 gap-4 space-y-4">
     {blogs.map((blog) => (
       <BlogCard
@@ -27,8 +27,8 @@ const blogs:any[] = [];
         link={blog.link}
       />
     ))}
-</div>
-</section>
+  </div>
+
 <template id="card-blog-template" class="hidden">
     <BlogCard
       imgSrc=""

@@ -64,9 +64,11 @@ async function renderGalleryImages() {
     imagen.src = img.url;
     imagen.alt = img.name;
     imagen.loading = "lazy";
+    imagen.classList.add("hidden");
     
     item.appendChild(imagen);
     container.appendChild(item);
+    imagen.classList.remove("hidden");
 
     const clone = molde.cloneNode(true);
 
@@ -83,9 +85,18 @@ async function renderGalleryImages() {
     imgThumb.setAttribute(':class', 'changeClass('+index+')');
     imgThumb.setAttribute('@click', 'load('+index+')');
     imgThumb.src = img.url;
+    imgThumb.classList.remove("hidden");
 
     contentThumb.appendChild(clone);
   });
+
+  images.forEach((img, index) => {
+    const imagen = document.createElement('img');
+    imagen.classList.add("hidden");
+    
+  });
+
+
 
   carousel.appendChild(container);
 
