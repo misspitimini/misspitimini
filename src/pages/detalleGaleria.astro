@@ -5,10 +5,16 @@ import Footer from '@components/commons/Footer.astro';
 
 <LayoutGalleryDetail title="misspitimini | Blog de Sara Laínez">
 	<header id="post-content-header">
-		<div class="relative w-full">
-			<div class="flex flex-row items-center justify-center px-4 py-4 max-w-7xl mx-auto">
-				<a href="/" class="z-50">
-					<img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
+		<div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
+			<a href="/" class="z-50">
+				<img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
+			</a>
+		
+			<div class="absolute right-4">
+				<a href="/galeria/" class="text-gray-600 hover:text-black transition-colors">
+					<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
 				</a>
 			</div>
 		</div>
