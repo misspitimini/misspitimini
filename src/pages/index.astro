@@ -1,6 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
+import Carrusel from '@components/header/Carrusel.astro';
 import HomeComponentFirst from '@components/home/HomeComponentFirst.astro';
 import HomeComponentHero from '@components/home/HomeComponentHero.astro';
 import HomeComponentSecond from '@components/home/HomeComponentSecond.astro';
@@ -14,8 +14,7 @@ const href="/";
 <Layout title="misspitimini | Floral Design by Sara Laínez">
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href={href} />
-		
+		<Carrusel href={href} />
 		<div class="px-0 py-10 space-y-12">
 			<HomeComponentFirst />
 			<HomeComponentHero />

@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Header from '@components/header/Header.astro';
-import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
+import Carrusel from '@components/header/Carrusel.astro';
 import EventsComponent from '@components/EventsComponent.astro';
 import Footer from '@components/footer/Footer.astro';
 
@@ -11,7 +11,7 @@ const href="/eventos/";
 <Layout title="misspitimini | Decoración floral para Eventos con Sara Laínez">
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href={href} />
+		<Carrusel href={href} />
 		<div class="py-20 space-y-24">
 			<EventsComponent />
 		</div>

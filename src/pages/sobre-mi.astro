@@ -2,7 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import About from '@components/misc/About.astro';
 import Header from '@components/header/Header.astro';
-import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
+import Carrusel from '@components/header/Carrusel.astro';
 import Footer from '@components/footer/Footer.astro';
 
 const href="/sobre-mi/";
@@ -11,7 +11,7 @@ const href="/sobre-mi/";
 <Layout title="misspitimini | Sobre mi">
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href="/sobre-mi/" />
+		<Carrusel href="/sobre-mi/" />
 		<div class="py-20 space-y-24">
 			<About />
 		</div>
