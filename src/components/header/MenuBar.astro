@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div class="flex flex-row items-center h-20 max-w-7xl mx-auto px-6">
@@ -15,12 +16,12 @@
         </a>
     </div>
 
+    <!-- Menú Reducido -->
     <nav :class="open ? 'flex' : 'hidden'" 
     class="fixed inset-0 z-40 flex-col items-center justify-center space-y-8 
             md:relative md:inset-auto md:flex md:flex-row md:justify-end md:items-center md:space-y-0 md:space-x-8 md:h-auto md:w-full transition-all">
-   
-           <template x-for="slide in slides" :key="slide.id">
-               <a :href="slide.url" 
+        <template x-for="slide in slides" :key="slide.id">
+            <a :href="slide.url" 
                @click="activeSlide = slide.id"
                class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
                :class="activeSlide === slide.id ? 'font-bold' : ''"
@@ -29,10 +30,11 @@
                >
                    <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
                    <span class="md:hidden" x-text="slide.description"></span>
-               </a>
-           </template>
-      </nav>
+            </a>
+        </template>
+    </nav>
 
+    <!-- La X de Cerrar -->
     <div class="flex flex-1 justify-end">
     </div>
 </div>

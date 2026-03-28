@@ -1,0 +1,35 @@
+    
+    <!-- Menú Desplegable -->
+    <div 
+        x-show="open" 
+        x-cloak
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed z-50 bg-white/80 backdrop-blur-md  flex flex-col items-center justify-center h-screen w-screen"
+    >
+        <div class="absolute inset-0 justify-start h-20 pb-2">
+            <button class="z-70  flex items-center justify-center p-2 -ml-2 rounded-full active:scale-95 transition-transform" @click="open = !open">
+                <svg x-show="open" class="w-8 h-8"  fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center space-y-6">      
+            <template x-for="slide in slides" :key="slide.id">
+                <a :href="slide.url" 
+                    @click="activeSlide = slide.id"
+                    class="relative font-display text-2xl md:text-4xl transition-all duration-300 hover:scale-110 hover:font-bold"
+                    :class="activeSlide === slide.id ? 'font-bold' : ''"
+                    x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    >
+                    <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
+                    <span class="md:hidden" x-text="slide.description"></span>
+                </a>
+            </template>
+        </nav>
+    </div>
