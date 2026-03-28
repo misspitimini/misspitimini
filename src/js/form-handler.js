@@ -1,3 +1,5 @@
+import { UrlsApi } from './urls.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     let formulario = document.getElementById('formularioContacto');
     if (!formulario) return;
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const datos = Object.fromEntries(Object.entries(campos).map(([k, v]) => [k, v.value.trim()]));
         
         try {
-            const urlDominio = "https://www.misspitimini.com/SendForm.php5";
+            const urlDominio = UrlsApi.SEND_FORM;
             const respuesta = await fetch(urlDominio, {
                 method: 'POST',
                 headers: {

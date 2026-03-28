@@ -1,3 +1,4 @@
+import { UrlsApi } from './urls.js';
 import fm from 'front-matter';
 import { marked } from 'marked';
 
@@ -8,7 +9,7 @@ async function renderBlogDetail() {
 
   if (!id) return;
 
-  const res = await fetch(`https://misspitimini.com/detalleBlogs/${id}.md`);
+  const res = await fetch(UrlsApi.GET_BLOGS_DETAIL.replace("${id}", id));
   const text = await res.text();
   const { attributes, body } = fm(text);
   
@@ -23,7 +24,7 @@ async function renderBlogDetail() {
   const pubDate = containerMain.querySelector('.card-date');
   
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-  img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
+  img.src = attributes.image.url || UrlsApi.DEFAULT_IMAGE;
   img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);

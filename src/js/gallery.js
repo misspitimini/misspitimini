@@ -1,10 +1,12 @@
+import { UrlsApi } from './urls.js';
+
 async function renderGalleries() {
 
     const container = document.getElementById('gallery-container');
     const template = document.getElementById('card-gallery-template');
     
     try {
-        const response = await fetch("https://misspitimini.com/GetGalleries.php5");
+        const response = await fetch(UrlsApi.GET_GALLERIES);
         const files = await response.json();
   
         // Limpiamos el mensaje de "Cargando"
@@ -21,7 +23,7 @@ async function renderGalleries() {
           const link = clone.querySelector('.card-link');
   
           // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-          img.src = post.data.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
+          img.src = post.data.url || UrlsApi.DEFAULT_IMAGE;
           img.alt = post.data.alt || 'Post sin título';
           title.textContent = post.data.title || 'Post sin título';
           desc.textContent = post.data.description || 'Haz clic para leer más...';

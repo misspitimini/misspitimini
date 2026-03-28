@@ -1,3 +1,5 @@
+import { UrlsApi } from './urls.js';
+
 import fm from 'front-matter';
 import { marked } from 'marked';
 
@@ -8,7 +10,7 @@ async function renderGalleryDetail() {
 
   if (!id) return;
 
-  const res = await fetch(`https://misspitimini.com/detalleGalerias/${id}.md`);
+  const res = await fetch(UrlsApi.GET_GALLERIES_DETAIL.replace("${id}", id));
   const text = await res.text();
   const { attributes, body } = fm(text);
   
@@ -23,7 +25,7 @@ async function renderGalleryDetail() {
   const pubDate = containerMain.querySelector('.card-date');
 
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
- // img.src = attributes.image.url || 'https://misspitimini.com/images/carrusel/01_misspitimini.jpg';
+ // img.src = attributes.image.url || UrlsApi.DEFAULT_IMAGE;
  // img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
@@ -36,7 +38,7 @@ async function renderGalleryImages() {
 
   if (!id) return;
 
-  const response = await fetch(`https://misspitimini.com/GetGallery?id=${id}`);
+  const response = await fetch(UrlsApi.GET_GALLERY.replace("${id}", id));
   const imagesData = await response.json();
   const images = imagesData.images;
   
@@ -95,11 +97,7 @@ async function renderGalleryImages() {
     imagen.classList.add("hidden");
     
   });
-
-
-
   carousel.appendChild(container);
-
 }
 
 window.updateCarousel = function(index) {
