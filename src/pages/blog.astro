@@ -1,7 +1,7 @@
 ---
 import LayoutBlog from '@layouts/LayoutBlog.astro';
 import Header from '@components/header/Header.astro';
-import HeroIndex from '@components/commons/HeroIndex.astro';
+import ArrowsCarrusel from '@components/commons/ArrowsCarrusel.astro';
 import BlogComponent from '@components/blog/BlogComponent.astro';
 import Footer from '@components/footer/Footer.astro';
 ---
@@ -9,7 +9,7 @@ import Footer from '@components/footer/Footer.astro';
 <LayoutBlog title="misspitimini | Blog de Sara Laínez">
 	<Header activeSlide={7} href="/blog/" />
 	<main class="relative pt-20 pb-12">
-		<HeroIndex activeSlide={7} href="/blog/" />
+		<ArrowsCarrusel href="/blog/" />
 		<div class="py-20 space-y-24">
 			<BlogComponent />
 		</div>

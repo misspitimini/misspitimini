@@ -1,7 +1,7 @@
 ---
 import LayoutGallery from '@layouts/LayoutGallery.astro';
 import Header from '@components/header/Header.astro';
-import HeroIndex from '@components/commons/HeroIndex.astro';
+import ArrowsCarrusel from '@components/commons/ArrowsCarrusel.astro';
 import GalleryComponent from '@components/gallery/GalleryComponent.astro';
 import Footer from '@components/footer/Footer.astro';
 ---
@@ -9,8 +9,7 @@ import Footer from '@components/footer/Footer.astro';
 <LayoutGallery title="misspitimini | Galería de fotos de eventos de Sara Laínez">
 	<Header activeSlide={5} href="/galeria/" />
 	<main class="relative pt-20 pb-12">
-		<HeroIndex activeSlide={5} href="/galeria/"/>
-		
+		<ArrowsCarrusel href="/galeria/"/>
 		<div class="px-0 py-20 space-y-24">
 			<GalleryComponent />
 		</div>

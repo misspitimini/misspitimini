@@ -1,9 +1,8 @@
 ---
 interface Props {
-    activeSlide: number;
     href: string;
 }
-const { activeSlide, href} = Astro.props;
+const {href} = Astro.props;
 
 const slides = [
 		{ id: 1, title: 'Home', description:'Home', url: '/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
@@ -15,10 +14,10 @@ const slides = [
 		{ id: 7, title: 'Blog', description:'Blog', url: '/blog/', img: '/images/carrusel/07_blog.jpg', phrase: 'Compartir experiencias con las flores' }
 	];
 
-const currentSlide = slides[activeSlide - 1] || slides[0];
+const currentSlide = slides.find(s => s.url === href) || slides[0];
 
 // Encontramos el índice actual en el array (0 a 6)
-const currentIndex = slides.findIndex(s => s.id === activeSlide);
+const currentIndex = slides.findIndex(s => s.url === href);
 
 // Lógica Circular:
 // Si es el primero, el anterior es el último. Si es el último, el siguiente es el primero.
