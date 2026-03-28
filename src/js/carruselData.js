@@ -1,9 +1,0 @@
-export const slides = [
-    { id: 1, title: 'Home', description:'Home', url: '/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
-    { id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },
-    { id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', img: '/images/carrusel/03_eventos.jpg', phrase: 'Aportando frescura en un entorno profesional' },
-    { id: 4, title: 'Experiencias', description:'Talleres: Experiencias Florales y Gastronómicas', url: '/experiencias/', img: '/images/carrusel/04_cursoFlores.jpg', phrase: 'Aprendiendo de las flores' },
-    { id: 5, title: 'Galería', description:'Galería',  url: '/galeria/', img: '/images/carrusel/05_ramosFlores.jpg', phrase: 'Cada flor, una memorias que florece' },
-    { id: 6, title: 'Contacto', description:'Contacto', url: '/contacto/', img: '/images/carrusel/06_contacto.jpg', phrase: 'Compartamos la pasión por lo natural' },
-    { id: 7, title: 'Blog', description:'Blog', url: '/blog/', img: '/images/carrusel/07_blog.jpg', phrase: 'Compartir experiencias con las flores' }
-];

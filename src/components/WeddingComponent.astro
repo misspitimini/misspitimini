@@ -1,5 +1,8 @@
 ---
----
+import { Image } from 'astro:assets';
+import img from '@assets/images/body/bodas/novia.jpg';
+--- 
+
 <section class="space-y-10 px-6">
   <div class="text-center space-y-2">
     <h2 class="text-3xl font-serif">Bodas</h2>
@@ -23,6 +26,14 @@
 </section>
 <div class="grid">
   <div class="aspect-square overflow-hidden">
-        <img alt="Ceremonia de Boda" class="w-full h-full object-cover" loading="lazy" src="/images/body/bodas/novia.jpg"/>
+        <Image 
+          alt="Ceremonia de Boda" 
+          class="w-full h-full object-cover" 
+          loading="lazy" 
+          src={img}
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          formats={['avif', 'webp']}
+        />
   </div>
 </div>

@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import ArrowsCarrusel from "@components/header/ArrowsCarrusel.astro";
-import {slides} from '@js/carruselData.js';
+import {slides} from '@data/carruselData.js';
 
 interface Props {
     href: string;
@@ -12,12 +13,15 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
 ---
 <section class="relative h-[85vh] w-full overflow-hidden">
   <div class="absolute inset-0">
-    <img 
+    <Image 
       alt={currentSlide.phrase} 
       class="h-full w-full object-cover object-center" 
       decoding="async" 
       loading="eager" 
       src={currentSlide.img}
+      widths={[400, 800, 1200, 1600, 2400, 3200]}
+      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+      formats={['avif', 'webp']}
     />
   </div>
   <div class="absolute inset-0 bg-black/10"></div>
@@ -49,4 +53,3 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
     </div>
   </section>
   <ArrowsCarrusel href={href} />
-  

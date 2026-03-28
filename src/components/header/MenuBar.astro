@@ -1,5 +1,6 @@
 ---
-
+import { Image } from 'astro:assets';
+import logo from '@assets/images/logos/logoReducido.png';
 ---
 
 <div class="flex flex-row items-center h-20 max-w-7xl mx-auto px-6">
@@ -12,7 +13,7 @@
     </div>	
     <div class="flex-none ml-8 md:ml-0">
         <a href="/" class="block">
-            <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-40 md:w-48 h-auto">
+            <Image src={logo} alt="Logotipo" class="w-40 md:w-48 h-auto" />
         </a>
     </div>
 

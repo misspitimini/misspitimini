@@ -1,0 +1,28 @@
+
+{
+  "title": "Eventos",
+  "intro": "Entendemos que cada <strong>evento</strong> es un universo único. El trabajo de <strong>Sara Laínez</strong> consiste en interpretar la esencia de cada celebración, ya sea un:",
+  "eventTypes": [
+    {
+      "title": "Homenaje íntimo",
+      "description": "ya sea para una despedida, un aniversario o un reencuentro, sus composiciones huyen de la producción en serie para convertirse en un diálogo privado y artesanal. Es un ejercicio de delicadeza donde la flor actúa como puente emocional, creando un refugio de belleza y calma que invita a la reflexión y al afecto en su estado más puro."
+    },
+    {
+      "title": "Gala corporativa",
+      "description": "eleva el estándar del evento transformando el entorno en una extensión de la identidad de la marca. Sara Laínez entiende que, en estos contextos, el diseño floral no es un mero accesorio, sino una herramienta de comunicación estratégica que refuerza los valores de excelencia y prestigio de una empresa."
+    },
+    {
+      "title": "Cena privada",
+      "description": "una cena privada se convierte en un escenario de calidez y exclusividad."
+    }
+  ],
+  "cta": {
+    "text": "¿Tienes pensado tu evento?, ",
+    "linkText": "quizás Sara Laínez te pueda <strong>guiar</strong>",
+    "href": "/contacto/"
+  },
+  "image": {
+    "src": "@assets/images/body/eventos/evento.jpg",
+    "alt": "Ceremonia de Boda"
+  }
+}

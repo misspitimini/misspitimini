@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import CustomLink from '@components/commons/CustomLink.astro';
+import content from '@/content/events.json';
+import img from '@assets/images/body/eventos/evento.jpg';
+---
+<section class="space-y-10 px-6">
+  <div class="text-center space-y-2">
+    <h2 class="text-3xl font-serif">{content.title}</h2>
+    <div class="h-px w-12 bg-primary mx-auto"></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
+    <div class="flex-1 text-center">
+      <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide" set:html={content.intro} />
+      <br />
+      <ul class="text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide list-disc space-y-2 ml-8">
+        {content.eventTypes.map(event => (
+          <li><strong>{event.title}:</strong> {event.description}</li>
+        ))}
+        <li>
+          {content.cta.text}
+          <CustomLink href={content.cta.href} set:html={content.cta.linkText} />.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<div class="grid">
+  <div class="aspect-square overflow-hidden">
+    <Image 
+      alt={content.image.alt} 
+      class="w-full h-full object-cover" 
+      loading="lazy" 
+      src={img}
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      formats={['avif', 'webp']}
+    />
+  </div>
+</div>

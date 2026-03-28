@@ -1,0 +1,8 @@
+body {
+  min-height: max(884px, 100dvh);
+}
+
+.logo-font {
+    font-family: 'Crimson Pro', serif;
+    font-weight: 800;
+}

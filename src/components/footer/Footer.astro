@@ -1,12 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import SocialNetworks from '@components/footer/SocialNetworks.astro';
+import logo from '@assets/images/logos/logo_10.jpg';
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
     <div class="pt-8"></div>
     <a href="#" target="_self" rel="noopener noreferrer" class="inline-flex items-center">
-        <img src="/images/logos/logo_10.jpg" alt="Logotipo" class="h-6 w-auto object-contain">
+        <Image src={logo} alt="Logotipo" class="h-6 w-auto object-contain" widths={[100, 200]} formats={['avif', 'webp']} />
     </a>
     </div>
     <SocialNetworks />

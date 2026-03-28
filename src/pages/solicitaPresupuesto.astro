@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '@assets/images/logos/logoReducido.png';
+import bookingImage from '@assets/images/carrusel/05_ramosFlores.jpg';
 import LayoutBooking from '@layouts/LayoutBooking.astro';
 import WorkshopsBookingComponent from '@components/workshop/WorkshopsBookingComponent.astro';
 import Footer from '@components/footer/Footer.astro';
@@ -10,12 +13,12 @@ import Footer from '@components/footer/Footer.astro';
 			
 			<div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
 				<a href="/" class="z-50">
-					<img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
+					<Image src={logo} alt="Logotipo" class="w-32 md:w-48 h-auto" />
 				</a>
 			</div>
 			<div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
 				<div class="relative h-[150px] md:h-[150px]">
-					<img src="/images/carrusel/05_ramosFlores.jpg" alt="Reserva asistencia" class="w-full h-full object-cover" />
+					<Image src={bookingImage} alt="Reserva asistencia" class="w-full h-full object-cover" />
 					<div class="absolute inset-0 bg-black/10"></div>
 				</div>
 			</div>

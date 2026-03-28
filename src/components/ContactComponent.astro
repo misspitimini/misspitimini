@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
+import centroMesa from '@assets/images/body/contacto/centroMesa.jpg';
+import floresSecas from '@assets/images/body/contacto/floresSecas.jpg';
+import ramosFlores from '@assets/images/body/contacto/ramosFlores.jpg';
 ---
 <section>
     <div class="flex flex-col lg:flex-row items-center gap-7 p-4">
@@ -106,11 +110,14 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
 
 
     <div class="relative overflow-hidden shadow-sm group">
-      <img 
+      <Image 
         alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
         class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
         loading="lazy" 
-        src="/images/body/contacto/centroMesa.jpg"
+        src={centroMesa}
+        widths={[200, 400, 600]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        formats={['avif', 'webp']}
       />
       <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
         <a 
@@ -122,11 +129,14 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
     </div>
 
     <div class="relative overflow-hidden shadow-sm group">
-      <img 
+      <Image 
         alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
         class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
         loading="lazy" 
-        src="/images/body/contacto/floresSecas.jpg"
+        src={floresSecas}
+        widths={[200, 400, 600]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        formats={['avif', 'webp']}
       />
       <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
         <a 
@@ -152,11 +162,14 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
         <div class="columns-1 md:columns-2 gap-4 space-y-4">
         
         <div class="relative overflow-hidden shadow-sm group">
-          <img 
+          <Image 
             alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
             class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
             loading="lazy" 
-            src="/images/body/contacto/centroMesa.jpg"
+            src={centroMesa}
+            widths={[200, 400, 600]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            formats={['avif', 'webp']}
           />
           <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.facebook.com/misspitimini/?locale=es_ES" 
@@ -172,11 +185,14 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
         </div>
  
         <div class="relative overflow-hidden shadow-sm group">
-          <img 
+          <Image 
             alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
             class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
             loading="lazy" 
-            src="/images/body/contacto/floresSecas.jpg"
+            src={floresSecas}
+            widths={[200, 400, 600]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            formats={['avif', 'webp']}
           />
           <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.tiktok.com/@misspitimini_official?hl=es" 
@@ -193,11 +209,14 @@ import PrivacyPolicy from '@components/commons/PrivacyPolicy.astro';
         </div>
 
         <div class="relative overflow-hidden shadow-sm group">
-          <img 
+          <Image 
             alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
             class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
             loading="lazy" 
-            src="/images/body/contacto/ramosFlores.jpg"
+            src={ramosFlores}
+            widths={[200, 400, 600]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            formats={['avif', 'webp']}
           />
           <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
             <a href="https://www.instagram.com/misspitimini_official/?hl=es" 

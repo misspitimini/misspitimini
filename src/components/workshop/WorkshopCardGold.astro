@@ -1,14 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import tallerMimosas from '@assets/images/body/experiencias/tallerMimosas.jpg';
+
 const nextWorkshop =
 {
-    imgSrc: "/images/body/experiencias/tallerMimosas.jpg",
     imgAlt: "Taller de primareva y verano - Taller de Mimosas",
     date: "7 de Marzo de 2026",
     title4: "Taller de primavera y verano",
     title5: "Taller de Mimosas",
     description: "El objetivo será mezclar diferentes especies vegetales y al finalizar cada participante se llevará a casa su propia corona.",
 }
-const { imgSrc, imgAlt, date, title4, title5, description} = nextWorkshop;
+const { imgAlt, date, title4, title5, description} = nextWorkshop;
 ---
 
 <section class="space-y-10">
@@ -22,10 +24,13 @@ const { imgSrc, imgAlt, date, title4, title5, description} = nextWorkshop;
       {description}
     </p>
     <div class="relative overflow-hidden shadow-sm group">
-      <img 
+      <Image 
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
         loading="lazy" 
-        src={imgSrc} alt={imgAlt}
+        src={tallerMimosas} alt={imgAlt}
+        widths={[400, 800, 1200]}
+        sizes="100vw"
+        formats={['avif', 'webp']}
       />
       <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
 
@@ -38,5 +43,3 @@ const { imgSrc, imgAlt, date, title4, title5, description} = nextWorkshop;
     </div>
   </div>
 </section>
-
-
