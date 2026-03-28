@@ -4,13 +4,14 @@ import Header from '@components/header/Header.astro';
 import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
 import ContactComponent from '@components/ContactComponent.astro';
 import Footer from '@components/footer/Footer.astro';
+
+const href="/contacto/";
 ---
 
 <LayoutEmail title="misspitimini | Contacta con Sara Laínez">
-	<Header href="/contacto/"  />
+	<Header href={href}  />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href="/contacto/"  />
-		
+		<ArrowsCarrusel href={href} />
 		<div class="px-2 py-20 space-y-24">
 			<ContactComponent />
 		</div>

@@ -4,12 +4,14 @@ import Header from '@components/header/Header.astro';
 import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
 import WeddingComponent from '@components/WeddingComponent.astro';
 import Footer from '@components/footer/Footer.astro';
+
+const href="/bodas/";
 ---
 
 <Layout title="misspitimini | Decoración floral para bodas con Sara Laínez">
-	<Header href="/bodas/" />
+	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href="/bodas/" />
+		<ArrowsCarrusel href={href} />
 		<div class="py-20 space-y-24">
 			<WeddingComponent />
 		</div>

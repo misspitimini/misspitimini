@@ -4,12 +4,14 @@ import Header from '@components/header/Header.astro';
 import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
 import BlogComponent from '@components/blog/BlogComponent.astro';
 import Footer from '@components/footer/Footer.astro';
+
+const href="/blog/";
 ---
 
 <LayoutBlog title="misspitimini | Blog de Sara Laínez">
-	<Header href="/blog/" />
+	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href="/blog/" />
+		<ArrowsCarrusel href={href} />
 		<div class="py-20 space-y-24">
 			<BlogComponent />
 		</div>

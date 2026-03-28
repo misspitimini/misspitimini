@@ -4,12 +4,14 @@ import Header from '@components/header/Header.astro';
 import ArrowsCarrusel from '@components/header/ArrowsCarrusel.astro';
 import GalleryComponent from '@components/gallery/GalleryComponent.astro';
 import Footer from '@components/footer/Footer.astro';
+
+const href="/galeria/";
 ---
 
 <LayoutGallery title="misspitimini | Galería de fotos de eventos de Sara Laínez">
-	<Header href="/galeria/" />
+	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<ArrowsCarrusel href="/galeria/"/>
+		<ArrowsCarrusel href={href}/>
 		<div class="px-0 py-20 space-y-24">
 			<GalleryComponent />
 		</div>
