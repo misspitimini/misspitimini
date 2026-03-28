@@ -12,8 +12,8 @@ async function renderBlogs() {
   
         files.forEach(post => {
           // Clonamos el molde
-          const clone = template.content.cloneNode(true);
-  
+          const clone = template.content.cloneNode(true).firstElementChild;
+          
           // Rellenamos con los datos del "data" que extrae tu PHP
           const img = clone.querySelector('.card-img');
           const title = clone.querySelector('.card-title');

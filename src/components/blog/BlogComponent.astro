@@ -5,24 +5,24 @@ import BlogCard from "./BlogCard.astro";
 const posts = await getCollection('blog');
 ---
 
-<section class="py-12 bg-gray-50/50">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center space-y-4">
-      <h2 class="text-3xl font-serif text-gray-800">Nuestro Blog</h2>
-      <div class="h-px w-16 bg-primary mx-auto"></div>
-      <p class="max-w-2xl mx-auto text-gray-600 leading-relaxed">
+<section class="space-y-10">
+  <div class="text-center space-y-2 px-6">
+    <h2 class="text-3xl font-serif">Nuestro Blog</h2>
+    <div class="h-px w-12 bg-primary mx-auto"></div>
+  </div>
+  <div class="flex flex-col lg:flex-row items-center gap-7 p-4 px-6">
+    <div class="flex-1 text-center">
+      <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
         Las flores no solo decoran espacios; <b>marcan capítulos de nuestra vida</b>. En este rincón, compartimos la magia detrás de cada brote: desde la alegría de un regalo inesperado hasta el arte de cuidar tu primer jardín en casa. Porque cada flor tiene una historia, y queremos que nos ayudes a <b>contarla</b>.
       </p>
     </div>
-
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {posts.map((post: CollectionEntry<'blog'>) => (
-        <BlogCard post={post} />
-      ))}
-    </div>
+  </div>
+  <div id="blog-container" class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {posts.map((post: CollectionEntry<'blog'>) => (
+      <BlogCard post={post} />
+    ))}
   </div>
 </section>
-
 <template id="card-blog-template" class="hidden">
   <BlogCard post={{
     slug: 'dummy-slug',
@@ -36,6 +36,7 @@ const posts = await getCollection('blog');
       author: 'Autor de Ejemplo',
       pubDate: new Date(),
       tags: ['ejemplo']
-    }
+    },
+    render: () => new Promise(() => {}) 
   }} />
 </template>
