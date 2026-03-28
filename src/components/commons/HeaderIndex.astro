@@ -1,6 +1,6 @@
 ---
 
-import MenuIndex from "@components/commons/MenuIndex.astro";
+import Menu from "@components/commons/Menu.astro";
 
 interface Props {
     activeSlide: number;
@@ -24,7 +24,7 @@ x-data={`{
 }`} 
 >
     <div class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
-        <MenuIndex />
+        <Menu />
     </div>
 
     <div 
