@@ -1,6 +1,6 @@
 ---
 import ArrowsCarrusel from "@components/header/ArrowsCarrusel.astro";
-import { slides} from '@js/carruselData.js';
+import {slides} from '@js/carruselData.js';
 
 interface Props {
     href: string;
@@ -8,17 +8,6 @@ interface Props {
 const {href} = Astro.props;
 
 const currentSlide = slides.find(s => s.url === href) || slides[0];
-
-// Encontramos el índice actual en el array (0 a 6)
-const currentIndex = slides.findIndex(s => s.url === href);
-
-// Lógica Circular:
-// Si es el primero, el anterior es el último. Si es el último, el siguiente es el primero.
-const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-const nextIndex = (currentIndex + 1) % slides.length;
-
-const prevUrl = slides[prevIndex].url;
-const nextUrl = slides[nextIndex].url;
 
 ---
 <section class="relative h-[85vh] w-full overflow-hidden">
@@ -57,8 +46,7 @@ const nextUrl = slides[nextIndex].url;
             </a>
           </>
         )}
-
-  </div>
+    </div>
   </section>
   <ArrowsCarrusel href={href} />
   
