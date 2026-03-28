@@ -1,5 +1,5 @@
 ---
-import Carrusel from "@components/commons/Carrusel.astro";
+
 import Menu from "@components/commons/Menu.astro";
 
 interface Props {
@@ -8,28 +8,60 @@ interface Props {
 }
 const { href, activeSlide } = Astro.props;
 ---
-<header>
-    <div x-data={`{ 
-        open: false, 
-        activeSlide: ${activeSlide},
-        slides: [
-            { id: 1, title: 'Home', description:'Home', url: '/home/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
-            { id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },
-            { id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', img: '/images/carrusel/03_eventos.jpg', phrase: 'Aportando frescura en un entorno profesional' },
-            { id: 4, title: 'Experiencias', description:'Talleres: Experiencias Florales y Gastronómicas', url: '/experiencias/', img: '/images/carrusel/04_cursoFlores.jpg', phrase: 'Aprendiendo de las flores' },
-            { id: 5, title: 'Galería', description:'Galería',  url: '/galeria/', img: '/images/carrusel/05_ramosFlores.jpg', phrase: 'Cada flor, una memoria que florece' },
-            { id: 6, title: 'Contacto', description:'Contacto', url: '/contacto/', img: '/images/carrusel/06_contacto.jpg', phrase: 'Compartamos la pasión por lo natural' },
-            { id: 7, title: 'Blog', description:'Blog', url: '/blog/', img: '/images/carrusel/07_blog.jpg', phrase: 'Compartir experiencias con las flores' }
-        ]
-    }`} class="relative w-full">
-        
-        <div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
-            <a href="/" class="z-50">
-                <img src="/images/logos/logoReducido.png" alt="Logotipo" class="w-32 md:w-48 h-auto">
-            </a>
-            <Menu />
-        </div>
-        <Carrusel  />
-
+<header 
+x-data={`{ 
+	open: false,
+    activeSlide: ${activeSlide}, 
+	slides: [
+		{ id: 1, title: 'Home', description:'Home', url: '/', img: '/images/carrusel/01_misspitimini.jpg', phrase: 'Disfruta de la magia de las flores' },
+		{ id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', img: '/images/carrusel/02_ceremoniaBoda.jpg', phrase: 'Haciendo florecer tus mejores recuerdos' },
+		{ id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', img: '/images/carrusel/03_eventos.jpg', phrase: 'Aportando frescura en un entorno profesional' },
+		{ id: 4, title: 'Experiencias', description:'Talleres: Experiencias Florales y Gastronómicas', url: '/experiencias/', img: '/images/carrusel/04_cursoFlores.jpg', phrase: 'Aprendiendo de las flores' },
+		{ id: 5, title: 'Galería', description:'Galería',  url: '/galeria/', img: '/images/carrusel/05_ramosFlores.jpg', phrase: 'Cada flor, una memorias que florece' },
+		{ id: 6, title: 'Contacto', description:'Contacto', url: '/contacto/', img: '/images/carrusel/06_contacto.jpg', phrase: 'Compartamos la pasión por lo natural' },
+		{ id: 7, title: 'Blog', description:'Blog', url: '/blog/', img: '/images/carrusel/07_blog.jpg', phrase: 'Compartir experiencias con las flores' }
+	]
+}`} 
+>
+    <div class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
+        <Menu />
     </div>
+
+    <div 
+        x-show="open" 
+        x-cloak
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed z-50 bg-white/80 backdrop-blur-md  flex flex-col items-center justify-center h-screen w-screen"
+    >
+
+    <div class="absolute inset-0 justify-start h-20 pb-2">
+
+        <button class="z-70  flex items-center justify-center p-2 -ml-2 rounded-full active:scale-95 transition-transform" @click="open = !open">
+                <svg x-show="open" class="w-8 h-8"  fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+    </div>
+        <nav class="flex flex-col items-center space-y-6">
+                
+        <template x-for="slide in slides" :key="slide.id">
+            <a :href="slide.url" 
+                @click="activeSlide = slide.id"
+                class="relative font-display text-2xl md:text-4xl transition-all duration-300 hover:scale-110 hover:font-bold"
+                :class="activeSlide === slide.id ? 'font-bold' : ''"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                >
+                <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
+                <span class="md:hidden" x-text="slide.description"></span>
+            </a>
+        </template>
+         </nav>
+ 
+    </div>   
+
 </header>
