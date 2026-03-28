@@ -1,7 +1,7 @@
 ---
 import { getBlogPosts } from "@/services/blog";
 import type { CollectionEntry } from "astro:content";
-import BlogCard from "./BlogCard.astro";
+import BlogCard from '@components/blog/BlogCard.astro';
 
 const posts = await getBlogPosts();
 ---
