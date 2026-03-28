@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Link from "@components/commons/CustomLink.astro";
+import { slugify } from "../../utils/utils.js";
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { data, slug } = Astro.props.post;
+---
+
+<div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out h-full flex flex-col">
+    <a href={`/blog/${slugify(slug)}/`}>
+        <img class="w-full h-48 object-cover" src={data.image} alt={data.title} />
+    </a>
+    <div class="p-6 flex flex-col flex-grow">
+        <a href={`/blog/${slugify(slug)}/`}>
+            <h5 class="mb-2 text-2xl font-serif tracking-tight text-gray-900">{data.title}</h5>
+        </a>
+        <p class="flex-grow mb-4 font-light text-gray-700 leading-relaxed">{data.description}</p>
+        <div class="mt-auto">
+             <Link href={`/blog/${slugify(slug)}/`} text="Leer más"/>
+        </div>
+    </div>
+</div>

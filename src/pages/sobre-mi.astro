@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro';
+import About from '@components/misc/About.astro';
+import HeaderIndex from '@components/commons/HeaderIndex.astro';
+import HeroIndex from '@components/commons/HeroIndex.astro';
+import Footer from '@components/commons/Footer.astro';
+---
+
+<Layout title="misspitimini | Sobre mi">
+	<HeaderIndex activeSlide={2} href="/sobre-mi/" />
+	<main class="relative pt-20 pb-12">
+		<HeroIndex activeSlide={2} href="/sobre-mi/" />
+		<div class="py-20 space-y-24">
+			<About />
+		</div>
+	</main>
+	<Footer />
+</Layout>
