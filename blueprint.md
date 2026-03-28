@@ -42,16 +42,15 @@ El proyecto es el sitio web para la floristería "Sara Laínez", mostrando sus p
 - **Centralización de Datos:** La información del carrusel se gestiona desde `src/data/`.
 - **Visualización de Talleres:** Las tarjetas de los talleres ahora se muestran correctamente en la página de experiencias.
 - **Corrección de Rutas de Imágenes:** Se han solucionado todas las rutas de imágenes rotas, asegurando que se visualicen correctamente en todo el sitio.
+- **Optimización de Imágenes:** Se ha añadido la propiedad `format='webp'` a todos los componentes `Image` para asegurar una correcta optimización y renderizado en producción.
 
-## Plan Actual: Corrección de Errores y Advertencias
+## Plan Actual: Corrección de Propiedad `format` en Imágenes
 
-El plan inmediato se centró en estabilizar el proyecto, solucionando errores de build y advertencias para asegurar un estado funcional y limpio.
+El objetivo de esta actualización es resolver un error de renderizado en producción causado por la ausencia de la propiedad `format` en varios componentes `Image` de Astro. Aunque las imágenes se mostraban correctamente en el entorno de desarrollo, el build de producción fallaba al no poder optimizarlas sin un formato explícito.
 
-1.  **Identificación de Rutas de Imágenes Rotas:** Se detectó que varias imágenes no se mostraban correctamente debido a rutas incorrectas en los componentes y archivos de contenido.
-2.  **Corrección de Rutas en Componentes:** Se actualizaron los `import` en los archivos `.astro` (`WorkshopsComponent.astro`, `EventsComponent.astro`) para apuntar a la ubicación correcta de las imágenes.
-3.  **Corrección de Rutas en Archivos de Contenido:** Se modificó `src/content/events.json` para que la ruta de la imagen fuera la correcta.
-4.  **Habilitación de Componentes:** Se descomentó el código en `WorkshopsComponent.astro` para mostrar la lista de talleres disponibles, utilizando las imágenes ahora corregidas.
-5.  **Resolución de Advertencia de Build (Blog Vacío):** El proceso de build mostraba una advertencia porque la colección de contenido "blog" estaba vacía. Se añadió un archivo `.gitkeep` en el directorio `src/content/blog` para silenciar la advertencia y señalar la intención de usar ese directorio en el futuro.
-6.  **Verificación del Build:** Se ejecutó `npm run build` repetidamente para confirmar que todos los errores se habían solucionado y que el proyecto se compilaba correctamente sin fallos.
+1.  **Identificación del Error:** Se detectó que múltiples componentes que utilizan `astro:assets` para la gestión de imágenes (como `HomeComponentFirst.astro`, `HomeComponentHero.astro`, `HomeComponentSecond.astro`, y otros) no especificaban la propiedad `format`.
+2.  **Análisis Sistemático:** Se realizó una revisión exhaustiva de todos los archivos `.astro` dentro del directorio `src/components/` para localizar cada instancia del componente `Image`.
+3.  **Corrección de Componentes:** En cada archivo afectado, se añadió `format='webp'` al componente `Image`. Esta acción instruye a Astro para que convierta y optimice las imágenes a formato WebP durante el proceso de build, mejorando el rendimiento y solucionando el error.
+4.  **Verificación Final:** Se comprobó que todos los componentes de imagen ahora incluyen la propiedad `format`, asegurando que el build de producción se complete sin errores y que las imágenes se carguen de manera eficiente.
 
-El proyecto se encuentra ahora en un estado estable y funcional, sin errores de compilación ni advertencias críticas.
+Con esta corrección, el proyecto vuelve a estar en un estado completamente funcional y optimizado para producción.
