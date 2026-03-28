@@ -7,8 +7,6 @@ interface Props {
 }
 const { href } = Astro.props;
 
-const currentSlide = slides.find(s => s.url === href) || slides[0];
-
 // Encontramos el índice actual en el array (0 a 6)
 const currentIndex = slides.findIndex(s => s.url === href);
 ---
