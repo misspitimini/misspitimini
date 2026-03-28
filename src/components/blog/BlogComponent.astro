@@ -1,8 +1,9 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getBlogPosts } from "@/services/blog";
+import type { CollectionEntry } from "astro:content";
 import BlogCard from "./BlogCard.astro";
 
-const posts = await getCollection('blog');
+const posts = await getBlogPosts();
 ---
 
 <section class="space-y-10">
