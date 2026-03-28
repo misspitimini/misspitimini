@@ -1,4 +1,5 @@
 ---
+import ArrowsCarrusel from "@components/header/ArrowsCarrusel.astro";
 import { slides} from '@js/carruselData.js';
 
 interface Props {
@@ -59,48 +60,5 @@ const nextUrl = slides[nextIndex].url;
 
   </div>
   </section>
-  <div class="flex items-center justify-between w-full md:hidden">
-    <a 
-      href={prevUrl} 
-      aria-label="Anterior" 
-      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
-    >
-      arrow_back
-    </a>
+  <ArrowsCarrusel href={href} />
   
-    <a 
-      href={nextUrl} 
-      aria-label="Siguiente" 
-      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
-    >
-      arrow_forward
-    </a>
-  </div>
-  <script define:vars={{ prevUrl, nextUrl }}>
-    let touchstartX = 0;
-    let touchendX = 0;
-      
-    // Umbral mínimo para que se considere "deslizar" y no un simple toque (en píxeles)
-    const threshold = 70;
-  
-    function handleGesture() {
-      if (touchendX < touchstartX - threshold) {
-        // Deslizó a la izquierda -> Ir a Siguiente
-        window.location.href = nextUrl;
-      }
-      if (touchendX > touchstartX + threshold) {
-        // Deslizó a la derecha -> Ir a Anterior
-        window.location.href = prevUrl;
-      }
-    }
-  
-    // Escuchar eventos en el documento o en un contenedor específico
-    document.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-  
-    document.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX;
-      handleGesture();
-    }, { passive: true });
-  </script>

@@ -1,0 +1,67 @@
+---
+import { slides} from '@js/carruselData.js';
+
+interface Props {
+    href: string;
+}
+const {href} = Astro.props;
+
+const currentSlide = slides.find(s => s.url === href) || slides[0];
+
+// Encontramos el índice actual en el array (0 a 6)
+const currentIndex = slides.findIndex(s => s.url === href);
+
+// Lógica Circular:
+// Si es el primero, el anterior es el último. Si es el último, el siguiente es el primero.
+const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+const nextIndex = (currentIndex + 1) % slides.length;
+
+const prevUrl = slides[prevIndex].url;
+const nextUrl = slides[nextIndex].url;
+
+---
+  <div class="flex items-center justify-between w-full md:hidden">
+    <a 
+      href={prevUrl} 
+      aria-label="Anterior" 
+      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
+    >
+      arrow_back
+    </a>
+  
+    <a 
+      href={nextUrl} 
+      aria-label="Siguiente" 
+      class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
+    >
+      arrow_forward
+    </a>
+  </div>
+  <script define:vars={{ prevUrl, nextUrl }}>
+    let touchstartX = 0;
+    let touchendX = 0;
+      
+    // Umbral mínimo para que se considere "deslizar" y no un simple toque (en píxeles)
+    const threshold = 70;
+  
+    function handleGesture() {
+      if (touchendX < touchstartX - threshold) {
+        // Deslizó a la izquierda -> Ir a Siguiente
+        window.location.href = nextUrl;
+      }
+      if (touchendX > touchstartX + threshold) {
+        // Deslizó a la derecha -> Ir a Anterior
+        window.location.href = prevUrl;
+      }
+    }
+  
+    // Escuchar eventos en el documento o en un contenedor específico
+    document.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+  
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      handleGesture();
+    }, { passive: true });
+  </script>
