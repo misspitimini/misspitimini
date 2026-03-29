@@ -1,46 +1,39 @@
 ---
 import WorkshopCardGold from '@components/workshop/WorkshopCardGold.astro';
 import WorkshopCard from '@components/workshop/WorkshopCard.astro';
-import bouquets from "@assets/images/body/experiencias/ramosFlores.jpg";
-import centerPieces from "@assets/images/body/experiencias/centroMesa.jpg";
-import dryFlowers from "@assets/images/body/experiencias/floresSecas.jpg";
-import wedding from "@assets/images/body/experiencias/decoracionBoda.jpg";
+import { getCollection } from 'astro:content';
+import path from 'path';
 
+// Search for images in all subdirectories
+const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.jpg');
 
-const workshops:any[] = [];
-/*
-const workshops = [
-  {
-    imgSrc: bouquets,
-    imgAlt: "Taller de ramos de flores",
-    title: "Ramos de Flores",
-    description: "Aprende a crear ramos de flores únicos y personalizados, combinando colores, texturas y aromas.",
-    link: "/workshops/flower-bouquets",
-  },
-  {
-    imgSrc: centerPieces,
-    imgAlt: "Taller de centros de mesa",
-    title: "Centros de Mesa",
-    description: "Diseña centros de mesa espectaculares para tus eventos más especiales, desde cenas íntimas hasta grandes celebraciones.",
-    link: "/workshops/centerpieces",
-  },
-  {
-    imgSrc: dryFlowers,
-    imgAlt: "Taller de flores secas",
-    title: "Flores Secas",
-    description: "Descubre el arte de trabajar con flores secas y crea composiciones duraderas y llenas de encanto.",
-    link: "/workshops/dry-flowers",
-  },
-  {
-    imgSrc: wedding,
-    imgAlt: "Taller de decoración de bodas",
-    title: "Decoración de Bodas",
-    description: "Aprende a decorar cada rincón de una boda, desde la ceremonia hasta el banquete, con un estilo único y personal.",
-    link: "/workshops/wedding-decoration",
-  },
-];
-*/
+const workshopEntries = await getCollection('workshops');
+
+const workshops = await Promise.all(
+  workshopEntries.map(async (workshop) => {
+    const { data } = workshop;
+    const slug = data.img_slug;
+
+    // Find the full path of the image that has the exact same name as the slug (without extension)
+    const imagePath = Object.keys(allWorkshopImages).find(fullPath => path.parse(fullPath).name === slug);
+
+    if (!imagePath) {
+      throw new Error(`Image not found for workshop: "${data.title}" with slug: "${slug}". Searched in all subdirectories of /src/assets/images/`);
+    }
+
+    const { default: image } = await allWorkshopImages[imagePath]();
+
+    return {
+      imgSrc: image,
+      imgAlt: data.imgAlt,
+      title: data.title,
+      description: data.description,
+      link: data.link,
+    };
+  })
+);
 ---
+
 <section class="space-y-10 px-6">
   <div class="text-center space-y-2">
     <h2 class="text-3xl font-serif"> Experiencias Florales y Gastronómicas</h2>
