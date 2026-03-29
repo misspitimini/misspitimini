@@ -33,15 +33,13 @@ Este proyecto es una aplicación web estática para un negocio de diseño floral
 
 ---
 
-## Solicitud Actual: "construir"
+## Solicitud Actual: Publicar el sitio web
 
 ### Interpretación
 
-El usuario ha solicitado "construir". Dada la implementación exitosa anterior, esto se interpreta como una solicitud para crear una nueva funcionalidad. Basado en los fragmentos de código proporcionados relacionados con talleres y formularios de reserva, el plan es construir una página de reserva dedicada para los talleres.
+El usuario ha solicitado "publique la versión actual del sitio web". Esto implica que el sitio web debe ser construido para generar los archivos estáticos y luego desplegado en Firebase Hosting. La solicitud anterior de "construir" una nueva funcionalidad fue cancelada por el usuario.
 
 ### Plan
 
-1.  **Crear Página de Reserva de Taller:** Crear una nueva página en `src/pages/solicita-presupuesto-taller.astro`. Esta página permitirá a los usuarios solicitar un presupuesto para un taller floral.
-2.  **Crear Componente de Formulario de Reserva de Taller:** Crear un nuevo componente, `src/components/workshop/WorkshopBookingFormComponent.astro`, que contendrá los campos del formulario y la lógica para la solicitud de reserva del taller. Esto se adaptará del componente de reserva existente enfocado en ramos.
-3.  **Actualizar la Página Principal de Talleres:** Agregar un botón "Reservar Taller" en la página `experiencias.astro` que enlace a la nueva página de reserva.
-4.  **Verificación Final:** Ejecutar el proceso de construcción para asegurar que todos los cambios se integren correctamente y el sitio se construya sin errores.
+1.  **Construir el proyecto:** Ejecutar `npm run build` para compilar la aplicación Astro en archivos estáticos.
+2.  **Desplegar en Firebase:** Usar la herramienta `classic_firebase_hosting_deploy` para publicar el contenido de la carpeta `dist` en Firebase Hosting.
