@@ -23,7 +23,7 @@ import Footer from '@components/footer/Footer.astro';
 	</header>
 	<main id="post-content-main" x-data="{ 
         activeSlideGallery: 0,
-        get galleryLength() { return document.querySelector('.card-content-thumb > *').children.length },
+        get galleryLength() { return document.querySelector('.card-content-thumb').children.length },
 		touchstartX: 0,
 		touchendX: 0,
 		threshold: 50,
