@@ -23,7 +23,7 @@ import Footer from '@components/footer/Footer.astro';
 	</header>
 	<main id="post-content-main" x-data="{ 
         activeSlideGallery: 0,
-        galleryLength: 2,
+        get galleryLength() { return document.querySelector('.card-content-thumb > *').children.length },
 		touchstartX: 0,
 		touchendX: 0,
 		threshold: 50,
@@ -104,7 +104,7 @@ import Footer from '@components/footer/Footer.astro';
 				<button 
 					type="button"
 					@click="load(index)"
-					class="relative w-20 h-20 overflow-hidden rounded-md border-2 transition-all"
+					class="relative h-20 min-w-max overflow-hidden rounded-md border-2 transition-all"
 					:class="changeClass(index)">
 					
 					<img :src="img" class="card-img w-full h-full object-cover hidden" loading="lazy">
