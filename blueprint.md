@@ -1,56 +1,47 @@
-# Visión General del Proyecto
+# Blueprint: Sitio Web de Miss Pitimini
 
-Este proyecto es una aplicación web de static-first construida con Astro.js y diseñada para ser desarrollada en Firebase Studio. El objetivo es crear un sitio rápido, de alto rendimiento y escalable, que ofrezca un mínimo de JavaScript por defecto para garantizar una experiencia de usuario excepcional y unos Core Web Vitals de primer nivel.
+## Descripción General
 
-## Arquitectura y Organización
+Este proyecto es una aplicación web estática para un negocio de diseño floral llamado "Miss Pitimini", construido con Astro.js. El sitio muestra los servicios del negocio, incluyendo bodas, eventos, talleres y una galería de su trabajo. Está diseñado para ser de alto rendimiento, con un enfoque en un diseño atractivo y una gran experiencia de usuario.
 
-Para asegurar la escalabilidad y mantenibilidad del proyecto, se ha adoptado la siguiente estructura de directorios y organización del código:
+## Estructura del Proyecto y Guía de Estilo
 
-- **`src/content/`**: Almacena contenido en formato Markdown (`.md`) o JSON (`.json`). Esto separa los datos de la presentación, permitiendo que los componentes de Astro lean y muestren información de manera dinámica. Es ideal para posts de blog, detalles de eventos, o cualquier texto que pueda necesitar ser actualizado frecuentemente.
+### Estructura
+- **Páginas:** Ubicadas en `src/pages/`. Se utiliza el enrutamiento basado en archivos de Astro.
+- **Componentes:** Ubicados en `src/components/`. Son componentes reutilizables de Astro.
+- **Layouts:** Ubicados en `src/layouts/`. Diseños base para diferentes tipos de páginas.
+- **Contenido:** Ubicado en `src/content/`. Colecciones de contenido para talleres, entradas de blog, etc.
+- **Assets:** Ubicados en `src/assets/`. Imágenes, logotipos y otros activos estáticos.
 
-- **`src/components/`**: Contiene todos los componentes de Astro y UI frameworks, organizados de forma granular:
-    - **`ui/`**: Para elementos pequeños y atómicos de la interfaz (botones, tarjetas, iconos).
-    - **`sections/`**: Para componentes más grandes que representan secciones completas de una página (ej. una sección de "Eventos Destacados").
-    - **`patterns/`**: Para componentes complejos que combinan varios elementos de UI para formar un patrón recurrente (ej. una barra de navegación con menú desplegable).
-    - **`header/`**: Componentes específicos de la cabecera del sitio.
+### Estilo
+- **Framework:** Tailwind CSS para un estilo basado en utilidades.
+- **Fuentes:** Una combinación de serif (`font-serif`) y una fuente de visualización (`font-display`).
+- **Paleta de Colores:**
+    - Primario: Un tono de rojo (`red-600`).
+    - Texto: `floral-dark` (un color oscuro personalizado), `gray-600`, `gray-900`.
+    - Fondo: `white`, con algunos efectos de transparencia (`bg-white/95`).
 
-- **`src/layouts/`**: Define la estructura de las páginas (ej. `BaseLayout.astro`), incluyendo el `head`, la navegación y el pie de página.
+### Funcionalidades Implementadas
+- Página de inicio con un carrusel.
+- Páginas para "Sobre mí", "Bodas", "Eventos", "Experiencias", "Galería" y "Contacto".
+- Una sección de blog (actualmente vacía).
+- Tarjetas de talleres dinámicas cargadas desde colecciones de contenido.
+- Optimización de imágenes usando `astro:assets`.
+- Se genera un mapa del sitio.
+- Un formulario de solicitud de presupuesto para ramos.
+- Despliegue en Firebase Hosting.
 
-- **`src/data/`**: Centraliza archivos de datos compartidos (no de contenido), como configuraciones, listas para navegación, o datos para componentes específicos (ej. `carruselData.js`).
+---
 
-- **`src/styles/`**: Gestiona los estilos del proyecto:
-    - **`global.css`**: Para estilos base, reseteos, variables CSS y fuentes.
-    - **Tailwind CSS**: Es el framework principal para estilos de utilidad.
-    - **Estilos por Componente (`<style>` en Astro)**: Se usan para estilos específicos que no encajan bien con el enfoque de Tailwind.
+## Solicitud Actual: "construir"
 
-## Resumen del Proyecto
+### Interpretación
 
-El proyecto es el sitio web para la floristería "Sara Laínez", mostrando sus productos, servicios, talleres y blog.
+El usuario ha solicitado "construir". Dada la implementación exitosa anterior, esto se interpreta como una solicitud para crear una nueva funcionalidad. Basado en los fragmentos de código proporcionados relacionados con talleres y formularios de reserva, el plan es construir una página de reserva dedicada para los talleres.
 
-### Estilo y Diseño
+### Plan
 
-- **Paleta de colores:** Tonos rosados, blancos y grises para una estética elegante.
-- **Tipografía:** Fuentes display para títulos y de cuerpo para texto.
-- **Iconografía:** Iconos SVG personalizados.
-- **Imágenes:** Fotografías de alta calidad de arreglos florales.
-
-### Características Implementadas
-
-- **Carrusel de Imágenes/Páginas:** Componente interactivo en la cabecera para navegar entre las secciones principales.
-- **Navegación Móvil y de Escritorio:** Menú adaptable a diferentes tamaños de pantalla.
-- **Componentes Reutilizables:** Tarjetas para ramos, experiencias y posts de blog.
-- **Centralización de Datos:** La información del carrusel se gestiona desde `src/data/`.
-- **Visualización de Talleres:** Las tarjetas de los talleres ahora se muestran correctamente en la página de experiencias.
-- **Corrección de Rutas de Imágenes:** Se han solucionado todas las rutas de imágenes rotas, asegurando que se visualicen correctamente en todo el sitio.
-- **Optimización de Imágenes:** Se ha añadido la propiedad `format='webp'` a todos los componentes `Image` para asegurar una correcta optimización y renderizado en producción.
-
-## Plan Actual: Corrección de Propiedad `format` en Imágenes
-
-El objetivo de esta actualización es resolver un error de renderizado en producción causado por la ausencia de la propiedad `format` en varios componentes `Image` de Astro. Aunque las imágenes se mostraban correctamente en el entorno de desarrollo, el build de producción fallaba al no poder optimizarlas sin un formato explícito.
-
-1.  **Identificación del Error:** Se detectó que múltiples componentes que utilizan `astro:assets` para la gestión de imágenes (como `HomeComponentFirst.astro`, `HomeComponentHero.astro`, `HomeComponentSecond.astro`, y otros) no especificaban la propiedad `format`.
-2.  **Análisis Sistemático:** Se realizó una revisión exhaustiva de todos los archivos `.astro` dentro del directorio `src/components/` para localizar cada instancia del componente `Image`.
-3.  **Corrección de Componentes:** En cada archivo afectado, se añadió `format='webp'` al componente `Image`. Esta acción instruye a Astro para que convierta y optimice las imágenes a formato WebP durante el proceso de build, mejorando el rendimiento y solucionando el error.
-4.  **Verificación Final:** Se comprobó que todos los componentes de imagen ahora incluyen la propiedad `format`, asegurando que el build de producción se complete sin errores y que las imágenes se carguen de manera eficiente.
-
-Con esta corrección, el proyecto vuelve a estar en un estado completamente funcional y optimizado para producción.
+1.  **Crear Página de Reserva de Taller:** Crear una nueva página en `src/pages/solicita-presupuesto-taller.astro`. Esta página permitirá a los usuarios solicitar un presupuesto para un taller floral.
+2.  **Crear Componente de Formulario de Reserva de Taller:** Crear un nuevo componente, `src/components/workshop/WorkshopBookingFormComponent.astro`, que contendrá los campos del formulario y la lógica para la solicitud de reserva del taller. Esto se adaptará del componente de reserva existente enfocado en ramos.
+3.  **Actualizar la Página Principal de Talleres:** Agregar un botón "Reservar Taller" en la página `experiencias.astro` que enlace a la nueva página de reserva.
+4.  **Verificación Final:** Ejecutar el proceso de construcción para asegurar que todos los cambios se integren correctamente y el sitio se construya sin errores.
