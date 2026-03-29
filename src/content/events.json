@@ -17,8 +17,8 @@
     }
   ],
   "cta": {
-    "text": "¿Tienes pensado tu evento?, ",
-    "linkText": "quizás Sara Laínez te pueda <strong>guiar</strong>",
+    "text": "¿Tienes pensado tu evento?, quizás Sara Laínez te pueda ",
+    "linkText": "<strong>guiar</strong>",
     "href": "/contacto/"
   },
   "image": {
