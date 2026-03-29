@@ -18,11 +18,12 @@ const homeCardsCollection = defineCollection({
 const workshopsCollection = defineCollection({
   type: 'data',
   schema: z.object({
-    img_slug: z.string(),
     imgAlt: z.string(),
-    title: z.string(),
+    date: z.string(),
+    title4: z.string(),
+    title5: z.string(),
     description: z.string(),
-    link: z.string(),
+    image: z.string(),
   }),
 });
 

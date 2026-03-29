@@ -1,0 +1,27 @@
+---
+import { Input, Textarea, Button } from "@components/ui/index.ts";
+---
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Solicita Presupuesto para un Taller</h2>
+    <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">¿Interesado en un taller de flores? Rellena el siguiente formulario para solicitar un presupuesto.</p>
+    <form action="#" class="space-y-8">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tu email</label>
+        <Input type="email" id="email" placeholder="nombre@email.com" required />
+      </div>
+      <div>
+        <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Asunto</label>
+        <Input type="text" id="subject" placeholder="Taller de flores" required />
+      </div>
+      <div class="sm:col-span-2">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Tu mensaje</label>
+        <Textarea id="message" rows={6} placeholder="Déjanos un comentario..."></Textarea>
+      </div>
+      <Button type="submit">
+        Enviar Solicitud
+      </Button>
+    </form>
+  </div>
+</section>
