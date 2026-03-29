@@ -1,9 +1,22 @@
-// 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
 
-// 2. Define a `type` and `schema` for each collection
+// Schema for the home page cards
+const homeCardsCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    img_slug: z.string(),
+    imgAlt: z.string(),
+    title: z.string(),
+    description: z.string(),
+    link: z.string(),
+    isLargeCard: z.boolean().optional(), // To identify the large card
+    buttonText: z.string().optional(), // For the button on the large card
+  }),
+});
+
+// Schema for the workshops
 const workshopsCollection = defineCollection({
-  type: 'data', // can be 'data' or 'content'
+  type: 'data',
   schema: z.object({
     img_slug: z.string(),
     imgAlt: z.string(),
@@ -13,7 +26,8 @@ const workshopsCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
+// Export collections
 export const collections = {
+  homecards: homeCardsCollection,
   workshops: workshopsCollection,
 };

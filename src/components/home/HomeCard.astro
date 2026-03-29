@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+
+const { card, isLargeCard } = Astro.props;
+const { imgSrc, imgAlt, title, description, link, buttonText } = card;
+---
+
+<div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
+  <div class="aspect-square overflow-hidden shadow-sm group relative">
+    <a href={link} rel="noopener noreferrer">
+      {imgSrc && (
+        <Image 
+          alt={imgAlt} 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+          loading="lazy" 
+          src={imgSrc} 
+          format='webp'
+        />
+      )}
+      {isLargeCard && (
+        <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+          <span class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
+            {buttonText}
+          </span>
+        </div>
+      )}
+    </a>
+  </div>
+
+  <div class:list={["space-y-2", { "text-center": isLargeCard }]}>
+    <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
+      <a href={link} rel="noopener noreferrer">{title}</a>
+    </h3>
+    <p class="text-[16px] text-floral-dark/60">{description}</p>
+  </div>
+</div>

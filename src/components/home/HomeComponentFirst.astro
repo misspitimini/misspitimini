@@ -1,68 +1,24 @@
 ---
-import { Image } from 'astro:assets';
-import bodasImage from '@assets/images/carrusel/02_ceremoniaBoda.jpg';
-import eventosImage from '@assets/images/carrusel/03_eventos.jpg';
-import talleresImage from '@assets/images/carrusel/04_cursoFlores.jpg';
+import { getHomeCards } from '../../utils/homeCards';
+import HomeCard from './HomeCard.astro';
+
+const homeCards = await getHomeCards(['1-bodas', '2-eventos', '3-talleres']);
+
+const smallCards = homeCards.filter(card => !card.isLargeCard);
+const largeCard = homeCards.find(card => card.isLargeCard);
 ---
 
 <section class="space-y-10">
   <div class="text-center space-y-2">
-  <h2 class="text-3xl font-serif">Experiencias Florales y Gastronómitas</h2>
-  <div class="h-px w-12 bg-primary mx-auto"></div>
+    <h2 class="text-3xl font-serif">Experiencias Florales y Gastronómicas</h2>
+    <div class="h-px w-12 bg-primary mx-auto"></div>
   </div>
   <div class="space-y-12">
- 
     <div class="grid grid-cols-2 gap-1 md:gap-6">
-      <div class="space-y-4">
-      <div class="aspect-square overflow-hidden shadow-sm group">
-        <a href="/bodas/" rel="noopener noreferrer">
-            <Image alt="Una escena romántica a la salida de una ceremonia de boda. a lleva un vestido de novia blanco satinado con escote de hombros caídos, un velo y un ramo de flores blancas y hojas verdes. Él viste un esmoquin negro clásico con pajarita." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy" src={bodasImage} format='webp'/>
-        </a>
-         </div>
-      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-        <a href="/bodas/" rel="noopener noreferrer">Bodas</a>
-      </h3>
-      <p class="text-[16px] text-floral-dark/60">Haciendo florecer tus mejores recuerdos</p>
-      </div>
-      <div class="space-y-4">
-      <div class="aspect-square overflow-hidden shadow-sm group">
-      <a href="/eventos/" rel="noopener noreferrer">
-          <Image alt="Un buffet o mesa de presentación muy detallada de un evento o tienda gourmet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy" src={eventosImage} format='webp'/>
-      </a>
-      </div>
-      <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-        <a href="/eventos/" rel="noopener noreferrer">Eventos</a>
-      </h3>
-      <p class="text-[16px] text-floral-dark/60">Aportando frescura en un entorno profesional</p>
-      </div>
+      {smallCards.map(card => (
+        <HomeCard card={card} />
+      ))}
     </div>
-    <div class="space-y-4">
-      <div class="relative overflow-hidden shadow-sm group">
-        <Image 
-          alt="Talleres Misspitimini:Esta imagen muestra el proceso de trabajo detrás de los detalles florales." 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-          loading="lazy" 
-          src={talleresImage}
-          format='webp'
-        />
-        <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
-          <a 
-          href="/experiencias/" 
-          class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
-            > Información y Resumen
-          </a>
-        </div>
-      </div>
-
-        <div class="flex justify-center items-center">
-        <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-          <a href="/eventos/" rel="noopener noreferrer">Talleres Florales</a>
-        </h3>
-        </div>
-        <div class="flex justify-center items-center">
-        <p class="text-[16px] text-floral-dark/60">Aprendiendo de las flores</p>
-        </div>
-
-    </div>
+    {largeCard && <HomeCard card={largeCard} isLargeCard={true} />}
   </div>
-  </section>
+</section>

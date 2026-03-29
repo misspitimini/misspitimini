@@ -1,33 +1,15 @@
 ---
-import { Image } from 'astro:assets';
-import blogImage from '@assets/images/carrusel/07_blog.jpg';
-import galleryImage from '@assets/images/carrusel/05_ramosFlores.jpg';
-import CustomLink from '@components/commons/CustomLink.astro';
+import { getHomeCards } from '../../utils/homeCards';
+import HomeCard from './HomeCard.astro';
+
+const homeCards = await getHomeCards(['4-blog', '5-galeria']);
+
 ---
 
-    <section class="space-y-10">
-      <div class="columns-2 space-y-4 gap-1 md:gap-4">
-        <div>
-        <div class=" overflow-hidden shadow-sm group">
-          <a href="/blog/" rel="noopener noreferrer">
-              <Image alt="Sara Lainez sonriente sentada en la base de una farola monumental de la plaza Mayor de Madrid. Viste un vestido blanco largo de estilo veraniego, sandalias rojas y un sombrero de paja decorado con flores." class="w-full h-[300px] object-cover group-hover:scale-105 transition-transform duration-1000" src={blogImage} format='webp'/>
-          </a>
-        </div>
-          <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-            <a href="/blog/" rel="noopener noreferrer">Blog</a>
-          </h3>
-          <p class="text-[16px] text-floral-dark/60">Compartir experiencias con las flores</p>
-         </div>
-         <div>
-        <div class=" overflow-hidden shadow-sm group">
-          <a href="/galeria/" rel="noopener noreferrer">
-            <Image alt="Un hermoso y abundante ramo de flores que destaca por su variedad y colorido" class="w-full h-[300px] object-cover group-hover:scale-105 transition-transform duration-1000" src={galleryImage} format='webp'/>
-          </a>
-        </div>
-          <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-            <a href="/galeria/" rel="noopener noreferrer">Galería</a>
-          </h3>
-          <p class="text-[16px] text-floral-dark/60">Cada flor, una memoria que florece</p>
-        </div>
-      </div>
-    </section>
+<section class="space-y-12">
+  <div class="grid grid-cols-2 gap-1 md:gap-6">
+    {homeCards.map(card => (
+      <HomeCard card={card} />
+    ))}
+  </div>
+</section>
