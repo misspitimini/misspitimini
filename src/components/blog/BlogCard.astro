@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Link from "@components/commons/CustomLink.astro";
 import { slugify } from "../../utils/utils.js";
+
 interface Props {
-	post: CollectionEntry<"blog">;
+	slug: string;
+	data: CollectionEntry<"blog">['data'];
 }
 
-const { data, slug } = Astro.props.post;
+const { data, slug } = Astro.props;
 ---
 
 <div class="overflow-hidden w-fit">

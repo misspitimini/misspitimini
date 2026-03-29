@@ -19,25 +19,18 @@ const posts = await getBlogPosts();
     </div>
   </div>
   <div id="blog-container" class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {posts.map((post: CollectionEntry<'blog'>) => (
-      <BlogCard post={post} />
+    {posts.map((post) => (
+      <BlogCard data={post.data} slug={post.slug} />
     ))}
   </div>
 </section>
 <template id="card-blog-template" class="hidden">
-  <BlogCard post={{
-    slug: 'dummy-slug',
-    id: 'dummy-id',
-    body: 'dummy-body',
-    collection: 'blog',
-    data: {
-      title: 'Título de ejemplo',
-      description: 'Descripción de ejemplo...',
-      image: '/placeholder.jpg',
-      author: 'Autor de Ejemplo',
-      pubDate: new Date(),
-      tags: ['ejemplo']
-    },
-    render: () => new Promise(() => {}) 
-  }} />
+  <BlogCard data={{
+    title: 'Título de ejemplo',
+    description: 'Descripción de ejemplo...',
+    image: '/placeholder.jpg',
+    author: 'Autor de Ejemplo',
+    pubDate: new Date(),
+    tags: ['ejemplo']
+  }} slug={'dummy-slug'} />
 </template>
