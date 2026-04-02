@@ -30,20 +30,39 @@ import Footer from '@components/footer/Footer.astro';
 		touchstartX: 0,
 		touchendX: 0,
 		threshold: 50,
+        imageOrientation: 'landscape',
+        init() {
+            const observer = new MutationObserver((mutations) => {
+                for (const mutation of mutations) {
+                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                        const img = Array.from(mutation.addedNodes).find(node => node.nodeName === 'IMG');
+                        if (img) {
+                            this.checkOrientation(img);
+                        }
+                    }
+                }
+            });
+            observer.observe(this.$refs.slider, { childList: true });
+        },
+        checkOrientation(img) {
+            const setOrientation = () => {
+                this.imageOrientation = img.naturalHeight > img.naturalWidth ? 'portrait' : 'landscape';
+            };
+            if (img.complete) {
+                setOrientation();
+            } else {
+                img.addEventListener('load', setOrientation, { once: true });
+            }
+        },
         centerThumbnail(index) {
             this.$nextTick(() => {
                 const galleryContainer = this.$refs.galleryContainer;
                 const selectedThumb = galleryContainer.querySelectorAll('button')[index];
-
                 if (galleryContainer && selectedThumb) {
                     const containerWidth = galleryContainer.offsetWidth;
                     const thumbWidth = selectedThumb.offsetWidth;
                     const scrollLeft = selectedThumb.offsetLeft - (containerWidth / 2) + (thumbWidth / 2);
-
-                    galleryContainer.scrollTo({
-                        left: scrollLeft,
-                        behavior: 'smooth'
-                    });
+                    galleryContainer.scrollTo({ left: scrollLeft, behavior: 'smooth' });
                 }
             });
         },
@@ -65,45 +84,27 @@ import Footer from '@components/footer/Footer.astro';
             this.centerThumbnail(index);
         },
 		changeClass(index) {
-			 if(this.activeSlideGallery === index) {
-				return 'border-black scale-105';
-			}
-			else
-			{
-				return 'border-transparent opacity-60 hover:opacity-100';
-			} 
+			 return this.activeSlideGallery === index ? 'border-black scale-105' : 'border-transparent opacity-60 hover:opacity-100';
 		},
 		handleGesture()  {
 			const deltaX = this.touchendX - this.touchstartX;
-
 			if (Math.abs(deltaX) > this.threshold) {
-				if (deltaX < 0) {
-					this.next();
-				} else {
-					this.prev();
-				}
+				deltaX < 0 ? this.next() : this.prev();
 			}
 		},
 		images: ['']
     }"
+    x-init="init()"
 	@touchstart="touchstartX = $event.touches[0].screenX;"
     @touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
 	<hr style="margin-bottom:2px; padding-bottom:2px"/>
-		<div id="card-content-images" x-ref="slider" class="relative w-full max-w-[800px] mx-auto overflow-hidden">
-		<button 
-            @click="prev()"
-        	class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
+		<div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
+        <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         </button>
-        <button
-		 	@click="next()"
-        	class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
+        <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
         </button>
 		</div>
 		<div class="flex flex-col items-center gap-7">
@@ -117,11 +118,7 @@ import Footer from '@components/footer/Footer.astro';
 			</button>
 			<div class="card-content-thumb grid grid-flow-col items-center justify-start gap-2 mt-4 overflow-x-auto p-2 scroll-smooth" x-ref="galleryContainer">
 				<template x-for="(img, index) in images" :key="`thumb-template_${index}`">
-					<button 
-						type="button"
-						@click="load(index)"
-						class="relative h-20 min-w-max overflow-hidden rounded-md border-2 transition-all"
-						:class="changeClass(index)">	
+					<button type="button" @click="load(index)" class="relative h-20 min-w-max overflow-hidden rounded-md border-2 transition-all" :class="changeClass(index)">	
 						<img :src="img" class="card-img w-full h-full object-cover hidden" loading="lazy">
 					</button>
 				</template>
@@ -139,9 +136,8 @@ import Footer from '@components/footer/Footer.astro';
 		</section>
 		<hr/>
 		<div class="text-center">
-			<a href="/galeria/" 
-			class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
-			Volver
+			<a href="/galeria/" class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
+				Volver
 			</a>
 		</div>
 	</main>
