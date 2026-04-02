@@ -1,4 +1,6 @@
-    
+---
+import MenuItems from '@components/header/MenuItems.astro';
+---
     <!-- Menú Desplegable -->
     <div 
         x-show="open" 
@@ -18,18 +20,7 @@
                 </svg>
             </button>
         </div>
-        <nav class="flex flex-col items-center space-y-6">      
-            <template x-for="slide in slides" :key="slide.id">
-                <a :href="slide.url" 
-                    @click="activeSlide = slide.id"
-                    class="relative font-display text-2xl md:text-4xl transition-all duration-300 hover:scale-110 hover:font-bold"
-                    :class="activeSlide === slide.id ? 'font-bold' : ''"
-                    x-transition:enter-start="opacity-0 scale-95"
-                    x-transition:enter-end="opacity-100 scale-100"
-                    >
-                    <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
-                    <span class="md:hidden" x-text="slide.description"></span>
-                </a>
-            </template>
+        <nav class="flex flex-col items-center space-y-6">
+            <MenuItems />
         </nav>
     </div>

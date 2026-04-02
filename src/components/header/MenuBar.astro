@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '@assets/images/logos/logoReducido.png';
+import MenuItems from '@components/header/MenuItems.astro';
 ---
 
 <div class="flex flex-row items-center h-20 max-w-7xl mx-auto px-6">
@@ -21,18 +22,7 @@ import logo from '@assets/images/logos/logoReducido.png';
     <nav :class="open ? 'flex' : 'hidden'" 
     class="fixed inset-0 z-40 flex-col items-center justify-center space-y-8 
             md:relative md:inset-auto md:flex md:flex-row md:justify-end md:items-center md:space-y-0 md:space-x-8 md:h-auto md:w-full transition-all">
-        <template x-for="slide in slides" :key="slide.id">
-            <a :href="slide.url" 
-               @click="activeSlide = slide.id"
-               class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
-               :class="activeSlide === slide.id ? 'font-extrabold' : ''"
-               x-transition:enter-start="opacity-0 scale-95"
-               x-transition:enter-end="opacity-100 scale-100"
-               >
-                   <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
-                   <span class="md:hidden" x-text="slide.description"></span>
-            </a>
-        </template>
+        <MenuItems open={true} />
     </nav>
 
     <!-- La X de Cerrar -->
