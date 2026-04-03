@@ -1,25 +1,25 @@
 ---
-import { slides} from '@data/carruselData.js';
-import MenuBar from "@components/header/MenuBar.astro";
-import MenuScreen from "@components/header/MenuScreen.astro";
+import { slides } from '@data/carruselData.js';
+import MenuBar from '@components/header/MenuBar.astro';
+import MobileMenu from '@components/header/MobileMenu.astro';
 
 interface Props {
     href: string;
 }
 const { href } = Astro.props;
 
-// Encontramos el índice actual en el array (0 a 6)
-const currentIndex = slides.findIndex(s => s.url === href)+1;
+// Find the current index in the array (0 to 6)
+const currentIndex = slides.findIndex(s => s.url === href) + 1;
 ---
-<header 
-x-data={`{ 
-	open: false,
-    activeSlide: ${currentIndex}, 
-	slides: ${JSON.stringify(slides)}
-}`} 
+<header
+    x-data={`{
+        open: false,
+        activeSlide: ${currentIndex},
+        slides: ${JSON.stringify(slides)}
+    }`}
 >
-    <div class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
-        <MenuBar  />
+    <div class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
+        <MenuBar />
     </div>
-    <MenuScreen  />
+    <MobileMenu />
 </header>

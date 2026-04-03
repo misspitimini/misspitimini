@@ -19,16 +19,63 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 ## Historial de cambios
 
+### Añadir botón de cierre al menú móvil
+
+**Solicitud:** en mobile cuando se despliega el menú falta el X para cancelar o cerrar
+
+**Plan:**
+
+1.  **Modificar `MobileMenu.astro`:** Se ha añadido un botón con un icono "X" en la esquina superior derecha del componente del menú móvil. Este botón permite a los usuarios cerrar el menú de forma explícita, mejorando la usabilidad en dispositivos móviles.
+
+### Ajuste final del layout del encabezado (Logotipo a la izquierda)
+
+**Solicitud:** perdón, me he confundido el logotipo en no mobile debería estar a la izquierda en vez de a la derecha.
+
+**Plan:**
+
+1.  **Reorganizar `MenuBar.astro`:** Se ha modificado `src/components/header/MenuBar.astro` para colocar el logotipo a la izquierda y el menú de navegación a la derecha en la vista de escritorio. En la vista móvil, el logotipo permanece centrado y el icono de menú (hamburguesa) a la izquierda.
+
+### Ajuste del layout del encabezado (Logotipo a la derecha)
+
+**Solicitud:** el logotipo en no mobile debeería estar en la derecha
+
+**Plan:**
+
+1.  **Refinar el layout del `MenuBar.astro`:** Se modificó el archivo `src/components/header/MenuBar.astro` para asegurar que el logotipo esté a la derecha en escritorios y centrado en móviles.
+
+### Centrado del logotipo en móvil
+
+**Solicitud:** el logotipo el mobile dedería estra centado
+
+**Plan:**
+
+1.  **Ajustar el layout del `MenuBar.astro`:** Se modificó el archivo `src/components/header/MenuBar.astro` para utilizar un layout de flexbox equilibrado, manteniendo el logotipo centrado en dispositivos móviles.
+
+### Corrección del fondo del menú móvil
+
+**Solicitud:** el menú despelgable aparece sin fondo
+
+**Plan:**
+
+1.  **Recrear el componente de menú móvil:** Se creó `src/components/header/MobileMenu.astro` para gestionar el menú en su propia capa.
+2.  **Simplificar la barra de menú principal:** Se modificó `src/components/header/MenuBar.astro` para que solo se encargue de la barra de navegación superior.
+3.  **Orquestar desde el encabezado principal:** Se actualizó `src/components/header/Header.astro` para gestionar la visualización de `MenuBar` y `MobileMenu`.
+
+### Corrección de la duplicación del menú de navegación
+
+**Solicitud:** con respecto a la arquitectura de navegación se muestran la repetición de dos menús en el html (duplicado en el contenido extraido) esto puede confundir a google y aumentar el peso del DOM. Revisa el menú que no esté renderizado dos veces.
+
+**Plan:**
+
+1.  **Analizar el componente principal del encabezado (`Header.astro`):** Se identificó y eliminó el renderizado duplicado del menú.
+
 ### Optimización para SEO Local
 
 **Solicitud:** la web menciona Madrid pero no hay Google Bussines Profile enlazado, no hay daots estructurados LocalBusiness
 
 **Plan:**
 
-1.  **Crear un componente para datos estructurados:** Se ha creado el componente `src/components/StructuredData.astro` para generar un script JSON-LD.
-2.  **Definir el esquema `Florist`:** Se ha utilizado el esquema `Florist`, un tipo específico de `LocalBusiness`, para describir el negocio.
-3.  **Añadir información del negocio:** Se ha incluido el nombre del negocio, número de teléfono, horario de apertura, dirección de correo electrónico, redes sociales (Facebook, TikTok, Instagram) y el área de servicio (Madrid), ya que es un negocio virtual.
-4.  **Integrar en el layout principal:** El componente `StructuredData.astro` se ha añadido al `src/layouts/Layout.astro` para que los datos estructurados se incluyan en todas las páginas del sitio.
+1.  **Crear e integrar un componente de datos estructurados `LocalBusiness`:** Se añadió `src/components/StructuredData.astro` al layout principal.
 
 ### Mejora del rendimiento con carga diferida de imágenes
 
@@ -36,12 +83,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Analizar los componentes con imágenes:** Identificar los componentes de Astro que renderizan imágenes.
-2.  **Añadir `loading="lazy"` a las imágenes:**
-    *   Modificar `src/components/misc/About.astro` para añadir `loading="lazy"` a la imagen de perfil.
-    *   Modificar `src/components/header/Carrusel.astro` para cambiar `loading="eager"` por `loading="lazy"`.
-    *   Modificar `src/components/gallery/GalleryCard.astro` para añadir `loading="lazy"` a las imágenes de la galería.
-    *   Modificar `src/components/blog/BlogCard.astro` para añadir `loading="lazy"` a las imágenes del blog.
+1.  **Añadir `loading="lazy"` a las imágenes:** Se ha añadido el atributo a los componentes con imágenes.
 
 ### Mejora de la accesibilidad de las imágenes
 
@@ -49,11 +91,4 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Analizar el uso de imágenes en el sitio:** Identificar todas las imágenes y cómo se están utilizando, prestando especial atención a las que carecen de texto alternativo o tienen textos genéricos.
-2.  **Mejorar textos alternativos en componentes estáticos:**
-    *   Añadir un texto alternativo descriptivo a la imagen en `src/components/misc/About.astro`.
-    *   Mejorar los textos alternativos en `src/data/carruselData.js` para que describan cada imagen del carrusel.
-3.  **Abordar imágenes cargadas dinámicamente:**
-    *   Revisar `src/js/gallery.js` y `src/js/blog.js` para entender cómo se cargan las imágenes de la galería y el blog.
-    *   Dado que los datos provienen de un backend externo, mejorar los textos alternativos por defecto en los scripts para que sean más informativos que "Post sin título".
-    *   Recomendar al cliente que se ponga en contacto con el desarrollador del backend para que añada textos alternativos descriptivos a los datos que se devuelven.
+1.  **Mejorar textos alternativos:** Se han mejorado los textos alternativos en varios componentes y se han hecho recomendaciones para el contenido dinámico.
