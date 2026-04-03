@@ -1,4 +1,5 @@
 ---
+import StructuredData from '@components/StructuredData.astro';
 export interface Props {
 	title: string;
 	description: string;
@@ -21,7 +22,7 @@ const { title, description } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 		<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet"/>
 		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-
+		<StructuredData />
 	</head>
 	<body class="selection:bg-primary/10 flex items-center justify-center font-sans antialiased tracking-wide text-gray-800">
 
@@ -37,8 +38,8 @@ const { title, description } = Astro.props;
 	@tailwind utilities;
 
 	@layer base {
-		body {
-			@apply bg-floral-beige text-floral-dark antialiased;
+			body {
+				@apply bg-floral-beige text-floral-dark antialiased;
 		}
 	}
 	</style>

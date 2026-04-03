@@ -1,0 +1,33 @@
+---
+const businessData = {
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "misspitimini, floral Design by Sara Laínez",
+  "telephone": "+34684340789",
+  "email": "hola@misspitimini.com",
+  "url": Astro.site ? Astro.site.toString() : "https://misspitimini.com",
+  "image": "/og.png",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.416775",
+      "longitude": "-3.703790"
+    },
+    "geoRadius": "40000"
+  },
+  "sameAs": [
+    "https://www.facebook.com/misspitimini/?locale=es_ES",
+    "https://www.tiktok.com/@misspitimini_official?hl=es",
+    "https://www.instagram.com/misspitimini_official/?hl=es"
+  ]
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(businessData)} />
