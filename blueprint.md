@@ -21,16 +21,23 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Solicitud:** Solucionar el error "Resource exhausted" y estabilizar el entorno de desarrollo.
 
-**Plan:**
+**Diagnóstico Final:** El error "Resource exhausted" se debe a que los Términos de Servicio de Gemini en Firebase no han sido aceptados para el proyecto `misspitimini-23c91`. Esto está causando inestabilidad en el entorno y limitando las solicitudes a la API.
 
-1.  **Diagnosticar el fallo de compilación:** La compilación falla debido a una imagen que falta en `src/pages/404.astro`. El archivo `src/assets/images/body/404/404.jpg` no existe.
-2.  **Eliminar temporalmente la imagen:** Para desbloquear la compilación y el despliegue, se eliminará la imagen de la página `404.astro` por ahora.
-3.  **Construir el proyecto:** Ejecutar `npm run build` para crear los archivos estáticos para el despliegue.
-4.  **Desplegar en Firebase Hosting:** Desplegar el sitio compilado en Firebase Hosting. Esto puede activar la aceptación necesaria de los Términos de Servicio.
-5.  **Verificar el entorno:** Comprobar el entorno de Firebase de nuevo para ver si el error "Resource exhausted" se ha resuelto.
-6.  **Re-evaluar la página 404:** Una vez que el entorno esté estable, se volverá a la página 404 para añadir una imagen adecuada.
+**Solución (Requiere acción manual):**
+
+1.  **Acceder a la Consola de Firebase:** El usuario debe navegar a la [Consola de Firebase](https://console.firebase.google.com/project/misspitimini-23c91).
+2.  **Habilitar Gemini y Aceptar los Términos:** El usuario debe buscar una opción para habilitar Gemini o acceder a una de sus funciones, lo que le pedirá que acepte los Términos de Servicio.
+3.  **Verificar el entorno:** Una vez aceptados los términos, el problema debería resolverse.
 
 ## Historial de cambios
+
+### Solución del fallo de compilación (Imagen faltante)
+
+**Plan:**
+
+1.  **Diagnosticar el fallo de compilación:** La compilación fallaba debido a una imagen que falta en `src/pages/404.astro`.
+2.  **Eliminar temporalmente la imagen:** Se eliminó la imagen de la página `404.astro` para desbloquear la compilación.
+3.  **Construir y desplegar:** El proyecto se compiló y desplegó con éxito en Firebase Hosting.
 
 ### Corrección del parpadeo en el menú móvil
 
@@ -38,7 +45,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Simplificar `MenuBar.astro`:** Se ha eliminado el icono "X" del botón del menú principal para evitar un parpadeo visual al abrir el menú móvil. Ahora, el botón solo muestra el icono de hamburguesa y su única función es abrir el menú, mientras que el cierre se gestiona desde dentro del propio menú desplegado.
+1.  **Simplificar `MenuBar.astro`:** Se ha eliminado el icono "X" del botón del menú principal para evitar un parpadeo visual al abrir el menú móvil.
 
 ### Añadir botón de cierre al menú móvil
 
@@ -46,7 +53,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Modificar `MobileMenu.astro`:** Se ha añadido un botón con un icono "X" en la esquina superior derecha del componente del menú móvil. Este botón permite a los usuarios cerrar el menú de forma explícita, mejorando la usabilidad en dispositivos móviles.
+1.  **Modificar `MobileMenu.astro`:** Se ha añadido un botón con un icono "X" en la esquina superior derecha del componente del menú móvil.
 
 ### Ajuste final del layout del encabezado (Logotipo a la izquierda)
 
@@ -54,7 +61,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Reorganizar `MenuBar.astro`:** Se ha modificado `src/components/header/MenuBar.astro` para colocar el logotipo a la izquierda y el menú de navegación a la derecha en la vista de escritorio.
+1.  **Reorganizar `MenuBar.astro`:** Se ha modificado `src/components/header/MenuBar.astro` para colocar el logotipo a la izquierda.
 
 ### Ajuste del layout del encabezado (Logotipo a la derecha)
 
@@ -62,7 +69,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Refinar el layout del `MenuBar.astro`:** Se modificó el archivo `src/components/header/MenuBar.astro` para asegurar que el logotipo esté a la derecha en escritorios y centrado en móviles.
+1.  **Refinar el layout del `MenuBar.astro`:** Se modificó `src/components/header/MenuBar.astro` para asegurar que el logotipo esté a la derecha en escritorios.
 
 ### Centrado del logotipo en móvil
 
@@ -70,7 +77,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Ajustar el layout del `MenuBar.astro`:** Se modificó el archivo `src/components/header/MenuBar.astro` para utilizar un layout de flexbox equilibrado, manteniendo el logotipo centrado en dispositivos móviles.
+1.  **Ajustar el layout del `MenuBar.astro`:** Se modificó `src/components/header/MenuBar.astro` para centrar el logotipo en móviles.
 
 ### Corrección del fondo del menú móvil
 
@@ -78,8 +85,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Recrear el componente de menú móvil:** Se creó `src/components/header/MobileMenu.astro`.
-2.  **Simplificar y orquestar desde el encabezado principal:** Se modificaron `MenuBar.astro` y `Header.astro`.
+1.  **Recrear y simplificar componentes:** Se crearon y modificaron `MobileMenu.astro`, `MenuBar.astro` y `Header.astro`.
 
 ### Corrección de la duplicación del menú de navegación
 
@@ -111,4 +117,4 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Mejorar textos alternativos:** Se han mejorado los textos alternativos en varios componentes y se han hecho recomendaciones para el contenido dinámico.
+1.  **Mejorar textos alternativos:** Se han mejorado los textos alternativos en varios componentes.
