@@ -1,11 +1,5 @@
 ---
 import type { slides } from '@data/carruselData.js';
-
-interface Props {
-    open?: boolean;
-}
-
-const { open } = Astro.props;
 ---
 
 <template x-for="slide in slides" :key="slide.id">
@@ -16,7 +10,7 @@ const { open } = Astro.props;
        x-transition:enter-start="opacity-0 scale-95"
        x-transition:enter-end="opacity-100 scale-100"
     >
-        <span class="hidden md:flex" :class="open ? 'flex' : 'hidden'"  x-text="slide.title"></span>
+        <span class="hidden md:flex" x-text="slide.title"></span>
         <span class="md:hidden" x-text="slide.description"></span>
     </a>
 </template>
