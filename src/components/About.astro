@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import saraLainez from '@assets/images/body/inicio/saraLainez.jpg';
 ---
 
 <section id="about" class="py-20">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2">
-            <img src="https://via.placeholder.com/800x600/FDF5EA/FDF5EA" alt="Sara Laínez" class="rounded-lg shadow-lg">
+            <Image src={saraLainez} alt="Sara Laínez, diseñadora floral, sonriendo a la cámara." class="rounded-lg shadow-lg" format="webp"/>
         </div>
         <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
             <h2 class="text-4xl font-bold font-serif text-center md:text-left mb-8 text-[#2c3e50]">About Sara</h2>

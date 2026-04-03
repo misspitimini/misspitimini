@@ -17,6 +17,19 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
     *   Sección de talleres y experiencias.
     *   Datos estructurados de `LocalBusiness` para mejorar el SEO local.
 
+## Plan actual
+
+**Solicitud:** Solucionar el error "Resource exhausted" y estabilizar el entorno de desarrollo.
+
+**Plan:**
+
+1.  **Diagnosticar el fallo de compilación:** La compilación falla debido a una imagen que falta en `src/pages/404.astro`. El archivo `src/assets/images/body/404/404.jpg` no existe.
+2.  **Eliminar temporalmente la imagen:** Para desbloquear la compilación y el despliegue, se eliminará la imagen de la página `404.astro` por ahora.
+3.  **Construir el proyecto:** Ejecutar `npm run build` para crear los archivos estáticos para el despliegue.
+4.  **Desplegar en Firebase Hosting:** Desplegar el sitio compilado en Firebase Hosting. Esto puede activar la aceptación necesaria de los Términos de Servicio.
+5.  **Verificar el entorno:** Comprobar el entorno de Firebase de nuevo para ver si el error "Resource exhausted" se ha resuelto.
+6.  **Re-evaluar la página 404:** Una vez que el entorno esté estable, se volverá a la página 404 para añadir una imagen adecuada.
+
 ## Historial de cambios
 
 ### Corrección del parpadeo en el menú móvil
