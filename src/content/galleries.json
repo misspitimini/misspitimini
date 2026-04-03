@@ -1,0 +1,45 @@
+
+[
+    {
+      "imgSrc": "/images/gallery/01.jpg",
+      "imgAlt": "Boda en la playa",
+      "title": "Boda en la playa",
+      "description": "Una boda de ensueño en la playa, con una decoración floral que evoca la brisa del mar y la calidez del sol.",
+      "link": "/galeria/boda-playa"
+    },
+    {
+      "imgSrc": "/images/gallery/02.jpg",
+      "imgAlt": "Boda rústica",
+      "title": "Boda rústica",
+      "description": "Una boda rústica en el campo, con una decoración floral que combina la elegancia y la naturalidad.",
+      "link": "/galeria/boda-rustica"
+    },
+    {
+      "imgSrc": "/images/gallery/03.jpg",
+      "imgAlt": "Boda clásica",
+      "title": "Boda clásica",
+      "description": "Una boda clásica y elegante, con una decoración floral que resalta la belleza de la arquitectura y el entorno.",
+      "link": "/galeria/boda-clasica"
+    },
+    {
+      "imgSrc": "/images/gallery/04.jpg",
+      "imgAlt": "Taller de coronas",
+      "title": "Taller de coronas",
+      "description": "Un taller de coronas de flores, donde cada participante aprendió a crear su propia corona con flores frescas.",
+      "link": "/galeria/taller-coronas"
+    },
+    {
+      "imgSrc": "/images/gallery/05.jpg",
+      "imgAlt": "Taller de ramos",
+      "title": "Taller de ramos",
+      "description": "Un taller de ramos de flores, donde cada participante aprendió a combinar colores y texturas para crear un ramo único.",
+      "link": "/galeria/taller-ramos"
+    },
+    {
+      "imgSrc": "/images/gallery/06.jpg",
+      "imgAlt": "Evento corporativo",
+      "title": "Evento corporativo",
+      "description": "Un evento corporativo con una decoración floral que refleja la identidad de la marca y crea un ambiente acogedor.",
+      "link": "/galeria/evento-corporativo"
+    }
+  ]
