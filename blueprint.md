@@ -16,7 +16,9 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
     *   Sección "Sobre mí" para presentar a la diseñadora.
     *   Sección de talleres y experiencias.
 
-## Plan y pasos para el cambio actual
+## Historial de cambios
+
+### Mejora de la accesibilidad de las imágenes
 
 **Solicitud:** Mejorar la accesibilidad de las imágenes del sitio web añadiendo textos alternativos (alt text) descriptivos.
 
@@ -30,3 +32,16 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
     *   Revisar `src/js/gallery.js` y `src/js/blog.js` para entender cómo se cargan las imágenes de la galería y el blog.
     *   Dado que los datos provienen de un backend externo, mejorar los textos alternativos por defecto en los scripts para que sean más informativos que "Post sin título".
     *   Recomendar al cliente que se ponga en contacto con el desarrollador del backend para que añada textos alternativos descriptivos a los datos que se devuelven.
+
+### Mejora del rendimiento con carga diferida de imágenes
+
+**Solicitud:** no se observa loading ="lazy " explicito activalo en todas las imagenes
+
+**Plan:**
+
+1.  **Analizar los componentes con imágenes:** Identificar los componentes de Astro que renderizan imágenes.
+2.  **Añadir `loading="lazy"` a las imágenes:**
+    *   Modificar `src/components/misc/About.astro` para añadir `loading="lazy"` a la imagen de perfil.
+    *   Modificar `src/components/header/Carrusel.astro` para cambiar `loading="eager"` por `loading="lazy"`.
+    *   Modificar `src/components/gallery/GalleryCard.astro` para añadir `loading="lazy"` a las imágenes de la galería.
+    *   Modificar `src/components/blog/BlogCard.astro` para añadir `loading="lazy"` a las imágenes del blog.

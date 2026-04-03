@@ -11,7 +11,7 @@ const { data, slug } = Astro.props;
 ---
 
 <div class="overflow-hidden w-fit">
-    <img class="card-img h-auto w-full object-cover" src={data.image} alt={data.title} />
+    <img class="card-img h-auto w-full object-cover" src={data.image} alt={data.title} loading="lazy" />
     
     <div class="px-2"> <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800">{data.title}</h3>
       <p class="card-description text-[16px] text-floral-dark/60">

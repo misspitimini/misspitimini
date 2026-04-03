@@ -17,7 +17,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
       alt={currentSlide.alt} 
       class="h-full w-full object-cover object-center" 
       decoding="async" 
-      loading="eager" 
+      loading="lazy" 
       src={currentSlide.img}
       widths={[400, 800, 1200, 1600, 2400, 3200]}
       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
