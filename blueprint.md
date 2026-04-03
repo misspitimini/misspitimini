@@ -1,45 +1,32 @@
-# Blueprint: Sitio Web de Miss Pitimini
+# Blueprint de la aplicación
 
-## Descripción General
+## Propósito y capacidades
 
-Este proyecto es una aplicación web estática para un negocio de diseño floral llamado "Miss Pitimini", construido con Astro.js. El sitio muestra los servicios del negocio, incluyendo bodas, eventos, talleres y una galería de su trabajo. Está diseñado para ser de alto rendimiento, con un enfoque en un diseño atractivo y una gran experiencia de usuario.
+Esta es una aplicación web estática construida con Astro.js para la diseñadora floral Sara Laínez (misspitimini). El sitio muestra su trabajo, ofrece talleres y permite a los usuarios contactarla.
 
-## Estructura del Proyecto y Guía de Estilo
+## Estilo, diseño y características
 
-### Estructura
-- **Páginas:** Ubicadas en `src/pages/`. Se utiliza el enrutamiento basado en archivos de Astro.
-- **Componentes:** Ubicados en `src/components/`. Son componentes reutilizables de Astro.
-- **Layouts:** Ubicados en `src/layouts/`. Diseños base para diferentes tipos de páginas.
-- **Contenido:** Ubicado en `src/content/`. Colecciones de contenido para talleres, entradas de blog, etc.
-- **Assets:** Ubicados en `src/assets/`. Imágenes, logotipos y otros activos estáticos.
+*   **Estilo:** Moderno, limpio y elegante, con un enfoque en la tipografía y las imágenes.
+*   **Diseño:** Responsivo y adaptable a dispositivos móviles.
+*   **Características:**
+    *   Página de inicio con carrusel de imágenes y secciones destacadas.
+    *   Galería de imágenes de trabajos anteriores.
+    *   Blog con publicaciones sobre diseño floral.
+    *   Página de contacto con formulario.
+    *   Sección "Sobre mí" para presentar a la diseñadora.
+    *   Sección de talleres y experiencias.
 
-### Estilo
-- **Framework:** Tailwind CSS para un estilo basado en utilidades.
-- **Fuentes:** Una combinación de serif (`font-serif`) y una fuente de visualización (`font-display`).
-- **Paleta de Colores:**
-    - Primario: Un tono de rojo (`red-600`).
-    - Texto: `floral-dark` (un color oscuro personalizado), `gray-600`, `gray-900`.
-    - Fondo: `white`, con algunos efectos de transparencia (`bg-white/95`).
+## Plan y pasos para el cambio actual
 
-### Funcionalidades Implementadas
-- Página de inicio con un carrusel.
-- Páginas para "Sobre mí", "Bodas", "Eventos", "Experiencias", "Galería" y "Contacto".
-- Una sección de blog (actualmente vacía).
-- Tarjetas de talleres dinámicas cargadas desde colecciones de contenido.
-- Optimización de imágenes usando `astro:assets`.
-- Se genera un mapa del sitio.
-- Un formulario de solicitud de presupuesto para ramos.
-- Despliegue en Firebase Hosting.
+**Solicitud:** Mejorar la accesibilidad de las imágenes del sitio web añadiendo textos alternativos (alt text) descriptivos.
 
----
+**Plan:**
 
-## Solicitud Actual: Publicar el sitio web
-
-### Interpretación
-
-El usuario ha solicitado "publique la versión actual del sitio web". Esto implica que el sitio web debe ser construido para generar los archivos estáticos y luego desplegado en Firebase Hosting. La solicitud anterior de "construir" una nueva funcionalidad fue cancelada por el usuario.
-
-### Plan
-
-1.  **Construir el proyecto:** Ejecutar `npm run build` para compilar la aplicación Astro en archivos estáticos.
-2.  **Desplegar en Firebase:** Usar la herramienta `classic_firebase_hosting_deploy` para publicar el contenido de la carpeta `dist` en Firebase Hosting.
+1.  **Analizar el uso de imágenes en el sitio:** Identificar todas las imágenes y cómo se están utilizando, prestando especial atención a las que carecen de texto alternativo o tienen textos genéricos.
+2.  **Mejorar textos alternativos en componentes estáticos:**
+    *   Añadir un texto alternativo descriptivo a la imagen en `src/components/misc/About.astro`.
+    *   Mejorar los textos alternativos en `src/data/carruselData.js` para que describan cada imagen del carrusel.
+3.  **Abordar imágenes cargadas dinámicamente:**
+    *   Revisar `src/js/gallery.js` y `src/js/blog.js` para entender cómo se cargan las imágenes de la galería y el blog.
+    *   Dado que los datos provienen de un backend externo, mejorar los textos alternativos por defecto en los scripts para que sean más informativos que "Post sin título".
+    *   Recomendar al cliente que se ponga en contacto con el desarrollador del backend para que añada textos alternativos descriptivos a los datos que se devuelven.

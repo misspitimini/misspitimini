@@ -24,7 +24,7 @@ async function renderGalleries() {
   
           // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
           img.src = post.data.url || UrlsApi.DEFAULT_IMAGE;
-          img.alt = post.data.alt || 'Post sin título';
+          img.alt = post.data.alt || 'Imagen de la galería de Sara Laínez';
           title.textContent = post.data.title || 'Post sin título';
           desc.textContent = post.data.description || 'Haz clic para leer más...';
           
