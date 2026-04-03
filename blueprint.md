@@ -19,6 +19,14 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 ## Historial de cambios
 
+### Corrección del parpadeo en el menú móvil
+
+**Solicitud:** en mobile, al cliquear para desplegar el menú, aparece un destello de la X. ¿se puede mejorar?
+
+**Plan:**
+
+1.  **Simplificar `MenuBar.astro`:** Se ha eliminado el icono "X" del botón del menú principal para evitar un parpadeo visual al abrir el menú móvil. Ahora, el botón solo muestra el icono de hamburguesa y su única función es abrir el menú, mientras que el cierre se gestiona desde dentro del propio menú desplegado.
+
 ### Añadir botón de cierre al menú móvil
 
 **Solicitud:** en mobile cuando se despliega el menú falta el X para cancelar o cerrar
@@ -33,7 +41,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Reorganizar `MenuBar.astro`:** Se ha modificado `src/components/header/MenuBar.astro` para colocar el logotipo a la izquierda y el menú de navegación a la derecha en la vista de escritorio. En la vista móvil, el logotipo permanece centrado y el icono de menú (hamburguesa) a la izquierda.
+1.  **Reorganizar `MenuBar.astro`:** Se ha modificado `src/components/header/MenuBar.astro` para colocar el logotipo a la izquierda y el menú de navegación a la derecha en la vista de escritorio.
 
 ### Ajuste del layout del encabezado (Logotipo a la derecha)
 
@@ -57,9 +65,8 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Recrear el componente de menú móvil:** Se creó `src/components/header/MobileMenu.astro` para gestionar el menú en su propia capa.
-2.  **Simplificar la barra de menú principal:** Se modificó `src/components/header/MenuBar.astro` para que solo se encargue de la barra de navegación superior.
-3.  **Orquestar desde el encabezado principal:** Se actualizó `src/components/header/Header.astro` para gestionar la visualización de `MenuBar` y `MobileMenu`.
+1.  **Recrear el componente de menú móvil:** Se creó `src/components/header/MobileMenu.astro`.
+2.  **Simplificar y orquestar desde el encabezado principal:** Se modificaron `MenuBar.astro` y `Header.astro`.
 
 ### Corrección de la duplicación del menú de navegación
 
@@ -67,7 +74,7 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 **Plan:**
 
-1.  **Analizar el componente principal del encabezado (`Header.astro`):** Se identificó y eliminó el renderizado duplicado del menú.
+1.  **Analizar y refactorizar `Header.astro`:** Se eliminó el renderizado duplicado del menú.
 
 ### Optimización para SEO Local
 
