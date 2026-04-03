@@ -28,7 +28,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
   <div class="absolute inset-0 bg-black/10"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
   <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
-        <h1 class="text-white text-4xl font-serif italic leading-tight mb-8">
+        <h2 class="text-white text-4xl font-serif italic leading-tight mb-8">
           {currentSlide.id === 1 && (
             <span>Sara Laínez,<br/>diseñadora floral</span>
           )}
@@ -40,7 +40,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
               </span>
             </>
           )}
-        </h1>
+        </h2>
         {currentSlide.id !== 4 && currentSlide.id !== 6 && (
           <>
             <a 
