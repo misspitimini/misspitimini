@@ -1,16 +1,11 @@
 ---
-import type { slides } from '@data/carruselData.js';
+import { menuItems } from '@data/menuData.js';
 ---
 
-<template x-for="slide in slides" :key="slide.id">
-    <a :href="slide.url"
-       @click="activeSlide = slide.id"
+<template x-for="item in menuItems" :key="item.id">
+    <a :href="item.url"
        class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
-       :class="activeSlide === slide.id ? 'font-extrabold' : ''"
-       x-transition:enter-start="opacity-0 scale-95"
-       x-transition:enter-end="opacity-100 scale-100"
     >
-        <span class="hidden md:flex" x-text="slide.title"></span>
-        <span class="md:hidden" x-text="slide.description"></span>
+        <span x-text="item.title"></span>
     </a>
 </template>

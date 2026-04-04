@@ -17,7 +17,7 @@ import MenuItems from '@components/header/MenuItems.astro';
     <div class="absolute top-0 right-0 pt-6 pr-4">
         <button
             @click="open = false"
-            class="flex items-center justify-center p-2 rounded-full active:scale-95 transition-transform text-gray-800"
+            class="flex items-center justify-center p-2 rounded-full active:scale-95 transition-transform text-gray-800 hidden"
             :class="{ 'hidden': !open }"
             aria-label="Cerrar menú"
         >
