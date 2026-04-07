@@ -1,42 +1,50 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '@assets/images/logos/logoReducido.png';
-import MenuItems from '@components/header/MenuItems.astro';
+import { menuItems } from '@data/menuData.js';
+
+interface Props {
+    href: string;
+}
+const {href} = Astro.props;
+
 ---
 
-<header>
-    <div class="relative flex items-center h-20 max-w-7xl mx-auto px-6">
+<div class="relative flex items-center h-20 max-w-7xl mx-auto px-6">
+<!-- Left: Hamburger (mobile) / Logo (desktop) -->
+    <div class="flex-1 flex justify-start">
+        <!-- Desktop Logo -->
+        <a href="/" class="hidden md:block">
+            <Image src={logo} alt="Logotipo" class="w-48 h-auto" />
+        </a>
+        <!-- Mobile Hamburger -->
+         <button id="hamburger-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+     </div>
 
-        <!-- Left: Hamburger (mobile) / Logo (desktop) -->
-        <div class="flex-1 flex justify-start">
-            <!-- Desktop Logo -->
-            <a href="/" class="hidden md:block">
-                <Image src={logo} alt="Logotipo" class="w-48 h-auto" />
-            </a>
-            <!-- Mobile Hamburger -->
-            <button id="hamburger-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </div>
-
-        <!-- Center: Logo (mobile) -->
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
-            <a href="/" class="block">
-                <Image src={logo} alt="Logotipo" class="w-40 h-auto" />
-            </a>
-        </div>
-
-        <!-- Right: Nav (desktop) / Spacer (mobile) -->
-        <div class="flex-1 flex justify-end">
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <MenuItems />
-            </nav>
-            <!-- Spacer for mobile to balance hamburger icon -->
-            <div class="w-8 h-8 md:hidden"></div>
-        </div>
+    <!-- Center: Logo (mobile) -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
+        <a href="/" class="block">
+            <Image src={logo} alt="Logotipo" class="w-40 h-auto" />
+        </a>
     </div>
 
-    <!-- Mobile Menu Container: This will be populated by menu.js -->
-    <div id="mobile-menu-container"></div>
-</header>
+    <!-- Right: Nav (desktop) / Spacer (mobile) -->
+    <div class="flex-1 flex justify-end">
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-8">
+           {menuItems.map(item => (
+                <a href={item.url} class="relative font-display transition-all duration-300 hover:font-bold text-base"
+                    :class={item.url === href ? 'font-bold' : ''}
+                >
+                    <span>{item.title}</span>
+                </a>
+            ))}
+        </nav>
+        <!-- Spacer for mobile to balance hamburger icon -->
+        <div class="w-8 h-8 md:hidden"></div>
+    </div>
+</div>
+
+

@@ -2,12 +2,16 @@
 import { menuItems } from '@data/menuData.js';
 import MenuBar from '@components/header/MenuBar.astro';
 
+interface Props {
+    href: string;
+}
+const {href} = Astro.props;
+
 ---
-<header x-data={`{
-    open: false,
-    menuItems: ${JSON.stringify(menuItems)}
-}`}>
+<header>
     <div class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
-        <MenuBar />
+        <MenuBar href='{href}' />
+        <!-- Mobile Menu Container: This will be populated by menu.js -->
+         <div id="mobile-menu-container"></div>
     </div>
 </header>
