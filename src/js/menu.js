@@ -25,12 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Removed -mt-8 to prevent the list from being pushed up
         itemsContainer.className = 'flex flex-col items-center justify-center space-y-5 min-h-screen w-full pb-24'; 
        
+        const href = window.location.pathname;
         // Create and append menu items
         menuItems.forEach(itemData => {
             const link = document.createElement('a');
             link.href = itemData.url;
-            link.className = 'relative font-display transition-all duration-300 hover:font-bold text-2xl';
-            
+            let className = 'relative font-display transition-all duration-300 hover:font-bold text-2xl';
+            if(itemData.url===href)
+            {
+                className += ' font-bold';
+            }
+            link.className = className;
+
             const span = document.createElement('span');
             span.textContent = itemData.title;
             link.appendChild(span);

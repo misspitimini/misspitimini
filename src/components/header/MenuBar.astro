@@ -34,13 +34,16 @@ const {href} = Astro.props;
     <div class="flex-1 flex justify-end">
         <!-- Desktop Nav -->
         <nav class="hidden md:flex items-center space-x-8">
-           {menuItems.map(item => (
-                <a href={item.url} class="relative font-display transition-all duration-300 hover:font-bold text-base"
-                    :class={item.url === href ? 'font-bold' : ''}
+            {menuItems.map((item) => (
+                <a
+                  href={item.url}
+                  class={`relative font-display transition-all duration-300 hover:font-bold text-base ${
+                    item.url === href ? 'font-bold' : ''
+                  }`}
                 >
-                    <span>{item.title}</span>
+                  <span>{item.title}</span>
                 </a>
-            ))}
+              ))}
         </nav>
         <!-- Spacer for mobile to balance hamburger icon -->
         <div class="w-8 h-8 md:hidden"></div>
