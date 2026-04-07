@@ -2,10 +2,8 @@
 import { menuItems } from '@data/menuData.js';
 ---
 
-<template x-for="item in menuItems" :key="item.id">
-    <a :href="item.url"
-       class="relative font-display text-lg md:text-base transition-all duration-300 hover:font-bold"
-    >
-        <span x-text="item.title"></span>
+{menuItems.map(item => (
+    <a href={item.url} class="relative font-display transition-all duration-300 hover:font-bold text-base">
+        <span>{item.title}</span>
     </a>
-</template>
+))}

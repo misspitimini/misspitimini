@@ -1,7 +1,7 @@
 ---
 import { menuItems } from '@data/menuData.js';
 import MenuBar from '@components/header/MenuBar.astro';
-import MobileMenu from '@components/header/MobileMenu.astro';
+
 ---
 <header x-data={`{
     open: false,
@@ -10,5 +10,4 @@ import MobileMenu from '@components/header/MobileMenu.astro';
     <div class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
         <MenuBar />
     </div>
-    <MobileMenu />
 </header>
