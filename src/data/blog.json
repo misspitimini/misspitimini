@@ -1,0 +1,27 @@
+
+[
+  {
+    "slug": "bienvenida-al-blog",
+    "title": "Bienvenida a Nuestro Rincón Floral",
+    "description": "Un espacio donde las flores y la creatividad se encuentran. Descubre historias, consejos y la pasión detrás de cada arreglo.",
+    "image": "/img/blog/portada-blog.jpg",
+    "date": "2023-10-26",
+    "content": "<p>¡Hola y bienvenida a nuestro nuevo blog! Soy Sara Laínez, la persona detrás de Misspitimini. Este es un sueño hecho realidad: un pequeño rincón en el vasto mundo digital para compartir mi amor por el diseño floral. Aquí no solo encontrarás una muestra de mi trabajo en bodas y eventos, sino también un diario de mi viaje creativo, consejos para cuidar tus flores, y las historias que cada ramo tiene para contar. Espero que disfrutes de este espacio tanto como yo disfruto creándolo.</p>"
+  },
+  {
+    "slug": "el-lenguaje-de-las-flores",
+    "title": "El Lenguaje Secreto de las Flores",
+    "description": "Cada flor tiene un significado. Aprende a componer ramos que hablen directamente al corazón.",
+    "image": "/img/blog/lenguaje-flores.jpg",
+    "date": "2023-11-05",
+    "content": "<p>¿Sabías que regalar una rosa roja no es lo mismo que regalar una amarilla? Desde la época victoriana, las flores han tenido su propio lenguaje, una forma silenciosa de comunicar los sentimientos más profundos. En esta entrada, exploraremos el significado de algunas de las flores más populares. Aprenderás a crear arreglos que no solo sean hermosos a la vista, sino que también transmitan un mensaje claro y personal. Acompáñame a descifrar este código floral y sorprende a tus seres queridos con un ramo que hable por sí solo.</p>"
+  },
+  {
+    "slug": "cuidados-basicos-para-tu-ramo",
+    "title": "5 Consejos para que tu Ramo Dure Más Tiempo",
+    "description": "Sigue estos sencillos pasos para mantener tus flores frescas y vibrantes durante más días.",
+    "image": "/img/blog/cuidados-ramo.jpg",
+    "date": "2023-11-12",
+    "content": "<p>Recibir flores es un momento mágico, y es natural querer que esa belleza dure el mayor tiempo posible. Aunque las flores cortadas tienen una vida limitada, hay varios trucos que puedes aplicar para prolongar su frescura. En esta guía práctica, te compartiré 5 consejos esenciales: desde cómo cortar los tallos correctamente hasta el lugar ideal para colocar tu jarrón. ¡Con un poco de mimo, podrás disfrutar de tu precioso ramo durante mucho más tiempo!</p>"
+  }
+]

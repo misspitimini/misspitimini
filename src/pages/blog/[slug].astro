@@ -1,0 +1,24 @@
+---
+import Layout from '@layouts/Layout.astro';
+import blogEntries from "@data/blog.json";
+
+export async function getStaticPaths() {
+    return blogEntries.map(entry => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+---
+
+<Layout title={entry.title} description={entry.description}>
+    <main class="container mx-auto px-4 py-16">
+        <article class="prose lg:prose-xl mx-auto">
+            <img src={entry.image} alt={entry.title} class="w-full h-auto object-cover rounded-lg mb-8" />
+            <h1>{entry.title}</h1>
+            <p class="text-gray-600">{entry.description}</p>
+            <div set:html={entry.content} />
+        </article>
+    </main>
+</Layout>
