@@ -3,6 +3,14 @@ import { UrlsApi } from './urls.js';
 import fm from 'front-matter';
 import { marked } from 'marked';
 
+// --- State variables ---
+let allImages = [];
+let loadedImagesCount = 0;
+const imagesPerBatch = 10;
+let molde; // To store the template content
+let carouselContainer; // To store the main image container
+let thumbContainer; // To store the thumbnail container
+
 async function renderGalleryDetail() {
   // Obtenemos el ID de la URL (?id=lo-que-sea)
   const params = new URLSearchParams(window.location.search);
@@ -14,19 +22,11 @@ async function renderGalleryDetail() {
   const text = await res.text();
   const { attributes, body } = fm(text);
   
-  //const containerHeader = document.getElementById('post-content-header');
   const containerMain = document.getElementById('post-content-main');
   
-  // Rellenamos con los datos del "data" que extrae tu PHP
- // const img = containerHeader.querySelector('.card-img');
   const title = containerMain.querySelector('.card-title');
   const content = containerMain.querySelector('.card-content');
-  const author = containerMain.querySelector('.card-author');
-  const pubDate = containerMain.querySelector('.card-date');
 
-  // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
- // img.src = attributes.image.url || UrlsApi.DEFAULT_IMAGE;
- // img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
   content.innerHTML = marked.parse(body);
 
@@ -74,37 +74,43 @@ async function renderGalleryImages() {
 
   const response = await fetch(UrlsApi.GET_GALLERY.replace("${id}", id));
   const imagesData = await response.json();
-  const images = imagesData.images;
+  allImages = imagesData.images;
   
   const carousel = document.getElementById('card-content-images');
-  const contentThumb = document.querySelector('.card-content-thumb');
-  const template = contentThumb.querySelector("template");
-  const molde = template.content;
+  thumbContainer = document.querySelector('.card-content-thumb');
+  const template = thumbContainer.querySelector("template");
+  molde = template.content;
   template.remove();
 
-  //carousel.innerHTML = '';
-  if (!images || images.length === 0) {
+  if (!allImages || allImages.length === 0) {
     carousel.innerHTML = 'No hay imágenes para mostrar.';
     return;
   }
 
-  const container = document.createElement('div');
-  container.className = 'flex transition-transform duration-500 ease-in-out';
+  carouselContainer = document.createElement('div');
+  carouselContainer.className = 'flex transition-transform duration-500 ease-in-out';
   
-  images.forEach((img, index) => {
-    createImage(img, index, container, molde, contentThumb);
-    const imagen = document.createElement('img');
-    imagen.classList.add("hidden");
-  });
+  carousel.appendChild(carouselContainer);
+  loadMoreImages();
+}
 
-  carousel.appendChild(container);
+function loadMoreImages() {
+  const newLoadedCount = Math.min(loadedImagesCount + imagesPerBatch, allImages.length);
+
+  for (let i = loadedImagesCount; i < newLoadedCount; i++) {
+    createImage(allImages[i], i, carouselContainer, molde, thumbContainer);
+  }
+
+  loadedImagesCount = newLoadedCount;
 }
 
 window.updateCarousel = function(index) {
-  const carousel = document.getElementById('card-content-images');
-  const container = carousel.querySelector('.flex.transition-transform.duration-500.ease-in-out');
-  if (container) {
-    container.style.transform = `translateX(-${index * 100}%)`;
+  if (carouselContainer) {
+    carouselContainer.style.transform = `translateX(-${index * 100}%)`;
+  }
+  // Check if we've reached the halfway point of loaded images
+  if (index >= Math.floor(loadedImagesCount / 2) && loadedImagesCount < allImages.length) {
+    loadMoreImages();
   }
 }
 
