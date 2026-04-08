@@ -32,33 +32,7 @@ async function renderGalleryDetail() {
 
 }
 
-async function renderGalleryImages() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
-
-  if (!id) return;
-
-  const response = await fetch(UrlsApi.GET_GALLERY.replace("${id}", id));
-  const imagesData = await response.json();
-  const images = imagesData.images;
-  
-  const carousel = document.getElementById('card-content-images');
-  const contentThumb = document.querySelector('.card-content-thumb');
-  const template = contentThumb.querySelector("template");
-  const molde = template.content;
-  template.remove();
-  const clonTemplate = document.importNode(template, true);
-
-  //carousel.innerHTML = '';
-  if (!images || images.length === 0) {
-    carousel.innerHTML = 'No hay imágenes para mostrar.';
-    return;
-  }
-
-  const container = document.createElement('div');
-  container.className = 'flex transition-transform duration-500 ease-in-out';
-  
-  images.forEach((img, index) => {
+function createImage(img, index, container, molde, contentThumb) {
     const item = document.createElement('div');
     item.className = 'min-w-full box-border';
     
@@ -90,13 +64,39 @@ async function renderGalleryImages() {
     imgThumb.classList.remove("hidden");
 
     contentThumb.appendChild(clone);
-  });
+}
 
+async function renderGalleryImages() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  if (!id) return;
+
+  const response = await fetch(UrlsApi.GET_GALLERY.replace("${id}", id));
+  const imagesData = await response.json();
+  const images = imagesData.images;
+  
+  const carousel = document.getElementById('card-content-images');
+  const contentThumb = document.querySelector('.card-content-thumb');
+  const template = contentThumb.querySelector("template");
+  const molde = template.content;
+  template.remove();
+
+  //carousel.innerHTML = '';
+  if (!images || images.length === 0) {
+    carousel.innerHTML = 'No hay imágenes para mostrar.';
+    return;
+  }
+
+  const container = document.createElement('div');
+  container.className = 'flex transition-transform duration-500 ease-in-out';
+  
   images.forEach((img, index) => {
+    createImage(img, index, container, molde, contentThumb);
     const imagen = document.createElement('img');
     imagen.classList.add("hidden");
-    
   });
+
   carousel.appendChild(container);
 }
 
