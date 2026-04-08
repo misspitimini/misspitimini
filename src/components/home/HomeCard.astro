@@ -28,9 +28,9 @@ const { imgSrc, imgAlt, title, description, link, buttonText } = card;
   </div>
 
   <div class:list={["space-y-2", { "text-center": isLargeCard }]}>
-    <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">
-      <a href={link} rel="noopener noreferrer">{title}</a>
-    </h3>
-    <p class="text-[16px] text-floral-dark/60">{description}</p>
+    <a href={link} rel="noopener noreferrer">
+      <h2 class="text-xl md:text-3xl font-serif italic text-gray-800">{title}</h2>
+      <h3 class="text-[16px] text-floral-dark/60">{description}</h3>
+    </a>
   </div>
 </div>

@@ -1,7 +1,6 @@
 ---
+import galleryEntries from "@data/gallery.json";
 import GalleryCard from './GalleryCard.astro';
-
-const galleries:any[] = [];
 ---
 <section class="space-y-10">
   <div class="text-center space-y-2 px-6">
@@ -16,7 +15,7 @@ const galleries:any[] = [];
     </div>
   </div>
   <div id="gallery-container" class="columns-2 gap-4 space-y-4">
-      {galleries.map((gallery) => (
+      {galleryEntries.map((gallery) => (
         <GalleryCard
           imgSrc={gallery.imgSrc}
           imgAlt={gallery.imgAlt}
@@ -36,4 +35,3 @@ const galleries:any[] = [];
     link=""
   />
 </template>
-

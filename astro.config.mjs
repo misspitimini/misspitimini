@@ -10,7 +10,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: 'https://misspitimini.com',
-  integrations: [tailwind(), alpine(), sitemap()],
+  integrations: [
+    tailwind(),
+    alpine(),
+    sitemap({
+      filter: (page) =>
+        page !== 'https://misspitimini.com/blog/' &&
+        !page.startsWith('https://misspitimini.com/blog/'),
+    }),
+  ],
   vite: {
     resolve: {
       alias: {
