@@ -2,7 +2,7 @@ import home from "@assets/images/carrusel/01_misspitimini.jpg";
 import bodas from "@assets/images/carrusel/02_ceremoniaBoda.jpg";
 import eventos from "@assets/images/carrusel/03_eventos.jpg";
 import experiencias from "@assets/images/carrusel/04_cursoFlores.jpg";
-import galeria from "@assets/images/carrusel/05_ramosFlores.jpg";
+import galeria from "@assets/images/carrusel/05_colllageImagenes.jpg";
 import contacto from "@assets/images/carrusel/06_contacto.jpg";
 import blog from "@assets/images/carrusel/07_blog.jpg";
 
