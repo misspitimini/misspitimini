@@ -43,7 +43,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
       {currentSlide.id ===  5 && (
             <>
             <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3">{currentSlide.title}</h2>
-            <h3 class="text-white filter drop-shadow-[15px_15px_15px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">{currentSlide.phrase}</h3>
+            <h3 class="text-white filter drop-shadow-[0_0_10px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">{currentSlide.phrase}</h3>
             </>
       )}
       {currentSlide.id !== 1 &&  currentSlide.id !== 5 && (
