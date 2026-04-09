@@ -20,9 +20,9 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
       loading="lazy" 
       src={currentSlide.image}
       widths={[400, 800, 1200, 1600, 2400, 3200]}
-      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
       format='webp'
-      quality={60}
+      quality={100}
     />
   </div>
   <div class="absolute inset-0 bg-black/10"></div>
