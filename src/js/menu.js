@@ -4,11 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenuContainer = document.getElementById('mobile-menu-container');
 
-    const openMenu = () => {
+    // --- Event handler for opening the menu ---
+    const handleOpenMenu = (e) => {
+        e.preventDefault(); // Prevent double events (click after touch)
+        e.stopPropagation(); // Stop event from bubbling up
+
         // Main overlay with a solid white background
         const overlay = document.createElement('div');
         overlay.id = 'mobile-menu-overlay';
-        overlay.className = 'inset-0 z-50 w-full h-full'; // Changed from bg-white/95 to bg-white
+        overlay.className = 'inset-0 z-50 w-full h-full'; 
         
         // Close button
         const closeButton = document.createElement('button');
@@ -18,11 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Centering container
         const centeringContainer = document.createElement('div');
-        centeringContainer.className = 'flex flex-col items-center justify-center  w-full h-full';
+        centeringContainer.className = 'flex flex-col items-center justify-center w-full h-full';
 
         // Menu items container
         const itemsContainer = document.createElement('div');
-        // Removed -mt-8 to prevent the list from being pushed up
         itemsContainer.className = 'flex flex-col items-center justify-center space-y-5 min-h-screen w-full pb-24'; 
        
         const href = window.location.pathname;
@@ -31,8 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const link = document.createElement('a');
             link.href = itemData.url;
             let className = 'relative font-display transition-all duration-300 hover:font-bold text-2xl';
-            if(itemData.url===href)
-            {
+            if(itemData.url === href) {
                 className += ' font-bold';
             }
             link.className = className;
@@ -54,21 +56,35 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuContainer.appendChild(overlay);
 
         // Event listeners for closing
-        closeButton.addEventListener('click', closeMenu);
+        closeButton.addEventListener('click', handleCloseMenu);
+        closeButton.addEventListener('touchstart', handleCloseMenu);
+
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) { // Click on backdrop
-                closeMenu();
+                handleCloseMenu(e);
             }
         });
+        overlay.addEventListener('touchstart', (e) => {
+             if (e.target === overlay) { // Touch on backdrop
+                handleCloseMenu(e);
+            }
+        });
+
         hamburgerButton.classList.add('hidden');
     };
-
-    const closeMenu = () => {
+    
+    // --- Event handler for closing the menu ---
+    const handleCloseMenu = (e) => {
+        if(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         mobileMenuContainer.innerHTML = ''; // Remove the menu
         hamburgerButton.classList.remove('hidden');
     };
 
     if (hamburgerButton) {
-        hamburgerButton.addEventListener('click', openMenu);
+        hamburgerButton.addEventListener('click', handleOpenMenu);
+        hamburgerButton.addEventListener('touchstart', handleOpenMenu);
     }
 });
