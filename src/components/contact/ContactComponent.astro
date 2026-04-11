@@ -11,7 +11,6 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 
 <div class="space-y-12">
 
-
   <section class="space-y-6">
     <div class="px-6">
       <div class="text-center">
@@ -125,18 +124,18 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
       <br/>
       <div class="grid grid-cols-2 gap-0.5 md:gap-2">
         <ContactCard 
-        platform="phone"
-        label="(+34) 684340789"  
-        link="tel:+34684340789" 
-        imgSrc={centroMesa} 
-        alt="Teléfono de contacto Misspitimini"
-        />
-        <ContactCard 
         platform="email"
         label="hola@misspitimini.com" 
         link="mailto:hola@misspitimini.com" 
         imgSrc={floresSecas} 
         alt="Email de contacto Misspitimini"
+        />
+        <ContactCard 
+        platform="phone"
+        label="(+34) 684340789"  
+        link="tel:+34684340789" 
+        imgSrc={centroMesa} 
+        alt="Teléfono de contacto Misspitimini"
         />
       </div>
     </div>
@@ -154,27 +153,31 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
           El universo de <strong>Sara Laínez</strong> es una ventana abierta a la naturaleza y la creatividad. Te invitamos a seguir nuestro día a día, donde compartimos procesos creativos, la llegada de nuevas temporadas y el detrás de escena de nuestros montajes más especiales. <strong>Únete a nuestra comunidad</strong> y deja que la inspiración floral forme parte de tu rutina.
         </p>
       </div>
+      <br/>
       <div class="grid grid-cols-2 gap-0.5 md:gap-2">
           <ContactCard 
-          platform="facebook" 
+          platform="facebook"
+          label="facebook" 
           link="https://www.facebook.com/misspitimini/" 
           imgSrc={centroMesa} 
           alt="Talleres Misspitimini: Proceso de trabajo floral."
           />
           <ContactCard 
-          platform="tiktok" 
+          platform="tiktok"
+          label="tiktok" 
           link="https://www.tiktok.com/@misspitimini_official" 
           imgSrc={floresSecas} 
           alt="Flores secas Misspitimini."
           />
           <ContactCard 
-          platform="instagram" 
+          platform="instagram"
+          label="instagram" 
           link="https://www.instagram.com/misspitimini_official/" 
           imgSrc={ramosFlores} 
           alt="Ramos exclusivos Misspitimini."
           />
       </div>
     </div>
-   </section>
+  </section>
 </div>
 
