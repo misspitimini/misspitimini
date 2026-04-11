@@ -4,22 +4,21 @@ import type { CollectionEntry } from "astro:content";
 import { slugify } from "@/utils/utils.js";
 
 interface Props {
-	slug: string;
 	data: CollectionEntry<"blog">['data'];
 }
 
-const { data, slug } = Astro.props;
+const { data } = Astro.props;
 ---
 
 <div class="overflow-hidden w-fit">
-    <img class="card-img h-auto w-full object-cover" src={data.image} alt={data.title} loading="lazy" />
+    <img class="card-img h-auto w-full object-cover" src={data.heroImage} alt={data.title} loading="lazy" />
     
     <div class="px-2"> <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800">{data.title}</h3>
       <p class="card-description text-[16px] text-floral-dark/60">
         {data.description}
       </p>
       <div class="mt-4">
-        <CustomLink class="card-link" href={`/blog/${slugify(slug)}/`}>Leer más</CustomLink>
+        <CustomLink class="card-link" href={`/blog/${slugify(data.slug)}/`}>Leer más</CustomLink>
       </div>
     </div>
 </div>
