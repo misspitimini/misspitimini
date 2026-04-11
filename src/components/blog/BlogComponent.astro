@@ -2,27 +2,28 @@
 import blogEntries from "@/data/blog.json";
 import BlogCard from '@/components/blog/BlogCard.astro';
 ---
-
-<section class="space-y-6">
-  <div class="px-6">
-    <div class="text-center space-y-2">
-      <h2 class="text-3xl font-serif">Nuestro Blog</h2>
-      <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
+<div class="space-y-12">
+  <section class="space-y-6">
+    <div class="px-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-serif">Nuestro Blog</h2>
+        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
+      </div>
+      <br/>
+      <div class="max-w-4xl mx-auto text-justify text-floral-dark/80 leading-relaxed space-y-4">
+        <p>
+          Las flores no solo decoran espacios; <strong>marcan capítulos de nuestra vida</strong>. En este rincón, compartimos la magia detrás de cada brote: desde la alegría de un regalo inesperado hasta el arte de cuidar tu primer jardín en casa. Porque cada flor tiene una historia, y queremos que nos ayudes a <strong>contarla</strong>.
+        </p>
+      </div>
     </div>
-    <br/>
-    <div class="max-w-4xl mx-auto text-justify text-floral-dark/80 leading-relaxed space-y-4">
-      <p>
-        Las flores no solo decoran espacios; <strong>marcan capítulos de nuestra vida</strong>. En este rincón, compartimos la magia detrás de cada brote: desde la alegría de un regalo inesperado hasta el arte de cuidar tu primer jardín en casa. Porque cada flor tiene una historia, y queremos que nos ayudes a <strong>contarla</strong>.
-      </p>
+    <div id="blog-container" class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {blogEntries.map((post) => (
+        <BlogCard data={post} />
+      ))}
     </div>
-  </div>
-  <div id="blog-container" class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {blogEntries.map((post) => (
-      <BlogCard data={post} />
-    ))}
-  </div>
 
-</section>
+  </section>
+</div>
 
 <template id="card-blog-template" class="hidden">
   <BlogCard data={{

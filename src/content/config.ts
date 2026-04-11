@@ -58,5 +58,5 @@ export const collections = {
   'blog': blogCollection,
   'homecards': homeCardsCollection,
   'workshops': workshopsCollection,
-  'next-workshop': nextWorkshopCollection,
+  'nextworkshop': nextWorkshopCollection,
 };

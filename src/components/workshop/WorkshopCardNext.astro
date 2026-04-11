@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 import { getEntry } from 'astro:content';
 
 // Fetch the content entry for the next workshop. 
-const nextWorkshop = await getEntry('next-workshop', 'proxima-experiencia');
+const nextWorkshop = await getEntry('nextworkshop', 'proxima-experiencia');
 
 // Handle the case where the entry is not found.
 if (!nextWorkshop) {
