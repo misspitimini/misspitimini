@@ -34,50 +34,53 @@ const workshops = await Promise.all(
 );
 ---
 
-<section class="space-y-6">
-  <div class="px-6">
-    <div class="text-center space-y-2">
-      <h2 class="text-3xl font-serif">Experiencias Florales y Gastronómicas</h2>
-      <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
+<div class="space-y-12">
+
+  <section class="space-y-6">
+    <div class="px-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-serif">Experiencias Florales y Gastronómicas</h2>
+        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
+      </div>
+      <br/>
+      <div class="max-w-4xl mx-auto text-justify text-floral-dark/80 leading-relaxed space-y-4">
+        <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+          Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
+          Esta no es solo una clase de diseño, es una invitación a transformar flores frescas en <strong>piezas de diseño</strong> mientras se deleita el paladar.
+        </p>
+        <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+          <strong>Sara Laínez</strong> propone una metodología donde la flor es la protagonista de un lenguaje visual propio. En sus talleres presenciales mayoritariamente en <strong>Madrid</strong>, Sara guía a los alumnos para que encuentren su propio estilo, huyendo de los arreglos rígidos y apostando por la naturalidad, el movimiento y la sostenibilidad.
+        </p>
+      </div>
     </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-3xl font-serif">
+      Próximas experiencias:
+    </h2>
+    <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
     <br/>
-    <div class="max-w-4xl mx-auto text-justify text-floral-dark/80 leading-relaxed space-y-4">
-      <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-        Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
-        Esta no es solo una clase de diseño, es una invitación a transformar flores frescas en <strong>piezas de diseño</strong> mientras se deleita el paladar.
-      </p>
-      <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-        <strong>Sara Laínez</strong> propone una metodología donde la flor es la protagonista de un lenguaje visual propio. En sus talleres presenciales mayoritariamente en <strong>Madrid</strong>, Sara guía a los alumnos para que encuentren su propio estilo, huyendo de los arreglos rígidos y apostando por la naturalidad, el movimiento y la sostenibilidad.
-      </p>
+    <WorkshopCardNext />
+  </section>
+
+  <section class="space-y-6">
+    <h3 class="text-3xl font-serif">
+      Otras experiencias:
+    </h3>
+    <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
+    <br/>
+    <div class="grid gap-8 grid-cols-2">
+      {workshops.map((workshop) => (
+        <WorkshopCard
+        img={workshop.img}
+        imgAlt={workshop.imgAlt}
+        title4={workshop.title4}
+        title5={workshop.title5}
+        description={workshop.description}
+        />
+      ))}
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="space-y-6">
-  <h2 class="text-3xl font-serif">
-    Próximas experiencias:
-  </h2>
-  <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-  <br/>
-  <WorkshopCardNext />
-</section>
-
-<section class="space-y-6">
-  <h3 class="text-3xl font-serif">
-    Otras experiencias:
-  </h3>
-  <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-  <br/>
-  <div class="grid gap-8 grid-cols-2">
-    {workshops.map((workshop) => (
-      <WorkshopCard
-      img={workshop.img}
-      imgAlt={workshop.imgAlt}
-      title4={workshop.title4}
-      title5={workshop.title5}
-      description={workshop.description}
-      />
-    ))}
-  </div>
-</section>
-
+</div>
