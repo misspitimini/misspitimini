@@ -1,6 +1,18 @@
 ---
-import galleryEntries from "@data/gallery.json";
+import galleryData from "@data/gallery.json";
 import GalleryCard from './GalleryCard.astro';
+
+// Define la estructura de una entrada de la galería para TypeScript
+interface GalleryEntry {
+  imgSrc: string;
+  imgAlt: string;
+  title: string;
+  description: string;
+  link: string;
+}
+
+// Asigna el tipo al JSON importado para que TypeScript conozca su estructura
+const galleryEntries: GalleryEntry[] = galleryData;
 ---
 <section class="space-y-10">
   <div class="text-center space-y-2 px-6">

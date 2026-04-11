@@ -1,14 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 
-const { card, isLargeCard } = Astro.props;
+// Renombramos `quality` de Astro.props a `propQuality` para evitar el conflicto.
+const { card, isLargeCard, quality = 60 } = Astro.props;
+
+// Ahora podemos desestructurar `quality` del objeto `card` sin problemas.
 const { imgSrc, imgAlt, title, description, link, buttonText } = card;
 ---
 
 <div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
   <div class="aspect-square overflow-hidden shadow-sm group relative">
     <a href={link} rel="noopener noreferrer">
-      {imgSrc && (
+      {imgSrc &&   link !== "/galeria/" && (
         <Image 
           alt={imgAlt} 
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
@@ -17,8 +20,20 @@ const { imgSrc, imgAlt, title, description, link, buttonText } = card;
           widths={[400, 800, 1200, 1600, 2400, 3200]}
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
           format='webp'
-          quality={100}
+          quality={quality}
         />
+      )}
+      {imgSrc &&  link === "/galeria/" && (
+        <Image 
+          alt={imgAlt} 
+          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000" 
+          loading="lazy" 
+          src={imgSrc} 
+          widths={[400, 800, 1200, 1600, 2400, 3200]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+          format='webp'
+          quality={quality}
+          />
       )}
       {isLargeCard && (
         <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
@@ -29,11 +44,10 @@ const { imgSrc, imgAlt, title, description, link, buttonText } = card;
       )}
     </a>
   </div>
-
-  <div class:list={["space-y-2", { "text-center": isLargeCard }]}>
-    <a href={link} rel="noopener noreferrer">
-      <h2 class="text-xl md:text-3xl font-serif italic text-gray-800">{title}</h2>
-      <h3 class="text-[16px] text-floral-dark/60">{description}</h3>
-    </a>
+  <div class="px-2 md:px-0 space-y-3">
+    <h3 class="font-serif text-lg md:text-xl text-center">{title}</h3>
+    <p class="text-center text-sm text-gray-600/90 leading-relaxed tracking-wide">
+      {description}
+    </p>
   </div>
 </div>

@@ -1,13 +1,26 @@
 ---
+// Defino la interfaz de las propiedades que acepta el componente.
+// `class` es opcional, por si no se pasa ninguna clase extra.
 interface Props {
     href: string;
+    class?: string;
 }
 
-const { href, ...rest } = Astro.props;
+// Desestructuro las props. `class` se renombra a `customClass` para evitar 
+// conflictos, ya que "class" es una palabra reservada en JavaScript.
+// `...rest` contendrá cualquier otra propiedad adicional que se pase.
+const { href, class: customClass, ...rest } = Astro.props;
 
+// Aquí defino únicamente las clases base que siempre estarán presentes.
 const baseStyles = "inline-flex items-center gap-1 text-primary hover:underline font-semibold";
 ---
-<a href={href} class:list={[baseStyles]} {...rest}>
+{/*
+  La directiva `class:list` es la forma recomendada por Astro para manejar clases.
+  Toma un array de cadenas de texto y las une. Lo mejor es que ignora 
+  automáticamente los valores "falsy" (como undefined o null), por lo que si
+  `customClass` no se pasa, no se añadirá nada extra.
+*/}
+<a href={href} class:list={[baseStyles, customClass]} {...rest}>
   <span><slot /></span>
   <span class="flex-shrink-0">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

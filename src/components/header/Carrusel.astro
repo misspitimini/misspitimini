@@ -12,26 +12,39 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
 
 ---
 <section class="relative h-[85vh] w-full overflow-hidden">
-  <div class="absolute inset-0">
-    <Image 
-      alt={currentSlide.imgAlt} 
-      class="h-full w-full object-cover object-center" 
-      decoding="async" 
-      loading="lazy" 
-      src={currentSlide.image}
-      widths={[400, 800, 1200, 1600, 2400, 3200]}
-      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-      format='webp'
-      quality={100}
-    />
-  </div>
   {currentSlide.id === 5 && (
     <>
+    <div class="absolute inset-0">
+      <Image 
+        alt={currentSlide.imgAlt} 
+        class="h-full w-full object-contain object-center" 
+        decoding="async" 
+        loading="lazy" 
+        src={currentSlide.image}
+        widths={[400, 800, 1200, 1600, 2400, 3200]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+        format='webp'
+        quality={100}
+      />
+    </div>
     <div class="absolute inset-0"></div>
     <div class="absolute inset-0"></div>
     </>
   )}
   {currentSlide.id !== 5 && (
+    <div class="absolute inset-0">
+      <Image 
+        alt={currentSlide.imgAlt} 
+        class="h-full w-full object-cover object-center" 
+        decoding="async" 
+        loading="lazy" 
+        src={currentSlide.image}
+        widths={[400, 800, 1200, 1600, 2400, 3200]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+        format='webp'
+        quality={60}
+      />
+    </div>
     <div class="absolute inset-0 bg-black/10"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
   )}
@@ -42,7 +55,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
       )}
       {currentSlide.id ===  5 && (
             <>
-            <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3">{currentSlide.title}</h2>
+            <h2 class="uppercase text-white filter drop-shadow-[0_0_10px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-3">{currentSlide.title}</h2>
             <h3 class="text-white filter drop-shadow-[0_0_10px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">{currentSlide.phrase}</h3>
             </>
       )}
