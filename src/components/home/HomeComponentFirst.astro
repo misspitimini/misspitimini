@@ -3,9 +3,6 @@ import { getHomeCards } from '../../utils/homeCards';
 import HomeCard from './HomeCard.astro';
 
 const homeCards = await getHomeCards(['1-bodas', '2-eventos', '3-talleres']);
-
-const smallCards = homeCards.filter(card => !card.isLargeCard);
-const largeCard = homeCards.find(card => card.isLargeCard);
 ---
 
 <section class="space-y-10">
@@ -14,12 +11,9 @@ const largeCard = homeCards.find(card => card.isLargeCard);
     <div class="h-px w-12 bg-primary mx-auto"></div>
     <p class="text-lg text-floral-dark/80 mt-2 hidden">Talleres de arte floral en Madrid y decoración de eventos con flores naturales</p>
   </div>
-  <div class="space-y-12">
-    <div class="grid grid-cols-2 gap-1 md:gap-6">
-      {smallCards.map(card => (
-        <HomeCard card={card} />
-      ))}
-    </div>
-    {largeCard && <HomeCard card={largeCard} isLargeCard={true} />}
+  <div class="grid grid-cols-2 gap-1 md:gap-6">
+    {homeCards.map(card => (
+      <HomeCard card={card} />
+    ))}
   </div>
 </section>

@@ -2,10 +2,11 @@
 import { Image } from 'astro:assets';
 
 // Renombramos `quality` de Astro.props a `propQuality` para evitar el conflicto.
-const { card, isLargeCard, quality = 60 } = Astro.props;
+const { card, quality = 60 } = Astro.props;
 
 // Ahora podemos desestructurar `quality` del objeto `card` sin problemas.
-const { imgSrc, imgAlt, title, description, link, buttonText } = card;
+const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = card;
+
 ---
 
 <div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
@@ -44,9 +45,9 @@ const { imgSrc, imgAlt, title, description, link, buttonText } = card;
       )}
     </a>
   </div>
-  <div class="px-2 md:px-0 space-y-3">
-    <h3 class="font-serif text-lg md:text-xl text-center">{title}</h3>
-    <p class="text-center text-sm text-gray-600/90 leading-relaxed tracking-wide">
+  <div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
+    <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">{title}</h3>
+    <p class="text-[16px] text-floral-dark/60">
       {description}
     </p>
   </div>

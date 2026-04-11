@@ -1,0 +1,9 @@
+---
+import { Image } from 'astro:assets';
+
+// Este componente simplemente pasa todas las props al componente Image de Astro,
+// pero establece unos valores por defecto para la optimización.
+const { ...props } = Astro.props;
+---
+
+<Image {...props} loading="lazy" format='webp' />
