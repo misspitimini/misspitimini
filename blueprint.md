@@ -19,53 +19,58 @@ Esta es una aplicación web estática construida con Astro.js para la diseñador
 
 ## Plan actual
 
-**Solicitud:** Solucionar los errores restantes para completar la refactorización a rutas dinámicas del blog y la galería.
+**Solicitud:** Solucionar el problema de que las imágenes horizontales en el carrusel de la galería se ven cortadas porque la lógica de `onload` no se ejecuta.
 
-**Diagnóstico Final:** La implementación inicial de las rutas dinámicas estaba incompleta. Faltaban los archivos de ruta dinámica `[slug].astro` y, fundamentalmente, los archivos de datos `blog.json` y `gallery.json` de los que dependían, lo que causaba errores en cascada.
+**Diagnóstico:** El atributo `loading="lazy"` en las imágenes principales del carrusel impedía que el navegador las cargara. Dado que el carrusel oculta las imágenes no activas con `transform: translateX(...)`, el navegador nunca consideraba que estuvieran a punto de ser visibles y, por lo tanto, nunca las cargaba. Esto provocaba que el evento `onload` y la comprobación `image.complete` nunca se activaran.
 
 **Plan de ejecución (Completado):**
 
-1.  **Crear archivos de ruta dinámica:** Se crearon los archivos `src/pages/blog/[slug].astro` y `src/pages/galeria/[slug].astro` para generar las páginas individuales.
-2.  **Crear archivos de datos:** Se crearon los archivos `src/data/blog.json` y `src/data/gallery.json` para alojar el contenido del blog y la galería, solucionando el error de datos indefinidos.
-3.  **Verificar la funcionalidad:** Se confirmó que las páginas dinámicas se generan correctamente, resolviendo todos los errores pendientes.
+1.  **Eliminar `loading="lazy"`:** Se ha modificado la función `createImage` en `src/js/galleryDetail.js` para eliminar el atributo `loading="lazy"` de las imágenes que se crean para el carrusel principal. Esto asegura que la carga comience inmediatamente después de asignar el `src`.
+2.  **Mantener la lógica `onload`:** La lógica existente que asigna el manejador `onload` antes que el `src` ahora funciona como se esperaba, ya que la carga de la imagen no está bloqueada.
 
 ## Historial de cambios
+
+### Corrección de Visualización de Imágenes en la Galería
+
+**Plan:**
+
+1.  **Modificar `createImage`:** Se ha modificado la función `createImage` en `src/js/galleryDetail.js`.
+2.  **Añadir lógica de detección de aspecto:** Se ha añadido una lógica que, al cargar cada imagen, comprueba si es más ancha que alta.
+3.  **Aplicar clases dinámicamente:** Se aplican clases de forma dinámica para asegurar que las imágenes horizontales y verticales se muestren correctamente.
+4.  **Corregir activación de `onload`:** Se reordenó la asignación del `src` y se añadió una verificación de `image.complete` para garantizar que la lógica de dimensionamiento se ejecute siempre.
+5.  **Eliminar `loading="lazy"` del carrusel:** Se eliminó el atributo `loading="lazy"` que impedía la carga de las imágenes en el carrusel.
 
 ### Implementación y Corrección de Rutas Dinámicas
 
 **Plan:**
 
 1.  **Refactorización a rutas dinámicas:** Se eliminó la lógica de renderizado del lado del cliente y se reemplazó por la generación de páginas estáticas en tiempo de compilación con `getStaticPaths`.
-2.  **Creación de archivos de ruta `[slug].astro`:** Se añadieron los archivos `src/pages/blog/[slug].astro` y `src/pages/galeria/[slug].astro` que se habían omitido inicialmente.
-3.  **Creación de fuentes de datos JSON:** Se crearon `src/data/blog.json` y `src/data/gallery.json` para proporcionar los datos necesarios a `getStaticPaths`, solucionando la causa raíz de los errores de compilación.
+2.  **Creación de archivos de ruta `[slug].astro`:** Se añadieron los archivos `src/pages/blog/[slug].astro` y `src/pages/galeria/[slug].astro`.
+3.  **Creación de fuentes de datos JSON:** Se crearon `src/data/blog.json` y `src/data/gallery.json`.
 
 ### Optimización SEO de la Página de Inicio
 
 **Plan:**
 
-1.  **Añadir metaetiquetas específicas:** Se han añadido un `title` y `meta description` únicos y descriptivos a la página de inicio (`src/pages/index.astro`) para mejorar su visibilidad en los motores de búsqueda.
+1.  **Añadir metaetiquetas específicas:** Se han añadido un `title` y `meta description` únicos y descriptivos a `src/pages/index.astro`.
 
 ### Solución del fallo de compilación (Imagen faltante)
 
 **Plan:**
 
-1.  **Diagnosticar el fallo de compilación:** La compilación fallaba debido a una imagen que falta en `src/pages/404.astro`.
-2.  **Eliminar temporalmente la imagen:** Se eliminó la imagen de la página `404.astro` para desbloquear la compilación.
+1.  **Diagnosticar y solucionar fallo de compilación:** Se eliminó una imagen faltante en `src/pages/404.astro`.
 
 ### Mejoras en la Interfaz de Usuario (Menú)
 
 **Plan:**
 
-1.  **Corregir parpadeo del menú móvil:** Se simplificó `MenuBar.astro`.
-2.  **Añadir botón de cierre:** Se añadió un botón de cierre en `MobileMenu.astro`.
-3.  **Ajustar layout del encabezado:** Se ajustó la posición del logotipo en `MenuBar.astro` para diferentes tamaños de pantalla.
-4.  **Corregir fondo del menú móvil:** Se simplificaron y recrearon los componentes del encabezado.
-5.  **Eliminar duplicación del menú:** Se refactorizó `Header.astro` para evitar el renderizado duplicado.
+1.  **Corregir parpadeo del menú móvil y añadir botón de cierre.**
+2.  **Ajustar layout del encabezado y fondo del menú.**
+3.  **Eliminar duplicación del menú.**
 
 ### Optimizaciones SEO y de Rendimiento
 
 **Plan:**
 
-1.  **Añadir datos estructurados `LocalBusiness`:** Se creó `src/components/StructuredData.astro`.
-2.  **Activar `loading="lazy"`:** Se añadió la carga diferida a las imágenes.
-3.  **Mejorar textos alternativos:** Se mejoró la accesibilidad de las imágenes.
+1.  **Añadir datos estructurados `LocalBusiness`**.
+2.  **Activar `loading="lazy"` y mejorar textos alternativos**.

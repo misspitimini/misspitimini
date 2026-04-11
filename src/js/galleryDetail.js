@@ -34,17 +34,18 @@ async function renderGalleryDetail() {
 
 function createImage(img, index, container, molde, contentThumb) {
     const item = document.createElement('div');
-    item.className = 'min-w-full box-border';
-    
+    item.className = 'min-w-full h-screen box-border flex items-center justify-center bg-transparent';
+
     const imagen = document.createElement('img');
-    imagen.src = img.url;
+    imagen.classList.add('w-full', 'h-auto', 'object-contain');
     imagen.alt = img.name;
-    imagen.loading = "lazy";
     imagen.classList.add("hidden");
+
+    imagen.loading = "lazy";
+    imagen.src = img.url;
     
     item.appendChild(imagen);
     container.appendChild(item);
-    imagen.classList.remove("hidden");
 
     const clone = molde.cloneNode(true);
 
@@ -64,6 +65,7 @@ function createImage(img, index, container, molde, contentThumb) {
     imgThumb.classList.remove("hidden");
 
     contentThumb.appendChild(clone);
+    imagen.classList.remove("hidden");
 }
 
 async function renderGalleryImages() {
