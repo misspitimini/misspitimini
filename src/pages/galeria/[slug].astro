@@ -1,6 +1,6 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import galleries from '@data/gallery.json';
+import Layout from '@/layouts/Layout.astro';
+import galleries from '@/data/gallery.json';
 
 export async function getStaticPaths() {
     return galleries.map(gallery => ({

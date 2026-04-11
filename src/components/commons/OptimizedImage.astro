@@ -1,9 +1,20 @@
 ---
 import { Image } from 'astro:assets';
+import type { ComponentProps } from 'astro/types';
 
-// Este componente simplemente pasa todas las props al componente Image de Astro,
-// pero establece unos valores por defecto para la optimización.
-const { ...props } = Astro.props;
+// Definimos las props de nuestro componente como las mismas que las del componente Image de Astro.
+// Esto asegura que quien use <OptimizedImage> deba proporcionar todas las props requeridas, como `src` y `alt`.
+type Props = ComponentProps<typeof Image>;
+
+const { ...props } = Astro.props as Props;
 ---
 
-<Image {...props} loading="lazy" format='webp' />
+<!-- 
+  Pasamos nuestras props por defecto primero, y luego las que recibe el componente.
+  Esto permite que si se pasa un `loading` o `format` personalizado, sobreescriba nuestros valores por defecto.
+-->
+<Image 
+  loading="lazy" 
+  format='webp'
+  {...props} 
+/>

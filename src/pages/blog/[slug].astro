@@ -1,6 +1,6 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import blogEntries from "@data/blog.json";
+import Layout from '@/layouts/Layout.astro';
+import blogEntries from "@/data/blog.json";
 
 export async function getStaticPaths() {
     return blogEntries.map(entry => ({

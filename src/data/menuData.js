@@ -1,10 +1,10 @@
-import home from "@assets/images/carrusel/01_misspitimini.jpg";
-import bodas from "@assets/images/carrusel/02_ceremoniaBoda.jpg";
-import eventos from "@assets/images/carrusel/03_eventos.jpg";
-import experiencias from "@assets/images/carrusel/04_cursoFlores.jpg";
-import galeria from "@assets/images/carrusel/05_colllageImagenes.jpg";
-import contacto from "@assets/images/carrusel/06_contacto.jpg";
-import blog from "@assets/images/carrusel/07_blog.jpg";
+import home from "@/assets/images/carrusel/01_misspitimini.jpg";
+import bodas from "@/assets/images/carrusel/02_ceremoniaBoda.jpg";
+import eventos from "@/assets/images/carrusel/03_eventos.jpg";
+import experiencias from "@/assets/images/carrusel/04_cursoFlores.jpg";
+import galeria from "@/assets/images/carrusel/05_colllageImagenes.jpg";
+import contacto from "@/assets/images/carrusel/06_contacto.jpg";
+import blog from "@/assets/images/carrusel/07_blog.jpg";
 
 export const slides = [
     { id: 1, title: 'Home', description:'Home', url: '/', image: home, phrase: 'Disfruta de la magia de las flores', imgAlt: 'Ramo de flores silvestres con colores vivos en un jarrón de cristal, creando un ambiente acogedor y natural.' },

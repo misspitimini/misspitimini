@@ -1,5 +1,5 @@
 ---
-import { Input, Textarea, Button } from "@components/ui/index.ts";
+
 ---
 
 <section class="bg-white dark:bg-gray-900">
@@ -9,19 +9,19 @@ import { Input, Textarea, Button } from "@components/ui/index.ts";
     <form action="#" class="space-y-8">
       <div>
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tu email</label>
-        <Input type="email" id="email" placeholder="nombre@email.com" required />
+        <input type="email" id="email" placeholder="nombre@email.com" required />
       </div>
       <div>
         <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Asunto</label>
-        <Input type="text" id="subject" placeholder="Taller de flores" required />
+        <input type="text" id="subject" placeholder="Taller de flores" required />
       </div>
       <div class="sm:col-span-2">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Tu mensaje</label>
-        <Textarea id="message" rows={6} placeholder="Déjanos un comentario..."></Textarea>
+        <textarea id="message" rows="6" placeholder="Déjanos un comentario..."></textarea>
       </div>
-      <Button type="submit">
+      <button type="submit">
         Enviar Solicitud
-      </Button>
+      </button>
     </form>
   </div>
 </section>

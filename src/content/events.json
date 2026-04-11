@@ -21,7 +21,7 @@
     "href": "/contacto/"
   },
   "image": {
-    "src": "@assets/images/body/eventos/evento.jpg",
+    "src": "@/assets/images/body/eventos/evento.jpg",
     "alt": "Mesa de banquete elegantemente decorada con un centro de mesa floral, velas y vajilla fina para un evento especial."
   }
 }
