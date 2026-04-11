@@ -1,6 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import img from '@assets/images/body/bodas/novia.jpg';
+import novia from '@assets/images/body/bodas/novia.jpg';
+import decoracionFloralEntradaCeremonia from '@assets/images/body/bodas/decoracionFloralEntradaCeremonia.jpg';
+import buffetPostres from '@assets/images/body/bodas/buffetPostres.jpg';
+import detallismoMesaBuffet from '@assets/images/body/bodas/detallismoMesaBuffet.jpg';
+import SaraLaínezSupervisando from '@assets/images/body/bodas/SaraLaínezSupervisando.jpg';
 --- 
 
 <section class="space-y-10 px-6">
@@ -24,16 +28,66 @@ import img from '@assets/images/body/bodas/novia.jpg';
     </div>
   </div>
 </section>
-<div class="grid">
-  <div class="aspect-square overflow-hidden">
-        <Image 
-          alt="Novia sonriente con un ramo de flores en la mano, con un vestido blanco y un velo, en el día de su boda" 
-          class="w-full h-full object-cover" 
-          loading="lazy" 
-          src={img}
-          widths={[400, 800, 1200]}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          format='webp'
-        />
+
+<div class="grid grid-cols-2 gap-2 md:gap-4 px-2 md:px-6">
+  <div class="aspect-square overflow-hidden shadow-sm group relative">
+    <Image 
+      alt="Novia sonriente con un ramo de flores en la mano, con un vestido blanco y un velo, en el día de su boda" 
+      class="w-full h-full object-cover" 
+      loading="lazy" 
+      src={novia}
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      format='webp'
+    />
   </div>
+
+  <div class="aspect-square overflow-hidden shadow-sm group relative">
+    <Image 
+      alt="Entrada a una ceremonia de boda decorada con arcos de flores blancas y rosas y telas vaporosas."
+      class="w-full h-full object-cover" 
+      loading="lazy" 
+      src={decoracionFloralEntradaCeremonia}
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      format='webp'
+    />
+  </div>
+
+  <div class="col-span-2 aspect-square md:aspect-[16/9] overflow-hidden shadow-sm group relative">
+    <Image 
+      alt="Mesa de postres de una boda con un pastel de varios pisos y una gran variedad de dulces, decorada con arreglos florales."
+      class="w-full h-full object-cover" 
+      loading="lazy" 
+      src={buffetPostres}
+      widths={[400, 800, 1200, 1600]}
+      sizes="100vw"
+      format='webp'
+    />
+  </div>
+
+
+    <div class="aspect-square overflow-hidden shadow-sm group relative">
+      <Image 
+        alt="Novia sonriente con un ramo de flores en la mano, con un vestido blanco y un velo, en el día de su boda" 
+        class="w-full h-full object-cover" 
+        loading="lazy" 
+        src={detallismoMesaBuffet}
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        format='webp'
+      />
+    </div>
+  
+    <div class="aspect-square overflow-hidden shadow-sm group relative">
+      <Image 
+        alt="Entrada a una ceremonia de boda decorada con arcos de flores blancas y rosas y telas vaporosas."
+        class="w-full h-full object-cover" 
+        loading="lazy" 
+        src={SaraLaínezSupervisando}
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        format='webp'
+      />
+    </div>
 </div>
