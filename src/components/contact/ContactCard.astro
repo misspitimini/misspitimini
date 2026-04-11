@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  platform: 'facebook' | 'instagram' | 'tiktok' | 'phone' | 'email';
+  link: string;
+  imgSrc: any;
+  alt: string;
+}
+
+const { platform, link, imgSrc, alt } = Astro.props;
+
+const config = {
+  facebook: {
+    label: "Facebook",
+    path: "M28.76,24.46V16.27h2.76l.41-3.21H28.76V11c0-.92.25-1.56,1.58-1.56H32V6.59a22.71,22.71,0,0,0-2.47-.13,3.87,3.87,0,0,0-4.12,4.24v2.35H22.69v3.21h2.75v8.2Z",
+    viewBox: "0 0 9.34 18",
+    transform: "translate(-22.69 -6.46)"
+  },
+  tiktok: {
+    label: "Tiktok",
+    path: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.04 1.62.7 3.08 1.75 4.17 1.13 1.02 2.6 1.68 4.22 1.79v4.03c-1.53-.04-2.97-.39-4.26-1l.06.03c-.63-.3-1.16-.61-1.66-.96l.04.03c-.01 2.92.01 5.84-.02 8.75-.08 1.48-.58 2.83-1.37 3.96l.02-.02c-1.32 1.89-3.46 3.13-5.9 3.21h-.01c-.1 0-.21.01-.33.01-1.38 0-2.68-.38-3.78-1.05l.03.02c-2-1.21-3.39-3.27-3.65-5.68v-.03c-.02-.5-.03-1-.01-1.49.39-3.82 3.59-6.78 7.49-6.78.44 0 .87.04 1.28.11l-.04-.01c.02 1.48-.04 2.96-.04 4.44-.34-.12-.73-.19-1.14-.19-1.49 0-2.77.95-3.24 2.29l-.01.02c-.11.34-.17.73-.17 1.14 0 .16.01.33.03.49l-.00-.02c.27 1.64 1.67 2.87 3.36 2.87.05 0 .1 0 .14 0h-.01c1.17-.04 2.19-.66 2.76-1.59l.01-.01c.21-.3.36-.66.41-1.05v-.01c.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+    viewBox: "0 0 24 24",
+    transform: ""
+  },
+  instagram: {
+    label: "Instagram",
+    path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.058-1.69-.072-4.949-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z",
+    viewBox: "0 0 24 24",
+    transform: ""
+  },
+  phone: {
+    label: link.replace('tel:', ''), // Muestra el número
+    path: "M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z",
+    viewBox: "0 0 24 24",
+    transform: ""
+  },
+  email: {
+    label: link.replace('mailto:', ''), // Muestra el email
+    path: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
+    viewBox: "0 0 24 24",
+    transform: ""
+  }
+};
+
+const current = config[platform];
+const isExternal = !link.startsWith('tel:') && !link.startsWith('mailto:');
+---
+
+<div class="relative overflow-hidden shadow-sm group">
+  <Image 
+    alt={alt} 
+    class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-1000" 
+    src={imgSrc}
+    widths={[200, 400, 600]}
+    sizes="(max-width: 768px) 50vw, 25vw"
+  />
+  <div class="absolute inset-0 flex items-end justify-center pb-4 md:pb-8 bg-black/5">
+    <a 
+      href={link} 
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      class="flex items-center justify-center bg-white text-black font-bold w-[90%] max-w-[220px] py-2.5 rounded-full transition-transform active:scale-95 shadow-lg px-4"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox={current.viewBox} fill="currentColor" class="mr-2 shrink-0">
+        <path d={current.path} transform={current.transform}></path>
+      </svg>
+      <span class="text-[10px] sm:text-xs md:text-sm">
+        {current.label}
+      </span>
+    </a>
+  </div>
+</div>

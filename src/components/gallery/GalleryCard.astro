@@ -14,15 +14,14 @@ const { imgSrc, imgAlt, title, description, link } = Astro.props;
 
 <div class="overflow-hidden w-fit">
   <img class="card-img h-auto w-full object-cover" src={imgSrc} alt={imgAlt} loading="lazy" />
-  
+  <div class="mt-4 mb-4">
+    <CustomLink class="card-link" href={link}>Abrir galería</CustomLink>
+  </div>
   <div class="px-2"> 
     <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800 min-h-[4rem]">{title}</h3>
     <p class="card-description text-[16px] text-floral-dark/60 min-h-[5rem] line-clamp-3">
       {description}
     </p>
-    <div class="mt-4">
-      <CustomLink class="card-link" href={link}>Abrir galería</CustomLink>
-    </div>
   </div>
 </div>
 
