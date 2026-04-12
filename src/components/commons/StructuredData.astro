@@ -1,5 +1,13 @@
+
 ---
-const businessData = {
+interface Props {
+    schema?: any; // Allow passing a specific schema object
+}
+
+const { schema } = Astro.props;
+
+// Default business data if no specific schema is provided
+const defaultBusinessData = {
   "@context": "https://schema.org",
   "@type": "Florist",
   "name": "misspitimini, floral Design by Sara Laínez",
@@ -7,7 +15,7 @@ const businessData = {
   "telephone": "+34684340789",
   "email": "hola@misspitimini.com",
   "url": Astro.site ? Astro.site.toString() : "https://misspitimini.com",
-  "image": "/og.png",
+  "image": new URL("/saraLaínez.jpg", Astro.site).href,
   "openingHours": "Mo-Su 00:00-23:59",
   "address": {
     "@type": "PostalAddress",
@@ -29,6 +37,8 @@ const businessData = {
     "https://www.instagram.com/misspitimini_official/?hl=es"
   ]
 };
+
+const finalSchema = schema || defaultBusinessData;
 ---
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify(businessData)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />

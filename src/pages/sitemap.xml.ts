@@ -1,20 +1,29 @@
+
 import { getCollection } from 'astro:content';
+import galleries from '../content/galleries.json';
 
 const pages = import.meta.glob('../pages/**/*.astro', { eager: true });
 const posts = await getCollection('blog');
 
 export async function GET() {
     const body = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${Object.keys(pages).map(page => `
-    <sitemap>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${Object.keys(pages).map(page => {
+    if (page.includes('slug]')) return '';
+    return `
+    <url>
         <loc>https://misspitimini.com${page.replace('../pages', '').replace('.astro', '')}</loc>
-    </sitemap>`).join('')}
+    </url>`;
+}).join('')}
 ${posts.map(post => `
-    <sitemap>
+    <url>
         <loc>https://misspitimini.com/blog/${post.slug}</loc>
-    </sitemap>`).join('')}
-</sitemapindex>`;
+    </url>`).join('')}
+${galleries.map(gallery => `
+    <url>
+        <loc>https://misspitimini.com${gallery.link}</loc>
+    </url>`).join('')}
+</urlset>`;
 
     return new Response(body, {
         headers: {
