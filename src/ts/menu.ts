@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
             closeButton.addEventListener('click', handleCloseMenu);
             closeButton.addEventListener('touchstart', handleCloseMenu);
     
-            overlay.addEventListener('click', (e) => {
+            overlay.addEventListener('click', (e: Event) => {
                 if (e.target === overlay) { // Click on backdrop
                     handleCloseMenu(e);
                 }
             });
-            overlay.addEventListener('touchstart', (e) => {
+            overlay.addEventListener('touchstart', (e: Event) => {
                  if (e.target === overlay) { // Touch on backdrop
                     handleCloseMenu(e);
                 }
