@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import logo from '@/assets/images/logos/logoReducido.png';
+---
+
+<header id="post-content-header">
+    <div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
+        <a href="/" class="z-50">
+            <Image src={logo} alt="Logotipo" class="w-32 md:w-48 h-auto" />
+        </a>
+        
+        <!-- Center: Logo (mobile) -->
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
+            <a href="/" class="block">
+                    <Image src={logo} alt="Logotipo" class="w-40 h-auto" />
+            </a>
+        </div>
+
+        <div class="absolute right-4">
+            <a href="/galeria/" class="text-gray-600 hover:text-black transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>

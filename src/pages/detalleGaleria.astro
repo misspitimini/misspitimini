@@ -1,33 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '@/assets/images/logos/logoReducido.png';
+import HeaderGalleryDetail from '@/components/header/HeaderGalleryDetail.astro';
 import LayoutGalleryDetail from '@/layouts/LayoutGalleryDetail.astro';
 import Footer from '@/components/footer/Footer.astro';
 ---
 
 <LayoutGalleryDetail title="misspitimini | Galería de trabajos de Sara Laínez" description="Explora la galería de trabajos de diseño floral de misspitimini.">
-	<header id="post-content-header">
-		<div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
-			<a href="/" class="z-50">
-				<Image src={logo} alt="Logotipo" class="w-32 md:w-48 h-auto" />
-			</a>
-			
-			<!-- Center: Logo (mobile) -->
-			<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
-				<a href="/" class="block">
-						<Image src={logo} alt="Logotipo" class="w-40 h-auto" />
-				</a>
-			</div>
-
-			<div class="absolute right-4">
-				<a href="/galeria/" class="text-gray-600 hover:text-black transition-colors">
-					<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</header>
+	<HeaderGalleryDetail/>
 	<main id="post-content-main" x-data="{ 
         activeSlideGallery: 0,
         get galleryLength() { 
@@ -105,14 +83,14 @@ import Footer from '@/components/footer/Footer.astro';
 	@touchstart="touchstartX = $event.touches[0].screenX;"
     @touchend="touchendX = $event.changedTouches[0].screenX; handleGesture()"
 	>
-	<hr style="margin-bottom:2px; padding-bottom:2px"/>
+		<hr style="margin-bottom:2px; padding-bottom:2px"/>
 		<div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
-        <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-        </button>
-        <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-        </button>
+			<button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+			</button>
+			<button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+			</button>
 		</div>
 		<div class="flex flex-col items-center gap-7">
             <h1 class="card-title">
