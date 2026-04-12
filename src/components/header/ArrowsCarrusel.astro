@@ -53,12 +53,13 @@ const nextUrl = slides[nextIndex].url;
       }
     }
   
+    const mainElement = document.querySelector('main');
     // Escuchar eventos en el documento o en un contenedor específico
-    document.addEventListener('touchstart', e => {
+    mainElement.addEventListener('touchstart', e => {
       touchstartX = e.changedTouches[0].screenX;
     }, { passive: true });
   
-    document.addEventListener('touchend', e => {
+    mainElement.addEventListener('touchend', e => {
       touchendX = e.changedTouches[0].screenX;
       handleGesture();
     }, { passive: true });
