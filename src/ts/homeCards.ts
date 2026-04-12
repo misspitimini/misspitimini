@@ -1,13 +1,13 @@
 import { getCollection } from 'astro:content';
 
-const images = import.meta.glob('/src/assets/images/carrusel/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<ImageMetadata>('/src/assets/images/carrusel/*.{jpeg,jpg,png,gif}');
 
 /**
  * Fetches and processes home cards from the content collection.
  * @param {string[]} [filterIds] - Optional array of card IDs to fetch.
  * @returns {Promise<any[]>} Processed card data with image sources.
  */
-export async function getHomeCards(filterIds) {
+export async function getHomeCards(filterIds?: string[]): Promise<any[]> {
   const homeCardsData = await getCollection('homecards', ({ id }) => {
     if (!filterIds) return true; // Return all if no filter is provided
     return filterIds.includes(id);

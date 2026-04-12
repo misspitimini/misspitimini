@@ -1,4 +1,4 @@
-import { UrlsApi } from './urls.js';
+import { UrlsApi } from '@/ts/urls.ts';
 
 import fm from 'front-matter';
 import { marked } from 'marked';

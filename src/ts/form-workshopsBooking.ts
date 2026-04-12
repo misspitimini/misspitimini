@@ -1,7 +1,7 @@
-import { UrlsApi } from './urls.js';
+import { UrlsApi } from './urls.ts';
 
 document.addEventListener('DOMContentLoaded', () => {
-    let formulario = document.getElementById('formularioContacto');
+    let formulario = document.getElementById('formularioReserva');
     if (!formulario) return;
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evita que la página se refresque
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const datos = Object.fromEntries(Object.entries(campos).map(([k, v]) => [k, v.value.trim()]));
         
         try {
-            const urlDominio = UrlsApi.SEND_FORM;
+            const urlDominio = UrlsApi.SEND_BOOKING_FORM;
             const respuesta = await fetch(urlDominio, {
                 method: 'POST',
                 headers: {
@@ -70,19 +70,11 @@ function validarFormulario(campos) {
         quitarError('error-nombre');
     }
 
-    // 2. Validar Email O Teléfono (Al menos uno debe existir)
-    if (!campos.email.value.trim() && !campos.telefono.value.trim()){
-        mostrarError( 'error-email','Debes dejarnos al menos una forma de contacto (Email o Teléfono).'); 
-        mostrarError('error-telefono','Debes dejarnos al menos una forma de contacto (Email o Teléfono).');
-        marcarInputError(campos.email);
+    if (!campos.telefono.value.trim()){
+        mostrarError( 'error-telefono','Este campo es obligatorio.');
         marcarInputError(campos.telefono);
-        return false; 
-    } else {
-        quitarError('error-email');
-        quitarError('error-telefono');
-    }
-    
-    if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
+        return false;
+    } else if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
         mostrarError('error-telefono','El teléfono introducido no es válido.');
         marcarInputError(campos.telefono);
         return false; 
@@ -90,20 +82,16 @@ function validarFormulario(campos) {
         quitarError('error-telefono');
     }
 
-    if (campos.email.value.trim() && !validarEmail(campos.email.value.trim())){
+    if (!campos.email.value.trim()){
+        mostrarError( 'error-email','Este campo es obligatorio.');
+        marcarInputError(campos.email);
+        return false;
+    } else if (!validarEmail(campos.email.value.trim())){
         mostrarError( 'error-email','El email introducido no es válido.');
         marcarInputError(campos.email);
-        return false; 
-    } else {
-        quitarError('error-email');
-    }
-
-    if (!campos.mensaje.value.trim()) {
-        mostrarError('error-mensaje', 'Este campo es obligatorio.');
-        marcarInputError(campos.mensaje);
         return false;
     } else {
-        quitarError('error-mensaje');
+        quitarError('error-email');
     }
 
     if (campos.privacy.checked === false) {
