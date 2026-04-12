@@ -2,12 +2,29 @@
 import Layout from '@/layouts/Layout.astro';
 import galleries from '@/data/gallery.json';
 
+// 1. Definimos la "forma" de un objeto de la galería.
+interface Gallery {
+  slug: string;
+  title: string;
+  description: string;
+  images: {
+    src: string;
+    alt: string;
+  }[];
+}
+
 export async function getStaticPaths() {
-    return galleries.map(gallery => ({
+    // 2. Le decimos a TypeScript que `galleries` es un array de `Gallery`
+    return (galleries as Gallery[]).map(gallery => ({
         params: { slug: gallery.slug },
         props: { gallery },
     }));
 }
+
+// 3. Tipamos los props que recibe la página. Astro usará esto para `Astro.props`.
+export type Props = {
+  gallery: Gallery;
+};
 
 const { gallery } = Astro.props;
 ---

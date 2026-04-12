@@ -2,12 +2,27 @@
 import Layout from '@/layouts/Layout.astro';
 import blogEntries from "@/data/blog.json";
 
+// 1. Definimos la "forma" de una entrada de blog.
+interface BlogEntry {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  content: string;
+}
+
 export async function getStaticPaths() {
-    return blogEntries.map(entry => ({
+    // 2. Le decimos a TypeScript que `blogEntries` es un array de `BlogEntry`
+    return (blogEntries as BlogEntry[]).map(entry => ({
         params: { slug: entry.slug },
         props: { entry },
     }));
 }
+
+// 3. Tipamos los props que recibe la página.
+export type Props = {
+  entry: BlogEntry;
+};
 
 const { entry } = Astro.props;
 ---
