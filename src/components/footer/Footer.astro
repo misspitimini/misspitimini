@@ -6,14 +6,15 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-    <div class="pt-8"></div>
-    <a href="#" target="_self" rel="noopener noreferrer" class="inline-flex items-center">
-        <Image src={logo} alt="Logotipo de Misspitimini" class="h-6 w-auto object-contain" widths={[100, 200]} formats={['avif', 'webp']} />
-    </a>
+    <div class="py-8 text-center">
+        <a href="/" class="inline-flex items-center">
+            <Image src={logo} alt="Logotipo de Misspitimini" class="h-8 w-auto object-contain" width={200} format="webp" />
+        </a>
     </div>
+
     <SocialNetworks />
 
-    <div class="flex flex-col items-center gap-2 border-t border-gray-100 pt-6">
+    <div class="flex flex-col items-center gap-2 border-t border-gray-100 pt-6 mt-8">
         <p class="text-lg font-serif italic text-gray-800">
             misspitimini <span class="text-gray-400 font-sans not-italic text-sm mx-2">|</span> Madrid
         </p>
