@@ -13,11 +13,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     alpine(),
-    sitemap({
-      filter: (page) =>
-        page !== 'https://misspitimini.com/blog/' &&
-        !page.startsWith('https://misspitimini.com/blog/'),
-    }),
+    sitemap(),
   ],
   vite: {
     resolve: {

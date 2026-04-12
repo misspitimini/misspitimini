@@ -5,9 +5,10 @@ export interface Props {
 	title: string;
 	description: string;
     image?: string; // Add optional image prop for social sharing
+    keywords?: string; // Add optional keywords prop
 }
 
-const { title, description, image = '/default-social-image.png' } = Astro.props; // Provide a default image
+const { title, description, image = '/default-social-image.png', keywords } = Astro.props; // Provide a default image
 
 // Construct the full URL for the image
 const imageUrl = new URL(image, Astro.site).href;
@@ -23,6 +24,7 @@ const imageUrl = new URL(image, Astro.site).href;
 		<!-- Primary SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
+        {keywords && <meta name="keywords" content={keywords} />}
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
         <meta name="robots" content="index, follow" />
 

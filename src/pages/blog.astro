@@ -8,10 +8,14 @@ import Footer from '@/components/footer/Footer.astro';
 const href="/blog/";
 ---
 
-<LayoutBlog title="misspitimini | Blog de Sara Laínez" description="Descubre artículos sobre diseño floral, bodas, eventos y mucho más.">
+<LayoutBlog 
+    title="Blog de Diseño Floral | Sara Laínez" 
+    description="Explora el blog de Sara Laínez para obtener ideas y consejos sobre diseño floral, decoración de bodas, eventos y talleres creativos en Madrid."
+    keywords="blog, diseño floral, bodas, eventos, talleres, Madrid, Sara Laínez, inspiración, consejos"
+>
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
-		<h1 class="hidden">Diseño Floral para bodas, evento y experiencias en Madrid</h1>
+		<h1 class="sr-only">Diseño Floral para bodas, evento y experiencias en Madrid</h1>
 		<Carrusel href={href} />
 		<div class="px-0 py-10 space-y-12">
 			<BlogComponent />
