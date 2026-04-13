@@ -1,14 +1,74 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
-// Images for corporate events theme
-import centroMesaNavidad from '@/assets/images/body/eventos/centroMesaNavidad.jpg';
-import centroMesaAzul from '@/assets/images/body/eventos/centroMesaAzul.jpg';
-import centroMesaCalabazas from '@/assets/images/body/eventos/centroMesaCalabazas.jpg';
-import centroMesaFlorRoja from '@/assets/images/body/eventos/centroMesaFlorRoja.jpg';
-import centroMesasFloresBlancas from '@/assets/images/body/eventos/centroMesasFloresBlancas.jpg';
-import centroMesaVelas from '@/assets/images/body/eventos/centroMesaVelas.jpg';
-import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
+import type { ImageMetadata } from 'astro';
+import { promises as fs } from 'fs';
+import path from 'path';
+
+// --- Data Loading ---
+
+// Define a type for our image data structure for better type safety
+type ImageData = {
+  [key: string]: { src: string; alt: string; };
+};
+
+let imageData: ImageData = {};
+
+// 1. Read and parse the JSON file securely
+try {
+  const jsonPath = path.resolve(process.cwd(), 'src/data/events-images.json');
+  const jsonContent = await fs.readFile(jsonPath, 'utf-8');
+  imageData = JSON.parse(jsonContent);
+} catch (error) {
+  console.error("Failed to read or parse src/data/events-images.json", error);
+  // If the JSON is mission-critical, you might want to throw the error
+  // or handle it by providing default empty data.
+}
+
+// 2. Get a map of all possible images, importing only the default export (the image data)
+const imageModules = import.meta.glob<ImageMetadata>(
+  '/src/assets/images/body/eventos/*.{jpeg,jpg,png,gif}',
+  { import: 'default' }
+);
+
+// 3. Helper function to dynamically and safely load image metadata
+async function loadImage(imageName: string | undefined): Promise<ImageMetadata | null> {
+  // Safety check: Do not proceed if imageName is not provided
+  if (!imageName) {
+    console.error("Attempted to load an image without a name (imageName is undefined).");
+    return null;
+  }
+
+  const imagePath = `/src/assets/images/body/eventos/${imageName}`;
+  const loadImageModule = imageModules[imagePath];
+
+  if (loadImageModule) {
+    try {
+      const image = await loadImageModule();
+      // Runtime check to ensure we have valid image metadata
+      if (image && typeof image === 'object' && 'src' in image) {
+        return image;
+      }
+    } catch (e) {
+      console.error(`Error loading image module at path: ${imagePath}`, e);
+      return null;
+    }
+  }
+  
+  console.error(`Image module not found at path: ${imagePath}`);
+  return null; 
+}
+
+// 4. Load all the images defined in the JSON file
+const loadedImages = {
+  fiestasPrivadas: await loadImage(imageData.fiestasPrivadas?.src),
+  galeria1: await loadImage(imageData.galeria1?.src),
+  galeria2: await loadImage(imageData.galeria2?.src),
+  lanzamientos: await loadImage(imageData.lanzamientos?.src),
+  proceso: await loadImage(imageData.proceso?.src),
+  banner1: await loadImage(imageData.banner1?.src),
+  banner2: await loadImage(imageData.banner2?.src),
+};
 --- 
 
 <div class="space-y-12">
@@ -17,12 +77,14 @@ import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
   <section class="space-y-6">
     <div class="px-6">
       <div class="text-center space-y-2">
-        <h2 class="text-3xl font-serif">Decoración Floral para Eventos Corporativos en Madrid</h2>
+        <h2 class="text-3xl font-serif">Decoración Floral para Eventos Corporativos</h2>
         <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
       </div>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p set:html={'<strong>Sara Laínez</strong> es especialista en la <strong>decoración floral para eventos de empresa y celebraciones privadas en ciudades como Madrid</strong>. Transforma espacios para reflejar la identidad de tu marca y crear una atmósfera inolvidable. Nuestro trabajo consiste en interpretar la esencia de cada celebración, ya sea un:'} />
+        <p>
+          <strong>Sara Laínez</strong> es especialista en la <strong>decoración floral para eventos de empresa y celebraciones privadas en ciudades como Madrid</strong>. Transforma espacios para reflejar la identidad de tu marca y crear una atmósfera inolvidable. Nuestro trabajo consiste en interpretar la esencia de cada celebración, ya sea un:
+        </p> 
         
         <ul class="list-disc space-y-4 pl-5">
           <li><strong>Eventos Corporativos y de Empresa:</strong> Desde juntas directivas, congresos o galas de premios, elevamos el estándar de tu evento corporativo. El diseño floral se convierte en una herramienta de comunicación estratégica que refuerza los valores y el prestigio de tu marca.</li>
@@ -74,9 +136,11 @@ import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
                     <li><strong>Eventos en casa:</strong> Llevamos la magia de nuestro diseño floral a la comodidad de tu hogar, transformando tu espacio para crear una celebración única e íntima.</li>
                 </ul>
             </div>
-            <div class="md:w-1/2">
-                <OptimizedImage alt="Tarta amarilla decorada con flores para una celebración privada" class="w-full h-auto object-cover rounded-lg shadow-lg" src={tartaAmarilla} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
-            </div>
+            {loadedImages.fiestasPrivadas && imageData.fiestasPrivadas && (
+              <div class="md:w-1/2">
+                  <OptimizedImage alt={imageData.fiestasPrivadas.alt} class="w-full h-auto object-cover" src={loadedImages.fiestasPrivadas} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
+            )}
         </div>
     </div>
   </section>
@@ -90,10 +154,9 @@ import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
       </div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-6">
-      <OptimizedImage alt="Centro de mesa con flores azules para evento corporativo" class="w-full h-auto object-cover rounded-lg shadow-md" src={centroMesaAzul} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />
-      <OptimizedImage alt="Centro de mesa con calabazas para evento de otoño" class="w-full h-auto object-cover rounded-lg shadow-md" src={centroMesaCalabazas} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />
-      <OptimizedImage alt="Centro de mesa con flores blancas para boda o evento elegante" class="w-full h-auto object-cover rounded-lg shadow-md" src={centroMesasFloresBlancas} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
+      {loadedImages.galeria1 && imageData.galeria1 && <OptimizedImage alt={imageData.galeria1.alt} class="w-full h-auto object-cover" src={loadedImages.galeria1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
+      {loadedImages.galeria2 && imageData.galeria2 && <OptimizedImage alt={imageData.galeria2.alt} class="w-full h-auto object-cover" src={loadedImages.galeria2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
     </div>
   </section>
 
@@ -115,30 +178,37 @@ import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
                     <li><strong>Kits de prensa y regalos:</strong> Añadimos un toque floral exclusivo a los obsequios para influencers y periodistas, reforzando el recuerdo de marca.</li>
                 </ul>
             </div>
-            <div class="md:w-1/2">
-                <OptimizedImage alt="Centro de mesa con velas para un ambiente íntimo y acogedor" class="w-full h-auto object-cover rounded-lg shadow-lg" src={centroMesaVelas} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
-            </div>
+            {loadedImages.lanzamientos && imageData.lanzamientos && (
+              <div class="md:w-1/2">
+                  <OptimizedImage alt={imageData.lanzamientos.alt} class="w-full h-auto object-cover" src={loadedImages.lanzamientos} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
+            )}
         </div>
     </div>
   </section>
 
   <!-- Proceso Section -->
   <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-6">
-      <div class="text-center">
-        <h3 class="text-2xl font-serif">Nuestro Proceso de Diseño</h3>
-        <div class="h-px w-10 bg-primary mx-auto mt-2"></div>
-      </div>
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2">
-          <OptimizedImage alt="Centro de mesa con flor roja para un toque de color y pasión" class="w-full h-auto object-cover rounded-lg shadow-lg" src={centroMesaFlorRoja} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+    <div class="max-w-5xl mx-auto px-6 space-y-8">
+        <div class="text-center">
+            <h2 class="text-3xl font-serif">Nuestro Proceso de Diseño</h2>
+            <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
         </div>
-        <div class="md:w-1/2 text-floral-dark/80 leading-relaxed space-y-3">
-          <p><strong>1. Consulta Inicial:</strong> Todo comienza con una conversación para conocer tu empresa, los objetivos del evento y la imagen de marca que deseas proyectar.</p>
-          <p><strong>2. Propuesta de Diseño:</strong> Creamos un concepto de diseño floral a medida, incluyendo bocetos y un desglose detallado de los arreglos propuestos.</p>
-          <p><strong>3. Ejecución y Montaje:</strong> Nuestro equipo se encarga de la logística completa, desde la selección de las flores más frescas hasta el montaje y desmontaje en el lugar del evento, garantizando una ejecución impecable.</p>
+        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+          {loadedImages.proceso && imageData.proceso && (
+            <div class="md:w-1/2">
+              <OptimizedImage alt={imageData.proceso.alt} class="w-full h-auto object-cover" src={loadedImages.proceso} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+            </div>
+          )}       
+            <div class="md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify">
+                <ul class="list-disc space-y-3 pl-5">
+                    <li><strong>Consulta Inicial:</strong> Todo comienza con una conversación para conocer tu empresa, los objetivos del evento y la imagen de marca que deseas proyectar.</li>
+                    <li><strong>Propuesta de Diseño:</strong> Creamos un concepto de diseño floral a medida, incluyendo bocetos y un desglose detallado de los arreglos propuestos.</li>
+                    <li><strong>Ejecución y Montaje:</strong> Nuestro equipo se encarga de la logística completa, desde la selección de las flores más frescas hasta el montaje y desmontaje en el lugar del evento, garantizando una ejecución impecable.</li>
+                </ul>
+            </div>
+
         </div>
-      </div>
     </div>
   </section>
 
@@ -154,13 +224,15 @@ import tartaAmarilla from '@/assets/images/body/eventos/tartaAmarilla.jpg';
     </div>
   </section>
   
-  <div class="w-full pt-4">
-    <OptimizedImage alt="Centro de mesa navideño para eventos corporativos en diciembre" class="w-full h-full object-cover" src={centroMesaNavidad} widths={[400, 800, 1200, 1600]} sizes="100vw" />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
+    {loadedImages.banner1 && imageData.banner1 && <OptimizedImage alt={imageData.banner1.alt} class="w-full h-auto object-cover" src={loadedImages.banner1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
+    {loadedImages.banner2 && imageData.banner2 && <OptimizedImage alt={imageData.banner2.alt} class="w-full h-auto object-cover" src={loadedImages.banner2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
   </div>
+
   
-  <div class="text-center py-10">
-      <p class="text-lg text-floral-dark/80">¿Listo para llevar tu evento al siguiente nivel?</p>
-      <CustomLink href="/contacto/" design="button" text="Solicita una propuesta" class="mt-4"/>
+  <div class="py-10">
+      <p class="text-lg text-floral-dark/80"> ¿Listo para llevar tu evento al siguiente nivel? Cuéntanos tu idea y nuestro equipo de expertos en diseño floral te enviará una propuesta personalizada. Hablemos,</p>
+      <CustomLink href="/contacto/">contacta con nosotros</CustomLink>
   </div>
 
 </div>

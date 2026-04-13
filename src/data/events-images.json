@@ -1,0 +1,30 @@
+{
+  "fiestasPrivadas": {
+    "src": "centroMesaCalabazas.jpg",
+    "alt": "Centro de mesa con calabazas para evento de otoño"
+  },
+  "galeria1": {
+    "src": "centroMesaAzul.jpg",
+    "alt": "Centro de mesa con flores azules para evento corporativo"
+  },
+  "galeria2": {
+    "src": "tartaAmarilla.jpg",
+    "alt": "Tarta amarilla decorada con flores para una celebración privada"
+  },
+  "lanzamientos": {
+    "src": "centroMesaNavidad.jpg",
+    "alt": "Centro de mesa navideño para eventos corporativos en diciembre"
+  },
+  "proceso": {
+    "src": "centroMesaFlorRoja.jpg",
+    "alt": "Centro de mesa con flor roja para un toque de color y pasión"
+  },
+  "banner1": {
+    "src": "centroMesasFloresBlancas.jpg",
+    "alt": "Centro de mesa con flores blancas para boda o evento elegante"
+  },
+  "banner2": {
+    "src": "centroMesaVelas.jpg",
+    "alt": "Centro de mesa con velas para un ambiente íntimo y acogedor"
+  }
+}
