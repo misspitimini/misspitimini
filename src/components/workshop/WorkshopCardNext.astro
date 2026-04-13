@@ -29,8 +29,7 @@ if (!allWorkshopImages[imagePath]) {
 const { default: imageSrc } = await allWorkshopImages[imagePath]();
 ---
 
-<section class="space-y-10">
-<div class="space-y-12">
+<section class="space-y-10 border border-slate-300 pt-4">
   <div class="space-y-4">
     <h3 class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
     <p class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60">{date}</p>
@@ -59,5 +58,4 @@ const { default: imageSrc } = await allWorkshopImages[imagePath]();
       </div>
     </div>
   </div>
-</div>
 </section>
