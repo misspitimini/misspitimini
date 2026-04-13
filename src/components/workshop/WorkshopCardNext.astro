@@ -1,32 +1,24 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-import { getEntry } from 'astro:content';
+import OptimizedImage from "@/components/commons/OptimizedImage.astro";
+import { getNextWorkshop } from "@/utils/workshopLoader";
 
-// Fetch the content entry for the next workshop. 
-const nextWorkshop = await getEntry('nextworkshop', 'proxima-experiencia');
+// Fetch all the data for the next workshop using the external loader
+const nextWorkshopData = await getNextWorkshop();
 
-// Handle the case where the entry is not found.
-if (!nextWorkshop) {
-  throw new Error(
-    "The content entry for 'proxima-experiencia' was not found in the 'next-workshop' collection. Please ensure the file exists at 'src/content/next-workshop/proxima-experiencia.json'."
-  );
+// If no upcoming workshop is found, this component will not render anything.
+if (!nextWorkshopData) {
+    return null;
 }
 
-// Now that we've checked, TypeScript knows nextWorkshop is defined.
-const { imgAlt, date, title4, title5, description, image } = nextWorkshop.data;
-
-// Correctly type the glob import: the resolved module has a `default` property.
-const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}');
-
-const imagePath = `/src/assets/images/body/experiencias/${image}`;
-
-if (!allWorkshopImages[imagePath]) {
-  throw new Error(`Image not found: ${imagePath}. Check the image name in proxima-experiencia.json and ensure it exists.`);
-}
-
-// Use destructuring to get the default export, which is the ImageMetadata object.
-const { default: imageSrc } = await allWorkshopImages[imagePath]();
+// Destructure the data for easier use in the template
+const {
+    imageSrc,
+    imgAlt,
+    date,
+    title4,
+    title5,
+    description
+} = nextWorkshopData;
 ---
 
 <section class="space-y-10 border border-slate-300 pt-4">
@@ -39,7 +31,7 @@ const { default: imageSrc } = await allWorkshopImages[imagePath]();
       {description}
     </p>
     <div class="relative overflow-hidden shadow-sm group">
-      <Image 
+      <OptimizedImage 
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
         loading="lazy" 
         src={imageSrc} 
