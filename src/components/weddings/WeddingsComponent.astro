@@ -1,12 +1,17 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import imageData from '@/data/weddings-images.json';
+import { loadImage } from '@/utils/imageLoader';
 
-import ramoNovia from '@/assets/images/body/bodas/ramoNovia.jpg';
-import decoracionFloralEntradaCeremonia from '@/assets/images/body/bodas/decoracionFloralEntradaCeremonia.jpg';
-import buffetPostres from '@/assets/images/body/bodas/buffetPostres.jpg';
-import detallismoMesaBuffet from '@/assets/images/body/bodas/detallismoMesaBuffet.jpg';
-import SaraLaínezSupervisando from '@/assets/images/body/bodas/SaraLaínezSupervisando.jpg';
-import novia from '@/assets/images/body/bodas/novia.jpg';
+// Load all images for this component using the centralized loader.
+const loadedImages = {  
+  novia: await loadImage('weddings', imageData.novia?.src),
+  ramoNovia: await loadImage('weddings', imageData.ramoNovia?.src),
+  decoracionFloralEntradaCeremonia: await loadImage('weddings', imageData.decoracionFloralEntradaCeremonia?.src),
+  buffetPostres: await loadImage('weddings', imageData.buffetPostres?.src),
+  detallismoMesaBuffet: await loadImage('weddings', imageData.detallismoMesaBuffet?.src),
+  SaraLaínezSupervisando: await loadImage('weddings', imageData.SaraLaínezSupervisando?.src)
+};
 --- 
 
 <div class="space-y-12">
@@ -52,13 +57,16 @@ import novia from '@/assets/images/body/bodas/novia.jpg';
       </div>
     </div>
     <div class="w-full pt-4">
-      <OptimizedImage 
-        alt="Novia sonriente con un ramo de flores en la mano, con un vestido blanco y un velo, en el día de su boda" 
-        class="w-full h-full object-cover" 
-        src={novia}
-        widths={[400, 800, 1200, 1600]}
-        sizes="100vw"
-      />
+      {loadedImages.novia && imageData.novia && (
+        <OptimizedImage 
+          alt={imageData.novia.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.novia} 
+          widths={[400, 800, 1200, 1600]}
+          sizes="100vw"
+        />
+      )}
+
     </div>
   </section>
 
@@ -86,20 +94,24 @@ import novia from '@/assets/images/body/bodas/novia.jpg';
       </div>
     </div>
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
+      {loadedImages.ramoNovia && imageData.ramoNovia && (
         <OptimizedImage 
-          alt="Novia sonriente con un ramo de flores en la mano, con un vestido blanco y un velo, en el día de su boda" 
-          class="w-full aspect-square object-cover" 
-          src={ramoNovia}
-          widths={[400, 800, 1200]}
+          alt={imageData.ramoNovia.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.ramoNovia} 
+          widths={[400, 800, 1200, 1600]}
           sizes="50vw"
         />
+      )}
+      {loadedImages.decoracionFloralEntradaCeremonia && imageData.decoracionFloralEntradaCeremonia && (
         <OptimizedImage 
-          alt="Fotografía de espaldas de una novia y su padrino frente a la entrada de una iglesia o recinto histórico." 
-          class="w-full aspect-square object-cover" 
-          src={decoracionFloralEntradaCeremonia}
-          widths={[400, 800, 1200]}
+          alt={imageData.decoracionFloralEntradaCeremonia.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.decoracionFloralEntradaCeremonia} 
+          widths={[400, 800, 1200, 1600]}
           sizes="50vw"
         />
+      )}
     </div>
   </section>
 
@@ -127,13 +139,15 @@ import novia from '@/assets/images/body/bodas/novia.jpg';
       </div>
     </div>
     <div class="w-full pt-4">
-      <OptimizedImage 
-        alt="Mesa de postres de una boda con un pastel de varios pisos y una gran variedad de dulces, decorada con arreglos florales."
-        class="w-full h-auto object-cover" 
-        src={buffetPostres}
-        widths={[400, 800, 1200, 1600]}
-        sizes="100vw"
-      />
+      {loadedImages.buffetPostres && imageData.buffetPostres && (
+        <OptimizedImage 
+          alt={imageData.buffetPostres.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.buffetPostres} 
+          widths={[400, 800, 1200, 1600]}
+          sizes="100vw"
+        />
+      )}
     </div>
   </section>
 
@@ -159,20 +173,24 @@ import novia from '@/assets/images/body/bodas/novia.jpg';
       </div>
     </div>
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
+      {loadedImages.detallismoMesaBuffet && imageData.detallismoMesaBuffet && (
         <OptimizedImage 
-          alt="Colaboradora de Sara Laínez organizando con delicadeza una mesa de postres de lujo." 
-          class="w-full aspect-square object-cover" 
-          src={detallismoMesaBuffet}
-          widths={[400, 800, 1200]}
+          alt={imageData.detallismoMesaBuffet.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.detallismoMesaBuffet} 
+          widths={[400, 800, 1200, 1600]}
           sizes="50vw"
         />
+      )}
+      {loadedImages.SaraLaínezSupervisando && imageData.SaraLaínezSupervisando && (
         <OptimizedImage 
-          alt="Retrato de medio cuerpo de Sara Laínez en un entorno de evento elegante."
-          class="w-full aspect-square object-cover" 
-          src={SaraLaínezSupervisando}
-          widths={[400, 800, 1200]}
+          alt={imageData.SaraLaínezSupervisando.alt} 
+          class="w-full h-full object-cover" 
+          src={loadedImages.SaraLaínezSupervisando} 
+          widths={[400, 800, 1200, 1600]}
           sizes="50vw"
         />
+      )}
     </div>
   </section>
 
