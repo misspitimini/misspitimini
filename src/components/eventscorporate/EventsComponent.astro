@@ -100,8 +100,8 @@ const loadedImages = {
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
-      {loadedImages.galeria1 && imageData.galeria1 && <OptimizedImage alt={imageData.galeria1.alt} class="w-full h-auto object-cover" src={loadedImages.galeria1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
-      {loadedImages.galeria2 && imageData.galeria2 && <OptimizedImage alt={imageData.galeria2.alt} class="w-full h-auto object-cover" src={loadedImages.galeria2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
+      {loadedImages.galeria1 && imageData.galeria1 && <OptimizedImage alt={imageData.galeria1.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
+      {loadedImages.galeria2 && imageData.galeria2 && <OptimizedImage alt={imageData.galeria2.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
     </div>
   </section>
 
