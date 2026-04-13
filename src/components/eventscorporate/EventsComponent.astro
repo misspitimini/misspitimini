@@ -1,7 +1,6 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
-import content from '@/content/events.json';
 import img from '@/assets/images/body/eventos/evento.jpg';
 ---
 
@@ -11,29 +10,30 @@ import img from '@/assets/images/body/eventos/evento.jpg';
   <section class="space-y-6">
     <div class="px-6">
       <div class="text-center space-y-2">
-        <h2 class="text-3xl font-serif">{content.title}</h2>
+        <h2 class="text-3xl font-serif">Decoración Floral profesional para eventos corporativos, lanzamientos y celebraciones privadas en Madrid. Diseño exclusivo por Sara Laínez.</h2>
         <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
       </div>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p set:html={content.intro} />
-        
+        <p>
+          <strong>Sara Laínez</strong> es especialista en la <strong>decoración floral para eventos de empresa y celebraciones privadas en ciudades como Madrid</strong>. Transforma espacios para reflejar la identidad de tu marca y crear una atmósfera inolvidable. Nuestro trabajo consiste en interpretar la esencia de cada celebración, ya sea un:
+        </p>
         <ul class="list-disc space-y-4 pl-5">
-          {content.eventTypes.map(event => (
-            <li><strong>{event.title}:</strong> {event.description}</li>
-          ))}
+          <li><strong>Eventos Corporativos y de Empresa:</strong> Desde juntas directivas, congresos o galas de premios, elevamos el estándar de tu evento corporativo. El diseño floral se convierte en una herramienta de comunicación estratégica que refuerza los valores y el prestigio de tu marca.</li>
+          <li><strong>Lanzamientos de Producto y Prensa:</strong> Creamos un impacto visual memorable para tu nuevo producto. Diseñamos ambientes florales que capturan la atención de los medios y destacan las cualidades de tu lanzamiento en Madrid, generando una experiencia única para los asistentes.</li>
+          <li><strong>Fiestas Privadas y Celebraciones:</strong> Ya sea un aniversario, un homenaje íntimo o una cena exclusiva, nuestras composiciones florales crean un refugio de belleza y exclusividad, convirtiendo cualquier celebración en una experiencia de lujo inolvidable.</li>
         </ul>
 
         <p>
-          {content.cta.text}
-          <CustomLink href={content.cta.href} set:html={content.cta.linkText} />.
+          ¿Listo para llevar tu evento al siguiente nivel? Cuéntanos tu idea y nuestro equipo de expertos en diseño floral te enviará una propuesta personalizada. Hablemos,
+          <CustomLink href="/contacto/" set:html={'<strong>contacta con nosotros</strong>'} />.
         </p>
       </div>
     </div>
     
     <div class="w-full pt-4">
       <OptimizedImage 
-        alt={content.image.alt} 
+        alt="Mesa de banquete elegantemente decorada con un centro de mesa floral, velas y vajilla fina para un evento especial en Madrid." 
         class="w-full h-full object-cover" 
         src={img}
         widths={[400, 800, 1200, 1600]}
@@ -41,5 +41,6 @@ import img from '@/assets/images/body/eventos/evento.jpg';
       />
     </div>
   </section>
+
 
 </div>
