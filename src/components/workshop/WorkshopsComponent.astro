@@ -1,37 +1,9 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
-import { getCollection } from 'astro:content';
-import path from 'path';
+import { getWorkshops } from '@/ts/workshops.ts';
 
-// Search for images in all subdirectories
-const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}');
-
-const workshopEntries = await getCollection('workshops');
-
-const workshops = await Promise.all(
-  workshopEntries.map(async (workshop) => {
-    const { data } = workshop;
-    const slug = data.image;
-
-    // Find the full path of the image that has the exact same name as the slug
-    const imagePath = Object.keys(allWorkshopImages).find(fullPath => path.basename(fullPath) === slug);
-
-    if (!imagePath) {
-      throw new Error(`Image not found for workshop: \"${data.title4}\" with slug: \"${slug}\". Searched in all subdirectories of /src/assets/images/`);
-    }
-
-    const { default: image } = await allWorkshopImages[imagePath]();
-
-    return {
-      img: image,
-      imgAlt: data.imgAlt,
-      title4: data.title4,
-      title5: data.title5,
-      description: data.description
-    };
-  })
-);
+const workshops = await getWorkshops();
 ---
 
 <div class="space-y-12">
@@ -44,11 +16,11 @@ const workshops = await Promise.all(
       </div>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p>
           Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
           Esta no es solo una clase de diseño, es una invitación a transformar flores frescas en <strong>piezas de diseño</strong> mientras se deleita el paladar.
         </p>
-        <p class="indent-2 text-floral-dark/80 text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p>
           <strong>Sara Laínez</strong> propone una metodología donde la flor es la protagonista de un lenguaje visual propio. En sus talleres presenciales mayoritariamente en <strong>Madrid</strong>, Sara guía a los alumnos para que encuentren su propio estilo, huyendo de los arreglos rígidos y apostando por la naturalidad, el movimiento y la sostenibilidad.
         </p>
       </div>
