@@ -2,11 +2,13 @@
 import { Image } from 'astro:assets';
 import type { ComponentProps } from 'astro/types';
 
-// Definimos las props de nuestro componente como las mismas que las del componente Image de Astro.
-// Esto asegura que quien use <OptimizedImage> deba proporcionar todas las props requeridas, como `src` y `alt`.
+// Combinamos las props del componente `Image` de Astro con los atributos HTML estándar de una imagen.
+// Esto asegura que nuestro componente acepte `class` y otros atributos HTML.
 type Props = ComponentProps<typeof Image>;
 
-const { ...props } = Astro.props as Props;
+const { ...props } = Astro.props;
+
+if (!props.src || !props.alt) return null;
 ---
 
 <!-- 

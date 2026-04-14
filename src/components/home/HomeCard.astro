@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 
 // Renombramos `quality` de Astro.props a `propQuality` para evitar el conflicto.
 const { card, quality = 60 } = Astro.props;
@@ -13,26 +13,22 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
   <div class="aspect-square overflow-hidden shadow-sm group relative">
     <a href={link} rel="noopener noreferrer">
       {imgSrc &&   link !== "/galeria/" && (
-        <Image 
+        <OptimizedImage 
           alt={imgAlt} 
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-          loading="lazy" 
           src={imgSrc} 
           widths={[400, 800, 1200, 1600, 2400, 3200]}
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-          format='webp'
           quality={quality}
         />
       )}
       {imgSrc &&  link === "/galeria/" && (
-        <Image 
+        <OptimizedImage 
           alt={imgAlt} 
           class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000" 
-          loading="lazy" 
           src={imgSrc} 
           widths={[400, 800, 1200, 1600, 2400, 3200]}
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-          format='webp'
           quality={quality}
           />
       )}

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 import ArrowsCarrusel from "@/components/header/ArrowsCarrusel.astro";
 import {slides} from '@/data/menuData.js';
 
@@ -15,15 +15,14 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
   {currentSlide.id === 5 && (
     <>
     <div class="absolute inset-0">
-      <Image 
+      <OptimizedImage 
         alt={currentSlide.imgAlt} 
         class="h-full w-full object-contain object-[75%_25%] md:object-center" 
         decoding="async" 
-        loading="lazy" 
         src={currentSlide.image}
         widths={[400, 800, 1200, 1600, 2400, 3200]}
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-        format='webp'
+
         quality={100}
       />
     </div>
@@ -33,15 +32,15 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
   )}
   {currentSlide.id !== 5 && (
     <div class="absolute inset-0">
-      <Image 
+      <OptimizedImage 
         alt={currentSlide.imgAlt} 
         class="h-full w-full object-cover object-center" 
         decoding="async" 
-        loading="lazy" 
+
         src={currentSlide.image}
         widths={[400, 800, 1200, 1600, 2400, 3200]}
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-        format='webp'
+
         quality={60}
       />
     </div>

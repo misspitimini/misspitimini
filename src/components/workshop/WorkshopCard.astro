@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 
 interface Props {
   img: ImageMetadata;
@@ -14,14 +14,12 @@ const { img, imgAlt, title4, title5, description } = Astro.props;
 
 
 <div class="overflow-hidden w-fit">
-  <Image 
+  <OptimizedImage 
     class="card-img h-auto w-full object-cover" 
-    loading="lazy"
     src={img} 
     alt={imgAlt}
     widths={[400, 800, 1200]}
     sizes="100vw"
-    format='webp'
   />
   
   <div class="px-2">
@@ -32,5 +30,3 @@ const { img, imgAlt, title4, title5, description } = Astro.props;
     </p>
   </div>
 </div>
-
-
