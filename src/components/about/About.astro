@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import SocialNetworks from "@/components/footer/SocialNetworks.astro";
 import saraImage from '@/assets/images/body/inicio/saraLainez.jpg';
 ---
@@ -7,14 +7,12 @@ import saraImage from '@/assets/images/body/inicio/saraLainez.jpg';
 <section class="px-6">
   <div class="flex flex-col lg:flex-row items-center gap-7 py-4">
     <div class="hidden lg:block w-1/3">
-      <Image
+      <OptimizedImage
         src={saraImage}
         alt="Retrato de Sara Laínez, florista y diseñadora floral en Madrid, sonriendo."
         class="rounded-tr-[50px] rounded-bl-[50px] h-auto w-full object-cover"
         widths={[200, 400, 600]}
         sizes="(max-width: 1024px) 100vw, 33vw"
-        format='webp'
-        loading="lazy"
       />
     </div>
     <div class="flex-1">

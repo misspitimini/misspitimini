@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido.png';
 import { menuItems } from '@/data/menuData.js';
 
@@ -15,7 +15,7 @@ const {href} = Astro.props;
     <div class="flex-1 flex justify-start">
         <!-- Desktop Logo -->
         <a href="/" class="hidden md:block">
-            <Image src={logo} alt="Logotipo" class="w-48 h-auto" />
+            <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-48 h-auto" />
         </a>
         <!-- Mobile Hamburger -->
          <button id="menu-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
@@ -26,7 +26,7 @@ const {href} = Astro.props;
     <!-- Center: Logo (mobile) -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
         <a href="/" class="block">
-            <Image src={logo} alt="Logotipo" class="w-40 h-auto" />
+            <OptimizedImage src={logo} alt="Logotipo" class="w-40 h-auto" />
         </a>
     </div>
 

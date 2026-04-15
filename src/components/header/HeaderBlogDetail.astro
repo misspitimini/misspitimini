@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido.png';
 import blogImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
 ---
@@ -8,7 +8,7 @@ import blogImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
     <div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
         <div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
             <a href="/" class="z-50">
-                <Image src={logo} alt="Logotipo" class="w-32 md:w-48 h-auto" />
+                <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-32 md:w-48 h-auto" />
             </a>
         </div>
         <div class="absolute right-4">
@@ -21,7 +21,7 @@ import blogImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
     </div>
     <div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
         <div class="relative h-[350px] md:h-[500px]">
-            <Image src={blogImage} alt="Reserva asistencia" class="card-img w-full h-full object-cover" />
+            <OptimizedImage src={blogImage} alt="Reserva asistencia" class="card-img w-full h-full object-cover" />
             <div class="absolute inset-0 bg-black/10"></div>
         </div>
     </div>

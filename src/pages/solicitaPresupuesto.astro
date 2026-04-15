@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido.png';
 import bookingImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
 import LayoutBooking from '@/layouts/LayoutBooking.astro';
@@ -16,14 +16,14 @@ import Footer from '@/components/footer/Footer.astro';
 				<div class="flex-1 flex justify-start">
 					<!-- Desktop Logo -->
 					<a href="/" class="hidden md:block">
-						<Image src={logo} alt="Logotipo" class="w-48 h-auto" />
+						<OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-48 h-auto" />
 					</a>
 				 </div>
 				
 				<!-- Center: Logo (mobile) -->
 				<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
 					<a href="/" class="block">
-						<Image src={logo} alt="Logotipo" class="w-40 h-auto" />
+						<OptimizedImage src={logo} alt="Logotipo" class="w-40 h-auto" />
 					</a>
 				</div>
 				
@@ -41,7 +41,7 @@ import Footer from '@/components/footer/Footer.astro';
 		<h1 class="hidden">Solicita un presupuesto</h1>
 		<section class="relative h-[85vh] w-full overflow-hidden">
 			<div class="absolute inset-0">
-				<Image 
+				<OptimizedImage 
 				alt="Reserva asistencia" 
 				class="w-full object-contain object-center" 
 				decoding="async" 
