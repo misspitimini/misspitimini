@@ -15,7 +15,8 @@ if (!props.src || !props.alt) return null;
   Pasamos nuestras props por defecto primero, y luego las que recibe el componente.
   Esto permite que si se pasa un `loading` o `format` personalizado, sobreescriba nuestros valores por defecto.
 -->
-<Image 
+<Image
+  decoding="async" 
   loading="lazy" 
   format='webp'
   {...props} 
