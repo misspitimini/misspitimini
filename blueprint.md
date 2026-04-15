@@ -21,3 +21,4 @@ This project is a personal website for Sara Laínez, a floral designer in Madrid
     - `src/ts/form-workshopsBooking.ts`
 - **Improved Type Safety:** Implemented a `FormFields` interface to define the shape of form objects, ensuring better type safety and preventing potential runtime errors.
 - **Enhanced Data Handling:** Updated form handling logic to correctly manage different input types and prevent errors from null values.
+- **Resolved Dynamic Import Error:** Fixed a `Property 'default' does not exist on type 'unknown'` error in `src/ts/workshops.ts` by adding a type assertion to the `import.meta.glob` function. This ensures that TypeScript correctly recognizes the type of dynamically imported image modules.
