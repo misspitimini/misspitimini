@@ -65,13 +65,13 @@ const loadedImages = {
 
   <!-- Fiestas Privadas y Celebraciones Section -->
   <section class="py-12">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
+    <div class="max-w-5xl mx-auto space-y-8">
         <div class="text-center">
             <h2 class="text-3xl font-serif">Decoración para Fiestas Privadas y Celebraciones</h2>
             <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-            <div class="md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify">
+        <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
+            <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pr-0">
                 <p>Celebra tus momentos más especiales en un entorno de ensueño. Nuestro servicio de <strong>decoración floral para fiestas privadas en Madrid</strong> se dedica a crear atmósferas íntimas, elegantes y completamente personalizadas. Trabajamos contigo para entender la esencia de tu celebración y la transformamos en una realidad floral que supere todas las expectativas, asegurando que cada detalle refleje tu personalidad.</p>
                 <p>Desde un aniversario hasta una cena de gala o un cumpleaños señalado, diseñamos cada detalle para reflejar tu estilo y convertir tu celebración en una experiencia memorable. Cada gran celebración merece ser contada con flores. Nuestra misión es traducir tus emociones en paisajes botánicos que cautiven los sentidos y creen recuerdos imborrables. Nos encargamos de que el ambiente hable por sí mismo, creando un hilo conductor que conecte cada momento del evento.</p>
                  <ul class="list-disc space-y-3 pl-5">
@@ -81,8 +81,9 @@ const loadedImages = {
                     <li><strong>Eventos en casa:</strong> Llevamos la magia de nuestro diseño floral a la comodidad de tu hogar, transformando tu espacio para crear una celebración única e íntima.</li>
                 </ul>
             </div>
+            
             {loadedImages.fiestasPrivadas && imageData.fiestasPrivadas && (
-              <div class="md:w-1/2">
+              <div class="w-full md:w-1/2 md:-mr-6 overflow-hidden">
                   <OptimizedImage alt={imageData.fiestasPrivadas.alt} class="w-full h-auto object-cover" src={loadedImages.fiestasPrivadas} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
             )}
@@ -99,7 +100,7 @@ const loadedImages = {
       </div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-0">
       {loadedImages.galeria1 && imageData.galeria1 && <OptimizedImage alt={imageData.galeria1.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
       {loadedImages.galeria2 && imageData.galeria2 && <OptimizedImage alt={imageData.galeria2.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
     </div>
@@ -107,13 +108,13 @@ const loadedImages = {
 
   <!-- Lanzamientos de Producto Section -->
   <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
-        <div class="text-center">
+    <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center px-6">
             <h2 class="text-3xl font-serif">Diseño Floral para Lanzamientos de Productos</h2>
             <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
         </div>
-        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div class="md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify">
+        <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
+            <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pr-0">
                 <p>El lanzamiento de un producto es un momento crucial donde la primera impresión lo es todo. Nuestro servicio de <strong>diseño floral para lanzamientos de productos en Madrid</strong> está pensado para crear una narrativa visual que capture la esencia de tu innovación y la comunique de forma poderosa e inspiradora.</p>
                 <p>Transformamos el espacio del evento en un lienzo que cuenta la historia de tu producto, utilizando el lenguaje de las flores para generar expectación, emoción y un impacto mediático duradero. Nos especializamos en:</p>
                 <ul class="list-disc space-y-3 pl-5">
@@ -124,7 +125,7 @@ const loadedImages = {
                 </ul>
             </div>
             {loadedImages.lanzamientos && imageData.lanzamientos && (
-              <div class="md:w-1/2">
+              <div class="w-full md:w-1/2 md:-mr-6 overflow-hidden">
                   <OptimizedImage alt={imageData.lanzamientos.alt} class="w-full h-auto object-cover" src={loadedImages.lanzamientos} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
             )}
@@ -134,18 +135,18 @@ const loadedImages = {
 
   <!-- Proceso Section -->
   <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
-        <div class="text-center">
+    <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center px-6">
             <h2 class="text-3xl font-serif">Nuestro Proceso de Diseño</h2>
             <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-        </div>
-        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+        </div>  
+        <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
           {loadedImages.proceso && imageData.proceso && (
-            <div class="md:w-1/2">
+            <div class="w-full md:w-1/2 md:-ml-6 overflow-hidden">
               <OptimizedImage alt={imageData.proceso.alt} class="w-full h-auto object-cover" src={loadedImages.proceso} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
-          )}       
-            <div class="md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify">
+          )} 
+            <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0">
                 <ul class="list-disc space-y-3 pl-5">
                     <li><strong>Consulta Inicial:</strong> Todo comienza con una conversación para conocer tu empresa, los objetivos del evento y la imagen de marca que deseas proyectar.</li>
                     <li><strong>Propuesta de Diseño:</strong> Creamos un concepto de diseño floral a medida, incluyendo bocetos y un desglose detallado de los arreglos propuestos.</li>
@@ -169,7 +170,7 @@ const loadedImages = {
     </div>
   </section>
   
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-0">
     {loadedImages.banner1 && imageData.banner1 && <OptimizedImage alt={imageData.banner1.alt} class="w-full h-auto object-cover" src={loadedImages.banner1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
     {loadedImages.banner2 && imageData.banner2 && <OptimizedImage alt={imageData.banner2.alt} class="w-full h-auto object-cover" src={loadedImages.banner2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
   </div>
