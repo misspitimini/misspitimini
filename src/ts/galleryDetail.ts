@@ -3,13 +3,20 @@ import { UrlsApi } from '@/ts/urls.ts';
 import fm from 'front-matter';
 import { marked } from 'marked';
 
+// Define la estructura de tus metadatos de Markdown
+interface PostAttributes {
+  title?: string;
+  description?: string;
+  // añade otros campos si los usas: date, image, etc.
+}
+
 // --- State variables ---
-let allImages = [];
 let loadedImagesCount = 0;
-const imagesPerBatch = 10;
-let molde; // To store the template content
-let carouselContainer; // To store the main image container
-let thumbContainer; // To store the thumbnail container
+const imagesPerBatch = 10; // O el número que prefieras
+let allImages: string[] = []; // Se llena con el fetch anterior
+let carouselContainer: HTMLElement | null = null; // To store the main image container
+let molde: DocumentFragment | null = null; // To store the template content
+let thumbContainer: HTMLElement | null = null;  // To store the thumbnail container
 
 async function renderGalleryDetail() {
   // Obtenemos el ID de la URL (?id=lo-que-sea)
@@ -20,19 +27,29 @@ async function renderGalleryDetail() {
 
   const res = await fetch(UrlsApi.GET_GALLERIES_DETAIL.replace("${id}", id));
   const text = await res.text();
-  const { attributes, body } = fm(text);
+  const { attributes, body } = fm(text) as { attributes: PostAttributes; body: string };
   
   const containerMain = document.getElementById('post-content-main');
   
+  if (!containerMain) return
+
   const title = containerMain.querySelector('.card-title');
   const content = containerMain.querySelector('.card-content');
 
+  if (!title || !content) return
+
   title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
-  content.innerHTML = marked.parse(body);
+  content.innerHTML = await marked.parse(body);
 
 }
 
-function createImage(img, index, container, molde, contentThumb) {
+function createImage(
+  img: any, 
+  index: number, 
+  container: HTMLElement, 
+  molde: DocumentFragment, 
+  contentThumb: HTMLElement
+) {
     const item = document.createElement('div');
     item.className = 'min-w-full h-screen box-border flex items-center justify-center bg-transparent';
 
@@ -47,15 +64,21 @@ function createImage(img, index, container, molde, contentThumb) {
     item.appendChild(imagen);
     container.appendChild(item);
 
-    const clone = molde.cloneNode(true);
+    const clone = molde.cloneNode(true) as DocumentFragment;
 
-    const buttonThumb = clone.querySelector('button');
+    const buttonThumb = clone.querySelector('button') as HTMLButtonElement | null;
+    if (!buttonThumb) {
+      return;
+    }
     buttonThumb.removeAttribute(' @click');
     buttonThumb.removeAttribute(':class');
     buttonThumb.setAttribute(':class', 'changeClass('+index+')');
     buttonThumb.setAttribute('@click', 'load('+index+')');
 
-    const imgThumb = clone.querySelector('.card-img');
+    const imgThumb = clone.querySelector('.card-img') as HTMLImageElement | null;
+    if (!imgThumb) {
+      return;
+    }
     imgThumb.removeAttribute(':src');
     imgThumb.removeAttribute(':class');
     imgThumb.removeAttribute('@click');
@@ -80,7 +103,13 @@ async function renderGalleryImages() {
   
   const carousel = document.getElementById('card-content-images');
   thumbContainer = document.querySelector('.card-content-thumb');
+  if (!thumbContainer || !carousel) {
+    return;
+  }
   const template = thumbContainer.querySelector("template");
+  if (!template) {
+    return;
+  }
   molde = template.content;
   template.remove();
 
@@ -97,6 +126,9 @@ async function renderGalleryImages() {
 }
 
 function loadMoreImages() {
+  if (!carouselContainer || !molde || !thumbContainer) {
+    return;
+  }
   const newLoadedCount = Math.min(loadedImagesCount + imagesPerBatch, allImages.length);
 
   for (let i = loadedImagesCount; i < newLoadedCount; i++) {
@@ -106,7 +138,14 @@ function loadMoreImages() {
   loadedImagesCount = newLoadedCount;
 }
 
-window.updateCarousel = function(index) {
+// Si usas TypeScript estricto, declara la función en la interfaz Window
+declare global {
+  interface Window {
+    updateCarousel: (index: number) => void;
+  }
+}
+
+window.updateCarousel = function(index:number) {
   if (carouselContainer) {
     carouselContainer.style.transform = `translateX(-${index * 100}%)`;
   }

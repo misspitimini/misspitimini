@@ -42,18 +42,10 @@ async function renderGalleries() {
             img.alt = post.data.alt || 'Imagen de la galería de Sara Laínez';
           }
           
-          if (title) {
-            title.textContent = post.data.title || 'Post sin título';
-          }
-          if (desc) {
-            desc.textContent = post.data.description || 'Haz clic para leer más...';
-          }
-          
-          if (link) {
-            // El link lleva a la página de detalle con el ID (slug)
-            link.href = `/detalleGaleria?id=${post.id}`;
-          }
-
+          if (title) title.textContent = post.data.title || 'Post sin título';
+          if (desc) desc.textContent = post.data.description || 'Haz clic para leer más...';
+          // El link lleva a la página de detalle con el ID (slug)
+          if (link) link.href = `/detalleGaleria?id=${post.id}`;
           container.appendChild(clone);
         });
       } catch (error) {

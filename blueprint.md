@@ -13,12 +13,11 @@ This project is a personal website for Sara Laínez, a floral designer in Madrid
 - Blog with articles about floral design
 - SEO optimization
 
-## Current Task: SEO Improvements
+## Current Task: Bug Fixes and Improvements
 
-- **Sitemap:** Configured `@astrojs/sitemap` to automatically generate a sitemap.
-- **robots.txt:** Updated `robots.txt` to point to the correct sitemap location.
-- **Meta Tags:** Added descriptive titles, meta descriptions, and relevant keywords to the following pages:
-    - `index.astro`
-    - `about.astro`
-    - `blog.astro`
-- **Layouts:** Updated `Layout.astro` and `LayoutBlog.astro` to include the `keywords` meta tag.
+- **Resolved Image Format Error:** Fixed an `UnsupportedImageFormat` error by populating the `src/data/gallery.json` file with valid image data. This ensured that the gallery component receives correct image paths, preventing rendering issues.
+- **Corrected TypeScript Errors:** Addressed multiple `Element implicitly has an 'any' type` errors in the following files:
+    - `src/ts/form-handler.ts`
+    - `src/ts/form-workshopsBooking.ts`
+- **Improved Type Safety:** Implemented a `FormFields` interface to define the shape of form objects, ensuring better type safety and preventing potential runtime errors.
+- **Enhanced Data Handling:** Updated form handling logic to correctly manage different input types and prevent errors from null values.

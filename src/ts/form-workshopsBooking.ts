@@ -1,29 +1,52 @@
 import { UrlsApi } from './urls.ts';
 
+// Define an interface for the form fields to ensure type safety.
+interface FormFields {
+    nombre: HTMLInputElement | null;
+    email: HTMLInputElement | null;
+    telefono: HTMLInputElement | null;
+    mensaje: HTMLTextAreaElement | null;
+    privacy: HTMLInputElement | null;
+    newsletter: HTMLInputElement | null;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    let formulario = document.getElementById('formularioReserva');
+    const formulario = document.getElementById('formularioReserva');
     if (!formulario) return;
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evita que la página se refresque
 
-        // 1. Captura de elementos (Cacheamos los elementos, no solo el valor)
-        const campos = {
-            nombre: document.getElementById('nombre'),
-            email: document.getElementById('email'),
-            telefono: document.getElementById('telefono'),
-            mensaje: document.getElementById('mensaje'),
-            privacy: document.getElementById('privacy'),
-            newsletter: document.getElementById('newsletter')
+        // 1. Captura de elementos con el tipo definido.
+        const campos: FormFields = {
+            nombre: document.getElementById('nombre') as HTMLInputElement | null,
+            email: document.getElementById('email') as HTMLInputElement | null,
+            telefono: document.getElementById('telefono') as HTMLInputElement | null,
+            mensaje: document.getElementById('mensaje') as HTMLTextAreaElement | null,
+            privacy: document.getElementById('privacy') as HTMLInputElement | null,
+            newsletter: document.getElementById('newsletter') as HTMLInputElement | null
         };
 
         // 2. Limpiar estados previos (Éxito y Errores)
         ocultarElemento('message-success');
-        Object.keys(campos).forEach(key => quitarError(`error-${key}`, campos[key]));
+        // Use 'keyof' to iterate over the keys of the typed object.
+        (Object.keys(campos) as Array<keyof FormFields>).forEach(key => {
+            const campo = campos[key];
+            if (campo) {
+                quitarError(`error-${key}`, campo);
+            }
+        });
 
-        if ( !validarFormulario(campos)) return;
+        if (!validarFormulario(campos)) return;
 
         // 4. Preparar datos
-        const datos = Object.fromEntries(Object.entries(campos).map(([k, v]) => [k, v.value.trim()]));
+        const datos = {
+            nombre: campos.nombre?.value.trim() || '',
+            email: campos.email?.value.trim() || '',
+            telefono: campos.telefono?.value.trim() || '',
+            mensaje: campos.mensaje?.value.trim() || '',
+            privacy: campos.privacy?.checked || false,
+            newsletter: campos.newsletter?.checked || false,
+        };
         
         try {
             const urlDominio = UrlsApi.SEND_BOOKING_FORM;
@@ -36,23 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             if (!respuesta.ok) throw new Error('Error en el servidor');
-            // const resultado = await respuesta.text();
 
             // 5. Gestión de Éxito
-            const mensajeExito = (campos.email.value.trim())? 
-                "Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '"+datos.email+"'."
+            const mensajeExito = (campos.email?.value.trim())
+                ? `Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '${datos.email}'.`
                 : "Formulario enviado correctamente.";
             
             mostrarExito('message-success', mensajeExito);
 
-            Object.keys(campos).forEach(key => {
-                if (campos[key] && 'value' in campos[key]) {
-                    campos[key].value = '';
+            (Object.keys(campos) as Array<keyof FormFields>).forEach(key => {
+                const campo = campos[key];
+                if (campo && 'value' in campo) {
+                    (campo as HTMLInputElement).value = '';
+                }
+                 if(campo && campo.type === 'checkbox'){
+                    (campo as HTMLInputElement).checked = false;
                 }
             });
 
         } catch (error) {
-            mostrarError('error-nombre', 'Hubo un problema al enviar. Inténtalo de nuevo.');
+            if (campos.nombre) {
+                mostrarError('error-nombre', 'Hubo un problema al enviar. Inténtalo de nuevo.');
+            }
         }
     });
 });
@@ -60,41 +88,41 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * LÓGICA DE VALIDACIÓN
  */
-function validarFormulario(campos) {
+function validarFormulario(campos: FormFields): boolean {
 
-    if (!campos.nombre.value.trim()) {
+    if (!campos.nombre?.value.trim()) {
         mostrarError('error-nombre', 'Este campo es obligatorio.');
-        marcarInputError(campos.nombre);
+        if (campos.nombre) marcarInputError(campos.nombre);
         return false;
     } else {
-        quitarError('error-nombre');
+        quitarError('error-nombre', campos.nombre);
     }
 
-    if (!campos.telefono.value.trim()){
+    if (!campos.telefono?.value.trim()){
         mostrarError( 'error-telefono','Este campo es obligatorio.');
-        marcarInputError(campos.telefono);
+        if (campos.telefono) marcarInputError(campos.telefono);
         return false;
     } else if (campos.telefono.value.trim() && !validarTelefono(campos.telefono.value.trim())){
         mostrarError('error-telefono','El teléfono introducido no es válido.');
-        marcarInputError(campos.telefono);
+        if (campos.telefono) marcarInputError(campos.telefono);
         return false; 
     } else {
-        quitarError('error-telefono');
+        quitarError('error-telefono', campos.telefono);
     }
 
-    if (!campos.email.value.trim()){
+    if (!campos.email?.value.trim()){
         mostrarError( 'error-email','Este campo es obligatorio.');
-        marcarInputError(campos.email);
+        if (campos.email) marcarInputError(campos.email);
         return false;
-    } else if (!validarEmail(campos.email.value.trim())){
+    } else if (campos.email && !validarEmail(campos.email.value.trim())){
         mostrarError( 'error-email','El email introducido no es válido.');
         marcarInputError(campos.email);
         return false;
     } else {
-        quitarError('error-email');
+        quitarError('error-email', campos.email);
     }
 
-    if (campos.privacy.checked === false) {
+    if (campos.privacy?.checked === false) {
         window.dispatchEvent(new CustomEvent('abrir-modal-privacidad', { detail: true }));
         return false;
     }
@@ -106,7 +134,7 @@ function validarFormulario(campos) {
  * UTILIDADES DE UI (Tailwind)
  */
 // Funciones auxiliares para no repetir código
-function mostrarExito(idElemento, mensaje) {
+function mostrarExito(idElemento: string, mensaje: string) {
     const el = document.getElementById(idElemento); 
     if (el) {
         const span = el.querySelector('span.text-sm.font-medium');
@@ -114,7 +142,7 @@ function mostrarExito(idElemento, mensaje) {
         el.classList.remove('hidden');
     }
 }
-function mostrarError(idElemento, mensaje) {
+function mostrarError(idElemento: string, mensaje: string) {
     const el = document.getElementById(idElemento);
     if (el) {
         const span = el.querySelector('span.text-xs.font-medium.italic');
@@ -123,26 +151,26 @@ function mostrarError(idElemento, mensaje) {
     }
 }
 
-function marcarInputError(input) {
+function marcarInputError(input: HTMLElement) {
     input.classList.add('border-red-500', 'ring-1', 'ring-red-500');
 }
 
-function quitarError(idError, input) {
+function quitarError(idError: string, input: HTMLElement | null) {
     ocultarElemento(idError);
     if (input) input.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
 }
 
-function ocultarElemento(id) {
+function ocultarElemento(id: string) {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
 }
 
-function validarEmail (email) {
+function validarEmail (email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
-function validarTelefono (telefono) {
+function validarTelefono (telefono: string): boolean {
     const telefonoRegex = /^\+?[\d\s]{7,15}$/
     return telefonoRegex.test(telefono);
 };

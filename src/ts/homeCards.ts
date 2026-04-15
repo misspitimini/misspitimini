@@ -16,14 +16,19 @@ export async function getHomeCards(filterIds?: string[]): Promise<any[]> {
   const homeCards = await Promise.all(
     homeCardsData.map(async (card) => {
       const imagePath = `/src/assets/images/carrusel/${card.data.img_slug}.jpg`;
+      
       if (!images[imagePath]) {
         console.warn(`Image not found for slug: ${card.data.img_slug}`);
-        return {
-          ...card.data,
-          imgSrc: null, // or a placeholder path
-        };
+        return { ...card.data, imgSrc: null };
       }
-      const imgSrc = (await images[imagePath]()).default;
+  
+      // Ejecutamos la función de importación
+      const imageModule: any = await images[imagePath]();
+  
+      // En Astro, si el glob no tiene opciones extra, 
+      // a veces la metadata está en .default y a veces es el objeto raíz.
+      const imgSrc = imageModule.default || imageModule;
+  
       return {
         ...card.data,
         imgSrc,

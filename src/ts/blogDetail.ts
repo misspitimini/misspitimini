@@ -2,6 +2,16 @@ import { UrlsApi } from './urls.ts';
 import fm from 'front-matter';
 import { marked } from 'marked';
 
+interface PostAttributes {
+  title?: string;
+  image?: {
+    url?: string;
+    alt?: string;
+  };
+  author?: string;
+  pubDate?: string;
+}
+
 async function renderBlogDetail() {
   // Obtenemos el ID de la URL (?id=lo-que-sea)
   const params = new URLSearchParams(window.location.search);
@@ -11,28 +21,47 @@ async function renderBlogDetail() {
 
   const res = await fetch(UrlsApi.GET_BLOGS_DETAIL.replace("${id}", id));
   const text = await res.text();
-  const { attributes, body } = fm(text);
+  const { attributes, body } = fm(text) as { attributes: PostAttributes; body: string };
   
   const containerHeader = document.getElementById('post-content-header');
   const containerMain = document.getElementById('post-content-main');
   
+  if (!containerHeader || !containerMain) return;
+
   // Rellenamos con los datos del "data" que extrae tu PHP
-  const img = containerHeader.querySelector('.card-img');
-  const title = containerMain.querySelector('.card-title');
-  const content = containerMain.querySelector('.card-content');
-  const author = containerMain.querySelector('.card-author');
-  const pubDate = containerMain.querySelector('.card-date');
-  
+  const img = containerHeader.querySelector('.card-img') as HTMLImageElement | null;
+  const title = containerMain.querySelector('.card-title') as HTMLElement | null;;
+  const content = containerMain.querySelector('.card-content') as HTMLElement | null;;
+  const author = containerMain.querySelector('.card-author') as HTMLElement | null;;
+  const pubDate = containerMain.querySelector('.card-date') as HTMLElement | null;;
+
+  if (!attributes) return;
+ 
   // Asignamos valores (con "fallbacks" por si falta algún dato en el .md)
-  img.src = attributes.image.url || UrlsApi.DEFAULT_IMAGE;
-  img.alt = attributes.image.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
-  title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
-  content.innerHTML = marked.parse(body);
-  author.textContent = attributes.author || 'Sara Laínez';
-  pubDate.textContent = formatearCaracterFecha(formatearFecha(attributes.pubDate)) || formatearCaracterFecha(formatearFecha(new Date()));
+  if (img) {
+    img.src = attributes.image?.url || UrlsApi.DEFAULT_IMAGE;
+    // Añadimos la prioridad alta
+    img.setAttribute('fetchpriority', 'high');
+    img.alt = attributes.image?.alt || 'Diseño floral para bodas, eventos y experiencias | misspitimini | Sara Laínez';
+  }
+  if (title) {
+    title.textContent = attributes.title || 'Donde las flores se convierten en recuerdos';
+  }
+  if (content) {
+    content.innerHTML = await marked.parse(body);
+  }
+  if (author) {
+    author.textContent = attributes.author || 'Sara Laínez';
+  }
+  if (pubDate) {
+    const fechaRaw = attributes.pubDate || new Date().toISOString().split('T')[0];
+    const fechaFormateada = formatearFecha(fechaRaw);
+    pubDate.textContent = formatearCaracterFecha(fechaFormateada);
+  }
+ 
 }
 
-function formatearCaracterFecha(fechaStr) {
+function formatearCaracterFecha(fechaStr:string) {
 
   // 1. Dividimos la cadena para evitar errores de zona horaria
   const [year, month, day] = fechaStr.split('-').map(Number);
@@ -48,7 +77,7 @@ function formatearCaracterFecha(fechaStr) {
   }).format(fecha);
 };
 
-function formatearFecha(fechaStr) {
+function formatearFecha(fechaStr:string) {
   const fechaLocal = new Date(fechaStr);
   const yyyy = fechaLocal.getFullYear();
   const mm = String(fechaLocal.getMonth() + 1).padStart(2, '0'); // Meses van de 0 a 11
