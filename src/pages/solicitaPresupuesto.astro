@@ -37,32 +37,37 @@ import Footer from '@/components/footer/Footer.astro';
 			</div>
 		</div>
 	</header>
-	<main class="relative pt-20 pb-12">
-		<h1 class="hidden">Solicita un presupuesto</h1>
-		<section class="relative h-[85vh] w-full overflow-hidden">
-			<div class="absolute inset-0">
-				<OptimizedImage 
-				alt="Reserva asistencia" 
-				class="w-full object-contain object-center" 
-				decoding="async" 
-				loading="lazy" 
-				src={bookingImage}
-				widths={[400, 800, 1200, 1600, 2400, 3200]}
-				sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-				format='webp'
-				quality={60}
-			  />
-			</div>
-			<div class="absolute inset-0 bg-black/10"></div>
-			<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-			 <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
-				<h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3">Participa en nuestras experiencias florales</h2>
-				<h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">Compartamos de lo natural en comunidad</h3>
-			</div>
-		</section>
-		<div class="px-0 py-10 space-y-12">
-			<WorkshopsBookingComponent />
+	<main class="relative pt-20 pb-12"> 
+
+	<h1 class="sr-only">Solicita un presupuesto para talleres en Madrid por Sara Laínez, mispitimini</h1>
+	<section class="relative w-full h-[85vh] md:h-[80vh]  overflow-hidden"> 
+		<div class="absolute inset-0 w-full "> 
+			<OptimizedImage 
+			alt="Reserva asistencia" 
+			class="w-full h-[85vh] md:h-[80vh] object-cover object-center" 
+			decoding="async" 
+			loading="lazy" 
+			src={bookingImage}
+			widths={[400, 800, 1200, 1600, 2400, 3200]}
+			sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+			format='webp'
+			quality={60}
+			/>
 		</div>
-	</main>
-	<Footer />
+		<div class="absolute inset-0 bg-black/10"></div>
+		<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div> 
+		<div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center"> 
+			<h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3">Participa en nuestras experiencias florales</h2> 
+			<h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">Compartamos de lo natural en comunidad</h3>
+		</div> 
+	</section> 
+
+	 <div class="px-0 py-10 space-y-12"> 
+		<div class="space-y-12"> 
+		
+			<WorkshopsBookingComponent />
+	</div>
+</div>
+</main>
+<Footer />
 </Layout>
