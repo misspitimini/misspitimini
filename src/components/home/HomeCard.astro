@@ -10,22 +10,12 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
 ---
 
 <div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
-  <div class="aspect-square overflow-hidden shadow-sm group relative">
+  <div class="overflow-hidden shadow-sm group relative">
     <a href={link} rel="noopener noreferrer">
-      {imgSrc &&  link === "/galeria/" && (
-        <OptimizedImage 
-          alt={imgAlt} 
-          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000" 
-          src={imgSrc} 
-          widths={[400, 800, 1200, 1600, 2400, 3200]}
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-          quality={quality}
-          />
-      )}
       {imgSrc &&  !isLargeCard  && (
            <OptimizedImage 
               alt={imgAlt} 
-              class="  w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000" 
               src={imgSrc} 
               widths={[400, 800, 1200, 1600, 2400, 3200]}
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
@@ -35,7 +25,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
       {imgSrc &&  isLargeCard && (
             <OptimizedImage 
               alt={imgAlt} 
-              class="w-full h-full object-cover" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
               src={imgSrc} 
               widths={[400, 800, 1200, 1600, 2400, 3200]}
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
