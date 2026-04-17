@@ -51,7 +51,7 @@ function createImage(
   contentThumb: HTMLElement
 ) {
     const item = document.createElement('div');
-    item.className = 'min-w-full h-screen box-border flex items-center justify-center bg-transparent';
+    item.className = 'min-w-full w-full box-border flex items-center justify-center bg-transparent';
 
     const imagen = document.createElement('img');
     imagen.classList.add('w-full', 'h-auto', 'object-contain');

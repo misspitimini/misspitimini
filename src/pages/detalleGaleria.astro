@@ -85,10 +85,10 @@ import Footer from '@/components/footer/Footer.astro';
 	>
 		<hr style="margin-bottom:2px; padding-bottom:2px"/>
 		<div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
-			<button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+			<button @click="prev()" class="absolute left-3 md:left-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
 			</button>
-			<button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+			<button @click="next()" class="absolute right-3 md:right-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
 				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
 			</button>
 		</div>
