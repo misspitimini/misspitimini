@@ -35,7 +35,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
       {imgSrc &&  isLargeCard && (
             <OptimizedImage 
               alt={imgAlt} 
-              class="rounded-tr-[200px] rounded-bl-[200px]  w-full h-full object-cover" 
+              class="w-full h-full object-cover" 
               src={imgSrc} 
               widths={[400, 800, 1200, 1600, 2400, 3200]}
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
