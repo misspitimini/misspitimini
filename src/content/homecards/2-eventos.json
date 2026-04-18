@@ -3,5 +3,6 @@
   "imgAlt": "Un buffet o mesa de presentación muy detallada de un evento o tienda gourmet",
   "title": "Eventos",
   "description": "Aportando frescura en un entorno profesional",
+  "isLargeCard": true,
   "link": "/eventos/"
 }

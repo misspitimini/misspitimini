@@ -9,7 +9,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
 
 ---
 
-<div class:list={["space-y-4", { "col-span-2": isLargeCard }, { "mt-6": isLargeCard } ]}>
+<div class:list={["space-y-4", { "col-span-2 mt-6": (isLargeCard && buttonText) }, { "col-span-2 md:col-span-1 mt-6": (isLargeCard && !buttonText) } ]}>
   <div class="overflow-hidden shadow-sm group relative">
     <a href={link} rel="noopener noreferrer">
       {imgSrc &&  !isLargeCard  && (
@@ -31,16 +31,18 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
               quality={quality}
             />
-        <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
-          <span class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
-            {buttonText}
-          </span>
-        </div>
       )}
+      {buttonText && (
+          <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+            <span class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
+              {buttonText}
+            </span>
+            </div>
+          )}
     </a>
   </div>
   <div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
-    <h3 class="text-xl md:text-3xl font-serif italic text-gray-800">{title}</h3>
+    <h3 class="text-3xl md:text-3xl font-serif italic text-gray-800">{title}</h3>
     <p class="text-[16px] text-floral-dark/60">
       {description}
     </p>
