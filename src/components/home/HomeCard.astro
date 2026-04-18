@@ -9,7 +9,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
 
 ---
 
-<div class:list={["space-y-4", { "col-span-2": isLargeCard }]}>
+<div class:list={["space-y-4", { "col-span-2": isLargeCard }, { "mt-6": isLargeCard } ]}>
   <div class="overflow-hidden shadow-sm group relative">
     <a href={link} rel="noopener noreferrer">
       {imgSrc &&  !isLargeCard  && (
