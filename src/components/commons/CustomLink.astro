@@ -12,7 +12,7 @@ interface Props {
 const { href, class: customClass, ...rest } = Astro.props;
 
 // Aquí defino únicamente las clases base que siempre estarán presentes.
-const baseStyles = "inline-flex items-center gap-1 text-primary hover:underline font-semibold";
+const baseStyles = "inline-flex items-center gap-1 text-primary hover:underline hover:cursor-pointer font-semibold";
 ---
 {/*
   La directiva `class:list` es la forma recomendada por Astro para manejar clases.
