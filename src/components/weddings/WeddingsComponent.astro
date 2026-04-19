@@ -47,14 +47,20 @@ const loadedImages = {
         </div>  
         <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4 items-center">
           {loadedImages.novia && imageData?.novia && (
-            <div class="w-full pt-4">
+            <div class="relative w-full pt-4 overflow-hidden"> 
+              
               <OptimizedImage 
                 alt={imageData.novia.alt}
-                class="w-full h-full object-cover" 
+                class="w-full h-auto min-h-[300px] md:h-[500px] object-cover" 
                 src={loadedImages.novia}
                 widths={[400, 800, 1200, 1600]}
                 sizes="100vw"
               />
+
+              <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+              
+              <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+
             </div>
           )}
             <div class="w-full text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0">
@@ -96,22 +102,30 @@ const loadedImages = {
     </div>
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
       {loadedImages.ramoNovia && imageData.ramoNovia && (
-        <OptimizedImage 
-          alt={imageData.ramoNovia.alt}
-          class="w-full aspect-square object-cover" 
-          src={loadedImages.ramoNovia}
-          widths={[400, 800, 1200]}
-          sizes="50vw"
-        />
+            <div class="relative w-full pt-4 overflow-hidden"> 
+              <OptimizedImage 
+              alt={imageData.ramoNovia.alt}
+              class="w-full aspect-square object-cover" 
+              src={loadedImages.ramoNovia}
+              widths={[400, 800, 1200]}
+              sizes="50vw"
+              />
+              <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+              <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+            </div>
       )}
       {loadedImages.decoracionFloralEntradaCeremonia && imageData.decoracionFloralEntradaCeremonia && (
-        <OptimizedImage 
-          alt={imageData.decoracionFloralEntradaCeremonia.alt}
-          class="w-full aspect-square object-cover" 
-          src={loadedImages.decoracionFloralEntradaCeremonia}
-          widths={[400, 800, 1200]}
-          sizes="50vw"
-        />
+            <div class="relative w-full pt-4 overflow-hidden"> 
+              <OptimizedImage 
+                alt={imageData.decoracionFloralEntradaCeremonia.alt}
+                class="w-full aspect-square object-cover" 
+                src={loadedImages.decoracionFloralEntradaCeremonia}
+                widths={[400, 800, 1200]}
+                sizes="50vw"
+              />
+              <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+              <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+            </div>
       )}
     </div>
   </section>
@@ -140,15 +154,17 @@ const loadedImages = {
       </div>
     </div>
     {loadedImages.buffetPostres && imageData.buffetPostres && (
-      <div class="w-full pt-4">
-        <OptimizedImage 
-          alt={imageData.buffetPostres.alt}
-          class="w-full h-auto object-cover" 
-          src={loadedImages.buffetPostres}
-          widths={[400, 800, 1200, 1600]}
-          sizes="100vw"
-        />
-      </div>
+        <div class="relative w-full pt-4 overflow-hidden"> 
+          <OptimizedImage 
+            alt={imageData.buffetPostres.alt}
+            class="w-full h-auto object-cover" 
+            src={loadedImages.buffetPostres}
+            widths={[400, 800, 1200, 1600]}
+            sizes="100vw"
+          />
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+        </div>
     )}
   </section>
 
@@ -175,22 +191,30 @@ const loadedImages = {
     </div>
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
       {loadedImages.detallismoMesaBuffet && imageData.detallismoMesaBuffet && (
-          <OptimizedImage 
+          <div class="relative w-full pt-4 overflow-hidden"> 
+           <OptimizedImage 
             alt={imageData.detallismoMesaBuffet.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.detallismoMesaBuffet}
             widths={[400, 800, 1200]}
             sizes="50vw"
           />
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+        </div>
       )}
       {loadedImages.SaraLaínezSupervisando && imageData.SaraLaínezSupervisando && (
-          <OptimizedImage 
+        <div class="relative w-full pt-4 overflow-hidden"> 
+            <OptimizedImage 
             alt={imageData.SaraLaínezSupervisando.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.SaraLaínezSupervisando}
             widths={[400, 800, 1200]}
             sizes="50vw"
           />
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
+        </div>
       )}
     </div>
   </section>

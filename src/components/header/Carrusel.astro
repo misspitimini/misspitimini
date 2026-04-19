@@ -36,8 +36,8 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
             quality={60}
           />
         )}
-    <div class="md:absolute md:inset-0   md:bg-gradient-to-r md:from-white md:via-transparent md:to-white opacity-80"></div>
-    <div class="md:absolute md:inset-x-0 md:bottom-0 md:h-32 md:bg-gradient-to-t md:from-white md:to-transparent"></div>
+    <div class="absolute inset-0   bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
+    <div class="absolute inset-x-0 bottom-0 md:h-32 bg-gradient-to-t from-white to-transparent"></div>
  </div>
   <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
     {currentSlide.id === 1 && (
