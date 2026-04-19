@@ -1,5 +1,6 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import CustomLink from '@/components/commons/CustomLink.astro';
 import imageData from '@/data/weddings-images.json'; // Corrected: The file is plural!
 import { loadImage } from '@/utils/imageLoader';
 
@@ -26,13 +27,16 @@ const loadedImages = {
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
-          <strong>Sara Laínez</strong>, es <strong>experta en la decoración floral de bodas, con un gran recorrido sobretodo Madrid</strong>. Su pasión es crear ambientes únicos y memorables, asegurando que cada boda sea un reflejo fiel de la pareja. Se encarga de todo el proceso, desde la conceptualización hasta el último detalle el día de tu boda, incluyendo <strong>ramos de novia, centros de mesa, y la decoración de iglesias y fincas</strong>.
+          Cada boda tiene una historia única, y las flores son la forma más delicada y poderosa de contarla. <strong>Sara Laínez</strong> diseña <strong>composiciones florales</strong> que transforman espacios, emocionan y acompañan cada momento de vuestro día. Trabajo en Madrid y alrededores creando ambientes naturales, elegantes y llenos de sensibilidad.
+        </p>
+        <p>
+         Pasión por crear ambientes únicos y memorables, asegurando que cada boda sea un reflejo fiel de la pareja. Se encarga de todo el proceso, desde la conceptualización hasta el último detalle el día de tu boda, incluyendo <strong>ramos de novia, centros de mesa, y la decoración de iglesias y fincas</strong>.
         </p>
         <p>
           Siempre se trabaja en estrecha colaboración con vosotros para entender vuestra visión y <strong>transformarla en una realidad floral</strong> que supere todas las expectativas. Escuchará vuestra historia, vuestros sueños y vuestro estilo para diseñar una propuesta que hable de vosotros en cada rincón.
         </p>
         <p>
-          Cada gran celebración merece ser contada con flores. Es especialista en crear atmósferas románticas y sofisticadas, donde cada pétalo es seleccionado con un propósito. Nuestra misión es traducir vuestras emociones en paisajes botánicos que cautiven los sentidos y creen recuerdos imborrables en vuestro gran día.
+          Cada gran celebración merece ser contada con flores. Crearemos atmósferas románticas y sofisticadas, donde cada pétalo es seleccionado con un propósito. Nuestra misión es traducir vuestras emociones en paisajes botánicos que cautiven los sentidos y creen recuerdos imborrables en vuestro gran día.
         </p>
       </div>
     </div>
@@ -71,6 +75,13 @@ const loadedImages = {
                 <li><strong>Ramos de novia:</strong> Bouquet, silvestre, cascada o minimal.</li>
                 <li><strong>Complementos:</strong> Prendidos para el novio, diademas y réplicas para regalar.</li>
               </ul>
+              <p>
+                El ramo es una extensión de ti: tu estilo, tu energía y tu forma de vivir este día. Por eso diseño ramos de novia totalmente personalizados, seleccionando flores de temporada y combinaciones que reflejen tu esencia.
+                Crearemos ramos <strong>silvestres</strong>, <strong>románticos</strong>, <strong>minimalistas</strong>  o <strong>llenos de color</strong> , siempre con un equilibrio natural y una estética cuidada. También puedo crear réplicas, prendidos, pulseras florales y detalles para tus personas especiales.
+                </p>
+              <p>
+                <CustomLink href="/contacto/">Cuéntame cómo imaginas tu ramo y lo diseñamos juntas</CustomLink>.
+              </p>
             </div>
 
         </div>
@@ -81,7 +92,7 @@ const loadedImages = {
   <section class="space-y-6">
     <div class="px-6">
       <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Decoración de ceremonia nupcial</h2>
+        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Decoración floral para la ceremonia</h2>
         <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
       </div>
       <br/>
@@ -134,7 +145,7 @@ const loadedImages = {
   <section class="space-y-6">
     <div class="px-6">
       <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">El arte de vestir vuestra mesa</h2>
+        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Decoración de mesas y banquete</h2>
         <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
       </div>
       <br/>
@@ -218,5 +229,4 @@ const loadedImages = {
       )}
     </div>
   </section>
-
 </div>
