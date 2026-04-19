@@ -22,12 +22,9 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
         src={currentSlide.image}
         widths={[400, 800, 1200, 1600, 2400, 3200]}
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-
         quality={100}
       />
     </div>
-    <div class="absolute inset-0"></div>
-    <div class="absolute inset-0"></div>
     </>
   )}
   {currentSlide.id !== 5 && (
@@ -41,9 +38,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
         quality={60}
       />
     </div>
-    <div class="absolute inset-0 bg-black/10"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-  )}
+   )}
   <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
       {currentSlide.id === 1 && (
           <h2 class="text-white text-4xl font-serif italic leading-tight mb-3 max-w-xs">Sara Laínez, diseñadora floral</h2>
