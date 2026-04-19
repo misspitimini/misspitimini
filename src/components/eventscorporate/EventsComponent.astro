@@ -6,6 +6,7 @@ import { loadImage } from '@/utils/imageLoader';
 
 // Load all images for this component using the centralized loader.
 const loadedImages = {
+  zumoNaranja: await loadImage('events', imageData.zumoNaranja?.src),
   fiestasPrivadas: await loadImage('events', imageData.fiestasPrivadas?.src),
   galeria1: await loadImage('events',imageData.galeria1?.src),
   galeria2: await loadImage('events',imageData.galeria2?.src),
@@ -43,23 +44,31 @@ const loadedImages = {
       </div>
     </div>
   </section>
-  
-  <!-- Soluciones Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <div class="text-center">
-        <h3 class="text-2xl font-serif">Soluciones Florales a Medida</h3>
-        <div class="h-px w-10 bg-primary mx-auto mt-2"></div>
-      </div>
-      <br/>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <ul class="list-disc space-y-4 pl-5">
-            <li><strong>Decoración integral de espacios:</strong> Creamos ambientes inmersivos que transforman recepciones, salas de conferencias y espacios para eventos, alineando cada detalle floral con la identidad de tu compañía.</li>
-            <li><strong>Centros de mesa y ambientación:</strong> Diseñamos centros de mesa y arreglos focales para cenas de gala, comidas de empresa y celebraciones, aportando un toque de sofisticación y elegancia que no pasará desapercibido.</li>
-            <li><strong>Escenografías para lanzamientos:</strong> Convertimos el lanzamiento de tu producto en una experiencia visual única. Creamos fondos de escenario, photocalls y decoraciones impactantes que generan contenido memorable para redes sociales y prensa.</li>
-            <li><strong>Regalos corporativos florales:</strong> Sorprende a tus clientes, socios o empleados con regalos de empresa vivos y elegantes. Desde ramos de autor hasta plantas de diseño, un regalo que transmite aprecio y buen gusto.</li>
-        </ul>
-      </div>
+ 
+ <!-- Soluciones Section -->
+  <section class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center px-6">
+          <h3 class="text-2xl font-serif">Soluciones Florales a Medida</h3>
+          <div class="h-px w-10 bg-primary mx-auto mt-2"></div>
+        </div>  
+        <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
+          {loadedImages.fiestasPrivadas && imageData.fiestasPrivadas && (
+            <div class="w-full md:w-1/2 md:-mr-6 overflow-hidden">
+                <OptimizedImage alt={imageData.fiestasPrivadas.alt} class="w-full h-auto object-cover" src={loadedImages.fiestasPrivadas} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+            </div>
+          )}
+            <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0">
+              <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+                <ul class="list-disc space-y-4 pl-5">
+                    <li><strong>Decoración integral de espacios:</strong> Creamos ambientes inmersivos que transforman recepciones, salas de conferencias y espacios para eventos, alineando cada detalle floral con la identidad de tu compañía.</li>
+                    <li><strong>Centros de mesa y ambientación:</strong> Diseñamos centros de mesa y arreglos focales para cenas de gala, comidas de empresa y celebraciones, aportando un toque de sofisticación y elegancia que no pasará desapercibido.</li>
+                    <li><strong>Escenografías para lanzamientos:</strong> Convertimos el lanzamiento de tu producto en una experiencia visual única. Creamos fondos de escenario, photocalls y decoraciones impactantes que generan contenido memorable para redes sociales y prensa.</li>
+                    <li><strong>Regalos corporativos florales:</strong> Sorprende a tus clientes, socios o empleados con regalos de empresa vivos y elegantes. Desde ramos de autor hasta plantas de diseño, un regalo que transmite aprecio y buen gusto.</li>
+                </ul>
+              </div>
+            </div>
+        </div>
     </div>
   </section>
 
@@ -81,12 +90,12 @@ const loadedImages = {
                     <li><strong>Eventos en casa:</strong> Llevamos la magia de nuestro diseño floral a la comodidad de tu hogar, transformando tu espacio para crear una celebración única e íntima.</li>
                 </ul>
             </div>
-            
-            {loadedImages.fiestasPrivadas && imageData.fiestasPrivadas && (
-              <div class="w-full md:w-1/2 md:-mr-6 overflow-hidden">
-                  <OptimizedImage alt={imageData.fiestasPrivadas.alt} class="w-full h-auto object-cover" src={loadedImages.fiestasPrivadas} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
+            {loadedImages.zumoNaranja && imageData.zumoNaranja && (
+              <div class="w-full md:w-1/2 md:-ml-6 overflow-hidden">
+                <OptimizedImage alt={imageData.zumoNaranja.alt} class="w-full h-auto object-cover" src={loadedImages.zumoNaranja} widths={[400, 800, 1200]} sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
-            )}
+            )}            
+
         </div>
     </div>
   </section>
