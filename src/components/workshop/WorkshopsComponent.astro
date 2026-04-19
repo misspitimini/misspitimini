@@ -42,7 +42,7 @@ const workshops = await getWorkshops();
     </h3>
     <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
     <br/>
-    <div class="grid gap-8 grid-cols-2">
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
       {workshops.map((workshop) => (
         <WorkshopCard
         img={workshop.img}

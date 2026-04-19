@@ -12,7 +12,7 @@ const { title, description } = Astro.props;
     <slot name="head-scripts">
         <script src="/src/ts/blogDetail.ts"></script>
     </slot>
-
+    <slot />
     <Fragment slot="page-styles">
 	  	<style is:global>
             /* Usamos is:global para que afecte al HTML que mete el JS */
