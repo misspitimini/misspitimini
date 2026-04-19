@@ -11,62 +11,58 @@ const {href} = Astro.props;
 const currentSlide = slides.find(s => s.url === href) || slides[0];
 
 ---
-<section class="relative h-[85vh] w-full overflow-hidden">
-  {currentSlide.id === 5 && (
-    <>
-    <div class="absolute inset-0">
-      <OptimizedImage 
-        alt={currentSlide.imgAlt} 
-        class="h-full w-full object-contain object-[75%_25%] md:object-center" 
-        decoding="async" 
-        src={currentSlide.image}
-        widths={[400, 800, 1200, 1600, 2400, 3200]}
-        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-        quality={100}
-      />
-    </div>
-    </>
-  )}
-  {currentSlide.id !== 5 && (
-    <div class="absolute inset-0">
-      <OptimizedImage 
-        alt={currentSlide.imgAlt} 
-        class="h-full w-full object-cover object-center" 
-        src={currentSlide.image}
-        widths={[400, 800, 1200, 1600, 2400, 3200]}
-        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-        quality={60}
-      />
-    </div>
-   )}
-  <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
-      {currentSlide.id === 1 && (
-          <h2 class="text-white text-4xl font-serif italic leading-tight mb-3 max-w-xs">Sara Laínez, diseñadora floral</h2>
-          <h3 class="hidden">Presentación personal</h3>
+
+<div class="w-full bg-[#f3f4f6] flex justify-center"> 
+  <section class="relative h-[85vh] w-full overflow-hidden">
+  <div class="absolute inset-0 w-full">
+      {currentSlide.id === 5 && (
+        <OptimizedImage 
+          alt={currentSlide.imgAlt} 
+          class="h-full w-full object-contain object-[75%_25%] md:object-center" 
+          decoding="async" 
+          src={currentSlide.image}
+          widths={[400, 800, 1200, 1600, 2400, 3200]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+          quality={100}
+        />
       )}
-      {currentSlide.id ===  5 && (
-            <>
-            <h2 class="uppercase text-white filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-3">{currentSlide.title}</h2>
-            <h3 class="text-white filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">{currentSlide.phrase}</h3>
-            </>
-      )}
-      {currentSlide.id !== 1 &&  currentSlide.id !== 5 && (
-            <>
-            <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3">{currentSlide.title}</h2>
-            <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-sm md:text-lg tracking-widest mt-2">{currentSlide.phrase}</h3>
-            </>
-      )}
-        
-        {currentSlide.id !== 4 && currentSlide.id !== 6 && (
-          <>
-            <a 
-              href="/contacto/" rel="noopener noreferrer" 
-              class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
-            >
-              Contacta conmigo
-            </a>
-          </>
+      {currentSlide.id !== 5 && (
+          <OptimizedImage 
+            alt={currentSlide.imgAlt} 
+            class="h-full w-full object-cover object-center" 
+            src={currentSlide.image}
+            widths={[400, 800, 1200, 1600, 2400, 3200]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+            quality={60}
+          />
         )}
-    </div>
-  </section>
-  <ArrowsCarrusel href={href} />
+  <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
+   <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+ </div>
+  <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
+    {currentSlide.id === 1 && (
+        <h2 class="text-white text-4xl font-serif italic leading-tight mb-3 max-w-xs filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">Sara Laínez, diseñadora floral</h2>
+        <h3 class="hidden">Presentación personal</h3>
+    )}
+    {currentSlide.id !== 1 && (
+          <>
+          <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">{currentSlide.title}</h2>
+          <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-base md:text-lg tracking-widest mt-2 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)]  md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">{currentSlide.phrase}</h3>
+          </>
+    )}
+      
+      {currentSlide.id !== 4 && currentSlide.id !== 6 && (
+        <>
+          <a 
+            href="/contacto/" rel="noopener noreferrer" 
+            class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
+          >
+            Contacta conmigo
+          </a>
+        </>
+      )}
+  </div>
+</section>
+</div>
+<ArrowsCarrusel href={href} />
+  
