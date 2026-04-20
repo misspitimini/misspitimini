@@ -1,5 +1,6 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import FogImage from '@/components/commons/FogImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import imageData from '@/data/weddings-images.json'; // Corrected: The file is plural!
 import { loadImage } from '@/utils/imageLoader';
@@ -53,7 +54,7 @@ const loadedImages = {
           {loadedImages.novia && imageData?.novia && (
             <div class="relative w-full pt-4 overflow-hidden col-span-2 md:col-span-1 "> 
               
-              <OptimizedImage 
+              <FogImage 
                 alt={imageData.novia.alt}
                 class="w-full h-auto min-h-[300px] md:h-[500px] object-cover" 
                 src={loadedImages.novia}
@@ -61,8 +62,6 @@ const loadedImages = {
                 sizes="100vw"
               />
 
-              <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-              <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
             </div>
           )}
             <div class="relative w-full text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0 col-span-2 md:col-span-1">
@@ -113,30 +112,26 @@ const loadedImages = {
   
       {loadedImages.ramoNovia && imageData.ramoNovia && (
         <div class="relative w-full pt-4 overflow-hidden"> 
-          <OptimizedImage 
+          <FogImage 
             alt={imageData.ramoNovia.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.ramoNovia}
             widths={[400, 800, 1200]}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
-        </div>
+         </div>
       )}
     
       {loadedImages.decoracionFloralEntradaCeremonia && imageData.decoracionFloralEntradaCeremonia && (
         <div class="relative w-full pt-4 overflow-hidden"> 
-          <OptimizedImage 
+          <FogImage 
             alt={imageData.decoracionFloralEntradaCeremonia.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.decoracionFloralEntradaCeremonia}
             widths={[400, 800, 1200]}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-          <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
-        </div>
+         </div>
       )}
     </div>
   </section>
@@ -166,15 +161,13 @@ const loadedImages = {
     </div>
     {loadedImages.buffetPostres && imageData.buffetPostres && (
         <div class="relative w-full pt-4 overflow-hidden"> 
-          <OptimizedImage 
+          <FogImage 
             alt={imageData.buffetPostres.alt}
             class="w-full h-auto object-cover" 
             src={loadedImages.buffetPostres}
             widths={[400, 800, 1200, 1600]}
             sizes="100vw"
           />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
         </div>
     )}
   </section>
@@ -203,28 +196,24 @@ const loadedImages = {
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
       {loadedImages.detallismoMesaBuffet && imageData.detallismoMesaBuffet && (
           <div class="relative w-full pt-4 overflow-hidden"> 
-           <OptimizedImage 
+           <FogImage 
             alt={imageData.detallismoMesaBuffet.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.detallismoMesaBuffet}
             widths={[400, 800, 1200]}
             sizes="50vw"
           />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
         </div>
       )}
       {loadedImages.SaraLaínezSupervisando && imageData.SaraLaínezSupervisando && (
         <div class="relative w-full pt-4 overflow-hidden"> 
-            <OptimizedImage 
+            <FogImage 
             alt={imageData.SaraLaínezSupervisando.alt}
             class="w-full aspect-square object-cover" 
             src={loadedImages.SaraLaínezSupervisando}
             widths={[400, 800, 1200]}
             sizes="50vw"
           />
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-70"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
         </div>
       )}
     </div>

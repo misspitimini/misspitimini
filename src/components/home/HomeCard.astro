@@ -1,5 +1,6 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import FogImage from '@/components/commons/FogImage.astro';
 
 // Renombramos `quality` de Astro.props a `propQuality` para evitar el conflicto.
 const { card, quality = 60 } = Astro.props;
@@ -23,7 +24,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
           )}
       {imgSrc && link!='/galeria/'  && (
           <div class="inset-0 w-full">
-            <OptimizedImage 
+            <FogImage 
               alt={imgAlt} 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
               src={imgSrc} 
@@ -31,8 +32,6 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
               quality={quality}
             />
-            <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-60"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent opacity-60"></div>
           </div>
       )}
       
