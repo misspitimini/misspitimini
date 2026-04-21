@@ -10,7 +10,7 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<div class="overflow-hidden w-fit">
+<div class="relative w-full pt-4 overflow-hidden">
   <img class="card-img h-auto w-full object-cover" src={data.heroImage} alt={data.title} loading="lazy" />
   <div class="mt-4 mb-4">
     <CustomLink class="card-link" href={`/blog/${slugify(data.slug)}/`}>Leer más</CustomLink>
