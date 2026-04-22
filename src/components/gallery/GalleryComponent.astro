@@ -1,6 +1,7 @@
 ---
 import galleryData from "@/data/gallery.json";
 import GalleryCard from '@/components/gallery/GalleryCard.astro';
+import SectionTitle from '../commons/SectionTitle.astro';
 
 // Define la estructura de una entrada de la galería para TypeScript
 interface GalleryEntry {
@@ -19,10 +20,7 @@ const galleryEntries: GalleryEntry[] = galleryData;
 
   <section class="space-y-6">
     <div class="px-6">
-      <div class="text-center space-y-2">
-        <h2 class="text-3xl font-serif">Nuestros Recuerdos</h2>
-        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-      </div>
+        <SectionTitle>Nuestros Recuerdos</SectionTitle>
       <br/>
 
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">

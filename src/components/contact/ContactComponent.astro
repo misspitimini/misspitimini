@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import ContactCard from '@/components/contact/ContactCard.astro';
 
 import PrivacyPolicy from '@/components/commons/PrivacyPolicy.astro';
+import SectionTitle from '@/components/commons/SectionTitle.astro';
 import centroMesa from '@/assets/images/body/contacto/centroMesa.jpg';
 import floresSecas from '@/assets/images/body/contacto/floresSecas.jpg';
 import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
@@ -12,10 +13,7 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 
   <section class="space-y-6">
     <div class="px-6">
-      <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Ponte en contacto con Sara Laínez</h2>
-        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-      </div>
+        <SectionTitle>Ponte en contacto con Sara Laínez</SectionTitle>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
@@ -27,10 +25,7 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 
   <section class="space-y-6">
     <div class="px-6">
-      <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Enviando un mensaje:</h2>
-        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-      </div>
+        <SectionTitle>Enviando un mensaje:</SectionTitle>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <form id="formularioContacto" class="w-full" novalidate>
@@ -116,10 +111,7 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 
   <section class="space-y-6">
     <div class="px-6">
-      <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">También puedes contactar medianta una llamada telefónica o un correo electrónico:</h2>
-        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-      </div>
+        <SectionTitle>También puedes contactar medianta una llamada telefónica o un correo electrónico:</SectionTitle>
       <br/>
     </div>
     <div class="px-0">
@@ -142,10 +134,7 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 
   <section class="space-y-6">
     <div class="px-6">
-      <div class="text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 tracking-wide">Síguenos en nuestras redes sociales:</h2>
-        <div class="h-px w-12 bg-primary mx-auto mt-2"></div>
-      </div>
+        <SectionTitle>Síguenos en nuestras redes sociales:</SectionTitle>
       <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
@@ -178,4 +167,3 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
     </div>
   </section>
 </div>
-

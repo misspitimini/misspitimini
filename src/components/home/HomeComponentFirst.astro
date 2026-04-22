@@ -1,16 +1,14 @@
 ---
 import { getHomeCards } from '@/ts/homeCards';
 import HomeCard from '@/components/home/HomeCard.astro';
+import SectionTitle from '../commons/SectionTitle.astro';
 
 const homeCards = await getHomeCards(['1-bodas', '2-eventos', '3-talleres']);
 ---
 
 <section class="space-y-10">
-  <div class="text-center space-y-2">
-    <h2 class="text-3xl font-serif">Experiencias Florales y Gastronómicas</h2>
-    <div class="h-px w-12 bg-primary mx-auto"></div>
-    <p class="text-lg text-floral-dark/80 mt-2 hidden">Talleres de arte floral en Madrid y decoración de eventos con flores naturales</p>
-  </div>
+  <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
+  <p class="text-lg text-floral-dark/80 mt-2 hidden text-center">Talleres de arte floral en Madrid y decoración de eventos con flores naturales</p>
   <div class="grid grid-cols-2 gap-1 md:gap-6">
     {homeCards.map(card => (
       <HomeCard card={card} />
