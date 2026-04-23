@@ -1,34 +1,41 @@
-# Blueprint
+## Blueprint
 
-## Purpose and Capabilities
+### Overview
 
-This project is a personal website for Sara Laínez, a floral designer in Madrid. The website showcases her work, provides information about her services, and includes a blog. The site is built with Astro.js and is designed to be fast, performant, and SEO-friendly.
+This project is a static-first web application built with Astro.js. It is designed to be developed within the Firebase Studio (formerly Project IDX) environment. The focus is on creating a fast, highly-performant, and scalable site that delivers minimal JavaScript by default, ensuring an exceptional user experience and top-tier Core Web Vitals.
 
-## Style, Design, and Features
+### Style and Design
 
-- Modern, clean, and elegant design
-- Mobile-responsive layout
-- Custom fonts and color palette
-- Image carousel with Ken Burns effect and smooth transitions.
-- Blog with articles about floral design
-- SEO optimization
+The website uses a modern, clean, and elegant design. The primary colors are floral-beige, floral-light, floral-dark, and primary. The typography is a combination of a serif font for headings and a sans-serif font for body text.
 
-## Current Task: Deployment
+The layout is responsive and adapts to different screen sizes. The images are optimized for the web and loaded lazily to improve performance.
 
-- **Successfully Deployed to Firebase Hosting:** The project has been successfully built and deployed, making the website publicly accessible.
-  - **Build Process:** Ran `npm run build` to generate the static site files in the `dist/` directory.
-  - **Deployment:** Used Firebase Hosting to deploy the contents of the `dist/` folder.
+### Features
 
-## Previous Tasks
+*   **Home Page:** Displays a hero image, a brief introduction, and a grid of cards that link to the main sections of the website.
+*   **About Page:** Contains information about the floral designer, Sara Laínez.
+*   **Weddings Page:** Describes the floral design services for weddings, including bridal bouquets, ceremony decoration, and table centerpieces.
+*   **Events Page:** Details the floral design services for corporate and private events.
+*   **Workshops Page:** Provides information about the floral design workshops.
+*   **Gallery Page:** Showcases a collection of photos from past events and workshops.
+*   **Blog:** A collection of articles about floral design and related topics.
+*   **Contact Page:** A form to contact Sara Laínez.
 
-- **Bug Fix - TypeScript Path Resolution:**
-  - **Fixed JSON Module Resolution:** Resolved a `Cannot find module` error (ts(2307)) by correcting the import path for `carrusel.json` and updating `tsconfig.json` to allow JSON imports.
-  - **Populated Carousel Data:** Created and populated `src/data/carrusel.json` to provide the necessary data for the carousel component and prevent further import errors.
+### Current Task
 
-- **Carousel Enhancement:**
-  - **Enhanced Carousel Visuals:** Improved the image presentation in `src/components/header/Carrusel.astro` with a Ken Burns effect, smooth fade transitions, and improved text legibility.
+Refactor all `h2` tags to use the `SectionTitle` component.
 
-- **Initial Bug Fixes:**
-  - **Resolved Image Format Error:** Fixed an `UnsupportedImageFormat` error by populating `src/data/gallery.json`.
-  - **Corrected TypeScript Errors:** Addressed multiple `Element implicitly has an 'any' type` errors in form handling scripts.
-  - **Resolved Dynamic Import Error:** Fixed a `Property 'default' does not exist on type 'unknown'` error in `src/ts/workshops.ts`.
+### Plan
+
+1.  [x] Refactor `src/pages/blog.astro`
+2.  [x] Refactor `src/pages/gallery.astro`
+3.  [x] Refactor `src/pages/workshops.astro`
+4.  [x] Refactor `src/pages/weddings.astro`
+5.  [x] Refactor `src/pages/events.astro`
+6.  [x] Refactor `src/pages/about.astro`
+7.  [x] Refactor `src/components/contact/ContactComponent.astro`
+8.  [x] Refactor `src/components/blog/BlogComponent.astro`
+9.  [x] Refactor `src/components/home/HomeComponentHero.astro`
+10. [x] Refactor `src/components/home/HomeComponentSecond.astro`
+11. [x] Refactor `src/components/gallery/GalleryComponent.astro`
+12. [x] Create `blueprint.md`

@@ -13,7 +13,7 @@ export interface NextWorkshopData {
 }
 
 // A glob import to get all possible workshop images
-const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}');
+const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('@assets/images/**/*.{jpeg,jpg,png,gif,webp}');
 
 /**
  * Loads the specific upcoming workshop from its JSON data file,

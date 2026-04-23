@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -12,10 +11,10 @@ export default {
           "accent-sage": "#7A8471"
       },
       fontFamily: {
-          'display': ['"Cormorant Garamond"', 'serif'],
-          'body': ['Montserrat', 'sans-serif'],
-          "sans": ["Plus Jakarta Sans", "sans-serif"],
-          "serif": ["Crimson Pro", "serif"]
+          'cormorant': ['Cormorant Garamond', 'serif'],
+          'montserrat': ['Montserrat', 'sans-serif'],
+          'plus-jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+          'crimson': ['Crimson Pro', 'serif'],
       }
   }
   },

@@ -4,10 +4,24 @@ import type { CollectionEntry } from "astro:content";
 import { slugify } from "@/ts/utils.ts";
 
 interface Props {
-	data: CollectionEntry<"blog">['data'];
+	data: {
+    title: string;
+    description: string;
+    author: string;
+    pubDate: string;
+    tags: string[];
+    heroImage: string;
+    slug: string;
+  };
 }
 
 const { data } = Astro.props;
+
+const formattedDate = new Date(data.pubDate).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
 <div class="relative w-full pt-4 overflow-hidden">
@@ -16,6 +30,7 @@ const { data } = Astro.props;
     <CustomLink class="card-link" href={`/blog/${slugify(data.slug)}/`}>Leer más</CustomLink>
   </div>
   <div class="px-2"> 
+    <p class="text-sm text-gray-500">{formattedDate}</p>
     <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800 min-h-[4rem]">{data.title}</h3>
     <p class="card-description text-[16px] text-floral-dark/60 min-h-[5rem] line-clamp-3">
       {data.description}
