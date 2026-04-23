@@ -11,10 +11,10 @@ export default {
           "accent-sage": "#7A8471"
       },
       fontFamily: {
-          'cormorant': ['Cormorant Garamond', 'serif'],
-          'montserrat': ['Montserrat', 'sans-serif'],
-          'plus-jakarta': ['Plus Jakarta Sans', 'sans-serif'],
-          'crimson': ['Crimson Pro', 'serif'],
+          'display': ['Cormorant Garamond', 'serif'],
+          'body': ['Montserrat', 'sans-serif'],
+          'sans': ['Plus Jakarta Sans', 'sans-serif'],
+          'serif': ['Crimson Pro', 'serif'],
       }
   }
   },
