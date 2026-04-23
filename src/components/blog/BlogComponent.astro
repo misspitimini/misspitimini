@@ -29,7 +29,11 @@ import BlogCard from '@/components/blog/BlogCard.astro';
     title: 'Título de ejemplo',
     description: 'Descripción de ejemplo...',
     author: 'Autor de Ejemplo',
-    pubDate: new Date(),
+    pubDate: new Date().toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
     tags: ['ejemplo'],
     heroImage: 'https://example.com/image.jpg',
     slug: 'ejemplo-slug'
