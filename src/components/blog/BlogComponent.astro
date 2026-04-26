@@ -1,6 +1,5 @@
 --- 
 import SectionTitle from '@/components/commons/SectionTitle.astro';
-import blogEntries from "@/data/blog.json";
 import BlogCard from '@/components/blog/BlogCard.astro';
 ---
 
@@ -17,9 +16,7 @@ import BlogCard from '@/components/blog/BlogCard.astro';
     </div>
     <br/>
     <div id="blog-container" class="mt-12 grid grid-cols-2 gap-2 md:gap-4 pt-4 gap-8">
-      {blogEntries.map((post) => (
-        <BlogCard data={post} />
-      ))}
+      Cargando entradas del blog...
     </div>
   </section>
 </div>
@@ -39,3 +36,5 @@ import BlogCard from '@/components/blog/BlogCard.astro';
     slug: 'ejemplo-slug'
   }} />
 </template>
+
+<script src="../../ts/blog.ts"></script>
