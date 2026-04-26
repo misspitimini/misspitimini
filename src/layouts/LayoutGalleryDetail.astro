@@ -4,21 +4,13 @@ import Layout from '@/layouts/Layout.astro';
 const { title, description, keywords } = Astro.props;
 ---
 <Layout title={title} description={description} keywords={keywords}>
-    <Fragment slot="head-scripts">
-        <script src="/src/ts/galleryDetail.ts"></script>
-    </Fragment>
+    <script src="/src/ts/galleryDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
         <style is:global>
-            #post-content-main h1 {
-              @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
-            #post-content-main h2 {
-              @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
-            #post-content-main h3 {
-              @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
+            #post-content-main h1,
+            #post-content-main h2,
+            #post-content-main h3,
             #post-content-main hr {
               @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
             }
