@@ -1,27 +1,24 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import galleries from '@/data/gallery.json';
+import galleries from '@/content/galleries.json';
 
 // 1. Definimos la "forma" de un objeto de la galería.
 interface Gallery {
-  slug: string;
+  imgSrc: string;
+  imgAlt: string;
   title: string;
   description: string;
-  images: {
-    src: string;
-    alt: string;
-  }[];
+  link: string;
 }
 
 export async function getStaticPaths() {
-    // 2. Le decimos a TypeScript que `galleries` es un array de `Gallery`
     return (galleries as Gallery[]).map(gallery => ({
-        params: { slug: gallery.slug },
+        params: { slug: gallery.link.split('/').pop() },
         props: { gallery },
     }));
 }
 
-// 3. Tipamos los props que recibe la página. Astro usará esto para `Astro.props`.
+// 3. Tipamos los props que recibe la página.
 export type Props = {
   gallery: Gallery;
 };
@@ -36,12 +33,10 @@ const { gallery } = Astro.props;
             <p class="text-lg text-gray-600 max-w-3xl mx-auto">{gallery.description}</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {gallery.images.map((image) => (
-                <div class="overflow-hidden rounded-lg">
-                    <img src={image.src} alt={image.alt} class="w-full h-full object-cover aspect-square" loading="lazy" />
-                </div>
-            ))}
+        <div class="flex justify-center">
+             <div class="overflow-hidden rounded-lg max-w-4xl">
+                <img src={gallery.imgSrc} alt={gallery.imgAlt} class="w-full h-full object-cover" loading="lazy" />
+            </div>
         </div>
     </main>
 </Layout>
