@@ -9,14 +9,14 @@ const {class: className } = Astro.props;
 ---
 
 <div class:list={["text-center pt-8 pb-10", className]}>
-    <h2 class="font-serif text-4xl md:text-5xl text-floral-dark tracking-tight font-medium">
+    <h2 class="font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic">
         <slot />
     </h2>
-    <div class="mt-5 flex items-center justify-center" aria-hidden="true">
-        <div class="w-20 h-px bg-primary"></div>
-        <span class="mx-4 text-primary text-2xl font-serif tracking-widest">
+    <div class="mt-5 flex items-center justify-center opacity-80" aria-hidden="true">
+        <div class="w-12 h-px bg-primary/40"></div>
+        <span class="mx-6 text-primary text-xl scale-125">
             &#10046;
         </span>
-        <div class="w-20 h-px bg-primary"></div>
+        <div class="w-12 h-px bg-primary/40"></div>
     </div>
 </div>
