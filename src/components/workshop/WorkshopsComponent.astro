@@ -12,7 +12,6 @@ const workshops = await getWorkshops();
   <section class="space-y-6">
     <div class="px-6">
       <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
-      <br/>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
           Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
@@ -65,14 +64,12 @@ const workshops = await getWorkshops();
   </section>
 
   <section class="space-y-6">
-    <SectionTitle title="Próximas experiencias:" />
-    <br/>
+    <SectionTitle>Próximas experiencias:</SectionTitle>
     <WorkshopCardNext />
   </section>
 
   <section class="space-y-6">
-    <SectionTitle title="Otras experiencias:" />
-    <br/>
+    <SectionTitle>Otras experiencias:</SectionTitle>
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
       {workshops.map((workshop) => (
         <WorkshopCard
@@ -150,8 +147,7 @@ const workshops = await getWorkshops();
 
   <section class="space-y-6">
     <div class="px-6">
-        <SectionTitle title="Contacto" />
-      <br/>
+      <SectionTitle>Contacto</SectionTitle>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
         <p>
           Si quieres vivir una experiencia floral diferente o estás organizando un evento especial, estaré encantada de ayudarte.

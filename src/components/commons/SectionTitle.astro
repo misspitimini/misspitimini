@@ -2,17 +2,15 @@
 // src/components/commons/SectionTitle.astro
 
 interface Props {
-	title?: string;
-	id?: string;
     class?: string;
 }
 
-const { title, id, class: className } = Astro.props;
+const {class: className } = Astro.props;
 ---
 
-<div class:list={["text-center pt-8 pb-10", className]} id={id}>
+<div class:list={["text-center pt-8 pb-10", className]}>
     <h2 class="font-serif text-4xl md:text-5xl text-floral-dark tracking-tight font-medium">
-        {title ? title : <slot />}
+        <slot />
     </h2>
     <div class="mt-5 flex items-center justify-center" aria-hidden="true">
         <div class="w-20 h-px bg-primary"></div>
