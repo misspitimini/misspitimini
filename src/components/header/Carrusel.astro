@@ -48,8 +48,8 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
     )}
     {currentSlide.id !== 1 && (
           <>
-          <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">{currentSlide.title}</h2>
-          <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-base md:text-lg tracking-widest mt-2 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)]  md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">{currentSlide.phrase}</h3>
+          <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.title}</h2>
+          <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-base md:text-lg tracking-widest mt-2 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)]  md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.phrase}</h3>
           </>
     )}
       
