@@ -9,9 +9,7 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 <Layout title={title} description={description} keywords="blog, misspitimini, sara lainez, flores, madrid">
-    <Fragment slot="head-scripts">
-        <script src="/src/ts/blogDetail.ts"></script>
-    </Fragment>
+    <script src="/src/ts/blogDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
 	  	<style is:global>
