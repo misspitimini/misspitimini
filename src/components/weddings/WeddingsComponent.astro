@@ -3,6 +3,7 @@ import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import FogImage from '@/components/commons/FogImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
+import ContentSection from '@/components/layout/ContentSection.astro';
 import imageData from '@/data/weddings-images.json'; // Corrected: The file is plural!
 import { loadImage } from '@/utils/imageLoader';
 
@@ -20,28 +21,26 @@ const loadedImages = {
 <div class="space-y-12">
 
   <!-- Intro Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Decoración Floral para Bodas</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Cada boda tiene una historia única, y las flores son la forma más delicada y poderosa de contarla. <strong>Sara Laínez</strong> diseña <strong>composiciones florales</strong> que transforman espacios, emocionan y acompañan cada momento de vuestro día. Trabajo en Madrid y alrededores creando ambientes naturales, elegantes y llenos de sensibilidad.
-        </p>
-        <p>
-         Pasión por crear ambientes únicos y memorables, asegurando que cada boda sea un reflejo fiel de la pareja. Se encarga de todo el proceso, desde la conceptualización hasta el último detalle el día de tu boda, incluyendo <strong>ramos de novia, centros de mesa, y la decoración de iglesias y fincas</strong>.
-        </p>
-        <p>
-          Siempre se trabaja en estrecha colaboración con vosotros para entender vuestra visión y <strong>transformarla en una realidad floral</strong> que supere todas las expectativas. Escuchará vuestra historia, vuestros sueños y vuestro estilo para diseñar una propuesta que hable de vosotros en cada rincón.
-        </p>
-        <p>
-          Cada gran celebración merece ser contada con flores. Crearemos atmósferas románticas y sofisticadas, donde cada pétalo es seleccionado con un propósito. Nuestra misión es traducir vuestras emociones en paisajes botánicos que cautiven los sentidos y creen recuerdos imborrables en vuestro gran día.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Decoración Floral para Bodas</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Cada boda tiene una historia única, y las flores son la forma más delicada y poderosa de contarla. <strong>Sara Laínez</strong> diseña <strong>composiciones florales</strong> que transforman espacios, emocionan y acompañan cada momento de vuestro día. Trabajo en Madrid y alrededores creando ambientes naturales, elegantes y llenos de sensibilidad.
+      </p>
+      <p>
+        Pasión por crear ambientes únicos y memorables, asegurando que cada boda sea un reflejo fiel de la pareja. Se encarga de todo el proceso, desde la conceptualización hasta el último detalle el día de tu boda, incluyendo <strong>ramos de novia, centros de mesa, y la decoración de iglesias y fincas</strong>.
+      </p>
+      <p>
+        Siempre se trabaja en estrecha colaboración con vosotros para entender vuestra visión y <strong>transformarla en una realidad floral</strong> que supere todas las expectativas. Escuchará vuestra historia, vuestros sueños y vuestro estilo para diseñar una propuesta que hable de vosotros en cada rincón.
+      </p>
+      <p>
+        Cada gran celebración merece ser contada con flores. Crearemos atmósferas románticas y sofisticadas, donde cada pétalo es seleccionado con un propósito. Nuestra misión es traducir vuestras emociones en paisajes botánicos que cautiven los sentidos y creen recuerdos imborrables en vuestro gran día.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Ramos de Novia Section -->
-  <section class="py-12 bg-floral-light/20">
+  <ContentSection class="py-12 bg-floral-light/20">
     <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Ramos de novia para bodas</SectionTitle>
         <div class="grid grid-cols-2 gap-2 md:gap-4 pt-2 md:pt-4">
@@ -77,7 +76,7 @@ const loadedImages = {
 
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Decoración Ceremonia Section -->
   <section class="space-y-6">
@@ -200,20 +199,18 @@ const loadedImages = {
       )}
     </div>
   </section>
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Zonas donde trabajo</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Realizo bodas en Madrid capital y en fincas de toda la Comunidad de Madrid, así como en espacios privados, hoteles, jardines y localizaciones especiales. Si vuestra boda es fuera de Madrid, podemos estudiarlo juntas.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Zonas donde trabajo</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Realizo bodas en Madrid capital y en fincas de toda la Comunidad de Madrid, así como en espacios privados, hoteles, jardines y localizaciones especiales. Si vuestra boda es fuera de Madrid, podemos estudiarlo juntas.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- FAQ Section -->
-  <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
+  <ContentSection class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Preguntas frecuentes</SectionTitle>
         <div class="space-y-4">
             <details class="group border-b pb-4">
@@ -263,18 +260,16 @@ const loadedImages = {
             </details>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Contact Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-        <SectionTitle>Contacto</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Si queréis una decoración floral que hable de vosotros, estaré encantada de acompañaros.
-        </p>
-        <CustomLink href="/contacto/">Escríbeme y empezamos a diseñar vuestra boda</CustomLink>
-      </div>
+  <ContentSection>
+      <SectionTitle>Contacto</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Si queréis una decoración floral que hable de vosotros, estaré encantada de acompañaros.
+      </p>
+      <CustomLink href="/contacto/">Escríbeme y empezamos a diseñar vuestra boda</CustomLink>
     </div>
-  </section>
+  </ContentSection>
 </div>

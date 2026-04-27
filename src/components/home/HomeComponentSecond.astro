@@ -2,12 +2,13 @@
 import { getHomeCards } from '@/ts/homeCards';
 import HomeCard from '@/components/home/HomeCard.astro';
 import SectionTitle from '../commons/SectionTitle.astro';
+import ContentSection from '../layout/ContentSection.astro';
 
 const homeCards = await getHomeCards(['5-galeria','4-blog']);
 
 ---
 
-<section class="space-y-12">
+<ContentSection>
   <SectionTitle>Inspírate con nuestras creaciones florales</SectionTitle>
   <p class="text-lg text-floral-dark/80 mt-2 hidden">Descubre nuestro blog y galería para encontrar la inspiración que buscas</p>
   <div class="grid grid-cols-2 gap-1 md:gap-6">
@@ -15,4 +16,4 @@ const homeCards = await getHomeCards(['5-galeria','4-blog']);
       <HomeCard card={card} />
     ))}
   </div>
-</section>
+</ContentSection>

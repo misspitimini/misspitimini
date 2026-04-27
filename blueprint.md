@@ -20,22 +20,21 @@ The layout is responsive and adapts to different screen sizes. The images are op
 *   **Gallery Page:** Showcases a collection of photos from past events and workshops.
 *   **Blog:** A collection of articles about floral design and related topics.
 *   **Contact Page:** A form to contact Sara Laínez.
+*   **Reusable Components:**
+    *   `SectionTitle.astro`: A component for displaying section titles.
+    *   `ContentSection.astro`: A layout component to standardize section padding and styling.
 
 ### Current Task
 
-Refactor all `h2` tags to use the `SectionTitle` component.
+Refactor components to use the new `ContentSection.astro` layout component for better code consistency and reusability.
 
 ### Plan
 
-1.  [x] Refactor `src/pages/blog.astro`
-2.  [x] Refactor `src/pages/gallery.astro`
-3.  [x] Refactor `src/pages/workshops.astro`
-4.  [x] Refactor `src/pages/weddings.astro`
-5.  [x] Refactor `src/pages/events.astro`
-6.  [x] Refactor `src/pages/about.astro`
-7.  [x] Refactor `src/components/contact/ContactComponent.astro`
-8.  [x] Refactor `src/components/blog/BlogComponent.astro`
-9.  [x] Refactor `src/components/home/HomeComponentHero.astro`
-10. [x] Refactor `src/components/home/HomeComponentSecond.astro`
-11. [x] Refactor `src/components/gallery/GalleryComponent.astro`
-12. [x] Create `blueprint.md`
+1.  [x] Create the `src/components/layout/ContentSection.astro` component.
+2.  [x] Refactor `src/components/home/HomeComponentFirst.astro`.
+3.  [x] Refactor `src/components/home/HomeComponentSecond.astro`.
+4.  [x] Partially refactor `src/components/weddings/WeddingsComponent.astro`.
+5.  [x] Refactor `src/components/workshop/WorkshopsComponent.astro`.
+6.  [x] Refactor `src/components/blog/BlogComponent.astro`.
+7.  [x] Partially refactor `src/components/contact/ContactComponent.astro`.
+8.  [x] Update `blueprint.md` to reflect the completed refactoring.

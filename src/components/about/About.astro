@@ -2,42 +2,41 @@
 import CustomLink from '@/components/commons/CustomLink.astro';
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
+import ContentSection from '@/components/layout/ContentSection.astro';
 import saraImage from '@/assets/images/body/inicio/saraLainez.jpg';
 ---
 
 <div class="space-y-12">
 
   <!-- Intro Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-        <SectionTitle>Sobre mí – Sara Laínez, diseñadora floral en Madrid</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <div class="flex flex-col lg:flex-row items-center gap-7">
-            <div class="w-full lg:w-1/3">
-                <OptimizedImage
-                src={saraImage}
-                alt="Retrato de Sara Laínez, florista y diseñadora floral en Madrid, sonriendo."
-                class="rounded-tr-[50px] rounded-bl-[50px] h-auto w-full object-cover"
-                widths={[200, 400, 600]}
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-            </div>
-            <div class="flex-1">
-                <p>
-                    Creo en el poder de las flores para transformar espacios y emociones. Soy Sara Laínez, diseñadora floral y creadora de Miss Pitimini, un proyecto que nace de mi pasión por la naturaleza, la estética y las historias que se cuentan a través de los detalles.
-                </p>
-                <p>
-                    Mi trabajo combina sensibilidad, técnica y una mirada artística que busca siempre la belleza natural: composiciones orgánicas, colores equilibrados y flores que respiran movimiento.
-                </p>
-            </div>
-        </div>
+  <ContentSection>
+    <SectionTitle>Sobre mí – Sara Laínez, diseñadora floral en Madrid</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <div class="flex flex-col lg:flex-row items-center gap-7">
+          <div class="w-full lg:w-1/3">
+              <OptimizedImage
+              src={saraImage}
+              alt="Retrato de Sara Laínez, florista y diseñadora floral en Madrid, sonriendo."
+              class="rounded-tr-[50px] rounded-bl-[50px] h-auto w-full object-cover"
+              widths={[200, 400, 600]}
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
+          </div>
+          <div class="flex-1">
+              <p>
+                  Creo en el poder de las flores para transformar espacios y emociones. Soy Sara Laínez, diseñadora floral y creadora de Miss Pitimini, un proyecto que nace de mi pasión por la naturaleza, la estética y las historias que se cuentan a través de los detalles.
+              </p>
+              <p>
+                  Mi trabajo combina sensibilidad, técnica y una mirada artística que busca siempre la belleza natural: composiciones orgánicas, colores equilibrados y flores que respiran movimiento.
+              </p>
+          </div>
       </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Filosofía Section -->
-  <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
+  <ContentSection class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Mi filosofía</SectionTitle>
         <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
             <p>
@@ -48,32 +47,30 @@ import saraImage from '@/assets/images/body/inicio/saraLainez.jpg';
             </p>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Qué hago Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Qué hago</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          En Miss Pitimini diseño:
-        </p>
-        <ul class="list-disc space-y-2 pl-5">
-          <li>Decoración floral para bodas en Madrid</li>
-          <li>Montajes florales para eventos corporativos y privados</li>
-          <li>Talleres y experiencias florales para grupos y empresas</li>
-          <li>Escenografías y composiciones artísticas para marcas</li>
-        </ul>
-        <p>
-          Mi objetivo es que cada proyecto tenga alma, coherencia estética y un toque personal que lo haga inolvidable.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Qué hago</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        En Miss Pitimini diseño:
+      </p>
+      <ul class="list-disc space-y-2 pl-5">
+        <li>Decoración floral para bodas en Madrid</li>
+        <li>Montajes florales para eventos corporativos y privados</li>
+        <li>Talleres y experiencias florales para grupos y empresas</li>
+        <li>Escenografías y composiciones artísticas para marcas</li>
+      </ul>
+      <p>
+        Mi objetivo es que cada proyecto tenga alma, coherencia estética y un toque personal que lo haga inolvidable.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Cómo trabajo Section -->
-  <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
+  <ContentSection class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Cómo trabajo</SectionTitle>
         <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
             <p>
@@ -90,28 +87,26 @@ import saraImage from '@/assets/images/body/inicio/saraLainez.jpg';
             </p>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Inspiración Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Mi inspiración</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Encuentro inspiración en la naturaleza, la luz, los colores y las pequeñas cosas que pasan desapercibidas. Me inspiran los jardines silvestres, la estética japonesa, la fotografía, la gastronomía y todo aquello que celebra la belleza imperfecta.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Mi inspiración</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Encuentro inspiración en la naturaleza, la luz, los colores y las pequeñas cosas que pasan desapercibidas. Me inspiran los jardines silvestres, la estética japonesa, la fotografía, la gastronomía y todo aquello que celebra la belleza imperfecta.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Contact Section -->
-  <section class="py-12 bg-floral-light/20">
-      <div class="max-w-5xl mx-auto px-6 space-y-8 text-center">
+  <ContentSection class="py-12 bg-floral-light/20">
+      <div class="max-w-5xl mx-auto space-y-8 text-center">
         <SectionTitle>Hablemos</SectionTitle>
         <p class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
           Si quieres que diseñe las flores de tu boda, tu evento o una experiencia especial, estaré encantada de escucharte.
         </p>
         <CustomLink href="/contacto/">Cuéntame tu idea y empezamos a crear juntas</CustomLink>
       </div>
-  </section>
+  </ContentSection>
 </div>

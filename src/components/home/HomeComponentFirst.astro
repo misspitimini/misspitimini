@@ -2,11 +2,12 @@
 import { getHomeCards } from '@/ts/homeCards';
 import HomeCard from '@/components/home/HomeCard.astro';
 import SectionTitle from '../commons/SectionTitle.astro';
+import ContentSection from '../layout/ContentSection.astro';
 
 const homeCards = await getHomeCards(['1-bodas', '2-eventos', '3-talleres']);
 ---
 
-<section class="space-y-10">
+<ContentSection>
   <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
   <p class="text-lg text-floral-dark/80 mt-2 hidden text-center">Talleres de arte floral en Madrid y decoración de eventos con flores naturales</p>
   <div class="grid grid-cols-2 gap-1 md:gap-6">
@@ -14,4 +15,4 @@ const homeCards = await getHomeCards(['1-bodas', '2-eventos', '3-talleres']);
       <HomeCard card={card} />
     ))}
   </div>
-</section>
+</ContentSection>

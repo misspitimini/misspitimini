@@ -2,6 +2,7 @@
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
+import ContentSection from '@/components/layout/ContentSection.astro';
 import imageData from '@/data/events-images.json';
 import { loadImage } from '@/utils/imageLoader';
 
@@ -21,42 +22,40 @@ const loadedImages = {
 <div class="space-y-12">
 
   <!-- Intro Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Decoración Floral para Eventos Corporativos</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-        Las flores tienen la capacidad de transformar un espacio y elevar cualquier experiencia. En Miss Pitimini diseño composiciones florales para eventos corporativos, presentaciones de marca y celebraciones privadas, creando ambientes que transmiten emoción, identidad y belleza natural.
-        </p>
-        <p>
-          Trabajo en Madrid y alrededores, adaptando cada proyecto al estilo del evento, al espacio y a la esencia de la marca o anfitrión.
-        </p> 
-        <p>
-        Un evento corporativo es una oportunidad para comunicar valores, reforzar identidad y generar impacto visual. Mis propuestas florales se integran con la estética de la marca y el mensaje del evento, aportando elegancia, coherencia y personalidad.
-        </p>
-        <p>
-          <strong>Sara Laínez</strong> es especialista en la <strong>decoración floral para eventos de empresa y celebraciones privadas en ciudades como Madrid</strong>. Transforma espacios para reflejar la identidad de tu marca y crear una atmósfera inolvidable. Nuestro trabajo consiste en interpretar la esencia de cada celebración, ya sea un:
-        </p> 
-        
-        <p>Puedo ayudarte con:</p>
+  <ContentSection>
+    <SectionTitle>Decoración Floral para Eventos Corporativos</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+      Las flores tienen la capacidad de transformar un espacio y elevar cualquier experiencia. En Miss Pitimini diseño composiciones florales para eventos corporativos, presentaciones de marca y celebraciones privadas, creando ambientes que transmiten emoción, identidad y belleza natural.
+      </p>
+      <p>
+        Trabajo en Madrid y alrededores, adaptando cada proyecto al estilo del evento, al espacio y a la esencia de la marca o anfitrión.
+      </p> 
+      <p>
+      Un evento corporativo es una oportunidad para comunicar valores, reforzar identidad y generar impacto visual. Mis propuestas florales se integran con la estética de la marca y el mensaje del evento, aportando elegancia, coherencia y personalidad.
+      </p>
+      <p>
+        <strong>Sara Laínez</strong> es especialista en la <strong>decoración floral para eventos de empresa y celebraciones privadas en ciudades como Madrid</strong>. Transforma espacios para reflejar la identidad de tu marca y crear una atmósfera inolvidable. Nuestro trabajo consiste en interpretar la esencia de cada celebración, ya sea un:
+      </p> 
+      
+      <p>Puedo ayudarte con:</p>
 
-        <ul class="list-disc space-y-4 pl-5">
-          <li><strong>Decoración floral</strong> para presentaciones de producto.</li>
-          <li><strong>Montajes</strong> para ruedas de prensa y encuentros profesionales.</li>
-          <li><strong>Escenografías florales</strong> para sesiones de fotos o vídeos.</li>
-          <li><strong>Decoración</strong> para inauguraciones y eventos de empresa.</li>
-          <li><strong>Centros de mesa y arreglos</strong> para reuniones o cenas corporativas.</li>
-        </ul>
+      <ul class="list-disc space-y-4 pl-5">
+        <li><strong>Decoración floral</strong> para presentaciones de producto.</li>
+        <li><strong>Montajes</strong> para ruedas de prensa y encuentros profesionales.</li>
+        <li><strong>Escenografías florales</strong> para sesiones de fotos o vídeos.</li>
+        <li><strong>Decoración</strong> para inauguraciones y eventos de empresa.</li>
+        <li><strong>Centros de mesa y arreglos</strong> para reuniones o cenas corporativas.</li>
+      </ul>
 
-        <p>
-          Entendemos que cada evento corporativo es una oportunidad para comunicar y reforzar la imagen de tu marca. Por eso, ofrecemos un abanico de soluciones de diseño floral, creadas a medida para impactar y emocionar.
-        </p>
-      </div>
+      <p>
+        Entendemos que cada evento corporativo es una oportunidad para comunicar y reforzar la imagen de tu marca. Por eso, ofrecemos un abanico de soluciones de diseño floral, creadas a medida para impactar y emocionar.
+      </p>
     </div>
-  </section>
+  </ContentSection>
  
  <!-- Soluciones Section -->
-  <section class="py-12 bg-floral-light/20">
+  <ContentSection class="py-12 bg-floral-light/20">
     <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Soluciones Florales a Medida</SectionTitle> 
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
@@ -77,10 +76,10 @@ const loadedImages = {
             </div>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Fiestas Privadas y Celebraciones Section -->
-  <section class="py-12">
+  <ContentSection class="py-12">
     <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Decoración para Fiestas Privadas y Celebraciones</SectionTitle>
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
@@ -102,22 +101,20 @@ const loadedImages = {
 
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Galería de Eventos Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Galería de Eventos</SectionTitle>
-    </div>
+  <ContentSection>
+    <SectionTitle>Galería de Eventos</SectionTitle>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-0">
       {loadedImages.galeria1 && imageData.galeria1 && <OptimizedImage alt={imageData.galeria1.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria1} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
       {loadedImages.galeria2 && imageData.galeria2 && <OptimizedImage alt={imageData.galeria2.alt} class="w-full aspect-square object-cover" src={loadedImages.galeria2} widths={[400, 800]} sizes="(max-width: 768px) 100vw, 33vw" />}
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Lanzamientos de Producto Section -->
-  <section class="py-12 bg-floral-light/20">
+  <ContentSection class="py-12 bg-floral-light/20">
     <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Diseño Floral para Lanzamientos de Productos</SectionTitle>
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
@@ -138,10 +135,10 @@ const loadedImages = {
             )}
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Cómo trabajo Section -->
-  <section class="py-12 bg-floral-light/20">
+  <ContentSection class="py-12 bg-floral-light/20">
     <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Nuestro Proceso de Diseño</SectionTitle>  
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
@@ -162,23 +159,21 @@ const loadedImages = {
 
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Zonas donde trabajo Section -->
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Zonas donde trabajo</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Realizo eventos en Madrid capital, en espacios corporativos, hoteles, restaurantes, fincas y localizaciones privadas. También puedo desplazarme a otras zonas bajo consulta.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Zonas donde trabajo</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Realizo eventos en Madrid capital, en espacios corporativos, hoteles, restaurantes, fincas y localizaciones privadas. También puedo desplazarme a otras zonas bajo consulta.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- FAQ Section -->
-  <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
+  <ContentSection class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Preguntas frecuentes</SectionTitle>
         <div class="space-y-4">
             <details class="group border-b pb-4">
@@ -228,10 +223,10 @@ const loadedImages = {
             </details>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Testimonio Section -->
-  <section class="px-6 space-y-6">
+  <ContentSection>
     <div class="max-w-3xl mx-auto text-center">
       <SectionTitle>Transforma tu Evento</SectionTitle>
       <blockquote class="mt-4 text-floral-dark/70 italic">
@@ -239,7 +234,7 @@ const loadedImages = {
         <cite class="mt-2 block font-semibold not-italic">- Director de Marketing, Empresa Tecnológica en Madrid</cite>
       </blockquote>
     </div>
-  </section>
+  </ContentSection>
 
   
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-0">
@@ -249,12 +244,12 @@ const loadedImages = {
 
   
     <!-- Contacto Section -->
-    <section class="space-y-6">
+    <ContentSection>
       <div class="py-10">
         <p class="text-lg text-floral-dark/80"> ¿Listo para llevar tu evento al siguiente nivel? Cuéntanos tu idea y nuestro equipo de expertos en diseño floral te enviará una propuesta personalizada. Hablemos,</p>
         <CustomLink href="/contacto/">contacta con nosotros</CustomLink>
     </div>
-    </section>
+    </ContentSection>
 
 
 

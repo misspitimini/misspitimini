@@ -4,71 +4,70 @@ import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
 import { getWorkshops } from '@/ts/workshops.ts';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
+import ContentSection from '@/components/layout/ContentSection.astro';
 
 const workshops = await getWorkshops();
 ---
 
 <div class="space-y-12">
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
-          Esta no es solo una clase de diseño, es una invitación a transformar flores frescas en <strong>piezas de diseño</strong> mientras se deleita el paladar.
-        </p>
-        <p>
-          <strong>Sara Laínez</strong> propone una metodología donde la flor es la protagonista de un lenguaje visual propio. En sus talleres presenciales mayoritariamente en <strong>Madrid</strong>, Sara guía a los alumnos para que encuentren su propio estilo, huyendo de los arreglos rígidos y apostando por la naturalidad, el movimiento y la sostenibilidad.
-        </p>
-        <p>
-          Siempre buscando algo aún más especial,creando experiencias que combinan flores y gastronomía: una propuesta sensorial donde diseño un taller floral acompañado de una degustación, cata o menú creado para la ocasión.  Planes diferentes en Madrid.
-        </p>
-        <SectionTitle title="Talleres de arte floral para particulares" />
-        <p>
-          Las flores nos conectan con la belleza, la calma y la creatividad. Diseñaremos experiencias florales únicas en Madrid para personas, grupos y empresas que buscan un momento diferente: inspirador, sensorial y lleno de naturaleza.
-        </p>
-        <p>
-          Cada taller es una invitación a crear, experimentar y disfrutar del arte floral desde un enfoque cercano, estético y muy personal.
-        </p>
-        <p>
-          Si te apetece desconectar, aprender algo nuevo o vivir un plan especial con amigas, pareja o familia, mis talleres florales son una experiencia perfecta. No necesitas conocimientos previos: solo ganas de disfrutar.
-        </p>
-        <p>
-          En cada sesión aprenderás a:
-        </p>
-        <ul class="list-disc space-y-2 pl-5 text-left">
-          <li>Crear tu propio ramo o centro floral.</li>
-          <li>Conocer flores de temporada y cómo cuidarlas.</li>
-          <li>Componer de forma natural y equilibrada.</li>
-          <li>Desarrollar tu creatividad a través de las flores.</li>
-        </ul>
-        <SectionTitle title="Experiencias florales para empresas" />
-        <p>
-          Las flores son una herramienta poderosa para generar bienestar, cohesión y creatividad en equipos de trabajo. Por eso diseño experiencias florales para empresas que buscan actividades originales y con impacto emocional. Son eventos de empresa con un toque exclusivo.
-        </p>
-        <p>
-          Son perfectas para:
-        </p>
-        <ul class="list-disc space-y-2 pl-5 text-left">
-          <li>Team building.</li>
-          <li>Eventos internos.</li>
-          <li>Jornadas creativas.</li>
-          <li>Activaciones de marca.</li>
-          <li>Celebraciones corporativas.</li>
-        </ul>
-        <p>
-          Cada experiencia combina aprendizaje, estética y conexión, creando un ambiente relajado y estimulante donde el equipo puede disfrutar y crear algo con sus propias manos.
-        </p>
-      </div>
+  <ContentSection>
+    <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Aprende a crear arreglos únicos y llenos de estilo con nuestros <strong>talleres presenciales</strong>, donde la estética floral y el placer culinario se encuentran en un mismo espacio.
+        Esta no es solo una clase de diseño, es una invitación a transformar flores frescas en <strong>piezas de diseño</strong> mientras se deleita el paladar.
+      </p>
+      <p>
+        <strong>Sara Laínez</strong> propone una metodología donde la flor es la protagonista de un lenguaje visual propio. En sus talleres presenciales mayoritariamente en <strong>Madrid</strong>, Sara guía a los alumnos para que encuentren su propio estilo, huyendo de los arreglos rígidos y apostando por la naturalidad, el movimiento y la sostenibilidad.
+      </p>
+      <p>
+        Siempre buscando algo aún más especial,creando experiencias que combinan flores y gastronomía: una propuesta sensorial donde diseño un taller floral acompañado de una degustación, cata o menú creado para la ocasión.  Planes diferentes en Madrid.
+      </p>
+      <SectionTitle>Talleres de arte floral para particulares</SectionTitle>
+      <p>
+        Las flores nos conectan con la belleza, la calma y la creatividad. Diseñaremos experiencias florales únicas en Madrid para personas, grupos y empresas que buscan un momento diferente: inspirador, sensorial y lleno de naturaleza.
+      </p>
+      <p>
+        Cada taller es una invitación a crear, experimentar y disfrutar del arte floral desde un enfoque cercano, estético y muy personal.
+      </p>
+      <p>
+        Si te apetece desconectar, aprender algo nuevo o vivir un plan especial con amigas, pareja o familia, mis talleres florales son una experiencia perfecta. No necesitas conocimientos previos: solo ganas de disfrutar.
+      </p>
+      <p>
+        En cada sesión aprenderás a:
+      </p>
+      <ul class="list-disc space-y-2 pl-5 text-left">
+        <li>Crear tu propio ramo o centro floral.</li>
+        <li>Conocer flores de temporada y cómo cuidarlas.</li>
+        <li>Componer de forma natural y equilibrada.</li>
+        <li>Desarrollar tu creatividad a través de las flores.</li>
+      </ul>
+      <SectionTitle>Experiencias florales para empresas</SectionTitle>
+      <p>
+        Las flores son una herramienta poderosa para generar bienestar, cohesión y creatividad en equipos de trabajo. Por eso diseño experiencias florales para empresas que buscan actividades originales y con impacto emocional. Son eventos de empresa con un toque exclusivo.
+      </p>
+      <p>
+        Son perfectas para:
+      </p>
+      <ul class="list-disc space-y-2 pl-5 text-left">
+        <li>Team building.</li>
+        <li>Eventos internos.</li>
+        <li>Jornadas creativas.</li>
+        <li>Activaciones de marca.</li>
+        <li>Celebraciones corporativas.</li>
+      </ul>
+      <p>
+        Cada experiencia combina aprendizaje, estética y conexión, creando un ambiente relajado y estimulante donde el equipo puede disfrutar y crear algo con sus propias manos.
+      </p>
     </div>
-  </section>
+  </ContentSection>
 
-  <section class="space-y-6">
+  <ContentSection>
     <SectionTitle>Próximas experiencias:</SectionTitle>
     <WorkshopCardNext />
-  </section>
+  </ContentSection>
 
-  <section class="space-y-6">
+  <ContentSection>
     <SectionTitle>Otras experiencias:</SectionTitle>
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
       {workshops.map((workshop) => (
@@ -81,11 +80,11 @@ const workshops = await getWorkshops();
         />
       ))}
     </div>
-  </section>
+  </ContentSection>
 
-  <section class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto px-6 space-y-8">
-        <SectionTitle title="Preguntas frecuentes" />
+  <ContentSection class="py-12 bg-floral-light/20">
+    <div class="max-w-5xl mx-auto space-y-8">
+        <SectionTitle>Preguntas frecuentes</SectionTitle>
         <div class="space-y-4">
             <details class="group border-b pb-4">
                 <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
@@ -143,18 +142,16 @@ const workshops = await getWorkshops();
             </details>
         </div>
     </div>
-  </section>
+  </ContentSection>
 
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Contacto</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          Si quieres vivir una experiencia floral diferente o estás organizando un evento especial, estaré encantada de ayudarte.
-        </p>
-        <CustomLink href="/solicitaPresupuesto/">Cuéntame tu idea y diseñamos el taller perfecto</CustomLink>
-      </div>
+  <ContentSection>
+    <SectionTitle>Contacto</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Si quieres vivir una experiencia floral diferente o estás organizando un evento especial, estaré encantada de ayudarte.
+      </p>
+      <CustomLink href="/solicitaPresupuesto/">Cuéntame tu idea y diseñamos el taller perfecto</CustomLink>
     </div>
-  </section>
+  </ContentSection>
 
 </div>
