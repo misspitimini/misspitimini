@@ -1,0 +1,15 @@
+---
+// src/components/layout/SectionContainer.astro
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={[className]}>
+  <div class="px-0 py-10 space-y-12">
+    <slot />
+  </div>
+</section>

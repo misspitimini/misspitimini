@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/header/Header.astro';
 import Carrusel from '@/components/header/Carrusel.astro';
 import EventsComponent from '@/components/eventscorporate/EventsComponent.astro';
+import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/eventos/";
@@ -15,9 +16,9 @@ keywords="florista, bodas, eventos, talleres florales, experiencias, Madrid, dis
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only">Decoración floral para eventos en Madrid</h1>
 		<Carrusel href={href} />
-		<div class="px-0 py-10 space-y-12">
+		<SectionContainer>
 			<EventsComponent />
-		</div>
+		</SectionContainer>
 	</main>
 	<Footer />
 </Layout>

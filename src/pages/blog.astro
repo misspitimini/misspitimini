@@ -3,6 +3,7 @@ import LayoutBlog from '@/layouts/LayoutBlog.astro';
 import Header from '@/components/header/Header.astro';
 import Carrusel from '@/components/header/Carrusel.astro';
 import BlogComponent from '@/components/blog/BlogComponent.astro';
+import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/blog/";
@@ -20,9 +21,9 @@ const href="/blog/";
             <p class="text-lg text-floral-dark/80 mt-2">Ideas y consejos sobre diseño floral</p>
         </div>
 		<Carrusel href={href} />
-		<div class="px-0 py-10 space-y-12">
+		<SectionContainer>
 			<BlogComponent />
-		</div>
+		</SectionContainer>
 	</main>
 	<Footer />
 </LayoutBlog>

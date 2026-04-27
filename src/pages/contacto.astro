@@ -3,6 +3,7 @@ import LayoutEmail from '@/layouts/LayoutEmail.astro';
 import Header from '@/components/header/Header.astro';
 import Carrusel from '@/components/header/Carrusel.astro';
 import ContactComponent from '@/components/contact/ContactComponent.astro';
+import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/contacto/";
@@ -13,9 +14,9 @@ const href="/contacto/";
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only">Contacta con Diseñora Floral para eventos, bodas y experiencias en Madrid</h1>
 		<Carrusel href={href} />
-		<div class="px-0 py-10 space-y-12">
+		<SectionContainer>
 			<ContactComponent />
-		</div>
+		</SectionContainer>
 	</main>
 	<Footer />
 </LayoutEmail>

@@ -5,6 +5,7 @@ import Carrusel from '@/components/header/Carrusel.astro';
 import HomeComponentFirst from '@/components/home/HomeComponentFirst.astro';
 import HomeComponentHero from '@/components/home/HomeComponentHero.astro';
 import HomeComponentSecond from '@/components/home/HomeComponentSecond.astro';
+import SectionContainer from '@/components/layout/SectionContainer.astro';
 
 import Header from '@/components/header/Header.astro';
 import Footer from '@/components/footer/Footer.astro';
@@ -25,11 +26,11 @@ const href="/";
 			<p class="text-lg text-floral-dark/80 mt-2">Creaciones únicas y personalizadas para momentos inolvidables</p>
 		</div>
 		<Carrusel href={href} />
-		<div class="px-0 py-10 space-y-12">
+		<SectionContainer>
 			<HomeComponentFirst />
 			<HomeComponentHero />
 			<HomeComponentSecond />
-		</div>
+		</SectionContainer>
 	</main>
 	<Footer />
 </Layout>
