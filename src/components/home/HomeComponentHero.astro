@@ -4,8 +4,9 @@ import heroImage from '@/assets/images/carrusel/01_misspitimini.jpg';
 import CustomLink from '@/components/commons/CustomLink.astro';
 ---
 
-<section class="px-10 text-center bg-gray-100 py-6">
-    <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-floral-beige shadow-lg">
+<section class="space-y-6">
+  <div class="px-0 md:px-6">
+    <div class="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-floral-beige shadow-lg text-center bg-gray-100">
       <OptimizedImage alt="Retrato de Sara Laínez, diseñadora floral profesional, especialista en bodas y eventos" class="w-full h-full object-cover" src={heroImage} format='webp'/>
     </div>
     <div class="space-y-4">
@@ -26,4 +27,5 @@ import CustomLink from '@/components/commons/CustomLink.astro';
       </p>
       <p class="text-[10px] font-bold tracking-widest uppercase text-primary">Sara Laínez</p>
       </div>
-    </section>
+  </div>    
+</section>
