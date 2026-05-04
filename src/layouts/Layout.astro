@@ -48,6 +48,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 			body {
 				@apply text-floral-dark antialiased;
 			}
+			#post-content-main h1,
+            #post-content-main h2,
+            #post-content-main h3,
+            #post-content-main hr {
+              @apply text-center;
+            }
+			p {
+              @apply text-justify tracking-wide m-6 md:m-6
+            }
+			ul {
+              @apply list-disc ml-6 mb-4;
+            }
 		}
 	</style>
 </html>

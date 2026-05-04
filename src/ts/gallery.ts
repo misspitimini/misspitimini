@@ -22,7 +22,7 @@ async function renderGalleries() {
     try {
         const response = await fetch(UrlsApi.GET_GALLERIES);
         const files: GalleryPost[] = await response.json();
-      
+        
         // Limpiamos el mensaje de "Cargando"
         container.innerHTML = '';
   

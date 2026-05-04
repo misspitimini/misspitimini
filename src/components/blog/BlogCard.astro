@@ -30,9 +30,9 @@ const formattedDate = new Date(data.pubDate).toLocaleDateString('es-ES', {
     <CustomLink class="card-link" href={`/blog/${slugify(data.slug)}/`}>Leer más</CustomLink>
   </div>
   <div class="px-2"> 
-    <p class="text-sm text-gray-500">{formattedDate}</p>
+    <p class="card-pub-date text-sm text-gray-500 text-center">{formattedDate}</p>
     <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800 min-h-[4rem]">{data.title}</h3>
-    <p class="card-description text-[16px] text-floral-dark/60 min-h-[5rem] line-clamp-3">
+    <p class="card-description text-[16px] text-floral-dark/60 min-h-[5rem] line-clamp-3 text-center">
       {data.description}
     </p>
   </div>

@@ -40,9 +40,8 @@ const loadedImages = {
   </ContentSection>
 
   <!-- Ramos de Novia Section -->
-  <ContentSection class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto space-y-8">
-        <SectionTitle>Ramos de novia para bodas</SectionTitle>
+  <ContentSection>
+      <SectionTitle>Ramos de novia para bodas</SectionTitle>
         <div class="grid grid-cols-2 gap-2 md:gap-4 pt-2 md:pt-4">
           {loadedImages.novia && imageData?.novia && (
             <div class="relative w-full pt-4 overflow-hidden col-span-2 md:col-span-1 "> 
@@ -73,14 +72,11 @@ const loadedImages = {
                 <CustomLink href="/contacto/">Cuéntame cómo imaginas tu ramo y lo diseñamos juntas</CustomLink>.
               </p>
             </div>
-
-        </div>
-    </div>
+      </div>
   </ContentSection>
 
   <!-- Decoración Ceremonia Section -->
-  <section class="space-y-6">
-    <div class="px-6">
+  <ContentSection>
       <SectionTitle>Decoración floral para la ceremonia</SectionTitle>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
@@ -96,7 +92,6 @@ const loadedImages = {
           <li><strong>Montajes</strong> en interior y exterior totalmente personalizados.</li>
         </ul>
       </div>
-    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 pt-4">
   
       {loadedImages.ramoNovia && imageData.ramoNovia && (
@@ -123,11 +118,10 @@ const loadedImages = {
          </div>
       )}
     </div>
-  </section>
+  </ContentSection>
 
   <!-- Centros de Mesa Section -->
-  <section class="space-y-6">
-    <div class="px-6">
+  <ContentSection>
       <SectionTitle>Decoración de mesas y banquete</SectionTitle>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
@@ -142,7 +136,6 @@ const loadedImages = {
           <li><strong>Guirnaldas</strong> de flores frescas para mesas imperiales.</li>
           <li>Combinación con <strong>velas</strong> y elementos decorativos.</li>
         </ul>
-      </div>
     </div>
     {loadedImages.buffetPostres && imageData.buffetPostres && (
         <div class="relative w-full pt-4 overflow-hidden"> 
@@ -155,11 +148,10 @@ const loadedImages = {
           />
         </div>
     )}
-  </section>
+  </ContentSection>
 
   <!-- Proceso de Preparación Section -->
-  <section class="space-y-6">
-    <div class="px-6">
+  <ContentSection>
       <SectionTitle>Proceso de preparación</SectionTitle>
       <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
         <p>
@@ -173,7 +165,6 @@ const loadedImages = {
           <li><strong>Montaje</strong> el día de la boda.</li>
         </ul>
       </div>
-    </div>
     <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
       {loadedImages.detallismoMesaBuffet && imageData.detallismoMesaBuffet && (
           <div class="relative w-full pt-4 overflow-hidden"> 
@@ -198,7 +189,7 @@ const loadedImages = {
         </div>
       )}
     </div>
-  </section>
+  </ContentSection>
   <ContentSection>
     <SectionTitle>Zonas donde trabajo</SectionTitle>
     <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
@@ -210,7 +201,6 @@ const loadedImages = {
 
   <!-- FAQ Section -->
   <ContentSection class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto space-y-8">
         <SectionTitle>Preguntas frecuentes</SectionTitle>
         <div class="space-y-4">
             <details class="group border-b pb-4">
@@ -259,12 +249,11 @@ const loadedImages = {
                 </p>
             </details>
         </div>
-    </div>
   </ContentSection>
 
   <!-- Contact Section -->
   <ContentSection>
-      <SectionTitle>Contacto</SectionTitle>
+    <SectionTitle>Contacto</SectionTitle>
     <div class="max-w-5xl mx-auto px-2 md:px-10 text-center text-floral-dark/80 leading-relaxed space-y-4">
       <p>
         Si queréis una decoración floral que hable de vosotros, estaré encantada de acompañaros.
