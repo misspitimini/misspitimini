@@ -11,9 +11,9 @@ const homeCards = await getHomeCards(['5-galeria','4-blog']);
 <ContentSection>
   <SectionTitle>Inspírate con nuestras creaciones florales</SectionTitle>
   <p class="text-lg text-floral-dark/80 mt-2 hidden">Descubre nuestro blog y galería para encontrar la inspiración que buscas</p>
-  <div class="grid grid-cols-2 gap-1 md:gap-6">
-    {homeCards.map(card => (
-      <HomeCard card={card} />
-    ))}
-  </div>
 </ContentSection>
+<div class="grid grid-cols-2 gap-1 md:gap-6">
+  {homeCards.map(card => (
+    <HomeCard card={card} />
+  ))}
+</div>
