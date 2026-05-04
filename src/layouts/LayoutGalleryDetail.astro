@@ -4,7 +4,6 @@ import Layout from '@/layouts/Layout.astro';
 const { title, description, keywords } = Astro.props;
 ---
 <Layout title={title} description={description} keywords={keywords}>
-    <script src="/src/ts/galleryDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
         <style is:global>

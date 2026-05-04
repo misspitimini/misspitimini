@@ -2,64 +2,75 @@
 import HeaderGalleryDetail from '@/components/header/HeaderGalleryDetail.astro';
 import LayoutGalleryDetail from '@/layouts/LayoutGalleryDetail.astro';
 import Footer from '@/components/footer/Footer.astro';
-import { galleryDetailData } from '@/ts/galleryDetailData.ts';
 ---
 
-<script define:vars={{ galleryDetailData }}>
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('galleryDetailData', galleryDetailData);
-    });
-</script>
+<script src="../ts/alpine-init.ts"></script>
 
 <LayoutGalleryDetail title="misspitimini | Galería de trabajos de Sara Laínez" description="Explora la galería de trabajos de diseño floral de misspitimini.">
 	<HeaderGalleryDetail/>
 	<main id="post-content-main" 
-          x-data="galleryDetailData"
+          x-data="galleryDetailData()" 
           x-init="init()"
           @touchstart="handleTouchStart($event)"
           @touchend="handleTouchEnd($event)">
-		<hr style="margin-bottom:2px; padding-bottom:2px"/>
-		<div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
-			<button @click="prev()" class="absolute left-3 md:left-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-			</button>
-			<button @click="next()" class="absolute right-3 md:right-2 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-			</button>
-		</div>
-		<div class="flex flex-col items-center gap-7">
-            <h1 class="card-title">
-                Donde las flores se convierten en recuerdos
-            </h1>
+
+        <!-- Estado de Carga: Se muestra mientras isLoading es true -->
+        <div x-show="isLoading" class="text-center py-20">
+            <p class="text-xl text-gray-500">Cargando galería...</p>
         </div>
-		 <div class="relative max-w-3xl mx-auto">
-			<button @click="prev()" class="absolute -left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-black cursor-pointer">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-			</button>
-			<div class="card-content-thumb grid grid-flow-col auto-cols-max items-center justify-start gap-3 mt-4 overflow-x-auto p-2 scroll-smooth max-w-[280px] md:max-w-md mx-auto no-scrollbar" x-ref="galleryContainer">
-				<template x-for="(img, index) in images" :key="`thumb-template_${index}`">
-					<button type="button" @click="load(index)" class="relative h-20 min-w-max overflow-hidden rounded-md border-2 transition-all" :class="changeClass(index)">	
-						<img :src="img" class="card-img w-full h-full object-cover hidden" loading="lazy">
-					</button>
-				</template>
-			</div>
-			<button @click="next()" class="absolute -right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-black cursor-pointer">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-			</button>
-		</div>
-		<section>
-			<div class="flex flex-col lg:flex-row items-center gap-7 p-2 md:p-4">
-			  <div class="flex-1">
-				<div class="card-content" >Cargando contenido...</div>
-			  </div>
-			</div>
-		</section>
-		<hr/>
-		<div class="text-center">
-			<a href="/galeria/" class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
-				Volver
-			</a>
-		</div>
+
+        <!-- Contenido de la Galería: Se muestra cuando isLoading es false -->
+        <div x-show="!isLoading">
+            <hr style="margin-bottom:2px; padding-bottom:2px"/>
+            
+            <!-- Visor Principal -->
+            <div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
+
+                <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${activeSlideGallery * 100}%)`">
+                    <template x-for="(image, index) in images" :key="`slide-${index}`">
+                        <div class="min-w-full w-full box-border flex items-center justify-center bg-transparent">
+                            <img :src="image.url" :alt="image.name" class="w-full h-auto object-contain max-h-[120vh]" loading="lazy">
+                        </div>
+                    </template>
+                </div>
+
+                <button @click="prev()" class="absolute left-1 md:left-1 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button @click="next()" class="absolute right-0 md:right-1 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+
+            <!-- Título y Miniaturas -->
+            <div class="flex flex-col items-center gap-2 mt-4">
+                <h1 class="card-title text-center px-4">Donde las flores se convierten en recuerdos</h1>
+                
+                <div class="relative max-w-3xl w-full mx-auto">
+                    <div class="card-content-thumb grid grid-flow-col auto-cols-max items-center justify-start gap-3 mt-2 overflow-x-auto p-4 scroll-smooth max-w-full mx-auto no-scrollbar" x-ref="galleryContainer">
+                        <template x-for="(image, index) in images" :key="`thumb-${index}`">
+                            <button type="button" @click="load(index)" class="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all" :class="changeClass(index)">	
+                                <img :src="image.url" :alt="`Thumbnail of ${image.name}`" class="w-full h-full object-cover" loading="lazy">
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido del Post (Markdown) -->
+            <section class="p-2 md:p-4">
+                <div class="card-content prose max-w-none">Cargando contenido...</div>
+            </section>
+            
+            <hr/>
+
+            <!-- Botón Volver -->
+            <div class="text-center py-4">
+                <a href="/galeria/" class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
+                    Volver
+                </a>
+            </div>
+        </div>
 	</main>
 	<Footer />
 </LayoutGalleryDetail>
