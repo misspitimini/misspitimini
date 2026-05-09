@@ -1,15 +1,6 @@
+import { getGalleries } from '@/ts/galleryAstro.ts';
+import type { Gallery } from '@/types/Gallery';
 
-import { UrlsApi } from '@/ts/urls.ts';
-
-interface GalleryPost {
-    id: string;
-    data: {
-        url?: string;
-        alt?: string;
-        title?: string;
-        description?: string;
-    };
-}
 
 async function renderGalleries() {
 
@@ -20,13 +11,12 @@ async function renderGalleries() {
       return;
     }
     try {
-        const response = await fetch(UrlsApi.GET_GALLERIES);
-        const files: GalleryPost[] = await response.json();
+        const files: Gallery[] = await getGalleries();
         
         // Limpiamos el mensaje de "Cargando"
         container.innerHTML = '';
   
-        files.forEach((post: GalleryPost) => {
+        files.forEach((post: Gallery) => {
           // Clonamos el molde
           const clone = template.content.cloneNode(true) as DocumentFragment;
   
@@ -37,15 +27,14 @@ async function renderGalleries() {
           const link = clone.querySelector('.card-link') as HTMLAnchorElement;
           
           // Asignamos valores (con "fallbacks" por si falta algún dato)
-          if (img) {
-            img.src = post.data.url || UrlsApi.DEFAULT_IMAGE;
-            img.alt = post.data.alt || 'Imagen de la galería de Sara Laínez';
-          }
+          img.src = post.imgSrc;
+          img.alt = post.imgAlt;
           
-          if (title) title.textContent = post.data.title || 'Post sin título';
-          if (desc) desc.textContent = post.data.description || 'Haz clic para leer más...';
-          // El link lleva a la página de detalle con el ID (slug)
-          if (link) link.href = `/detalleGaleria?id=${post.id}`;
+          if (title) title.textContent = post.title;
+          if (desc) desc.textContent = post.description;
+          if (link) link.href = post.link;
+  
+          // Añadimos el clon al contenedor
           container.appendChild(clone);
         });
       } catch (error) {
@@ -55,5 +44,8 @@ async function renderGalleries() {
    
   }
 
+
 // Ejecutar automáticamente cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', renderGalleries);
+
+

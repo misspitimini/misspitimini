@@ -2,18 +2,35 @@
 import SectionTitle from '../commons/SectionTitle.astro';
 import GalleryCard from './GalleryCard.astro';
 import ContentSection from '../layout/ContentSection.astro';
+import { getGalleries } from '@/ts/galleryAstro';
+
+// Obtenemos las galerías directamente en el componente.
+const galleries = await getGalleries();
+
 ---
 
 <ContentSection>
   <SectionTitle>Nuestros Recuerdos</SectionTitle>
   <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
     <p>
-        Hay palabras que solo las flores saben decir. <strong>Nuestra galería</strong> es un recorrido por las emociones que hemos ayudado a cultivar. Desde <strong>bodas</strong> en en tonos pastel, hasta la energía vibrante de un <strong>taller</strong> en colores cítricos. Cada pétalo aquí presente cuenta una historia; <strong>te invitamos a encontrar la tuya</strong>.
+        Hay palabras que solo las flores saben decir. <strong>Nuestra galería</strong> es un recorrido por las emociones que hemos ayudado a cultivar. Desde <strong>bodas</strong> en tonos pastel, hasta la energía vibrante de un <strong>taller</strong> en colores cítricos. Cada pétalo aquí presente cuenta una historia; <strong>te invitamos a encontrar la tuya</strong>.
     </p>
   </div>
   <br/>
   <div id="gallery-container" class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
-        Cargando galerías...
+    {galleries.length > 0 ? (
+      galleries.map(gallery => (
+        <GalleryCard
+          imgSrc={gallery.imgSrc}
+          imgAlt={gallery.imgAlt}
+          title={gallery.title}
+          description={gallery.description}
+          link={gallery.link}
+        />
+      ))
+    ) : (
+      <p class="col-span-full text-center">No se han podido cargar las galerías en este momento. Por favor, inténtalo de nuevo más tarde.</p>
+    )}
   </div>
 </ContentSection>
 
@@ -26,5 +43,3 @@ import ContentSection from '../layout/ContentSection.astro';
     link=""
   />
 </template>
-
-<script src="../../ts/gallery.ts"></script>
