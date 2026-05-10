@@ -30,9 +30,10 @@ export async function getGalleries(): Promise<Gallery[]> {
         const galleries: Gallery[] = apiGalleries.map((post: any) => ({
             imgSrc: post?.data?.url || UrlsApi.DEFAULT_IMAGE,
             imgAlt: post?.data?.alt || 'Imagen de la galería de mispitimini',
+            slug: post?.id,
             title: post?.data?.title || 'Post sin título',
             description: post?.data?.description || 'Ver más...',
-            link: `/detalleGaleria?id=${post.id}`
+
         }));
 
         return galleries;

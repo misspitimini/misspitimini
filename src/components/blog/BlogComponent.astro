@@ -2,6 +2,11 @@
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import BlogCard from '@/components/blog/BlogCard.astro';
 import ContentSection from '../layout/ContentSection.astro';
+
+import { getBlogs } from '@/services/blog';
+
+// Obtenemos las galerías directamente en el componente.
+const blogs = await getBlogs();
 ---
 
 <ContentSection>
@@ -12,25 +17,33 @@ import ContentSection from '../layout/ContentSection.astro';
     </p>
   </div>
   <br/>
-  <div id="blog-container" class="mt-12 grid grid-cols-2 gap-2 md:gap-4 pt-4 gap-8">
-    Cargando entradas del blog...
+  <div id="blog-container" class="mt-12 grid grid-cols-2 gap-2 md:gap-4 pt-4 gap-8">  
+  {blogs.length > 0 ? (
+    blogs.map(blog => (
+    <BlogCard 
+      title={blog.title}
+      description={blog.description}
+      slug={blog.slug}
+      imgSrc={blog.imgSrc}
+      imgAlt={blog.description};
+      pubDate={blog.pubDate}
+       />
+    ))
+  ) : (
+    <p class="col-span-full text-center">No se han podido cargar los blogs en este momento. Por favor, inténtalo de nuevo más tarde.</p>
+  )}
   </div>
 </ContentSection>
 
 <template id="card-blog-template" class="hidden">
-  <BlogCard data={{
-    title: 'Título de ejemplo',
-    description: 'Descripción de ejemplo...',
-    author: 'Autor de Ejemplo',
-    pubDate: new Date().toLocaleDateString('es-ES', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }),
-    tags: ['ejemplo'],
-    heroImage: 'https://example.com/image.jpg',
-    slug: 'ejemplo-slug'
-  }} />
+  <BlogCard 
+    title='Título de ejemplo'
+    description='Descripción de ejemplo...'
+    slug= 'ejemplo-slug'
+    imgSrc='https://example.com/image.jpg'
+    imgAlt='Descripción de ejemplo...'
+    pubDate='1 de Enero de 1990'
+   />
 </template>
 
 <script src="../../ts/blog.ts"></script>

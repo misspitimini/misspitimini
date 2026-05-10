@@ -2,7 +2,7 @@
 import SectionTitle from '../commons/SectionTitle.astro';
 import GalleryCard from './GalleryCard.astro';
 import ContentSection from '../layout/ContentSection.astro';
-import { getGalleries } from '@/ts/galleryAstro';
+import { getGalleries } from '@/services/gallery';
 
 // Obtenemos las galerías directamente en el componente.
 const galleries = await getGalleries();
@@ -23,9 +23,9 @@ const galleries = await getGalleries();
         <GalleryCard
           imgSrc={gallery.imgSrc}
           imgAlt={gallery.imgAlt}
+          
           title={gallery.title}
           description={gallery.description}
-          link={gallery.link}
         />
       ))
     ) : (

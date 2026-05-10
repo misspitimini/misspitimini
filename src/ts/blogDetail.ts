@@ -19,7 +19,7 @@ async function renderBlogDetail() {
 
   if (!id) return;
 
-  const res = await fetch(UrlsApi.GET_BLOGS_DETAIL.replace("${id}", id));
+  const res = await fetch(UrlsApi.GET_BLOGS_DETAIL(id));
   const text = await res.text();
   const { attributes, body } = fm(text) as { attributes: PostAttributes; body: string };
   

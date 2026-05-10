@@ -1,21 +1,22 @@
 ---
 import CustomLink from '@/components/commons/CustomLink.astro';
+import { slugify } from "@/ts/utils.ts";
 
 interface Props {
   imgSrc: string;
   imgAlt: string;
+  slug: string;
   title: string;
   description: string;
-  link: string;
 }
 
-const { imgSrc, imgAlt, title, description, link } = Astro.props;
+const { imgSrc, imgAlt, slug, title, description } = Astro.props;
 ---
 
 <div class="overflow-hidden w-fit">
   <img class="card-img h-auto w-full object-cover" src={imgSrc} alt={imgAlt}  decoding="async" loading="lazy" />
   <div class="mt-4 mb-4">
-    <CustomLink class="card-link" href={link}>Abrir galería</CustomLink>
+    <CustomLink class="card-link" href={`/detalleGaleria?id=${slugify(slug)}`}>Abrir galería</CustomLink>
   </div>
   <div class="px-2"> 
     <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800 min-h-[4rem]">{title}</h3>

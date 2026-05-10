@@ -1,4 +1,4 @@
-import { getGalleries } from '@/ts/galleryAstro.ts';
+import { getGalleries } from '@/services/gallery.ts';
 import type { Gallery } from '@/types/Gallery';
 
 
@@ -17,6 +17,11 @@ async function renderGalleries() {
         container.innerHTML = '';
   
         files.forEach((post: Gallery) => {
+
+          if(document.getElementById(post.slug)!=null){
+            return;
+          }
+
           // Clonamos el molde
           const clone = template.content.cloneNode(true) as DocumentFragment;
   
@@ -32,7 +37,7 @@ async function renderGalleries() {
           
           if (title) title.textContent = post.title;
           if (desc) desc.textContent = post.description;
-          if (link) link.href = post.link;
+          if (link) link.href = `/detalleGaleria?id=${post.slug}`;
   
           // Añadimos el clon al contenedor
           container.appendChild(clone);
