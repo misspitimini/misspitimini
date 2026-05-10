@@ -46,5 +46,5 @@ const imageUrl = new URL(image, Astro.site).href;
 <meta property="twitter:image" content={imageUrl} />
 
 <StructuredData />
-<script src="/src/ts/menu.ts"></script>
+<script is:inline src="/src/ts/menu.ts"></script>
 <slot name="head-scripts" />

@@ -3,23 +3,21 @@ import LayoutGalleryDetail from '@/layouts/LayoutGalleryDetail.astro';
 import HeaderGalleryDetail from '@/components/header/HeaderGalleryDetail.astro';
 import Footer from '@/components/footer/Footer.astro';
 import type { Gallery } from '@/types/Gallery';
-import { getGalleries } from '@/ts/galleryAstro.ts';
+import { getGalleries } from '@/services/gallery';
 import '@/ts/alpine-init.ts';
 import '@/ts/galleryDetail.ts';
 
 export async function getStaticPaths() {
-   const galleries= await getGalleries();
-   return (galleries as Gallery[]).map(gallery => ({
-       params: { slug: gallery.link.split('/').pop() },
-       props: { gallery },
+   const entries = await getGalleries();
+   return (entries as Gallery[]).map(entry => ({
+       params: { slug: entry.slug },
+       props: { entry },
    }));
 }
 
-const { slug } = Astro.params;
-const { gallery } = Astro.props;
 ---
-<script src="../ts/alpine-init.ts"></script>
-<script src="../ts/galleryDetailData.ts"></script>
+<script is:inline src="/src/ts/alpine-init.ts"></script>
+<script is:inline src="/src/ts/galleryDetailData.ts"></script>
 
 <LayoutGalleryDetail title="misspitimini | Galería de trabajos de Sara Laínez" description="Explora la galería de trabajos de diseño floral de misspitimini.">
 	<HeaderGalleryDetail/>
