@@ -23,7 +23,7 @@ const galleries = await getGalleries();
         <GalleryCard
           imgSrc={gallery.imgSrc}
           imgAlt={gallery.imgAlt}
-          
+          slug={gallery.slug}
           title={gallery.title}
           description={gallery.description}
         />
@@ -38,8 +38,8 @@ const galleries = await getGalleries();
   <GalleryCard
     imgSrc=""
     imgAlt=""
+    slug=""
     title=""
     description=""
-    link=""
   />
 </template>
