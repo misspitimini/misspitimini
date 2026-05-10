@@ -32,7 +32,7 @@ export async function getGalleries(): Promise<Gallery[]> {
             imgAlt: post?.data?.alt || 'Imagen de la galería de mispitimini',
             title: post?.data?.title || 'Post sin título',
             description: post?.data?.description || 'Ver más...',
-            link: `/galeria/${post.id}/`
+            link: `/detalleGaleria?id=${post.id}`
         }));
 
         return galleries;
