@@ -40,7 +40,7 @@ interface GalleryComponent extends GalleryState, AlpineMagic {
 export const galleryDetailData = () => ({
     // --- Estado inicial ---
     activeSlideGallery: 0,
-    images: [],
+    images: [] as { url: string; name: string }[],
     imageOrientation: 'landscape',
     isLoading: true,
     touchstartX: 0,

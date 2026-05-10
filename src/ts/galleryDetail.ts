@@ -21,7 +21,7 @@ export async function renderGalleryDetail() {
   console.log(`[renderGalleryDetail] Found ID: ${id}`);
 
   try {
-    const res = await fetch(UrlsApi.GET_GALLERIES_DETAIL.replace("${id}", id));
+    const res = await fetch(UrlsApi.GET_GALLERIES_DETAIL(id));
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     const text = await res.text();
     const { attributes, body } = fm(text) as { attributes: PostAttributes; body: string };
@@ -55,7 +55,7 @@ export async function fetchGalleryImages(): Promise<{ url: string; name: string 
   console.log(`[fetchGalleryImages] Found ID: ${id}`);
 
   try {
-    const fetchUrl = UrlsApi.GET_GALLERY.replace("${id}", id);
+    const fetchUrl = UrlsApi.GET_GALLERY(id);
     console.log(`[fetchGalleryImages] Fetching from URL: ${fetchUrl}`);
 
     const response = await fetch(fetchUrl);
