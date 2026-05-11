@@ -1,4 +1,4 @@
-import { menuItems } from '@/data/menuData.ts';
+import { menuItems } from '@/data/menuData';
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menu-button');

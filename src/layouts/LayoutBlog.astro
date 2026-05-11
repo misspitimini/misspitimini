@@ -4,7 +4,7 @@ const { title, description, keywords } = Astro.props;
 ---
 <Layout title={title} description={description} keywords={keywords}>
     <Fragment slot="head-scripts">
-        <script src="/src/ts/blog.ts"></script>
+        <script type="module" src="/src/ts/blog.ts"></script>
     </Fragment>
     <slot />
 </Layout>

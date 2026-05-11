@@ -14,7 +14,6 @@ async function renderPosts() {
     
     try {
         const files: Blog[] = await getBlogs();
-        debugger
         container.innerHTML = '';
   
         files.forEach((post: Blog) => {

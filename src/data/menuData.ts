@@ -9,14 +9,19 @@ import sobre_mi from "@/assets/images/carrusel/01_misspitimini.jpg";
 
 
 export const slides = [
-    { id: 1, title: 'Home', description:'Home', url: '/', image: home, phrase: 'Disfruta de la magia de las flores', imgAlt: 'Ramo de flores silvestres con colores vivos en un jarrón de cristal, creando un ambiente acogedor y natural.' },
-    { id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', image: bodas, phrase: 'Haciendo florecer tus mejores recuerdos', imgAlt: 'Espectacular arco de flores blancas y rosas en el altar de una boda al aire libre, con sillas para los invitados a ambos lados.' },
-    { id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', image: eventos, phrase: 'Cada flor, una memorias que florece', imgAlt: 'Elegante mesa imperial en un evento, decorada con un camino de mesa de flores y velas, lista para recibir a los comensales.' },
-    { id: 4, title: 'Experiencias', description:'Talleres: Experiencias Florales y Gastronómicas', url: '/experiencias/', image: experiencias, phrase: 'Aportando frescura en un entorno profesional', imgAlt: 'Una alumna sonriente participa en un taller de diseño floral, creando su propio ramo con flores frescas y coloridas.' },
-    { id: 5, title: 'Galería', description:'Galería',  url: '/galeria/', image: galeria, phrase: 'Cada flor, una memorias que florece' , imgAlt: 'Primer plano de un exuberante ramo de novia, con una combinación de rosas, peonías y eucalipto en tonos pastel.' },
-    { id: 6, title: 'Contacto', description:'Contacto', url: '/contacto/', image: contacto, phrase: 'Compartamos la pasión por lo natural', imgAlt: 'Sara Laínez, diseñadora floral, concentrada en su trabajo mientras crea un arreglo floral único en su taller rodeada de flores.' },
-    { id: 7, title: 'Sobre mí', description:'Sobre mí', url: '/sobre-mi/', image: sobre_mi, phrase: 'Compartir experiencias con las flores', imgAlt: 'Collage de imágenes del blog de Misspitimini, mostrando diferentes arreglos florales, eventos y momentos inspiradores.' },
-    { id: 8, title: 'Blog', description:'Blog', url: '/blog/', image: blog, phrase: 'Compartir experiencias con las flores', imgAlt: 'Collage de imágenes del blog de Misspitimini, mostrando diferentes arreglos florales, eventos y momentos inspiradores.' } 
+    { id: 1, title: 'Home', description:'Home', url: '/', image: home, phrase: 'Disfruta de la magia de las flores', imgAlt: '...' },
+    { id: 2, title: 'Bodas', description:'Bodas', url: '/bodas/', image: bodas, phrase: 'Haciendo florecer tus mejores recuerdos', imgAlt: '...' },
+    { id: 3, title: 'Eventos', description:'Eventos', url: '/eventos/', image: eventos, phrase: 'Cada flor, una memorias que florece', imgAlt: '...' },
+    { id: 4, title: 'Experiencias', description:'Talleres', url: '/experiencias/', image: experiencias, phrase: 'Aportando frescura en un entorno profesional', imgAlt: '...' },
+    { id: 5, title: 'Galería', description:'Galería',  url: '/galeria/', image: galeria, phrase: 'Cada flor, una memorias que florece' , imgAlt: '...' },
+    { id: 6, title: 'Contacto', description:'Contacto', url: '/contacto/', image: contacto, phrase: 'Compartamos la pasión por lo natural', imgAlt: '...' },
+    { id: 7, title: 'Sobre mí', description:'Sobre mí', url: '/sobre-mi/', image: sobre_mi, phrase: 'Conoce la historia detrás de las flores', imgAlt: '...' },
+    { id: 8, title: 'Blog', description:'Blog', url: '/blog/', image: blog, phrase: 'Compartir experiencias con las flores', imgAlt: '...' } 
 ];
 
-export const menuItems = slides.map(slide => ({ id: slide.id, title: slide.title, url: slide.url }));
+// This part is perfect!
+export const menuItems = slides.map(slide => ({ 
+    id: slide.id, 
+    title: slide.title, 
+    url: slide.url 
+}));
