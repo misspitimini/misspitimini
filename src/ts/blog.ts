@@ -1,6 +1,5 @@
 import { getBlogs } from '@/services/blog';
 import type { Blog } from '@/types/Blog';
-import { slugify } from "@/ts/utils.ts";
 
 
 async function renderPosts() {
@@ -36,7 +35,7 @@ async function renderPosts() {
           if (title) title.textContent = post.title;
           if (desc) desc.textContent = post.description;
           
-          if (link) link.href = `/detalleBlog?id=${post.slug}`;
+          if (link) link.href = `/blog/${post.slug}/`;
           if (pureDate) pureDate.textContent = post.pubDate;
           container.appendChild(clone);
         });

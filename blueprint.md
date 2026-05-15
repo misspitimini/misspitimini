@@ -16,19 +16,15 @@ This project is a static-first web application built with Astro.js. It is design
 *   **Components:** Reusable Astro components for common UI elements.
 *   **TypeScript Integration:** Client-side interactivity powered by TypeScript modules.
 
-## Current Task: Error Remediation
+## Current Task: Refactor Data Fetching for Blog Posts
 
-**Objective:** Resolve the "Cannot use import statement outside a module" error reported by the browser.
+**Objective:** Centralize and modernize the data fetching logic for individual blog posts.
 
 **Plan & Steps:**
 
-1.  **Identify the Root Cause:** The error is caused by TypeScript files being imported using `<script>` tags without the `type="module"` attribute.
-2.  **Locate Problematic Imports:** Scanned all `.astro` layout files in `src/layouts/` to find all script imports.
-3.  **Correct Script Imports:** Modified the following files to add `type="module"` to the `<script>` tags:
-    *   `src/layouts/LayoutBlog.astro`
-    *   `src/layouts/LayoutBlogDetail.astro`
-    *   `src/layouts/LayoutEmail.astro`
-    *   `src/layouts/LayoutForm.astro`
-    *   `src/layouts/LayoutGallery.astro`
+1.  **Create New Service:** Created a new file at `src/services/blogDetail.ts`.
+2.  **Adapt Existing Logic:** Adapted the core data-fetching logic from the old `src/ts/blogDetail.ts` file.
+3.  **Use Astro's API:** The new service utilizes Astro's `getEntry` function from the `astro:content` module to fetch a single blog post from the content collection.
+4.  **Remove DOM Manipulation:** The new service is purely for data fetching and does not contain any of the old DOM manipulation code.
 
-**Outcome:** The error is now resolved, and all TypeScript modules should load correctly in the browser.
+**Outcome:** The `src/services/blogDetail.ts` file now provides a clean, centralized, and modern way to fetch individual blog posts. This improves code organization and maintainability.

@@ -1,5 +1,6 @@
 ---
-import FogImageCarrusel from "@/components/commons/OptimizedImage.astro";
+import FogImageCarrusel from "@/components/commons/FogImageCarrusel.astro";
+import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 import ArrowsCarrusel from "@/components/header/ArrowsCarrusel.astro";
 import {slides} from '@/data/menuData.js';
 
@@ -16,7 +17,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
   <section class="relative h-[85vh] w-full overflow-hidden">
       {currentSlide.id === 5 && (
         <div class="absolute inset-0 w-full  bg-white">
-        <FogImageCarrusel 
+        <OptimizedImage 
           alt={currentSlide.imgAlt} 
           class="h-full w-full object-contain object-[75%_25%] md:object-center" 
           decoding="async" 
@@ -37,7 +38,7 @@ const currentSlide = slides.find(s => s.url === href) || slides[0];
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
             quality={60}
           />
-          <div class="absolute inset-0   bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
           <div class="absolute inset-x-0 bottom-0 md:h-32 bg-gradient-to-t from-white to-transparent"></div>
         </div>
         )}

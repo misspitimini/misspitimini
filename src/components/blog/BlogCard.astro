@@ -17,7 +17,7 @@ const { title, description, slug, imgSrc, imgAlt, pubDate} = Astro.props;
 <div id={slug} class="relative w-full pt-4 overflow-hidden">
   <img class="card-img h-auto w-full object-cover" src={imgSrc} alt={imgAlt} loading="lazy" />
   <div class="mt-4 mb-4">
-    <CustomLink class="card-link" href={`/detalleBlog?id=${slugify(slug)}`}>Leer más</CustomLink>
+    <CustomLink class="card-link" href={`/blog/${slugify(slug)}/`}>Leer más</CustomLink>
   </div>
   <div class="px-2"> 
     <p class="card-pub-date text-sm text-gray-500 text-center">{pubDate}</p>

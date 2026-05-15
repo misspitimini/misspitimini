@@ -1,7 +1,15 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido.png';
-import blogImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
+
+
+interface Props {
+    imgSrc: string;
+    imgAlt: string;
+}
+
+const {imgSrc, imgAlt} = Astro.props;
+
 ---
 
 <header id="post-content-header">
@@ -21,7 +29,7 @@ import blogImage from '@/assets/images/carrusel/08_ramosFlores.jpg';
     </div>
     <div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
         <div class="relative h-[350px] md:h-[500px]">
-            <OptimizedImage src={blogImage} alt="Reserva asistencia" class="card-img w-full h-full object-cover" />
+            <OptimizedImage src={imgSrc} alt={imgAlt} class="card-img w-full h-full object-cover"  width={1920} height={640} />
             <div class="absolute inset-0 bg-black/10"></div>
         </div>
     </div>

@@ -3,6 +3,6 @@ import Layout from '@/layouts/Layout.astro';
 
 const { title, description, keywords } = Astro.props;
 ---
-<Layout title={title} description={description} keywords={keywords} containerClass="w-full">
+<Layout title={title} description={description} keywords={keywords}>
     <slot />
 </Layout>

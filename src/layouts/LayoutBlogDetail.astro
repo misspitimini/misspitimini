@@ -4,49 +4,57 @@ import Layout from './Layout.astro';
 export interface Props {
 	title: string;
 	description: string;
+    keywords: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords } = Astro.props;
+
 ---
-<Layout title={title} description={description} keywords="blog, misspitimini, sara lainez, flores, madrid">
+<Layout title={title} description={description} keywords={keywords}>
     <script type="module" src="/src/ts/blogDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
 	  	<style is:global>
+            body {
+				@apply block;
+			}
+            .card-content {
+				@apply mx-64 md:mx-2;
+			}
             /* Usamos is:global para que afecte al HTML que mete el JS */
-            #post-content-main h1 {
+            main h1 {
+            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
+            }
+            main h2 {
+            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
+            }
+            main h3 {
+            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
+            }
+            main hr {
             @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
             }
-            #post-content-main h2 {
-            @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
-            #post-content-main h3 {
-            @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
-            #post-content-main hr {
-            @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
-            }
-            #post-content-main p {
+            main p {
             @apply indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide  m-2 md:m-6 text-center;
             }
-            #post-content-main p > img {
+            main p > img {
             @apply block mx-auto my-8;
             }
-            #post-content-main p.card-title {
+            main p.card-title {
             @apply text-xl md:text-3xl font-serif italic text-gray-800 text-center py-2;
             }
-            #post-content-main ul {
+            main ul {
             @apply list-disc ml-6 mb-4;
             }
             /* Si realmente tienes tablas en el MD y quieres darles estilo */
-            #post-content-main table {
+            main table {
                 @apply min-w-full border-collapse my-6;
             }
             
-            #post-content-main td, #post-content-main th {
+            main td, main th {
                 @apply border border-gray-300 px-4 py-2 text-left;
             }
-            #post-content-main blockquote {
+            main blockquote {
                 @apply border-l-4 border-gray-200 pl-6 my-6;
             }
 	    </style>

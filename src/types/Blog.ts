@@ -1,10 +1,10 @@
 export interface Blog {
+  slug: string;
   title: string;
   description: string;
-  slug: string;
-  imgSrc: string;
-  imgAlt: string;
   author: string;
   pubDate: string;
+  imgSrc: string;
+  imgAlt: string;
   tags: string[];
 }
