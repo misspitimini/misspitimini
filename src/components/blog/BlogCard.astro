@@ -14,7 +14,7 @@ interface Props {
 const { title, description, slug, imgSrc, imgAlt, pubDate} = Astro.props;
 ---
 
-<div id={slug} class="relative w-full pt-4 overflow-hidden">
+<article id={slug} class="relative w-full pt-4 overflow-hidden">
   <img class="card-img h-auto w-full object-cover" src={imgSrc} alt={imgAlt} loading="lazy" />
   <div class="mt-4 mb-4">
     <CustomLink class="card-link" href={`/blog/${slugify(slug)}/`}>Leer más</CustomLink>
@@ -26,4 +26,4 @@ const { title, description, slug, imgSrc, imgAlt, pubDate} = Astro.props;
       {description}
     </p>
   </div>
-</div>
+</article>

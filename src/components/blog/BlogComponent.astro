@@ -17,7 +17,7 @@ const blogs = await getBlogs();
     </p>
   </div>
   <br/>
-  <div id="blog-container" class="mt-12 grid grid-cols-2 gap-2 md:gap-4 pt-4 gap-8">  
+  <div id="blog-container" class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 pt-4 gap-8">  
   {blogs.length > 0 ? (
     blogs.map(blog => (
     <BlogCard 

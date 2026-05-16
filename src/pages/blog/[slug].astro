@@ -54,7 +54,7 @@ const content = await marked.parse(body);
           <SectionTitle>{title}</SectionTitle>
 
 
-            <div class="flex flex-wrap justify-end gap-x-4 text-sm text-slate-500 md:px-8 mx-0 md:mx-80">
+            <div class="flex flex-wrap justify-end gap-x-4 text-sm text-slate-500 md:px-8 mx-2 md:mx-80">
                 <div class="flex items-center gap-1.5">
                   <span class="card-author">
                     {author}
@@ -68,7 +68,7 @@ const content = await marked.parse(body);
                 </div>
             </div>
 
-              <div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-end">
+              <div class="relative w-full max-w-7xl mx-auto py-4 flex items-center justify-end">
                   <!-- IMPORTANTE: Aquí es donde vive el contenido según tu interfaz -->
                   <div class="card-content" set:html={content}></div>
               </div>  

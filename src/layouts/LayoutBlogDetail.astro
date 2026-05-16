@@ -18,9 +18,9 @@ const { title, description, keywords } = Astro.props;
             body {
 				@apply block;
 			}
-            .card-content {
-				@apply mx-64 md:mx-2;
-			}
+            p {
+                @apply m-0 text-center;
+            }
             /* Usamos is:global para que afecte al HTML que mete el JS */
             main h1 {
             @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
@@ -35,11 +35,23 @@ const { title, description, keywords } = Astro.props;
             @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
             }
             main p {
-            @apply indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide  m-2 md:m-6 text-center;
+                @apply font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-2 md:m-6;
             }
+
             main p > img {
-            @apply block mx-auto my-8;
+                /* 1. Evitamos que herede la sangría del texto */
+                @apply block indent-0 max-w-none my-8;
+                
+                /* 2. En móviles: Centrado matemático perfecto basado en la posición del padre */
+                @apply relative left-1/2 -translate-x-1/2;
+                
+                /* 3. El ancho exacto: 100% del párrafo + 1rem (los dos márgenes m-2 de 0.5rem que queremos rellenar) */
+                @apply w-[calc(100%+1rem)];
+                
+                /* 4. En pantallas grandes (md): Cancelamos el truco y centramos normal */
+                @apply md:w-1/2 md:left-auto md:translate-x-0 md:mx-auto;
             }
+
             main p.card-title {
             @apply text-xl md:text-3xl font-serif italic text-gray-800 text-center py-2;
             }
