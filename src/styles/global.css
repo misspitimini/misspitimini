@@ -1,3 +1,23 @@
-@import "tailwindcss";
-@import "./base/base.css";
-@import "./utils/scroll.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+ 			body {
+ 				@apply text-floral-dark antialiased selection:bg-primary/10 flex items-center justify-center font-sans antialiased tracking-wide text-gray-800;
+ 			}
+ 			h1,
+             h2,
+             h3,
+             hr {
+               @apply text-center;
+             }
+ 			p {
+               @apply text-justify tracking-wide m-6 md:m-6
+             }
+ 			ul, 
+             li 
+             {
+               @apply list-disc space-y-4 ml-6 mr-3
+             }
+ 		}

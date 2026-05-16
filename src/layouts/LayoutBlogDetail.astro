@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import BaseLayout from './BaseLayout.astro';
 
 export interface Props {
 	title: string;
@@ -10,7 +10,7 @@ export interface Props {
 const { title, description, keywords } = Astro.props;
 
 ---
-<Layout title={title} description={description} keywords={keywords}>
+<BaseLayout title={title} description={description} keywords={keywords}>
     <script type="module" src="/src/ts/blogDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
@@ -71,4 +71,4 @@ const { title, description, keywords } = Astro.props;
             }
 	    </style>
     </Fragment>
-</Layout>
+</BaseLayout>

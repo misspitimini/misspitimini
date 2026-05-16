@@ -10,20 +10,21 @@ export async function getBlogs(): Promise<Blog[]> {
         }
 
         const apiPosts = await response.json();
-        const posts: Blog[] = apiPosts.map((post: any) => ({
-            title: post.data.title || 'Post sin título',
-            description: post.data.description || 'Ver más...',
-            slug: post.id,
-            imgSrc: post.data.url || UrlsApi.DEFAULT_IMAGE,
-            imgAlt: post.data.alt || 'Imagen del blog de mispitimini',
-            author: post.data.author || 'Sara Laínez',
-            pubDate: new Date(post.data.pubDate).toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              }),
-            tags: post.data.tags || [],
-        }));
+        const posts: Blog[] = apiPosts.map((post: any) => {
+            return {
+                title: post.data.title || 'Post sin título',
+                description: post.data.description || 'Ver más...',
+                slug: post.id,
+                imgSrc: post.data.url || UrlsApi.DEFAULT_IMAGE,
+                imgAlt: post.data.alt || 'Imagen del blog de mispitimini',
+                author: post.data.author || 'Sara Laínez',
+                pubDate: new Date(post.data.pubDate).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })
+            };
+        });
 
         return posts;
 

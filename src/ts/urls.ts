@@ -13,6 +13,7 @@ const UrlsApi = {
     GET_GALLERY : (id: string) => `${DOMAIN}/GetGallery?id=${id}`,
 
     GET_BLOGS : DOMAIN + "/GetBlogs.php5",
+    GET_BLOG_DETAIL_ALL : DOMAIN + "/GetBlogsDetail.php5",
     GET_BLOGS_DETAIL : (id: string) => `${DOMAIN}/detalleBlogs/${id}.md`
 };
 

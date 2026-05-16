@@ -37,8 +37,7 @@ export async function getBlogDetail(slug: string) {
       day: 'numeric',
     });
     return {
-      // Datos de la interfaz 'Blog' (base)
-      title: attributes.title || 'Donde las flores se convierten en recuerdos', // O extraer del MD
+      title: attributes.title || 'Donde las flores se convierten en recuerdos',
       description: attributes.description ||'Entrada del blog de misspitimini.',
       slug: slug,
       imgSrc: attributes.image?.url || UrlsApi.DEFAULT_IMAGE,
@@ -52,4 +51,41 @@ export async function getBlogDetail(slug: string) {
     console.error("Fallo crítico al hacer fetch de las entradas del blog:", error);
     return null;
 }
+}
+
+export async function getBlogsDetail(): Promise<BlogDetail[]> {
+    try {
+        const response = await fetch(UrlsApi.GET_BLOG_DETAIL_ALL);
+
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+
+        const apiPosts = await response.json();
+        const posts: BlogDetail[] = apiPosts.map((post: any) => {
+            const { attributes, body } = fm(post.content) as { attributes: PostAttributes; body: string };
+            const pubDate = ((attributes.pubDate)? new Date(attributes.pubDate):  new Date()).toLocaleDateString('es-ES', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+            return {
+              title: attributes.title || 'Donde las flores se convierten en recuerdos',
+              description: attributes.description ||'Entrada del blog de misspitimini.',
+              slug: post.id,
+              imgSrc: attributes.image?.url || UrlsApi.DEFAULT_IMAGE,
+              imgAlt: attributes.image?.alt || 'Imagen del blog de misspitimini',
+              author: attributes.author || 'Sara Laínez',
+              pubDate: pubDate,
+              tags: attributes.tags || ['flores', 'recuerdos'], // O extraer del MD. ['flores', 'recuerdos'],
+              body: body, // Aquí guardamos el contenido del .md
+            };
+        });
+
+        return posts;
+
+    } catch (error) {
+        console.error("Fallo crítico al hacer fetch de las entradas del blog:", error);
+        return [];
+    }
 }

@@ -3,23 +3,22 @@ import LayoutBlogDetail from '@/layouts/LayoutBlogDetail.astro';
 import HeaderBlogDetail from '@/components/header/HeaderBlogDetail.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import Footer from '@/components/footer/Footer.astro';
-import { getBlogs } from '@/services/blog';
-import { getBlogDetail } from '@/services/blogDetail';
+import { getBlogsDetail } from '@/services/blogDetail';
 
-import type { Blog } from '@/types/Blog'; // Asegúrate de importar la interfaz
+import type { BlogDetail } from '@/types/BlogDetail'; // Asegúrate de importar la interfaz
 
 import { marked } from 'marked';
 
 
 export async function getStaticPaths() {
-  const blogs = await getBlogs();
-  return blogs.map((entry: Blog) => ({
-    params: { slug: entry.slug },
+  const blogs = await getBlogsDetail();
+  return blogs.map((entry: BlogDetail) => ({
+    params: { slug: entry.slug }, // Genera /blog/titulo-del-post
+    props: { entry }, // Le inyectamos todo el objeto (incluyendo el content)
   }));
 }
 
-const { slug } = Astro.params;
-const entry = await getBlogDetail(slug);
+const { entry } = Astro.props;
 
 // 2. VALIDACIÓN (Opcional pero recomendada para evitar el error 500 si falla el fetch)
 if (!entry) {
@@ -52,20 +51,19 @@ const content = await marked.parse(body);
         <section class="space-y-10">
           <SectionTitle>{title}</SectionTitle>
 
-
-            <div class="flex flex-wrap justify-end gap-x-4 text-sm text-slate-500 md:px-8 mx-2 md:mx-80">
-                <div class="flex items-center gap-1.5">
-                  <span class="card-author">
+          <div class="justify-end text-sm text-slate-500 text-right mr-2 xl:mr-80">
+            <div class="items-center gap-1.5 justify-end">
+                <span class="card-author">
                     {author}
-                  </span>
-                </div>
-                
-                <div class="flex items-center gap-1.5">
-                  <span class="card-date">
+                </span>
+                <span></span> 
+                &nbsp;-&nbsp;
+              </span>
+                <span class="card-date">
                     {pubDate}
-                  </span>
-                </div>
+                </span>
             </div>
+        </div>
 
               <div class="relative w-full max-w-7xl mx-auto py-4 flex items-center justify-end">
                   <!-- IMPORTANTE: Aquí es donde vive el contenido según tu interfaz -->
