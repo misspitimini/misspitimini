@@ -40,7 +40,8 @@ export async function getBlogsDetail(): Promise<BlogDetail[]> {
 
 // Helper function to parse a blog entry
 function parseBlogDetail(entry: any): BlogDetail {
-    const {slug, content} = entry;
+    const slug  = entry.id;
+    const content = entry.content;
     const { attributes, body } = fm(content) as { attributes: PostAttributes; body: string };
     const pubDate = (attributes.pubDate ? new Date(attributes.pubDate) : new Date()).toLocaleDateString('es-ES', {
         year: 'numeric',
