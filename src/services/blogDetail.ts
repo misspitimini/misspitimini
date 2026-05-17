@@ -6,7 +6,14 @@ import fm from 'front-matter';
 
 export async function getBlogDetail(slug: string) {
     try {
-        const response = await fetch(UrlsApi.GET_BLOGS_DETAIL(slug));
+        const response = await fetch(UrlsApi.GET_BLOGS_DETAIL(slug), {
+            method: 'GET',
+            // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
+            headers: {
+                'Accept': 'application/json' 
+            }
+        });
+        
         if (!response.ok) {
             console.error(`Error HTTP: ${response.status}`);
             return null;  
@@ -23,7 +30,14 @@ export async function getBlogDetail(slug: string) {
 
 export async function getBlogsDetail(): Promise<BlogDetail[]> {
     try {
-        const response = await fetch(UrlsApi.GET_BLOG_DETAIL_ALL);
+        const response = await fetch(UrlsApi.GET_BLOG_DETAIL_ALL, {
+            method: 'GET',
+            // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
+            headers: {
+                'Accept': 'application/json' 
+            }
+        });
+        
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
