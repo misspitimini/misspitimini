@@ -23,7 +23,7 @@ const { slug } = Astro.params;
 let { entry } = Astro.props;
 
 // 2. VALIDACIÓN (Opcional pero recomendada para evitar el error 500 si falla el fetch)
-if (entry) {
+if (!entry) {
   entry = {
     slug: slug,
     title: "Post sin título",
