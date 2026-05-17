@@ -41,6 +41,7 @@ export async function getBlogsDetail(): Promise<BlogDetail[]> {
 // Helper function to parse a blog entry
 function parseBlogDetail(entry: any): BlogDetail {
     const slug  = entry.id;
+    const title = entry.title;
     const content = entry.content;
     const { attributes, body } = fm(content) as { attributes: PostAttributes; body: string };
     const pubDate = (attributes.pubDate ? new Date(attributes.pubDate) : new Date()).toLocaleDateString('es-ES', {
@@ -51,7 +52,7 @@ function parseBlogDetail(entry: any): BlogDetail {
 
     return {
         slug: slug,
-        title: attributes.title || 'Post sin título',
+        title: title || 'Post sin título',
         description: attributes.description || 'Entrada del blog de misspitimini.',
         imgSrc: attributes.image?.url || UrlsApi.DEFAULT_IMAGE,
         imgAlt: attributes.image?.alt || 'Imagen del blog de misspitimini',
