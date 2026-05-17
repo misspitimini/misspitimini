@@ -34,7 +34,7 @@ if (!entry) {
     author: "Sara Laínz, misspitimini",
     tags: [],
     body: "",
-  }
+  } as BlogDetail
 }
 
 // Definimos constantes para limpiar el HTML
@@ -49,8 +49,8 @@ const {
   body, 
 } = entry;
 
-// Transformaciones consistentes
-const keywords = tags.join(', ');
+// Transformaciones consistentes;
+const keywords = ((typeof tags === 'string') ? JSON.parse(tags): tags).join(', ');
 const content = (body)? await marked.parse(body): '';
 
 // 3. RENDERIZACIÓN;
