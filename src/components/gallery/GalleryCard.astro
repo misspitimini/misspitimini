@@ -3,14 +3,14 @@ import CustomLink from '@/components/commons/CustomLink.astro';
 import { slugify } from "@/ts/utils.ts";
 
 interface Props {
-  imgSrc: string;
-  imgAlt: string;
   slug: string;
   title: string;
   description: string;
+  imgSrc: string;
+  imgAlt: string;
 }
 
-const { imgSrc, imgAlt, slug, title, description } = Astro.props;
+const { slug, title, description, imgSrc, imgAlt} = Astro.props;
 ---
 
 <div class="overflow-hidden w-fit">

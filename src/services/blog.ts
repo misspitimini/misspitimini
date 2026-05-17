@@ -10,26 +10,40 @@ export async function getBlogs(): Promise<Blog[]> {
         }
 
         const apiPosts = await response.json();
-        const posts: Blog[] = apiPosts.map((post: any) => {
-            return {
-                title: post.data.title || 'Post sin título',
-                description: post.data.description || 'Ver más...',
-                slug: post.id,
-                imgSrc: post.data.url || UrlsApi.DEFAULT_IMAGE,
-                imgAlt: post.data.alt || 'Imagen del blog de mispitimini',
-                author: post.data.author || 'Sara Laínez',
-                pubDate: new Date(post.data.pubDate).toLocaleDateString('es-ES', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                })
-            };
-        });
 
+        // Aseguramos que la respuesta es un array
+        if (!Array.isArray(apiPosts)) {
+            console.error("La respuesta de la API de galerías no es un array.");
+            return [];
+        }
+        const posts: Blog[] = apiPosts.map((post: any) => {
+           return parseBlog(post);
+        });
         return posts;
 
     } catch (error) {
         console.error("Fallo crítico al hacer fetch de las entradas del blog:", error);
         return [];
     }
+}
+
+// Helper function to parse a blog entry
+function parseBlog(entry: any): Blog {
+    const slug  = entry.id;
+    const attributes  = entry.data;
+    const pubDate = (attributes.pubDate ? new Date(attributes.pubDate) : new Date()).toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
+    return {
+        slug: slug,
+        title: attributes.title || 'Post sin título',
+        description: attributes.description || 'Entrada del blog de misspitimini.',
+        imgSrc: attributes.url || UrlsApi.DEFAULT_IMAGE,
+        imgAlt: attributes.alt || 'Imagen del blog de mispitimini',
+        author: attributes.author || 'Sara Laínez',
+        pubDate: pubDate
+    };
 }

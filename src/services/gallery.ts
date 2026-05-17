@@ -17,30 +17,33 @@ export async function getGalleries(): Promise<Gallery[]> {
             return [];
         }
 
-        const apiGalleries = await response.json();
+        const apiPosts = await response.json();
 
         // Aseguramos que la respuesta es un array
-        if (!Array.isArray(apiGalleries)) {
+        if (!Array.isArray(apiPosts)) {
             console.error("La respuesta de la API de galerías no es un array.");
             return [];
         }
 
         // Transformamos los datos de la API a la estructura que necesitan los componentes.
         // Esto añade una capa de protección y consistencia.
-        const galleries: Gallery[] = apiGalleries.map((post: any) => ({
-            imgSrc: post?.data?.url || UrlsApi.DEFAULT_IMAGE,
-            imgAlt: post?.data?.alt || 'Imagen de la galería de mispitimini',
-            slug: post?.id,
-            title: post?.data?.title || 'Post sin título',
-            description: post?.data?.description || 'Ver más...',
-
-        }));
-
-        return galleries;
-
+        const posts: Gallery[] = apiPosts.map((post: any) => {
+            return parseGallery(post);
+        });
+        return posts;
     } catch (error) {
         console.error("Fallo crítico al hacer fetch de las galerías:", error);
-        // En caso de un fallo total (ej. la red), devolvemos un array vacío para evitar que la página se rompa.
         return [];
     }
+}
+
+// Helper function to parse a blog entry
+function parseGallery(entry: any): Gallery {
+    return {
+        slug: entry.id,
+        title: entry.data?.title || 'Post sin título',
+        description: entry.data?.description || 'Ver más...',
+        imgSrc: entry.data?.url || UrlsApi.DEFAULT_IMAGE,
+        imgAlt: entry.data?.alt || 'Imagen de la galería de mispitimini',
+    };
 }
