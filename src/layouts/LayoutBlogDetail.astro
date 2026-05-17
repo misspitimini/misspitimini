@@ -11,7 +11,9 @@ const { title, description, keywords } = Astro.props;
 
 ---
 <BaseLayout title={title} description={description} keywords={keywords}>
-    <script src="../ts/blogDetail.ts"></script>
+    <Fragment slot="head-scripts">
+        <script type="module" src="/src/ts/blogDetail.ts"></script>
+    </Fragment>    
     <slot />
     <Fragment slot="page-styles">
 	  	<style is:global>

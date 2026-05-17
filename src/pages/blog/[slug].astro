@@ -4,6 +4,7 @@ import HeaderBlogDetail from '@/components/header/HeaderBlogDetail.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import Footer from '@/components/footer/Footer.astro';
 import { getBlogsDetail } from '@/services/blogDetail';
+import { UrlsApi } from "@/ts/urls";
 
 import type { BlogDetail } from '@/types/BlogDetail'; // Asegúrate de importar la interfaz
 
@@ -18,29 +19,39 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
+const { slug } = Astro.params;
+let { entry } = Astro.props;
 
 // 2. VALIDACIÓN (Opcional pero recomendada para evitar el error 500 si falla el fetch)
-if (!entry) {
-  return Astro.redirect('/404');
+if (entry) {
+  entry = {
+    slug: slug,
+    title: "Post sin título",
+    description: "Entrada del blog de misspitimini.",
+    imgSrc: UrlsApi.DEFAULT_IMAGE,
+    imgAlt: "Sara Laínez, diseñadora floral",
+    pubDate: "2026-02-08",
+    author: "Sara Laínz, misspitimini",
+    tags: [],
+    body: "",
+  }
 }
 
 // Definimos constantes para limpiar el HTML
-
 const { 
-  body, 
   title, 
   description, 
-  author, 
-  pubDate, 
   imgSrc, 
   imgAlt, 
-  tags = [] // Valor por defecto por si tags es undefined
+  pubDate, 
+  author, 
+  tags = [], // Valor por defecto por si tags es undefined
+  body, 
 } = entry;
 
 // Transformaciones consistentes
 const keywords = tags.join(', ');
-const content = await marked.parse(body);
+const content = (body)? await marked.parse(body): '';
 
 // 3. RENDERIZACIÓN;
 ---

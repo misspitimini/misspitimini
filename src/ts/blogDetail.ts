@@ -1,13 +1,13 @@
 import { getBlogDetail } from '@/services/blogDetail';
 import type { BlogDetail } from "@/types/BlogDetail";
-import { UrlsApi } from './urls.ts';
 import { marked } from 'marked';
 
 async function renderBlogDetail() {
   // Obtenemos el ID de la URL (?id=lo-que-sea)
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
 
+  const path = window.location.pathname;
+  const coincidence =  path.match(/([^/]+)\/?$/);
+  const id = (coincidence?.length==2) ? coincidence[1]: null;
   if (!id) return;
 
   const blog = await getBlogDetail(id) as BlogDetail;
