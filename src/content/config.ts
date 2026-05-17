@@ -1,19 +1,6 @@
 
 import { z, defineCollection } from 'astro:content';
 
-const blogCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    author: z.string(),
-    pubDate: z.date(),
-    tags: z.array(z.string()),
-    heroImage: z.string().optional(),
-    slug: z.string(),
-  }),
-});
-
 // Schema for the home page cards
 const homeCardsCollection = defineCollection({
   type: 'data',
@@ -55,7 +42,6 @@ const nextWorkshopCollection = defineCollection({
 });
 
 export const collections = {
-  'blog': blogCollection,
   'homecards': homeCardsCollection,
   'workshops': workshopsCollection,
   'nextworkshop': nextWorkshopCollection,

@@ -10,7 +10,7 @@ export async function getBlogDetail(slug: string) {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
             headers: {
-                'Accept': 'application/json' 
+                'Accept': 'application/json'
             }
         });
         
@@ -34,7 +34,7 @@ export async function getBlogsDetail(): Promise<BlogDetail[]> {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
             headers: {
-                'Accept': 'application/json' 
+                'Accept': 'application/json'
             }
         });
         
@@ -54,25 +54,22 @@ export async function getBlogsDetail(): Promise<BlogDetail[]> {
 
 // Helper function to parse a blog entry
 function parseBlogDetail(entry: any): BlogDetail {
-    const slug  = entry.id;
-    const title = entry.title;
-    const content = entry.content;
-    const { attributes, body } = fm(content) as { attributes: PostAttributes; body: string };
-    const pubDate = (attributes.pubDate ? new Date(attributes.pubDate) : new Date()).toLocaleDateString('es-ES', {
+    const data  = entry.data;
+    const pubDate = (data.pubDate ? new Date(data.pubDate) : new Date()).toLocaleDateString('es-ES', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
     });
 
     return {
-        slug: slug,
-        title: title || 'Post sin título',
-        description: attributes.description || 'Entrada del blog de misspitimini.',
-        imgSrc: attributes.image?.url || UrlsApi.DEFAULT_IMAGE,
-        imgAlt: attributes.image?.alt || 'Imagen del blog de misspitimini',
-        author: attributes.author || 'Sara Laínez',
+        slug: entry.slug,
+        title: data.title || 'Post sin título',
+        description: data.description || 'Entrada del blog de misspitimini.',
+        imgSrc: data.url || UrlsApi.DEFAULT_IMAGE,
+        imgAlt: data.alt || 'Imagen del blog de misspitimini',
+        author: data.author || 'Sara Laínez',
         pubDate: pubDate,
-        tags: attributes.tags || [],
-        body: body,
+        tags: data.tags || [],
+        body: entry.content,
     };
 }

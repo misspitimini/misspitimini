@@ -7,7 +7,7 @@ export async function getBlogs(): Promise<Blog[]> {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
             headers: {
-                'Accept': 'application/json' 
+                'Accept': 'application/json'
             }
         });
 
