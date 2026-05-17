@@ -10,7 +10,6 @@ import Footer from '@/components/footer/Footer.astro';
 	<HeaderGalleryDetail/>
 	<main id="post-content-main" 
           x-data="galleryDetailData()" 
-          x-init="init()"
           @touchstart="handleTouchStart($event)"
           @touchend="handleTouchEnd($event)">
 
