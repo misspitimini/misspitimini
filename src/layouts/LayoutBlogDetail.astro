@@ -11,7 +11,7 @@ const { title, description, keywords } = Astro.props;
 
 ---
 <BaseLayout title={title} description={description} keywords={keywords}>
-    <script type="module" src="/src/ts/blogDetail.ts"></script>
+    <script src="../ts/blogDetail.ts"></script>
     <slot />
     <Fragment slot="page-styles">
 	  	<style is:global>
@@ -19,23 +19,17 @@ const { title, description, keywords } = Astro.props;
 				@apply block;
 			}
             p {
-                @apply m-0 text-center;
+                @apply m-0 md:m-0 text-center;
             }
             /* Usamos is:global para que afecte al HTML que mete el JS */
-            main h1 {
-            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
-            }
-            main h2 {
-            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
-            }
-            main h3 {
-            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2;
+            main h1, h2, h3 {
+            @apply font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic m-2 text-center;
             }
             main hr {
             @apply font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-12 md:pb-0 text-center;
             }
             main p {
-                @apply font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-2 md:m-6;
+                @apply font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-4 md:m-6;
             }
 
             main p > img {
@@ -46,7 +40,7 @@ const { title, description, keywords } = Astro.props;
                 @apply relative left-1/2 -translate-x-1/2;
                 
                 /* 3. El ancho exacto: 100% del párrafo + 1rem (los dos márgenes m-2 de 0.5rem que queremos rellenar) */
-                @apply w-[calc(100%+1rem)];
+                @apply w-[calc(100%+2rem)];
                 
                 /* 4. En pantallas grandes (md): Cancelamos el truco y centramos normal */
                 @apply md:w-1/2 md:left-auto md:translate-x-0 md:mx-auto;
@@ -56,7 +50,7 @@ const { title, description, keywords } = Astro.props;
             @apply text-xl md:text-3xl font-serif italic text-gray-800 text-center py-2;
             }
             main ul {
-            @apply list-disc ml-6 mb-4;
+            @apply list-disc ml-12 md:ml-24 mb-4;
             }
             /* Si realmente tienes tablas en el MD y quieres darles estilo */
             main table {
@@ -67,7 +61,7 @@ const { title, description, keywords } = Astro.props;
                 @apply border border-gray-300 px-4 py-2 text-left;
             }
             main blockquote {
-                @apply border-l-4 border-gray-200 pl-6 my-6;
+                @apply border-l-4 border-gray-200 pl-6 my-6 mx-2;
             }
 	    </style>
     </Fragment>
