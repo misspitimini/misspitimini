@@ -13,8 +13,8 @@ const UrlsApi = {
     GET_GALLERY : (id: string) => `${DOMAIN}/GetGallery.php5?id=${id}`,
 
     GET_BLOGS : `${DOMAIN}/GetBlogs.php5`,
-    GET_BLOG_DETAIL_ALL : `${DOMAIN}/GetBlogsDetail.php5`,
-    GET_BLOGS_DETAIL : (id: string) => `${DOMAIN}/GetBlogDetail.php5?id=${id}`
+    GET_BLOGS_DETAIL_ALL : `${DOMAIN}/GetBlogsDetail.php5`,
+    GET_BLOG_DETAIL : (id: string) => `${DOMAIN}/GetBlogDetail.php5?id=${id}`
 };
 
 export { UrlsApi };
