@@ -42,9 +42,9 @@ const loadedImages = {
   <!-- Ramos de Novia Section -->
   <ContentSection>
       <SectionTitle>Ramos de novia para bodas</SectionTitle>
-        <div class="grid grid-cols-2 gap-2 md:gap-4 pt-2 md:pt-4">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 pt-2 md:pt-4">
           {loadedImages.novia && imageData?.novia && (
-            <div class="relative w-full pt-4 overflow-hidden col-span-2 md:col-span-1 "> 
+            <div class="relative w-full pt-4 overflow-hidden col-span-2 md:col-span-2"> 
               
               <FogImage 
                 alt={imageData.novia.alt}
@@ -56,7 +56,7 @@ const loadedImages = {
 
             </div>
           )}
-            <div class="relative w-full text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0 col-span-2 md:col-span-1">
+            <div class="relative w-full text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0 col-span-2 md:col-span-3">
               <p>
                 Tu boda es única, tu ramo también debería serlo. Nos especializamos en crear composiciones florales exclusivas para novias que buscan elegancia, frescura y un toque de distinción. Nuestros servicios incluyen:
               </p>
