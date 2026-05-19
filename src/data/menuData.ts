@@ -4,8 +4,8 @@ import eventos from "@/assets/images/carrusel/03_eventos.jpg";
 import experiencias from "@/assets/images/carrusel/04_cursoFlores.jpg";
 import galeria from "@/assets/images/carrusel/05_colllageImagenes.jpg";
 import contacto from "@/assets/images/carrusel/06_contacto.jpg";
-import blog from "@/assets/images/carrusel/07_blog.jpg";
-import sobre_mi from "@/assets/images/carrusel/01_misspitimini.jpg";
+import blog from "@/assets/images/carrusel/07_sobremi.jpg";
+import sobre_mi from "@/assets/images/carrusel/07_blog.jpg";
 
 
 export const slides = [
