@@ -1,9 +1,9 @@
 import { fetchGalleryImages, renderGalleryDetail } from './galleryDetail';
 
-// 1. Definimos un tipo que representa el ESTADO de nuestro componente.
 interface GalleryState {
     activeSlideGallery: number;
     images: { url: string; name: string }[];
+    loadedImages: { url: string; name: string }[];
     imageOrientation: string;
     isLoading: boolean;
     touchstartX: number;
@@ -11,17 +11,11 @@ interface GalleryState {
     threshold: number;
 }
 
-// 2. Definimos un tipo para las PROPIEDADES MÁGICAS que Alpine inyecta.
 interface AlpineMagic {
-    $refs: { 
-        galleryContainer: HTMLElement 
-    };
+    $refs: { galleryContainer: HTMLElement };
     $nextTick: (callback: () => void) => void;
 }
 
-// 3. Creamos el tipo final del COMPONENTE, que es la unión del estado, 
-//    las propiedades mágicas y los métodos.
-//    Los métodos usan `this: GalleryComponent` para tener un contexto explícito.
 interface GalleryComponent extends GalleryState, AlpineMagic {
     galleryLength: number;
     init(this: GalleryComponent): Promise<void>;
@@ -34,25 +28,23 @@ interface GalleryComponent extends GalleryState, AlpineMagic {
     handleGesture(this: GalleryComponent): void;
     handleTouchStart(this: GalleryComponent, event: TouchEvent): void;
     handleTouchEnd(this: GalleryComponent, event: TouchEvent): void;
+    loadMoreImages(this: GalleryComponent): void;
 }
 
-// 4. La función que crea nuestro componente Alpine.
 export const galleryDetailData = () => ({
-    // --- Estado inicial ---
     activeSlideGallery: 0,
     images: [] as { url: string; name: string }[],
+    loadedImages: [] as { url: string; name: string }[],
     imageOrientation: 'landscape',
     isLoading: true,
     touchstartX: 0,
     touchendX: 0,
     threshold: 50,
 
-    // --- Propiedad computada ---
     get galleryLength(): number {
-        return this.images.length;
+        return this.loadedImages.length;
     },
 
-    // --- Métodos con `this` explícito ---
     async init(this: GalleryComponent) {
         const [_, imageResults] = await Promise.all([
             renderGalleryDetail(),
@@ -60,10 +52,31 @@ export const galleryDetailData = () => ({
         ]);
 
         this.images = imageResults;
+        this.loadedImages = this.images.slice(0, 9);
         this.isLoading = false;
 
-        if (this.images.length > 0) {
-            this.checkOrientation(this.images[0].url);
+        if (this.galleryLength > 0) {
+            this.checkOrientation(this.loadedImages[0].url);
+        }
+
+        let isloadingMore = false;
+        if (this.$refs.galleryContainer) {
+            this.$refs.galleryContainer.addEventListener('scroll', () => {
+                if (isloadingMore) return;
+                const { scrollLeft, scrollWidth, clientWidth } = this.$refs.galleryContainer;
+                if (scrollLeft + clientWidth >= scrollWidth - 200) {
+                    isloadingMore = true;
+                    this.loadMoreImages();
+                    setTimeout(() => { isloadingMore = false; }, 500); // Debounce
+                }
+            });
+        }
+    },
+
+    loadMoreImages(this: GalleryComponent) {
+        if (this.loadedImages.length < this.images.length) {
+            const nextBatch = this.images.slice(this.galleryLength, this.galleryLength + 9);
+            this.loadedImages.push(...nextBatch);
         }
     },
 
@@ -78,32 +91,51 @@ export const galleryDetailData = () => ({
     centerThumbnail(this: GalleryComponent, index: number) {
         this.$nextTick(() => {
             const galleryEl = this.$refs.galleryContainer;
+            if (!galleryEl || !galleryEl.children[index]) return;
             const selectedButton = galleryEl.children[index] as HTMLElement;
-            if (selectedButton) {
-                const scrollLeft = selectedButton.offsetLeft - (galleryEl.offsetWidth / 2) + (selectedButton.offsetWidth / 2);
-                galleryEl.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-            }
+            const scrollLeft = selectedButton.offsetLeft - (galleryEl.offsetWidth / 2) + (selectedButton.offsetWidth / 2);
+            galleryEl.scrollTo({ left: scrollLeft, behavior: 'smooth' });
         });
     },
 
     next(this: GalleryComponent) {
         if (this.galleryLength === 0) return;
-        this.activeSlideGallery = (this.activeSlideGallery + 1) % this.galleryLength;
+
+        const nextIndex = this.activeSlideGallery + 1;
+        
+        if (nextIndex >= this.galleryLength && this.galleryLength < this.images.length) {
+            this.loadMoreImages();
+        }
+
+        this.activeSlideGallery = nextIndex % this.loadedImages.length;
+        
         this.centerThumbnail(this.activeSlideGallery);
-        this.checkOrientation(this.images[this.activeSlideGallery].url);
+        this.checkOrientation(this.loadedImages[this.activeSlideGallery].url);
     },
 
     prev(this: GalleryComponent) {
         if (this.galleryLength === 0) return;
+
+        if (this.activeSlideGallery === 0 && this.loadedImages.length < this.images.length) {
+            this.loadedImages = this.images;
+            this.$nextTick(() => {
+                const newIndex = this.images.length - 1;
+                this.activeSlideGallery = newIndex;
+                this.centerThumbnail(newIndex);
+                this.checkOrientation(this.loadedImages[newIndex].url);
+            });
+            return;
+        }
+
         this.activeSlideGallery = (this.activeSlideGallery - 1 + this.galleryLength) % this.galleryLength;
         this.centerThumbnail(this.activeSlideGallery);
-        this.checkOrientation(this.images[this.activeSlideGallery].url);
+        this.checkOrientation(this.loadedImages[this.activeSlideGallery].url);
     },
 
     load(this: GalleryComponent, index: number) {
         this.activeSlideGallery = index;
         this.centerThumbnail(index);
-        this.checkOrientation(this.images[index].url);
+        this.checkOrientation(this.loadedImages[index].url);
     },
 
     changeClass(this: GalleryComponent, index: number) {
@@ -125,4 +157,4 @@ export const galleryDetailData = () => ({
         this.touchendX = event.changedTouches[0].screenX;
         this.handleGesture();
     },
-} as GalleryComponent); // 5. La aserción de tipo ahora es correcta y segura.
+} as GalleryComponent);

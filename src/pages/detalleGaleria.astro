@@ -26,7 +26,7 @@ import Footer from '@/components/footer/Footer.astro';
             <div id="card-content-images" x-ref="slider" class="relative mx-auto overflow-hidden transition-all duration-300" :class="imageOrientation === 'landscape' ? 'w-full max-w-[800px]' : 'w-full max-w-[500px]'">
 
                 <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${activeSlideGallery * 100}%)`">
-                    <template x-for="(image, index) in images" :key="`slide-${index}`">
+                    <template x-for="(image, index) in loadedImages" :key="`slide-${index}`">
                         <div class="min-w-full w-full box-border flex items-center justify-center bg-transparent">
                             <img :src="image.url" :alt="image.name" class="w-full h-auto object-contain max-h-[120vh]" loading="lazy">
                         </div>
@@ -47,7 +47,7 @@ import Footer from '@/components/footer/Footer.astro';
                 
                 <div class="relative max-w-3xl w-full mx-auto">
                     <div class="card-content-thumb grid grid-flow-col auto-cols-max items-center justify-start gap-3 mt-2 overflow-x-auto p-4 scroll-smooth max-w-full mx-auto no-scrollbar" x-ref="galleryContainer">
-                        <template x-for="(image, index) in images" :key="`thumb-${index}`">
+                        <template x-for="(image, index) in loadedImages" :key="`thumb-${index}`">
                             <button type="button" @click="load(index)" class="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all" :class="changeClass(index)">	
                                 <img :src="image.url" :alt="`Thumbnail of ${image.name}`" class="w-full h-full object-cover" loading="lazy">
                             </button>
