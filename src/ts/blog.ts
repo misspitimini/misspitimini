@@ -13,21 +13,24 @@ async function renderPosts() {
     
     try {
         const files: Blog[] = await getBlogs();
-        container.innerHTML = '';
-  
+        
         files.forEach((post: Blog) => {
 
           if(document.getElementById(post.slug)!=null){
             return;
           }
           const clone = template.content.cloneNode(true) as DocumentFragment;
-  
+
+          const rootElement = clone.firstElementChild as HTMLElement;
           const img = clone.querySelector('.card-img') as HTMLImageElement;
           const title = clone.querySelector('.card-title') as HTMLElement;
           const desc = clone.querySelector('.card-description') as HTMLElement;
           const link = clone.querySelector('.card-link') as HTMLAnchorElement;
           const pureDate = clone.querySelector('.card-pub-date') as HTMLAnchorElement;
           
+          if (rootElement) {
+            rootElement.id = `${post.slug}`; // Assign your new unique ID
+          }
           
           img.src = post.imgSrc;
           img.alt = post.imgAlt;

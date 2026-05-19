@@ -28,8 +28,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
             keywords={keywords} 
             canonicalUrl={canonicalUrl}
         >
-            <slot name="head-scripts" />
+        <slot name="head-scripts" />
         </MainHead>
+        <slot name="page-styles" />
 	</head>
 	<body>
 		<div class="w-full md:max-w-7xl">
@@ -37,6 +38,5 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 				<slot />
 			</div>
 		</div>
-        <slot name="page-styles" />
 	</body>
 </html>

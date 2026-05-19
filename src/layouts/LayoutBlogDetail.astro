@@ -10,16 +10,12 @@ export interface Props {
 const { title, description, keywords } = Astro.props;
 
 ---
-<BaseLayout title={title} description={description} keywords={keywords}>
-    <Fragment slot="head-scripts">
-        <script type="module" src="/src/ts/blogDetail.ts"></script>
-    </Fragment>    
-    <slot />
-    <Fragment slot="page-styles">
-	  	<style is:global>
+<BaseLayout title={title} description={description} keywords={keywords}>  
+        <Fragment slot="page-styles">
+            <style is:global>
             body {
-				@apply block;
-			}
+                @apply block;
+            }
             p {
                 @apply m-0 md:m-0 text-center;
             }
@@ -65,6 +61,7 @@ const { title, description, keywords } = Astro.props;
             main blockquote {
                 @apply border-l-4 border-gray-200 pl-6 my-6 mx-2;
             }
-	    </style>
+        </style>
     </Fragment>
+    <slot />
 </BaseLayout>
