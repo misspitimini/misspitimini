@@ -16,15 +16,17 @@ This project is a static-first web application built with Astro.js. It is design
 *   **Components:** Reusable Astro components for common UI elements.
 *   **TypeScript Integration:** Client-side interactivity powered by TypeScript modules.
 
-## Current Task: Refactor Data Fetching for Blog Posts
+## Current Task: Refactor CSS Classes
 
-**Objective:** Centralize and modernize the data fetching logic for individual blog posts.
+**Objective:** Centralize and streamline the use of CSS classes for flexible container elements.
 
 **Plan & Steps:**
 
-1.  **Create New Service:** Created a new file at `src/services/blogDetail.ts`.
-2.  **Adapt Existing Logic:** Adapted the core data-fetching logic from the old `src/ts/blogDetail.ts` file.
-3.  **Use Astro's API:** The new service utilizes Astro's `getEntry` function from the `astro:content` module to fetch a single blog post from the content collection.
-4.  **Remove DOM Manipulation:** The new service is purely for data fetching and does not contain any of the old DOM manipulation code.
+1.  **Create a New CSS Class:** A new class selector, `.flex-container`, was added to the `src/styles/global.css` file. This class encapsulates a set of Tailwind CSS utilities for creating flexible, space-between, and vertically centered containers.
+2.  **Identify and Refactor Components:** The project's components were scanned to identify areas where the new class could be applied. The following components were updated:
+    *   `src/components/weddings/WeddingsComponent.astro`
+    *   `src/components/workshop/WorkshopsComponent.astro`
+    *   `src/components/eventscorporate/EventsComponent.astro`
+3.  **Apply the New Class:** In each of the identified components, the existing Tailwind CSS classes on the `<summary>` elements were replaced with the new `.flex-container` class.
 
-**Outcome:** The `src/services/blogDetail.ts` file now provides a clean, centralized, and modern way to fetch individual blog posts. This improves code organization and maintainability.
+**Outcome:** The use of the new `.flex-container` class simplifies the HTML structure and makes the code more maintainable. By centralizing the styling logic, we can now easily update the appearance of these elements across the entire project by modifying a single CSS rule.

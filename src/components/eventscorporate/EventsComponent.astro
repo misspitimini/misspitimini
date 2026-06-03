@@ -24,7 +24,7 @@ const loadedImages = {
   <!-- Intro Section -->
   <ContentSection>
     <SectionTitle>Decoración Floral para Eventos Corporativos</SectionTitle>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+    <div class="content-wrapper default-text-container">
       <p>
       Las flores tienen la capacidad de transformar un espacio y elevar cualquier experiencia. En Miss Pitimini diseño composiciones florales para eventos corporativos, presentaciones de marca y celebraciones privadas, creando ambientes que transmiten emoción, identidad y belleza natural.
       </p>
@@ -56,7 +56,7 @@ const loadedImages = {
  
  <!-- Soluciones Section -->
   <ContentSection>
-    <div class="max-w-5xl mx-auto space-y-8">
+    <div class="content-wrapper">
         <SectionTitle>Soluciones Florales a Medida</SectionTitle> 
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
           {loadedImages.fiestasPrivadas && imageData.fiestasPrivadas && (
@@ -65,7 +65,7 @@ const loadedImages = {
             </div>
           )}
             <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pl-0">
-              <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+              <div class="content-wrapper default-text-container">
                 <ul>
                     <li><strong>Decoración integral de espacios:</strong> Creamos ambientes inmersivos que transforman recepciones, salas de conferencias y espacios para eventos, alineando cada detalle floral con la identidad de tu compañía.</li>
                     <li><strong>Centros de mesa y ambientación:</strong> Diseñamos centros de mesa y arreglos focales para cenas de gala, comidas de empresa y celebraciones, aportando un toque de sofisticación y elegancia que no pasará desapercibido.</li>
@@ -80,7 +80,7 @@ const loadedImages = {
 
   <!-- Fiestas Privadas y Celebraciones Section -->
   <ContentSection>
-    <div class="max-w-5xl mx-auto space-y-8">
+    <div class="content-wrapper">
         <SectionTitle>Decoración para Fiestas Privadas y Celebraciones</SectionTitle>
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
             <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pr-0">
@@ -115,7 +115,7 @@ const loadedImages = {
 
   <!-- Lanzamientos de Producto Section -->
   <ContentSection>
-    <div class="max-w-5xl mx-auto space-y-8">
+    <div class="content-wrapper">
         <SectionTitle>Diseño Floral para Lanzamientos de Productos</SectionTitle>
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
             <div class="w-full md:w-1/2 text-floral-dark/80 leading-relaxed space-y-4 text-justify px-6 md:pr-0">
@@ -139,7 +139,7 @@ const loadedImages = {
 
   <!-- Cómo trabajo Section -->
   <ContentSection>
-    <div class="max-w-5xl mx-auto space-y-8">
+    <div class="content-wrapper">
         <SectionTitle>Nuestro Proceso de Diseño</SectionTitle>  
         <div class="w-full flex flex-col md:flex-row items-center gap-8 px-0">
           {loadedImages.proceso && imageData.proceso && (
@@ -164,7 +164,7 @@ const loadedImages = {
   <!-- Zonas donde trabajo Section -->
   <ContentSection>
     <SectionTitle>Zonas donde trabajo</SectionTitle>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+    <div class="content-wrapper default-text-container">
       <p>
         Realizo eventos en Madrid capital, en espacios corporativos, hoteles, restaurantes, fincas y localizaciones privadas. También puedo desplazarme a otras zonas bajo consulta.
       </p>
@@ -172,52 +172,52 @@ const loadedImages = {
   </ContentSection>
 
   <!-- FAQ Section -->
-  <ContentSection class="py-12 bg-floral-light/20">
-    <div class="max-w-5xl mx-auto space-y-8">
+  <ContentSection class="highlighted-section">
+    <div class="content-wrapper">
         <SectionTitle>Preguntas frecuentes</SectionTitle>
         <div class="space-y-4">
-            <details class="group border-b pb-4">
-                <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
+            <details>
+                <summary class="flex-container">
                     ¿Qué tipo de eventos decoras?
                     <span class="transform transition-transform duration-200 group-open:rotate-180">+</span>
                 </summary>
-                <p class="mt-2 text-floral-dark/80">
+                <p>
                     Trabajo tanto con empresas como con particulares: presentaciones, cenas, aniversarios, inauguraciones, sesiones de fotos y más.
                 </p>
             </details>
-            <details class="group border-b pb-4">
-                <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
+            <details>
+                <summary class="flex-container">
                     ¿Ofreces propuestas personalizadas para marcas?
                     <span class="transform transition-transform duration-200 group-open:rotate-180">+</span>
                 </summary>
-                <p class="mt-2 text-floral-dark/80">
+                <p>
                     Sí, adapto el diseño floral a la identidad visual y al mensaje de cada marca.
                 </p>
             </details>
-            <details class="group border-b pb-4">
-                <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
+            <details>
+                <summary class="flex-container">
                     ¿Con cuánta antelación debo reservar?
                     <span class="transform transition-transform duration-200 group-open:rotate-180">+</span>
                 </summary>
-                <p class="mt-2 text-floral-dark/80">
+                <p>
                     Lo ideal es entre 1 y 3 meses, aunque puedo valorar proyectos urgentes.
                 </p>
             </details>
-            <details class="group border-b pb-4">
-                <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
+            <details>
+                <summary class="flex-container">
                     ¿Puedes trabajar con un presupuesto cerrado?
                     <span class="transform transition-transform duration-200 group-open:rotate-180">+</span>
                 </summary>
-                <p class="mt-2 text-floral-dark/80">
+                <p>
                     Sí, preparo una propuesta ajustada a las necesidades del evento.
                 </p>
             </details>
-            <details class="group pb-4">
-                <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark">
+            <details>
+                <summary class="flex-container">
                     ¿Te encargas del montaje y desmontaje?
                     <span class="transform transition-transform duration-200 group-open:rotate-180">+</span>
                 </summary>
-                <p class="mt-2 text-floral-dark/80">
+                <p>
                     Sí, gestiono todo el proceso para que el evento fluya sin complicaciones.
                 </p>
             </details>
