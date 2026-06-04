@@ -22,10 +22,17 @@
         @apply list-disc space-y-4 ml-6 mr-3
       }
       .flex-container {
-        @apply flex justify-between items-center cursor-pointer text-lg font-semibold text-floral-dark;
+        @apply flex justify-between items-center cursor-pointer list-none text-lg font-semibold text-floral-dark;
+      }
+
+      .flex-container::-webkit-details-marker {
+        @apply hidden;
       }
       .highlighted-section details {
         @apply border-b pb-4 mx-4;
+      }
+      .highlighted-section details summary span {
+        @apply transform transition-transform duration-200 group-open:rotate-180;
       }
       .highlighted-section details p {
         @apply mt-2 text-floral-dark/80;
