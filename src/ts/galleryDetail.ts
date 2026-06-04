@@ -1,4 +1,4 @@
-import { UrlsApi } from '@/ts/urls.ts';
+import { contentGalleryDetail, getGalleryImages } from '@/services/galleryDetail';
 import fm from 'front-matter';
 import { marked } from 'marked';
 
@@ -18,18 +18,13 @@ export async function renderGalleryDetail() {
     console.error('[renderGalleryDetail] No gallery ID found in URL.');
     return;
   }
-  console.log(`[renderGalleryDetail] Found ID: ${id}`);
-
   try {
-    const res = await fetch(UrlsApi.GET_GALLERIES_DETAIL(id));
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    const text = await res.text();
+    const text:string = await contentGalleryDetail(id) as string;  
     const { attributes, body } = fm(text) as { attributes: PostAttributes; body: string };
     
     const contentEl = document.querySelector('.card-content');
     if (contentEl) {
       contentEl.innerHTML = await marked.parse(body);
-      console.log('[renderGalleryDetail] Content rendered successfully.');
     } else {
       console.error('[renderGalleryDetail] Content element not found.');
     }
@@ -47,26 +42,10 @@ export async function renderGalleryDetail() {
 export async function fetchGalleryImages(): Promise<{ url: string; name: string }[]> {
   console.log('[fetchGalleryImages] Starting...');
   const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
+  const id:string = params.get('id') as string;
   if (!id) {
     console.error('[fetchGalleryImages] No gallery ID found in URL.');
     return [];
   }
-  console.log(`[fetchGalleryImages] Found ID: ${id}`);
-
-  try {
-    const fetchUrl = UrlsApi.GET_GALLERY(id);
-    console.log(`[fetchGalleryImages] Fetching from URL: ${fetchUrl}`);
-
-    const response = await fetch(fetchUrl);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    
-    const imagesData = await response.json();
-    console.log('[fetchGalleryImages] Successfully fetched data:', imagesData);
-
-    return imagesData.images || [];
-  } catch (error) {
-    console.error("[fetchGalleryImages] Fetch failed:", error);
-    return [];
-  }
+   return await getGalleryImages(id);        
 }
