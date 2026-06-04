@@ -15,11 +15,14 @@
       }
  		p {
         @apply text-justify tracking-wide m-6 md:m-6
+      }, 
+ 		  ul
+      {
+        @apply list-disc space-y-4 md:mx-24 md:my-8;
       }
- 		ul, 
       li 
       {
-        @apply list-disc space-y-4 ml-6 mr-3
+        @apply list-disc space-y-4 ml-12 mr-6 md:mx-24;
       }
       .flex-container {
         @apply flex justify-between items-center cursor-pointer list-none text-lg font-semibold text-floral-dark;
