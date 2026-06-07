@@ -15,8 +15,8 @@ const keywords = "florista, bodas, eventos, talleres florales, experiencias, Mad
 ---
 
 <Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords} >
-	<Fragment>
-		<script type="module" src="/src/ts/workshops.ts"></script>
+	<Fragment slot="body-scripts">
+		<script type="module" src="/ts/workshops.ts"></script>
 	</Fragment>
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
