@@ -79,6 +79,7 @@ const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
 
   <ContentSection>
     <SectionTitle>Próximas experiencias:</SectionTitle>
+    <div id="upcomingWorkshops-container">
     {upcomingWorkshops.map((workshop) => ( 
     <WorkshopCardNext
         imgSrc={workshop.imgSrc}
@@ -89,11 +90,12 @@ const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
         description={workshop.description}   
         />
     ))}
+    </div>
   </ContentSection>
 
   <ContentSection>
     <SectionTitle>Otras experiencias:</SectionTitle>
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
+    <div id="pastWorkshops-container" class="grid gap-8 grid-cols-1 md:grid-cols-2">
       {pastWorkshops.map((workshop) => (
        <WorkshopCard
         imgSrc={workshop.imgSrc}
@@ -179,3 +181,23 @@ const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
   </ContentSection>
 
 </div>
+<template id="card-upcomingWorkshops-template" class="hidden">
+  <WorkshopCardNext
+  imgSrc=""
+  imgAlt=""
+  title4=""
+  title5=""
+  date={now}
+  description=""   
+  />
+</template>
+
+<template id="card-pastWorkshops-template" class="hidden">
+  <WorkshopCard
+  imgSrc=""
+  imgAlt=""
+  title4=""
+  title5=""
+  description=""
+  />
+</template>

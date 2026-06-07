@@ -22,14 +22,14 @@ const pubDate = (date).toLocaleDateString('es-ES', {
 <section class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <h3 class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
-    <p class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60 text-center">{pubDate}</p>
-    <h4 class="font-display text-4xl font-semibold mb-4 tracking-wide uppercase">{title4}</h4>
-    <h5 class="font-display text-4xl font-semibold mb-4 tracking-wide">{title5}</h5>
-    <p class="text-floral-dark/80 text-base text-gray-600 leading-relaxed text-center tracking-wide">
+    <p class="card-date font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60 text-center">{pubDate}</p>
+    <h4 class="card-title font-display text-4xl font-semibold mb-4 tracking-wide uppercase">{title4}</h4>
+    <h5 class="card-subtitle font-display text-4xl font-semibold mb-4 tracking-wide">{title5}</h5>
+    <p class="card-description text-floral-dark/80 text-base text-gray-600 leading-relaxed text-center tracking-wide">
       {description}
     </p>
     <div class="relative overflow-hidden shadow-sm group">
-      <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+      <img class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
         src={imgSrc}
         alt={imgAlt}  decoding="async" loading="lazy" />
 
