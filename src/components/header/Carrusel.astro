@@ -1,71 +1,90 @@
+
 ---
 import FogImageCarrusel from "@/components/commons/FogImageCarrusel.astro";
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 import ArrowsCarrusel from "@/components/header/ArrowsCarrusel.astro";
-import {slides} from '@/data/menuData.js';
+import { slides } from '@/data/menuData.ts';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
     href: string;
 }
-const {href} = Astro.props;
+const { href } = Astro.props;
 
 const currentSlide = slides.find(s => s.url === href) || slides[0];
 
+// Use import.meta.glob to get all images from the directory.
+// This returns a dictionary of image paths to functions that load the image.
+const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/carrusel/*.*');
+
+// Construct the key for the dictionary by replacing the '@' alias
+const imagePath = currentSlide.image.replace('@', '/src');
+
+let imageSrc: ImageMetadata | undefined;
+// Check if our constructed path exists in the dictionary and load it
+if (allImages[imagePath]) {
+  const module = await allImages[imagePath]();
+  imageSrc = module.default;
+} else {
+  // Log an error if the image path from menuData.ts doesn't match any file
+  console.error(`Could not find image for path: ${imagePath}`);
+}
 ---
 
 <div class="w-full bg-[#f3f4f6] flex justify-center"> 
   <section class="relative h-[85vh] w-full overflow-hidden">
-      {currentSlide.id === 5 && (
-        <div class="absolute inset-0 w-full  bg-white">
-        <OptimizedImage 
-          alt={currentSlide.imgAlt} 
-          class="h-full w-full object-contain object-[75%_25%] md:object-center" 
-          decoding="async" 
-          src={currentSlide.image}
-          widths={[400, 800, 1200, 1600, 2400, 3200]}
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-          quality={100}
-        />
-        </div>
-      )}
-      {currentSlide.id !== 5 && (
-        <div class="absolute inset-0 w-full">
-          <FogImageCarrusel 
-            alt={currentSlide.imgAlt} 
-            class="h-full w-full object-cover object-center" 
-            src={currentSlide.image}
-            widths={[400, 800, 1200, 1600, 2400, 3200]}
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-            quality={60}
-          />
-          <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
-          <div class="absolute inset-x-0 bottom-0 md:h-32 bg-gradient-to-t from-white to-transparent"></div>
-        </div>
+    {imageSrc && (
+      <>
+        {currentSlide.id === 5 ? (
+          <div class="absolute inset-0 w-full bg-white">
+            <OptimizedImage 
+              alt={currentSlide.imgAlt} 
+              class="h-full w-full object-contain object-[75%_25%] md:object-center" 
+              decoding="async" 
+              src={imageSrc}
+              widths={[400, 800, 1200, 1600, 2400, 3200]}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+              quality={100}
+            />
+          </div>
+        ) : (
+          <div class="absolute inset-0 w-full">
+            <FogImageCarrusel 
+              alt={currentSlide.imgAlt} 
+              class="h-full w-full object-cover object-center" 
+              src={imageSrc}
+              widths={[400, 800, 1200, 1600, 2400, 3200]}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
+              quality={60}
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
+            <div class="absolute inset-x-0 bottom-0 md:h-32 bg-gradient-to-t from-white to-transparent"></div>
+          </div>
         )}
-  <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
-    {currentSlide.id === 1 && (
-        <h2 class="text-white text-4xl font-serif italic leading-tight mb-3 max-w-xs filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">Sara Laínez, diseñadora floral</h2>
-        <h3 class="hidden">Presentación personal</h3>
+      </>
     )}
-    {currentSlide.id !== 1 && (
-          <>
-          <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.title}</h2>
-          <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-base md:text-lg tracking-widest mt-2 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)]  md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.phrase}</h3>
-          </>
-    )}
-      
-      {currentSlide.id !== 4 && currentSlide.id !== 6 && (
-        <>
-          <a 
-            href="/contacto/" rel="noopener noreferrer" 
-            class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
-          >
-            Contacta conmigo
-          </a>
-        </>
+    <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
+      {currentSlide.id === 1 ? (
+          <h2 class="text-white text-4xl font-serif italic leading-tight mb-3 max-w-xs filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)]">Sara Laínez, diseñadora floral</h2>
+          <h3 class="hidden">Presentación personal</h3>
+      ) : (
+            <>
+            <h2 class="uppercase text-white text-4xl font-serif italic leading-tight mb-3 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)] md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.title}</h2>
+            <h3 class="text-white text-4xl font-serif italic leading-tight mb-4 block text-base md:text-lg tracking-widest mt-2 filter drop-shadow-[0_0_10px_rgba(8,8,8,1)]  md:drop-shadow-[0_0_10px_rgba(31,31,31,1)] animate-fade-in-up [animation-delay:400ms] [animation-fill-mode:forwards]">{currentSlide.phrase}</h3>
+            </>
       )}
-  </div>
-</section>
+      
+        {currentSlide.id !== 4 && currentSlide.id !== 6 && (
+          <>
+            <a 
+              href="/contacto/" rel="noopener noreferrer" 
+              class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
+            >
+              Contacta conmigo
+            </a>
+          </> 
+        )}
+    </div>
+  </section>
 </div>
 <ArrowsCarrusel href={href} />
-  
