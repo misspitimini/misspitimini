@@ -1,7 +1,6 @@
 import type { BlogDetail } from "@/types/BlogDetail";
 import type { PostAttributes } from "@/types/PostAttributes";
 import { UrlsApi } from "../ts/urls";
-import fm from 'front-matter';
 
 
 export async function getBlogDetail(slug: string) {

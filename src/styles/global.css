@@ -14,8 +14,8 @@
         @apply text-center;
       }
  		p {
-        @apply text-justify tracking-wide m-6 md:m-6
-      }, 
+        @apply text-justify tracking-wide m-6 md:m-6;
+      }
  		  ul
       {
         @apply list-disc space-y-4 md:mx-24 md:my-8;
