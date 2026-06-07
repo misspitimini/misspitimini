@@ -4,7 +4,8 @@ import Layout from '@/layouts/Layout.astro';
 const { title, description, keywords } = Astro.props;
 ---
 <Layout title={title} description={description} keywords={keywords}>
-    <slot />
+    <slot name="head-scripts" />
+    <slot name="page-styles" />
     <Fragment slot="page-styles">
         <style is:global>
             #post-content-main h1,
@@ -40,4 +41,6 @@ const { title, description, keywords } = Astro.props;
             }
         </style>
     </Fragment>
+    <slot name="body-scripts" />
+    <slot />
 </Layout>

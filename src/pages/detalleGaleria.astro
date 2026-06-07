@@ -7,9 +7,12 @@ const title="misspitimini | Galería de trabajos de Sara Laínez"
 const description="Explora la galería de trabajos de diseño floral de misspitimini."
 ---
 
-<script src="../ts/alpine-init.ts"></script>
-
 <LayoutGalleryDetail title={title} description={description}>
+    <Fragment slot="head-scripts">
+        <script>
+            import '@/ts/alpine-init.ts';
+        </script>
+    </Fragment>
 	<HeaderGalleryDetail/>
 	<main id="post-content-main" 
           x-data="galleryDetailData()" 

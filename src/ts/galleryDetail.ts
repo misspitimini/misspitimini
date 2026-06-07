@@ -11,7 +11,6 @@ interface PostAttributes {
  * Fetches and renders the markdown content (title and body) of the gallery.
  */
 export async function renderGalleryDetail() {
-  console.log('[renderGalleryDetail] Starting...');
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   if (!id) {
@@ -40,7 +39,6 @@ export async function renderGalleryDetail() {
  * @returns A promise that resolves with the array of images or an empty array on error.
  */
 export async function fetchGalleryImages(): Promise<{ url: string; name: string }[]> {
-  console.log('[fetchGalleryImages] Starting...');
   const params = new URLSearchParams(window.location.search);
   const id:string = params.get('id') as string;
   if (!id) {
