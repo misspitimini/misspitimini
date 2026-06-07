@@ -2,11 +2,14 @@
 import HeaderGalleryDetail from '@/components/header/HeaderGalleryDetail.astro';
 import LayoutGalleryDetail from '@/layouts/LayoutGalleryDetail.astro';
 import Footer from '@/components/footer/Footer.astro';
+
+const title="misspitimini | Galería de trabajos de Sara Laínez"
+const description="Explora la galería de trabajos de diseño floral de misspitimini."
 ---
 
 <script src="../ts/alpine-init.ts"></script>
 
-<LayoutGalleryDetail title="misspitimini | Galería de trabajos de Sara Laínez" description="Explora la galería de trabajos de diseño floral de misspitimini.">
+<LayoutGalleryDetail title={title} description={description}>
 	<HeaderGalleryDetail/>
 	<main id="post-content-main" 
           x-data="galleryDetailData()" 

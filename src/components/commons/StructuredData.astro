@@ -14,8 +14,8 @@ const defaultBusinessData = {
   "description": "misspitimini es el proyecto de Sara Laínez, diseñadora floral en Madrid. Ofrecemos diseño floral para eventos, talleres y experiencias únicas con flores.",
   "telephone": "+34684340789",
   "email": "hola@misspitimini.com",
-  "url": Astro.site ? Astro.site.toString() : "https://misspitimini.com",
-  "image": new URL("/misspitimini.jpg", Astro.site).href,
+  "url": Astro.url.href,
+  "image": new URL("/misspitimini.jpg", Astro.url).href,
   "openingHours": "Mo-Su 00:00-23:59",
   "address": {
     "@type": "PostalAddress",

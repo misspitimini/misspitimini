@@ -5,12 +5,13 @@ export interface Props {
 	title: string;
 	description: string;
     keywords: string;
+    canonicalUrl: string;
 }
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, canonicalUrl } = Astro.props;
 
 ---
-<BaseLayout title={title} description={description} keywords={keywords}>  
+<BaseLayout title={title} description={description} keywords={keywords} canonicalUrl={canonicalUrl}>
         <Fragment slot="page-styles">
             <style is:global>
             body {

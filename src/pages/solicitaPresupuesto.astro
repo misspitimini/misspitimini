@@ -6,9 +6,12 @@ import bookingImage from '@/assets/images/carrusel/09_ramosFlores.jpg';
 import LayoutBooking from '@/layouts/LayoutBooking.astro';
 import WorkshopsBookingComponent from '@/components/workshop/WorkshopsBookingComponent.astro';
 import Footer from '@/components/footer/Footer.astro';
+
+const title = "misspitimini | Reserva de asistencia a experiencias florales con Sara Laínez"
+const description = "Reserva tu plaza en nuestros talleres y experiencias florales."
 ---
 
-<LayoutBooking title="misspitimini | Reserva de asistencia a experiencias florales con Sara Laínez" description="Reserva tu plaza en nuestros talleres y experiencias florales.">
+<LayoutBooking title={title} description={description}>
 	
 	<header>
 		<div class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">

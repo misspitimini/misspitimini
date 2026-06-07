@@ -1,10 +1,14 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+
+const title="Página no encontrada"
+const description="Página no encontrada. El enlace puede que esté roto o la página haya sido eliminada."
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const keywords = "blog, diseño floral, bodas, eventos, experiencias, talleres, Madrid, Sara Laínez, inspiración, consejos"
+
 ---
 
-<Layout title="Página no encontrada" description="Página no encontrada. El enlace puede que esté roto o la página haya sido eliminada."
-keywords="blog, diseño floral, bodas, eventos, experiencias, talleres, Madrid, Sara Laínez, inspiración, consejos"
->
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
   <section class="flex flex-col items-center justify-center text-center py-20">
     <h1 class="text-4xl font-serif text-primary mb-4">¡Vaya! Página no encontrada</h1>
     <p class="text-lg text-floral-dark/80 mb-8">Parece que te has perdido en nuestro jardín digital. La página que buscas no existe.</p>

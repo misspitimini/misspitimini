@@ -6,9 +6,11 @@ import GalleryComponent from '@/components/gallery/GalleryComponent.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/galeria/";
+const title = "mispitimini | Galería de fotos de eventos florales de Sara Laínez"
+const description = "Explora la galería de fotos de nuestras bodas, eventos y experiencias florales y gastronómicas. Inspírate para tu próximo evento."
 ---
 
-<LayoutGallery title="mispitimini | Galería de fotos de eventos florales de Sara Laínez" description="Explora la galería de fotos de nuestras bodas, eventos y experiencias florales y gastronómicas. Inspírate para tu próximo evento.">
+<LayoutGallery title={title} description={description}>
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only">Galería de fotos e imágenes que sirven de inspiración para bodas, evento y experiencias florales y gastronómicas por Sara Laínez, mispitimini</h1>

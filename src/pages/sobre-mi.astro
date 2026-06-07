@@ -7,11 +7,14 @@ import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/sobre-mi/";
+
+const title="misspitimini | Sobre mi" 
+const description="Conoce a Sara Laínez, la diseñadora floral detrás de misspitimini."
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const keywords = "florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
 ---
 
-<Layout title="misspitimini | Sobre mi" description="Conoce a Sara Laínez, la diseñadora floral detrás de misspitimini."
-keywords="florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
->
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords} >
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only">Sobre mí – Sara Laínez, diseñadora floral en Madrid</h1>

@@ -52,11 +52,12 @@ const {
 // Transformaciones consistentes;
 const keywords = ((typeof tags === 'string') ? JSON.parse(tags): tags).join(', ');
 const content = (body)? await marked.parse(body): '';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 
 // 3. RENDERIZACIÓN;
 ---
 
-<LayoutBlogDetail title={`${title} | misspitimini`} description={description} keywords={keywords}  />
+<LayoutBlogDetail title={`${title} | misspitimini`} description={description} keywords={keywords} canonicalUrl={canonicalUrl} />
     <HeaderBlogDetail imgSrc={imgSrc} imgAlt={imgAlt} />
     <main id="post-content-main">
         <section class="space-y-10">

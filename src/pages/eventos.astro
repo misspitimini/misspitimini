@@ -7,11 +7,15 @@ import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/eventos/";
+
+const title = "mispitimini | Decoración Foral para Eventos y Empresas por Sara Laínez en Madrid" 
+const description = "Flores para eventos corporativos y privados con estilo natural y elegante."
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const keywords = "florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
+
 ---
 
-<Layout title="mispitimini | Decoración Foral para Eventos y Empresas por Sara Laínez en Madrid" description="Flores para eventos corporativos y privados con estilo natural y elegante."
-keywords="florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
->
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords} >
 	<Header href={href} />
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only">Decoración floral para eventos en Madrid</h1>

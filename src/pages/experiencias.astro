@@ -7,11 +7,14 @@ import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 
 const href="/experiencias/";
+
+const title = "mispitimini | Experiencias y Talleres Florales y Gastronómicas por Sara Laínez en Madrid" 
+const description = "Participa en nuestros talleres y experiencias florales y gastronómicas. Aprende a crear tus propios arreglos florales." 
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const keywords = "florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
 ---
 
-<Layout title="mispitimini | Experiencias y Talleres Florales y Gastronómicas por Sara Laínez en Madrid" description="Participa en nuestros talleres y experiencias florales y gastronómicas. Aprende a crear tus propios arreglos florales."
-keywords="florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
->
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords} >
 	<Fragment>
 		<script type="module" src="/src/ts/workshops.ts"></script>
 	</Fragment>

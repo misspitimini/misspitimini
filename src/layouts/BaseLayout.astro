@@ -5,15 +5,15 @@ export interface Props {
 	title: string;
 	description: string;
     keywords: string;
+    canonicalUrl: string;
 }
 
 const { 
     title, 
     description, 
-    keywords
+    keywords,
+    canonicalUrl
 } = Astro.props;
-
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 <!doctype html>
 <html lang="es">
