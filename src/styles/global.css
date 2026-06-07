@@ -4,9 +4,13 @@
 @tailwind utilities;
 
 @layer base {
- 		body {
- 			@apply text-floral-dark antialiased selection:bg-primary/10 flex items-center justify-center font-sans antialiased tracking-wide text-gray-800;
- 		}
+    body {
+        @apply flex min-h-screen items-center justify-center font-sans text-gray-800 antialiased tracking-wide selection:bg-primary/10;
+    }
+    body div.content {
+      @apply  w-full md:max-w-7xl mx-auto min-h-screen text-center p-0
+    }
+    
  		h1,
       h2,
       h3,
