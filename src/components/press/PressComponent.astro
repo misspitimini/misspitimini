@@ -1,0 +1,32 @@
+---
+import ContactCard from '@/components/contact/ContactCard.astro';
+import ContentSection from '../layout/ContentSection.astro';
+import SectionTitle from '@/components/commons/SectionTitle.astro';
+import centroMesa from '@/assets/images/body/contacto/centroMesa.jpg';
+import floresSecas from '@/assets/images/body/contacto/floresSecas.jpg';
+---
+
+<ContentSection>
+    <SectionTitle>Contacto de Prensa y Colaboraciones</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        Si eres un medio de comunicación, un profesional del sector o simplemente te gustaría colaborar con nosotros, no dudes en ponerte en contacto. Estamos abiertos a nuevas ideas y proyectos que compartan nuestra pasión por el diseño floral.
+      </p>
+      <div class="px-0">
+        <div class="grid grid-cols-2 gap-0.5 md:gap-2">
+          <ContactCard 
+          platform="email"
+          label="hola@misspitimini.com" 
+          imgSrc={floresSecas} 
+          alt="Email de contacto Misspitimini"
+          />
+          <ContactCard 
+          platform="phone"
+          label="(+34) 684340789"  
+          imgSrc={centroMesa} 
+          alt="Teléfono de contacto Misspitimini"
+          />
+        </div>
+      </div>
+    </div>
+  </ContentSection>

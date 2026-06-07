@@ -15,17 +15,15 @@ This project is a static-first web application built with Astro.js. It is design
 *   **Layouts:** A comprehensive set of layouts for different page types, including home, blog, gallery, and contact forms.
 *   **Components:** Reusable Astro components for common UI elements.
 *   **TypeScript Integration:** Client-side interactivity powered by TypeScript modules.
+*   **Prensa Page:** A new page for press and media contact has been created.
+*   **Weddings Page Enhancement:** Added an introductory text to the weddings page to provide more context to users.
 
-## Current Task: SEO Improvement - Canonical URLs
+## Current Task: Enhance Weddings Page
 
-**Objective:** Improve the site's SEO by adding canonical URLs to all pages. This will help search engines understand which URL is the "master" version of each page, preventing duplicate content issues.
+**Objective:** Improve the weddings page by adding an introductory text section.
 
 **Plan & Steps:**
 
-1.  **Update `BaseLayout.astro`:** The `BaseLayout.astro` component was updated to accept a `canonicalUrl` prop. This prop is then used to generate a `<link rel="canonical">` tag in the `<head>` of each page.
-2.  **Update Page Components:** All page components were updated to fetch the current page's URL and pass it as the `canonicalUrl` prop to their respective layouts. This ensures that each page has a unique and correct canonical URL.
-3.  **Fix Invalid URL error in `MainHead.astro`**: The `imageUrl` was being constructed with `Astro.site`, which was causing an "Invalid URL" error. This was fixed by using `Astro.url` instead, which provides a more reliable base URL during the build process.
-4.  **Fix Invalid URL error in `StructuredData.astro`**: Similar to the previous step, the `url` and `image` properties in the `defaultBusinessData` object were using `Astro.site`. This was corrected to use `Astro.url` to prevent errors during the build process.
-5.  **Fix TypeScript Errors**: The `tsconfig.json` file was including all files in the project, which was causing TypeScript errors. The `include` property was updated to specifically include only the `src` directory and the Astro-generated type definitions, resolving the errors.
+1.  **Modify `src/pages/bodas.astro`:** An introductory text section was added. The text highlights the personalization and sustainable approach of the floral designs for weddings.
 
-**Outcome:** The addition of canonical URLs will improve the site's SEO by preventing duplicate content issues and helping search engines better understand the site's structure. This will lead to better rankings and more organic traffic.
+**Outcome:** The weddings page now has a more descriptive and engaging introduction, which improves the user experience by providing more context about the services offered.
