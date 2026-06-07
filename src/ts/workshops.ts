@@ -59,8 +59,8 @@ async function renderWorkshops() {
         });
       } catch (error) {
         console.error("Error cargando la galeria:", error);
-        containerUpcomingWorkshops.innerHTML = '<p>Lo sentimos, no se pudieron cargar las galerias.</p>';
-        containerPastWorkshops.innerHTML = '<p>Lo sentimos, no se pudieron cargar las galerias.</p>';
+        containerUpcomingWorkshops.innerHTML = '<p>Lo sentimos, no se pudieron cargar los talleres.</p>';
+        containerPastWorkshops.innerHTML = '<p>Lo sentimos, no se pudieron cargar los talleres.</p>';
       }
   }
 
