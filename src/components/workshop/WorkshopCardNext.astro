@@ -2,6 +2,7 @@
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 
 interface Props {
+  slug: string;
   imgSrc: string;
   imgAlt: string;
   title4: string;
@@ -10,7 +11,7 @@ interface Props {
   description: string;
 }
 
-const { imgSrc, imgAlt, title4, title5, date, description } = Astro.props;
+const {  slug, imgSrc, imgAlt, title4, title5, date, description } = Astro.props;
 
 const pubDate = (date).toLocaleDateString('es-ES', {
         year: 'numeric',
@@ -19,7 +20,7 @@ const pubDate = (date).toLocaleDateString('es-ES', {
     });
 ---
 
-<section class="space-y-10 py-10 bg-gray-100">
+<section id={slug} class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <h3 class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
     <p class="card-date font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60 text-center">{pubDate}</p>

@@ -12,15 +12,22 @@ async function renderGalleries() {
     }
     try {
         const files: Gallery[] = await getGalleries();
-        
+       
+        let i: number = 0;
+        files.forEach((post: Gallery) => {
+        if (document.getElementById(post.slug) != null) {
+          i++;
+        }
+        });
+                
+        if (files.length === i) {
+          return;
+        }
+
         // Limpiamos el mensaje de "Cargando"
         container.innerHTML = '';
   
         files.forEach((post: Gallery) => {
-
-          if(document.getElementById(post.slug)!=null){
-            return;
-          }
 
           // Clonamos el molde
           const clone = template.content.cloneNode(true) as DocumentFragment;

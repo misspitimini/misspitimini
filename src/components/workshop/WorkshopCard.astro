@@ -2,6 +2,7 @@
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 
 interface Props {
+  slug: string;
   imgSrc: string;
   imgAlt: string;
   title4: string;
@@ -9,11 +10,11 @@ interface Props {
   description: string;
 }
 
-const { imgSrc, imgAlt, title4, title5, description } = Astro.props;
+const { slug, imgSrc, imgAlt, title4, title5, description } = Astro.props;
 ---
 
 
-<div class="overflow-hidden w-fit">
+<div id={slug} class="overflow-hidden w-fit">
   <img class="card-img h-2/3 w-full object-cover"  src={imgSrc} alt={imgAlt}  decoding="async" loading="lazy" />
   
   <div class="px-2">

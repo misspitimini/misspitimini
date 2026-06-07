@@ -6,4 +6,7 @@ const { title, description, keywords, canonicalUrl } = Astro.props;
 ---
 <BaseLayout title={title} description={description} keywords={keywords} canonicalUrl={canonicalUrl}>
     <slot />
+    <slot name="head-scripts" />
+    <slot name="page-styles" />
+    <slot name="body-scripts" />
 </BaseLayout>

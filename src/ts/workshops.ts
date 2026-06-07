@@ -4,7 +4,6 @@ import type { Workshop } from "@/types/Workshop";
 
 async function renderWorkshops() {
 
-  debugger
   const containerUpcomingWorkshops = document.getElementById('upcomingWorkshops-container');
   const containerPastWorkshops = document.getElementById('pastWorkshops-container');
     
@@ -18,16 +17,21 @@ async function renderWorkshops() {
     const now = new Date();
     try {
         const files: Workshop[] = await getWorkshops();
-
+        let i: number = 0;
+        files.forEach((post: Workshop) => {
+          if (document.getElementById(post.slug) != null) {
+            i++;
+          }
+        });
+        
+        if (files.length === i) {
+          return;
+        }
         // Limpiamos el mensaje de "Cargando"
         containerUpcomingWorkshops.innerHTML = '';
         containerPastWorkshops.innerHTML = '';
   
         files.forEach((post: Workshop) => {
-
-          if(document.getElementById(post.slug)!=null){
-            return;
-          }
 
           // Clonamos el molde
           const template= (post.date < now)?templatePastWorkshops: templateUpcomingWorkshops;
@@ -66,4 +70,3 @@ async function renderWorkshops() {
 
 // Ejecutar automáticamente cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', renderWorkshops);
-
