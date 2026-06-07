@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 import { getCollection } from 'astro:content';
 import path from 'path';
 
-export async function getWorkshops() {
+export async function renderWorkshops() {
   // Search for images in all subdirectories
   const allWorkshopImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}');
 

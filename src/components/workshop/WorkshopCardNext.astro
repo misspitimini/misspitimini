@@ -1,45 +1,38 @@
 ---
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
-import { getNextWorkshop } from "@/utils/workshopLoader";
 
-// Fetch all the data for the next workshop using the external loader
-const nextWorkshopData = await getNextWorkshop();
-
-// If no upcoming workshop is found, this component will not render anything.
-if (!nextWorkshopData) {
-    return null;
+interface Props {
+  imgSrc: string;
+  imgAlt: string;
+  title4: string;
+  title5: string;
+  date:Date
+  description: string;
 }
 
-// Destructure the data for easier use in the template
-const {
-    imageSrc,
-    imgAlt,
-    date,
-    title4,
-    title5,
-    description
-} = nextWorkshopData;
+const { imgSrc, imgAlt, title4, title5, date, description } = Astro.props;
+
+const pubDate = (date).toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
 ---
 
 <section class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <h3 class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60">Próximo taller</h3>
-    <p class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60 text-center">{date}</p>
+    <p class="font-display text-4xl font-semibold mb-4 tracking-wide text-red-600/60 text-center">{pubDate}</p>
     <h4 class="font-display text-4xl font-semibold mb-4 tracking-wide uppercase">{title4}</h4>
     <h5 class="font-display text-4xl font-semibold mb-4 tracking-wide">{title5}</h5>
     <p class="text-floral-dark/80 text-base text-gray-600 leading-relaxed text-center tracking-wide">
       {description}
     </p>
     <div class="relative overflow-hidden shadow-sm group">
-      <OptimizedImage 
-        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-        loading="lazy" 
-        src={imageSrc} 
-        alt={imgAlt}
-        widths={[400, 800, 1200]}
-        sizes="100vw"
-        format='webp'
-      />
+      <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+        src={imgSrc}
+        alt={imgAlt}  decoding="async" loading="lazy" />
+
       <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
         <a 
           href="/solicitaPresupuesto/" 

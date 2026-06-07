@@ -1,12 +1,27 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
-import { getWorkshops } from '@/ts/workshops.ts';
+import { getWorkshops } from '@/services/workshops';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import ContentSection from '@/components/layout/ContentSection.astro';
+import type { Workshop } from "@/types/Workshop";
 
 const workshops = await getWorkshops();
+
+const now = new Date();
+
+const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
+  (acc, workshop) => {
+    if (workshop.date < now) {
+      acc.pastWorkshops.push(workshop);
+    } else {
+      acc.upcomingWorkshops.push(workshop);
+    }
+    return acc;
+  },
+  { upcomingWorkshops: [] as Workshop[], pastWorkshops: [] as Workshop[] }
+);
 ---
 
 <div class="space-y-12">
@@ -64,18 +79,27 @@ const workshops = await getWorkshops();
 
   <ContentSection>
     <SectionTitle>Próximas experiencias:</SectionTitle>
-    <WorkshopCardNext />
+    {upcomingWorkshops.map((workshop) => ( 
+    <WorkshopCardNext
+        imgSrc={workshop.imgSrc}
+        imgAlt={workshop.imgAlt}
+        title4={workshop.title}
+        title5={workshop.subtitle}
+        date={workshop.date}
+        description={workshop.description}   
+        />
+    ))}
   </ContentSection>
 
   <ContentSection>
     <SectionTitle>Otras experiencias:</SectionTitle>
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
-      {workshops.map((workshop) => (
-        <WorkshopCard
-        img={workshop.img}
+      {pastWorkshops.map((workshop) => (
+       <WorkshopCard
+        imgSrc={workshop.imgSrc}
         imgAlt={workshop.imgAlt}
-        title4={workshop.title4}
-        title5={workshop.title5}
+        title4={workshop.title}
+        title5={workshop.subtitle}
         description={workshop.description}
         />
       ))}

@@ -12,6 +12,8 @@ const UrlsApi = {
     GET_GALLERIES_DETAIL : (id: string) => `${DOMAIN}/detalleGalerias/${id}.md`,
     GET_GALLERY : (id: string) => `${DOMAIN}/GetGallery.php5?id=${id}`,
 
+    GET_WORKSHOPS : `${DOMAIN}/GetWorkshops.php5`,
+
     GET_BLOGS : `${DOMAIN}/GetBlogs.php5`,
     GET_BLOGS_DETAIL_ALL : `${DOMAIN}/GetBlogsDetail.php5`,
     GET_BLOG_DETAIL : (id: string) => `${DOMAIN}/GetBlogDetail.php5?id=${id}`
