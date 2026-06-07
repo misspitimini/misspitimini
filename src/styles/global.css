@@ -18,11 +18,11 @@
       }
  		  ul
       {
-        @apply list-disc space-y-4 md:mx-24 md:my-8;
+        @apply list-disc space-y-4 md:mx-32 md:my-8 md:ml-12 md:mr-6;
       }
       li 
       {
-        @apply list-disc space-y-4 ml-12 mr-6 md:mx-24;
+        @apply list-disc space-y-4 ml-12 mr-6 md:mx-0;
       }
       .flex-container {
         @apply flex justify-between items-center cursor-pointer list-none text-lg font-semibold text-floral-dark;
