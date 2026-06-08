@@ -16,7 +16,7 @@ const {imgSrc, imgAlt} = Astro.props;
     <div class="relative w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
         <div class="flex flex-row items-center justify-between px-4 py-4 max-w-7xl mx-auto">
             <a href="/" class="z-50">
-                <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-32 md:w-48 h-auto" />
+                <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-32 md:w-48 h-auto" loading="eager" />
             </a>
         </div>
         <div class="absolute right-4">
@@ -29,7 +29,7 @@ const {imgSrc, imgAlt} = Astro.props;
     </div>
     <div class="relative w-full max-w-7xl mx-auto overflow-hidden shadow-xl">
         <div class="relative h-[350px] md:h-[500px]">
-            <OptimizedImage src={imgSrc} alt={imgAlt} class="card-img w-full h-full object-cover"  width={1920} height={640} />
+            <OptimizedImage src={imgSrc} alt={imgAlt} class="card-img w-full h-full object-cover"  width={1920} height={640} loading="eager" />
             <div class="absolute inset-0 bg-black/10"></div>
         </div>
     </div>

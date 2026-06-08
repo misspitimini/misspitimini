@@ -15,7 +15,7 @@ const {href} = Astro.props;
     <div class="flex-1 flex justify-start">
         <!-- Desktop Logo -->
         <a href="/" class="hidden md:block">
-            <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-48 h-auto" />
+            <OptimizedImage src={logo} alt="Logotipo de misspitimini" class="w-48 h-auto" loading="eager" />
         </a>
         <!-- Mobile Hamburger -->
          <button id="menu-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
@@ -26,7 +26,7 @@ const {href} = Astro.props;
     <!-- Center: Logo (mobile) -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
         <a href="/" class="block">
-            <OptimizedImage src={logo} alt="Logotipo" class="w-40 h-auto" />
+            <OptimizedImage src={logo} alt="Logotipo" class="w-40 h-auto" loading="eager" />
         </a>
     </div>
 
@@ -49,5 +49,3 @@ const {href} = Astro.props;
         <div id="menu-button-close" class="w-8 h-8 md:hidden"></div>
     </div>
 </div>
-
-
