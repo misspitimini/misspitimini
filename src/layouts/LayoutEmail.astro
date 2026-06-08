@@ -5,7 +5,9 @@ const { title, description, keywords, canonicalUrl } = Astro.props;
 ---
 <Layout title={title} description={description} keywords={keywords} canonicalUrl={canonicalUrl}>
     <Fragment slot="head-scripts">
-        <script type="module" src="/src/ts/form-handler.ts"></script>
+        <script>
+            import '@/ts/form-handler.ts';
+        </script>
     </Fragment>
     <slot />
 </Layout>
