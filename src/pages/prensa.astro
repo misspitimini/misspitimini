@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/header/Header.astro';
+import Carrusel from '@/components/header/Carrusel.astro';
 import SectionContainer from '@/components/layout/SectionContainer.astro';
 import Footer from '@/components/footer/Footer.astro';
 import PressComponent from '@/components/press/PressComponent.astro';
@@ -10,15 +11,19 @@ const title = "mispitimini | Contacto de Prensa y Colaboraciones";
 const description = "Información de contacto para prensa, medios y colaboraciones. Descubre cómo podemos trabajar juntos.";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const keywords = "prensa, mispitimini, contacto, medios, colaboraciones, diseño floral, Madrid";
----
 
+---
 <Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
-    <Header href={href} />
-    <main class="relative pt-20 pb-12">
-        <h1 class="sr-only">Contacto de Prensa</h1>
-        <SectionContainer>
+	<Header href={href} />
+	<main class="relative pt-20 pb-12">
+		<div class="sr-only">
+			<h1 class="text-4xl font-serif font-bold text-floral-dark">Contacto de Prensa</h1>
+			<p class="text-lg text-floral-dark/80 mt-2">Creaciones únicas y personalizadas para momentos inolvidables</p>
+		</div>
+		<Carrusel href={href} />
+		<SectionContainer>
             <PressComponent />
-        </SectionContainer>
-    </main>
-    <Footer />
+		</SectionContainer>
+	</main>
+	<Footer />
 </Layout>
