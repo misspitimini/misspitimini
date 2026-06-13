@@ -2,11 +2,8 @@
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import FogImage from '@/components/commons/FogImage.astro';
 
-// Renombramos `quality` de Astro.props a `propQuality` para evitar el conflicto.
-const { card, quality = 60 } = Astro.props;
-
-// Ahora podemos desestructurar `quality` del objeto `card` sin problemas.
-const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = card;
+const { card } = Astro.props;
+const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard,  widths } = card;
 
 ---
 
@@ -16,10 +13,8 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
            <OptimizedImage 
               alt={imgAlt} 
               class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000" 
-              src={imgSrc} 
-              widths={[400, 800, 1200, 1600, 2400, 3200]}
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-              quality={quality}
+              src={imgSrc}
+              widths={widths}
             />
           )}
       {imgSrc && link!='/galeria/'  && (
@@ -27,10 +22,8 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
             <FogImage 
               alt={imgAlt} 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-              src={imgSrc} 
-              widths={[400, 800, 1200, 1600, 2400, 3200]}
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-              quality={quality}
+              src={imgSrc}
+              widths={widths}
             />
           </div>
       )}

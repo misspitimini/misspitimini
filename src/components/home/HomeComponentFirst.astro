@@ -13,6 +13,6 @@ const homeCards = await getHomeCards(['2-bodas', '3-eventos', '4-talleres']);
 </ContentSection>
 <div class="grid grid-cols-2 gap-1 md:gap-6">
   {homeCards.map(card => (
-    <HomeCard card={card} />
+    <HomeCard card={card}  widths={[412]}/>
   ))}
 </div>

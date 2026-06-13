@@ -1,23 +1,69 @@
 ---
 import { Image } from 'astro:assets';
-import type { ComponentProps } from 'astro/types';
+import type { ImageMetadata } from 'astro';
 
-// Combinamos las props del componente `Image` de Astro con los atributos HTML estándar de una imagen.
-// Esto asegura que nuestro componente acepte `class` y otros atributos HTML.
-type Props = ComponentProps<typeof Image>;
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  class?: string;
+  'class:list'?: (string | Record<any, any> | Iterable<any> | null | undefined)[];
+  loading?: 'lazy' | 'eager' | null;
+  decoding?: 'sync' | 'async' | null;
+  fetchpriority?: 'high' | 'low' | 'auto';
 
-const { ...props } = Astro.props;
+  // Responsive props
+  widths?: number[];
+  sizes?: string;
+  
+  // Pass-through attributes
+  width?: number;
+  height?: number;
+}
 
-if (!props.src || !props.alt) return null;
+const props = Astro.props;
+
+// Default responsive settings for content images, if not provided
+const defaultWidths = [412, 800, 1200];
+const defaultSizes = "(max-width: 768px) 100vw, 50vw";
 ---
 
-<!-- 
-  Pasamos nuestras props por defecto primero, y luego las que recibe el componente.
-  Esto permite que si se pasa un `loading` o `format` personalizado, sobreescriba nuestros valores por defecto.
--->
-<Image
-  decoding="async" 
-  loading="lazy" 
-  format='webp'
-  {...props} 
-/>
+{/* 
+  This component now accepts `widths` and `sizes` props to allow for optimization
+  of different image types. It falls back to defaults for general content images.
+*/}
+{props.src && props.alt && (
+  <>
+    {typeof props.src === 'string' ? (
+      <Image 
+        src={props.src as string}
+        alt={props.alt}
+        loading={props.loading || 'lazy'}
+        decoding={props.decoding || 'async'}
+        fetchpriority={props.fetchpriority}
+        format="webp"
+        quality={80}
+        widths={props.widths || defaultWidths}
+        sizes={props.sizes || defaultSizes}
+        width={props.width}
+        height={props.height}
+        inferSize={true}
+        class:list={[props.class, props['class:list']]} 
+      />
+    ) : (
+      <Image 
+        src={props.src as ImageMetadata} 
+        alt={props.alt}
+        loading={props.loading || 'lazy'}
+        decoding={props.decoding || 'async'}
+        fetchpriority={props.fetchpriority}
+        format="webp"
+        quality={80}
+        widths={props.widths || defaultWidths}
+        sizes={props.sizes || defaultSizes}
+        width={props.width}
+        height={props.height}
+        class:list={[props.class, props['class:list']]} 
+      />
+    )}
+  </>
+)}

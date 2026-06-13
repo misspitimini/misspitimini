@@ -1,18 +1,26 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
-import type { ComponentProps } from 'astro/types';
-import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
-// CORRECTO: Usar `type` para crear una intersección. Es más flexible que `interface`.
-// El tipo que devuelve ComponentProps es demasiado complejo para que una `interface` lo extienda.
-type ImageProps = ComponentProps<typeof Image>;
+interface Props {
+    src: ImageMetadata | string;
+    alt: string;
+    loading?: 'eager' | 'lazy';
+    fetchpriority?: 'high' | 'low' | 'auto';
+    class?: string;
+    [key: string]: any; // Allow other props
+}
 
-// Usamos un casting `as` para decirle a TypeScript que confíe en nosotros
-// y que las props que llegan tendrán la forma de `Props`.
-const {...imgProps } = Astro.props as ImageProps;
-
+const { src, alt, loading, fetchpriority, class: className, ...rest } = Astro.props;
 ---
 
-<OptimizedImage {...imgProps} />
+<OptimizedImage 
+    src={src} 
+    alt={alt} 
+    loading={loading}
+    fetchpriority={fetchpriority}
+    class:list={[className]}
+    {...rest} 
+/>
 <div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-white opacity-20"></div>
 <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-20"></div>

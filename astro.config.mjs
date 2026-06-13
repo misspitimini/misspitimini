@@ -15,6 +15,9 @@ export default defineConfig({
     alpine(),
     sitemap(),
   ],
+  build: {
+    inlineStylesheets: 'always'
+  },
   vite: {
     resolve: {
       alias: {
