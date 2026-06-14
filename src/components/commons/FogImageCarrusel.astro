@@ -8,10 +8,11 @@ interface Props {
     loading?: 'eager' | 'lazy';
     fetchpriority?: 'high' | 'low' | 'auto';
     class?: string;
+    quality?: 'low' | 'mid' | 'high' | 'max'; // Add quality prop
     [key: string]: any; // Allow other props
 }
 
-const { src, alt, loading, fetchpriority, class: className, ...rest } = Astro.props;
+const { src, alt, loading, fetchpriority, class: className, quality, ...rest } = Astro.props;
 ---
 
 <OptimizedImage 
@@ -20,6 +21,7 @@ const { src, alt, loading, fetchpriority, class: className, ...rest } = Astro.pr
     loading={loading}
     fetchpriority={fetchpriority}
     class:list={[className]}
+    quality={quality}
     {...rest} 
 />
 <div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-white opacity-20"></div>

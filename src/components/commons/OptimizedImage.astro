@@ -18,6 +18,7 @@ interface Props {
   // Pass-through attributes
   width?: number;
   height?: number;
+  quality?: string;
 }
 
 const props = Astro.props;
@@ -41,7 +42,7 @@ const defaultSizes = "(max-width: 768px) 100vw, 50vw";
         decoding={props.decoding || 'async'}
         fetchpriority={props.fetchpriority}
         format="webp"
-        quality={80}
+        quality={props.quality} 
         widths={props.widths || defaultWidths}
         sizes={props.sizes || defaultSizes}
         width={props.width}
@@ -57,7 +58,7 @@ const defaultSizes = "(max-width: 768px) 100vw, 50vw";
         decoding={props.decoding || 'async'}
         fetchpriority={props.fetchpriority}
         format="webp"
-        quality={80}
+        quality={props.quality}
         widths={props.widths || defaultWidths}
         sizes={props.sizes || defaultSizes}
         width={props.width}

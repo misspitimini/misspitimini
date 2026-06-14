@@ -1,5 +1,6 @@
 ---
 import MainHead from '@/components/head/MainHead.astro';
+import '@/styles/fonts.css';
 
 export interface Props {
 	title: string;
@@ -32,5 +33,6 @@ const {
             <slot />
         </div>
         <slot name="body-scripts" />
+		<script src="/src/ts/menu.ts"></script>
     </body>
 </html>

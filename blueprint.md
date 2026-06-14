@@ -1,29 +1,23 @@
-# Project Blueprint
+# Plan de Desarrollo: Solucionar Error 404 de Material Symbols
 
-## Overview
+## 1. Objetivo
 
-This project is a static-first web application built with Astro.js. It is designed to be developed within the Firebase Studio (formerly Project IDX) environment. The focus is on creating a fast, highly-performant, and scalable site that delivers minimal JavaScript by default, ensuring an exceptional user experience and top-tier Core Web Vitals.
+El objetivo de esta tarea es solucionar el error 404 que se produce al intentar cargar los iconos de "Material Symbols" en la página. Este error impide que los iconos se muestren correctamente, afectando a la experiencia de usuario.
 
-## Project Structure & Features
+## 2. Pasos a seguir
 
-*   **Framework:** Astro.js
-*   **Styling:** Tailwind CSS
-*   **Deployment:** Firebase Hosting
+1.  **Identificar el origen del error:** Se ha detectado que el error se debe a la falta de la hoja de estilos de Material Symbols en la cabecera del sitio.
+2.  **Añadir la hoja de estilos:** Se añadirá la hoja de estilos de Material Symbols en el archivo `src/components/head/MainHead.astro` para que los iconos se carguen correctamente.
 
-### Implemented Features:
+## 3. Implementación
 
-*   **Layouts:** A comprehensive set of layouts for different page types, including home, blog, gallery, and contact forms.
-*   **Components:** Reusable Astro components for common UI elements.
-*   **TypeScript Integration:** Client-side interactivity powered by TypeScript modules.
-*   **Prensa Page:** A new page for press and media contact has been created.
-*   **Weddings Page Enhancement:** Added an introductory text to the weddings page to provide more context to users.
+*   **Archivo:** `src/components/head/MainHead.astro`
+*   **Código a añadir:**
 
-## Current Task: Enhance Weddings Page
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+```
 
-**Objective:** Improve the weddings page by adding an introductory text section.
+## 4. Verificación
 
-**Plan & Steps:**
-
-1.  **Modify `src/pages/bodas.astro`:** An introductory text section was added. The text highlights the personalization and sustainable approach of the floral designs for weddings.
-
-**Outcome:** The weddings page now has a more descriptive and engaging introduction, which improves the user experience by providing more context about the services offered.
+Una vez implementado el cambio, se verificará que los iconos se muestran correctamente en la página y que el error 404 ha desaparecido de la consola del navegador.
