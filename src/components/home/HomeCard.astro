@@ -8,7 +8,7 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
 ---
 
 <div class:list={["space-y-4", { "col-span-2 mt-6": (isLargeCard && buttonText) }, { "col-span-2 md:col-span-1 mt-6": (isLargeCard && !buttonText) } ]}>
-  <div class:list={["overflow-hidden shadow-sm group relative", {"h-96": !isLargeCard}]} >
+  <div class:list={["overflow-hidden shadow-sm group relative", {"h-auto md:h-96 ": !isLargeCard}]} >
     {link == '/galeria/' && (
         <OptimizedImage
             alt={imgAlt}
