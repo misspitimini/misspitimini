@@ -14,6 +14,9 @@ const homeCards = await getHomeCards(['5-galeria','8-blog']);
 </ContentSection>
 <div class="grid grid-cols-2 gap-1 md:gap-6">
   {homeCards.map(card => (
-    <HomeCard card={card} />
+    <HomeCard card={card}
+        widths={[412]}
+        sizes="(max-width: 768px) 50vw, 412px"
+     />
   ))}
 </div>
