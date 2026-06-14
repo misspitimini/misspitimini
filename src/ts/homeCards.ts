@@ -1,20 +1,28 @@
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 const images = import.meta.glob<ImageMetadata>('/src/assets/images/carrusel/*.{jpeg,jpg,png,gif}');
+
+// Define the shape of the card data from the collection
+type HomeCardCollectionData = CollectionEntry<'homecards'>['data'];
+
+// Define the final shape of the card data returned by the function
+export type HomeCard = HomeCardCollectionData & {
+  imgSrc: ImageMetadata | null;
+};
 
 /**
  * Fetches and processes home cards from the content collection.
  * @param {string[]} [filterIds] - Optional array of card IDs to fetch.
- * @returns {Promise<any[]>} Processed card data with image sources.
+ * @returns {Promise<HomeCard[]>} Processed card data with image sources.
  */
-export async function getHomeCards(filterIds?: string[]): Promise<any[]> {
-  const homeCardsData = await getCollection('homecards', ({ id }) => {
+export async function getHomeCards(filterIds?: string[]): Promise<HomeCard[]> {
+  const homeCardsData = await getCollection('homecards', ({ id }: CollectionEntry<'homecards'>) => {
     if (!filterIds) return true; // Return all if no filter is provided
     return filterIds.includes(id);
   });
 
-  const homeCards = await Promise.all(
-    homeCardsData.map(async (card) => {
+  const homeCards: HomeCard[] = await Promise.all(
+    homeCardsData.map(async (card: CollectionEntry<'homecards'>) => {
       const imagePath = `/src/assets/images/carrusel/${card.data.img_slug}.jpg`;
       
       if (!images[imagePath]) {
