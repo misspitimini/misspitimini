@@ -4,5 +4,6 @@
   "title": "Galería",
   "description": "Imágenes con flores y mucho más",
   "isLargeCard": false,
+  "quality": "hight",
   "link": "/galeria/"
 }

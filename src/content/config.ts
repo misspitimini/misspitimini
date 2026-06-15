@@ -10,6 +10,7 @@ const homeCardsCollection = defineCollection({
     description: z.string(),
     link: z.string(),
     isLargeCard: z.boolean().optional(),
+    quality: z.string().optional(),
     buttonText: z.string().optional()
   }),
 });

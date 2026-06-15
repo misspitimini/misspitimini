@@ -3,11 +3,11 @@ import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import FogImage from '@/components/commons/FogImage.astro';
 
 const { card, widths, sizes } = Astro.props;
-const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = card;
+const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard, quality} = card;
 
 ---
 
-<div class:list={["space-y-4", { "col-span-2 mt-6": (isLargeCard && buttonText) }, { "col-span-2 md:col-span-1 mt-6": (isLargeCard && !buttonText) } ]}>
+<div class:list={["space-y-4", { "col-span-2 mt-6": isLargeCard }, { "col-span-2 md:col-span-1 mt-6" : !isLargeCard } ]}>
   <div class:list={["overflow-hidden shadow-sm group relative", {"h-auto md:h-96 ": !isLargeCard}]} >
     {link == '/galeria/' && (
         <OptimizedImage
@@ -26,15 +26,16 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard } = ca
                 widths={widths}
                 sizes={sizes}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                quality={quality}
             />
         </div>
     )}
           {buttonText && (
-            <a href={link} rel="noopener noreferrer hover:cursor-pointer">
-            <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
-              <span class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
-                {buttonText}
-              </span>
+              <a href={link} rel="noopener noreferrer hover:cursor-pointer">
+              <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+                <span class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all">
+                  {buttonText}
+                </span>
               </div>
               </a>
             )}

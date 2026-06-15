@@ -4,5 +4,6 @@
   "title": "Blog",
   "description": "Compartir experiencias con las flores",
   "isLargeCard": false,
+  "quality": "hight",
   "link": "/blog/"
 }
