@@ -1,5 +1,6 @@
 ---
-import { slides} from '@/data/menuData.js';
+import { slides } from '@/data/menuData.js';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
     href: string;
@@ -24,7 +25,7 @@ const nextUrl = slides[nextIndex].url;
       aria-label="Anterior" 
       class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
     >
-      arrow_back
+      <Icon name="material-symbols:arrow-back" class="w-6 h-6" />
     </a>
   
     <a 
@@ -32,7 +33,7 @@ const nextUrl = slides[nextIndex].url;
       aria-label="Siguiente" 
       class="material-symbols-outlined text-primary p-2 hover:bg-black/5 rounded-full transition-colors"
     >
-      arrow_forward
+      <Icon name="material-symbols:arrow-forward" class="w-6 h-6" />
     </a>
   </div>
   <script is:inline define:vars={{ prevUrl, nextUrl }}>

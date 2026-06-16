@@ -12,7 +12,9 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^6.0.2",
+    "@iconify-json/material-symbols": "^1.1.78",
     "astro": "^5.15.9",
+    "astro-icon": "^1.1.0",
     "front-matter": "^4.0.2",
     "marked": "^17.0.1"
   }

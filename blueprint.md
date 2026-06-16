@@ -1,23 +1,24 @@
-# Plan de Desarrollo: Solucionar Error 404 de Material Symbols
+# Miss Pitimini - Blueprint
 
-## 1. Objetivo
+## Overview
 
-El objetivo de esta tarea es solucionar el error 404 que se produce al intentar cargar los iconos de "Material Symbols" en la página. Este error impide que los iconos se muestren correctamente, afectando a la experiencia de usuario.
+This project is a static-first web application for a floral design business, built with Astro.js. The site is designed to be highly performant, with a focus on delivering a rich user experience with minimal JavaScript. The project uses Tailwind CSS for styling and Alpine.js for interactive components.
 
-## 2. Pasos a seguir
+## Project Structure
 
-1.  **Identificar el origen del error:** Se ha detectado que el error se debe a la falta de la hoja de estilos de Material Symbols en la cabecera del sitio.
-2.  **Añadir la hoja de estilos:** Se añadirá la hoja de estilos de Material Symbols en el archivo `src/components/head/MainHead.astro` para que los iconos se carguen correctamente.
+*   `src/pages/`: Contains the Astro pages for the site, including a dynamic blog.
+*   `src/components/`: Contains reusable Astro and UI framework components.
+*   `src/layouts/`: Contains the main layout for the site.
+*   `src/assets/`: Contains static assets like images and fonts.
+*   `src/services/`: Contains services for fetching data from external APIs.
 
-## 3. Implementación
+## Current Issue
 
-*   **Archivo:** `src/components/head/MainHead.astro`
-*   **Código a añadir:**
+The project is currently failing to build due to an error with the `@astrojs/sitemap` package. The error message `Could not find a declaration file for module '@astrojs/sitemap'` suggests a problem with the TypeScript configuration or a version incompatibility.
 
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-```
+## Plan
 
-## 4. Verificación
-
-Una vez implementado el cambio, se verificará que los iconos se muestran correctamente en la página y que el error 404 ha desaparecido de la consola del navegador.
+1.  **Update Dependencies:** I will update all project dependencies to their latest versions to ensure compatibility.
+2.  **Verify TypeScript Configuration:** I will check the `tsconfig.json` file to ensure it's correctly configured.
+3.  **Investigate Sitemap Configuration:** I will examine the `astro.config.mjs` file and the project's routing structure to ensure the sitemap is configured correctly, especially for dynamic routes.
+4.  **Isolate and Resolve:** If the issue persists, I will temporarily disable the sitemap to confirm it's the source of the problem, and then explore alternative solutions or workarounds.
