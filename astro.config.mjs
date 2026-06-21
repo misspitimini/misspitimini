@@ -31,7 +31,6 @@ export default defineConfig({
         '@/layouts': path.resolve(__dirname, './src/layouts'),
         '@/assets': path.resolve(__dirname, './src/assets'),
       }
-    },
-    prefetch: true, // Habilita la precarga automática de enlaces
+    }
   }
 });
