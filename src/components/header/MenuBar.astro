@@ -54,11 +54,9 @@ const {href} = Astro.props;
             {menuItems.map((item) => (
                 <a
                   href={item.url}
-                  class={`relative font-display font-thin italic transition-all duration-300 hover:font-bold text-base ${
-                    item.url === href ? 'font-bold' : ''
-                  }`}
+                  class={`relative font-display font-thin italic hover:font-bold text-base`}
                 >
-                  <span class="relative inline-block min-w-[60px] text-center">{item.title}</span>
+      <span class={`relative inline-block min-w-[60px] text-center ${item.url === href ? 'font-bold' : '' }`}>{item.title}</span>
                 </a>
               ))}
         </nav>

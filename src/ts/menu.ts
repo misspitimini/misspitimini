@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
             menuItems.forEach((itemData, index) => {
                 const link = document.createElement('a');
                 link.href = itemData.url;
-                let className = 'relative font-display font-thin italic transition-all duration-300 hover:font-bold text-2xl';
-                if(itemData.url === href) {
-                    className += ' font-bold';
-                }
+                let className = 'relative font-display italic transition-all duration-300 hover:font-bold text-2xl';
                 link.className = className;
     
                 const span = document.createElement('span');
+                if(itemData.url === href) {
+                    span.className += ' font-bold';
+                }
                 span.textContent = itemData.title;
                 link.appendChild(span);
                 
