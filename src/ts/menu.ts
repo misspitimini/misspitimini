@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuItems.forEach((itemData, index) => {
                 const link = document.createElement('a');
                 link.href = itemData.url;
-                let className = 'relative font-display transition-all duration-300 hover:font-bold text-2xl';
+                let className = 'relative font-display font-thin italic transition-all duration-300 hover:font-bold text-2xl';
                 if(itemData.url === href) {
                     className += ' font-bold';
                 }

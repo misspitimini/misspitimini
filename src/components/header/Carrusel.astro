@@ -41,6 +41,7 @@ if (allImages[imagePath]) {
               class="h-full w-full object-contain object-[75%_25%] md:object-center" 
               decoding="async" 
               src={imageSrc}
+              fetchpriority={'high'}
               quality="mid"
             />
           </div>
@@ -51,7 +52,7 @@ if (allImages[imagePath]) {
               class="h-full w-full object-cover object-center" 
               src={imageSrc}
               loading={currentSlide.id === 1 ? 'eager' : 'lazy'}
-              fetchpriority={currentSlide.id === 1 ? 'high' : 'low'}
+              fetchpriority={'high'}
               quality="mid"
             />
             <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>

@@ -1,7 +1,7 @@
 ---
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido2.png';
-import { menuItems } from '@/data/menuData.js';
+import { menuItems } from '@/data/menuData.ts';
 
 interface Props {
     href: string;
@@ -12,9 +12,9 @@ const {href} = Astro.props;
 
 <div class="relative flex items-center h-20 max-w-7xl mx-auto px-6">
     <!-- Left: Hamburger (mobile) / Logo (desktop) -->
-    <div class="flex-1 flex justify-start">
+    <div class="flex-1 flex justify-start items-center">
         <!-- Desktop Logo -->
-        <a href="/" class="hidden md:block">
+        <a href="/" class="hidden md:block flex-shrink-0 min-w-[220px]">
             <OptimizedImage 
                 src={logo} 
                 alt="Logotipo de misspitimini" 
@@ -54,11 +54,11 @@ const {href} = Astro.props;
             {menuItems.map((item) => (
                 <a
                   href={item.url}
-                  class={`relative font-display transition-all duration-300 hover:font-bold text-base ${
+                  class={`relative font-display font-thin italic transition-all duration-300 hover:font-bold text-base ${
                     item.url === href ? 'font-bold' : ''
                   }`}
                 >
-                  <span>{item.title}</span>
+                  <span class="relative inline-block min-w-[60px] text-center">{item.title}</span>
                 </a>
               ))}
         </nav>
