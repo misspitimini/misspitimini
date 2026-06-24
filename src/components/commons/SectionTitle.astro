@@ -9,7 +9,12 @@ const {class: className } = Astro.props;
 ---
 
 <div class:list={["text-center pt-8 pb-10", className]}>
-    <h2 class="font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic">
+    <h2 class="font-serif text-4xl md:text-5xl text-floral-dark tracking-tight leading-tight italic mb-3">
         <slot />
-    </h2>                    
+    </h2>
+    <div class="flex items-center justify-center gap-3 text-floral-dark/50 text-xs">
+        <span class="w-8 h-[1px] bg-current"></span>
+        <span>♦</span>
+        <span class="w-8 h-[1px] bg-current"></span>
+    </div>
 </div>

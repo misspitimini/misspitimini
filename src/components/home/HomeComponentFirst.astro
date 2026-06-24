@@ -23,6 +23,8 @@ const homeCardsTalleres = await getHomeCards(['4-talleres']);
   {homeCardsTalleres.map(card => (
     <HomeCard
      card={card}
-       widths={[800]}/>
+       widths={[412, 1280]}
+       sizes="(max-width: 768px) 50vw, 1280px"
+       />
   ))}
 </div>
