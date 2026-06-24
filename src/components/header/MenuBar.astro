@@ -6,61 +6,43 @@ import { menuItems } from '@/data/menuData.ts';
 interface Props {
     href: string;
 }
-const {href} = Astro.props;
-
+const { href } = Astro.props;
 ---
 
 <div class="relative flex items-center h-20 max-w-7xl mx-auto px-6">
-    <!-- Left: Hamburger (mobile) / Logo (desktop) -->
     <div class="flex-1 flex justify-start items-center">
-        <!-- Desktop Logo -->
-        <a href="/" class="hidden md:block flex-shrink-0 min-w-[220px]">
-            <OptimizedImage 
-                src={logo} 
-                alt="Logotipo de misspitimini" 
-                width={192} 
-                height={52}
-                widths={[192, 384]}
-                sizes="192px"
-                class="w-48 h-auto" 
-                loading="eager"
-                quality="75" />
-        </a>
-        <!-- Mobile Hamburger -->
         <button id="menu-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
-     </div>
-    <!-- Center: Logo (mobile) -->
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
-        <a href="/" class="block">
-            <OptimizedImage 
-                src={logo} 
-                alt="Logotipo"
-                width={160}
-                height={43}
-                widths={[160, 320]} 
-                sizes="160px" 
-                class="w-40 h-auto" 
-                loading="eager"
-                quality="75" />
-        </a>
+
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 md:flex-shrink-0 md:min-w-[220px]">
+            <a href="/" class="block">
+                <OptimizedImage 
+                    src={logo} 
+                    alt="Logotipo de misspitimini" 
+                    width={192} 
+                    height={52}
+                    widths={[160, 192, 320, 384]} 
+                    sizes="(max-width: 768px) 160px, 192px" 
+                    class="w-40 h-auto md:w-48" 
+                    loading="eager"
+                    quality="75" 
+                />
+            </a>
+        </div>
     </div>
 
-    <!-- Right: Nav (desktop) / Spacer (mobile) -->
     <div class="flex-1 flex justify-end">
-        <!-- Desktop Nav -->
         <nav class="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
                 <a
                   href={item.url}
-                  class={`relative font-display font-thin italic hover:font-bold text-base`}
+                  class="relative font-display font-thin italic hover:font-bold text-base"
                 >
-      <span class={`relative inline-block min-w-[60px] text-center ${item.url === href ? 'font-bold' : '' }`}>{item.title}</span>
+                  <span class={`relative inline-block min-w-[60px] text-center ${item.url === href ? 'font-bold' : '' }`}>{item.title}</span>
                 </a>
               ))}
         </nav>
-        <!-- Spacer for mobile to balance hamburger icon -->
         <div id="menu-button-close" class="w-8 h-8 md:hidden"></div>
     </div>
 </div>
