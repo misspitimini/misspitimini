@@ -50,12 +50,11 @@ const description = "Reserva tu plaza en nuestros talleres y experiencias floral
 			alt="Reserva asistencia" 
 			class="w-full h-[85vh] md:h-[80vh] object-cover object-center" 
 			decoding="async" 
-			loading="lazy" 
 			src={bookingImage}
 			widths={[400, 800, 1200, 1600, 2400, 3200]}
 			sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 50vw"
-			format='webp'
-			quality={60}
+			quality={'60'}
+   fetchpriority="high"
 			/>
 		</div>
 		<div class="absolute inset-0 bg-black/10"></div>

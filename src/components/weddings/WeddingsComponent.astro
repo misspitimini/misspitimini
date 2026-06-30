@@ -4,6 +4,7 @@ import FogImage from '@/components/commons/FogImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import ContentSection from '@/components/layout/ContentSection.astro';
+import FaqSection from '@/components/commons/FaqSection.astro';
 import imageData from '@/data/weddings-images.json'; // Corrected: The file is plural!
 import { loadImage } from '@/utils/imageLoader';
 
@@ -16,6 +17,29 @@ const loadedImages = {
   detallismoMesaBuffet: await loadImage('weddings', imageData.detallismoMesaBuffet?.src),
   SaraLaínezSupervisando: await loadImage('weddings', imageData.SaraLaínezSupervisando?.src),
 };
+
+const faqs = [
+    {
+        pregunta: "¿Con cuánta antelación debo reservar el servicio floral?",
+        respuesta: "Lo ideal es entre 4 y 8 meses antes de la boda, especialmente en temporada alta."
+    },
+    {
+        pregunta: "¿Trabajas con un presupuesto mínimo?",
+        respuesta: "Sí, depende del tipo de boda y del volumen de decoración. Puedo orientarte desde el primer contacto."
+    },
+    {
+        pregunta: "¿Puedo pedir solo el ramo de novia?",
+        respuesta: "Sí, aunque la mayoría de parejas contratan también la decoración de ceremonia o banquete."
+    },
+    {
+        pregunta: "¿Qué estilo floral trabajas?",
+        respuesta: "Un estilo natural, elegante y orgánico, con flores de temporada y composiciones equilibradas."
+    },
+    {
+        pregunta: "¿Te encargas del montaje y desmontaje?",
+        respuesta: "Sí, me ocupo de todo para que podáis disfrutar sin preocupaciones."
+    }
+];
 --- 
 
 <div class="space-y-12">
@@ -200,56 +224,7 @@ const loadedImages = {
   </ContentSection>
 
   <!-- FAQ Section -->
-  <ContentSection class="highlighted-section">
-        <SectionTitle>Preguntas frecuentes</SectionTitle>
-        <div class="space-y-4">
-            <details>
-                <summary class="flex-container">
-                    ¿Con cuánta antelación debo reservar el servicio floral?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Lo ideal es entre 4 y 8 meses antes de la boda, especialmente en temporada alta.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Trabajas con un presupuesto mínimo?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, depende del tipo de boda y del volumen de decoración. Puedo orientarte desde el primer contacto.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Puedo pedir solo el ramo de novia?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, aunque la mayoría de parejas contratan también la decoración de ceremonia o banquete.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Qué estilo floral trabajas?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Un estilo natural, elegante y orgánico, con flores de temporada y composiciones equilibradas.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Te encargas del montaje y desmontaje?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, me ocupo de todo para que podáis disfrutar sin preocupaciones.
-                </p>
-            </details>
-        </div>
-  </ContentSection>
+  <FaqSection title="Preguntas frecuentes" faqs={faqs} />
 
   <!-- Contact Section -->
   <ContentSection>

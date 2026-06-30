@@ -9,27 +9,16 @@ const { imgSrc, imgAlt, title, description, link, buttonText, isLargeCard, quali
 
 <div class:list={["space-y-4", { "col-span-2 mt-6": isLargeCard }, { "col-span-2 md:col-span-1 mt-6" : !isLargeCard } ]}>
   <div class:list={["overflow-hidden shadow-sm group relative", {"h-auto md:h-96 ": !isLargeCard}]} >
-    {link == '/galeria/' && (
-        <OptimizedImage
-            alt={imgAlt}
-            class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000"
-            src={imgSrc}
-            widths={widths}
-            sizes={sizes}
-        />
-    )}
-    {imgSrc && link != '/galeria/' && (
-        <div class="inset-0 w-full h-full">
+        <div class="inset-0 w-full">
             <FogImage
                 src={imgSrc}
                 alt={imgAlt}
                 widths={widths}
                 sizes={sizes}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                class="w-full  {link != '/galeria/' && (h-[300px] )} md:h-auto object-cover group-hover:scale-105 transition-transform duration-1000"
                 quality={quality}
             />
         </div>
-    )}
           {buttonText && (
               <a href={link} rel="noopener noreferrer hover:cursor-pointer">
               <div class="absolute inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">

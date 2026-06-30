@@ -3,6 +3,7 @@ import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import ContentSection from '@/components/layout/ContentSection.astro';
+import FaqSection from '@/components/commons/FaqSection.astro';
 import imageData from '@/data/events-images.json';
 import { loadImage } from '@/utils/imageLoader';
 
@@ -17,6 +18,29 @@ const loadedImages = {
   banner1: await loadImage('events',imageData.banner1?.src),
   banner2: await loadImage('events',imageData.banner2?.src)
 };
+
+const faqs = [
+    {
+        pregunta: "¿Qué tipo de eventos decoras?",
+        respuesta: "Trabajo tanto con empresas como con particulares: presentaciones, cenas, aniversarios, inauguraciones, sesiones de fotos y más."
+    },
+    {
+        pregunta: "¿Ofreces propuestas personalizadas para marcas?",
+        respuesta: "Sí, adapto el diseño floral a la identidad visual y al mensaje de cada marca."
+    },
+    {
+        pregunta: "¿Con cuánta antelación debo reservar?",
+        respuesta: "Lo ideal es entre 1 y 3 meses, aunque puedo valorar proyectos urgentes."
+    },
+    {
+        pregunta: "¿Puedes trabajar con un presupuesto cerrado?",
+        respuesta: "Sí, preparo una propuesta ajustada a las necesidades del evento."
+    },
+    {
+        pregunta: "¿Te encargas del montaje y desmontaje?",
+        respuesta: "Sí, gestiono todo el proceso para que el evento fluya sin complicaciones."
+    }
+];
 --- 
 
 <div class="space-y-12">
@@ -26,7 +50,7 @@ const loadedImages = {
     <SectionTitle>Decoración Floral para Eventos Corporativos</SectionTitle>
     <div class="content-wrapper default-text-container">
       <p>
-      Las flores tienen la capacidad de transformar un espacio y elevar cualquier experiencia. En Miss Pitimini diseño composiciones florales para eventos corporativos, presentaciones de marca y celebraciones privadas, creando ambientes que transmiten emoción, identidad y belleza natural.
+      Las flores tienen la capacidad de transformar un espacio y elevar cualquier experiencia. En misspitimini diseño composiciones florales para eventos corporativos, presentaciones de marca y celebraciones privadas, creando ambientes que transmiten emoción, identidad y belleza natural.
       </p>
       <p>
         Trabajo en Madrid y alrededores, adaptando cada proyecto al estilo del evento, al espacio y a la esencia de la marca o anfitrión.
@@ -170,58 +194,7 @@ const loadedImages = {
   </ContentSection>
 
   <!-- FAQ Section -->
-  <ContentSection class="highlighted-section">
-    <div class="content-wrapper">
-        <SectionTitle>Preguntas frecuentes</SectionTitle>
-        <div class="space-y-4">
-            <details>
-                <summary class="flex-container">
-                    ¿Qué tipo de eventos decoras?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Trabajo tanto con empresas como con particulares: presentaciones, cenas, aniversarios, inauguraciones, sesiones de fotos y más.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Ofreces propuestas personalizadas para marcas?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, adapto el diseño floral a la identidad visual y al mensaje de cada marca.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Con cuánta antelación debo reservar?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Lo ideal es entre 1 y 3 meses, aunque puedo valorar proyectos urgentes.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Puedes trabajar con un presupuesto cerrado?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, preparo una propuesta ajustada a las necesidades del evento.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Te encargas del montaje y desmontaje?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, gestiono todo el proceso para que el evento fluya sin complicaciones.
-                </p>
-            </details>
-        </div>
-    </div>
-  </ContentSection>
+  <FaqSection title="Preguntas frecuentes" faqs={faqs} />
 
   <!-- Testimonio Section -->
   <ContentSection>

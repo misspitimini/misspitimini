@@ -6,6 +6,7 @@ import CustomLink from '@/components/commons/CustomLink.astro';
 import SectionTitle from '@/components/commons/SectionTitle.astro';
 import ContentSection from '@/components/layout/ContentSection.astro';
 import type { Workshop } from "@/types/Workshop";
+import FaqSection from '@/components/commons/FaqSection.astro';
 
 const workshops = await getWorkshops();
 
@@ -22,6 +23,15 @@ const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
   },
   { upcomingWorkshops: [] as Workshop[], pastWorkshops: [] as Workshop[] }
 );
+
+const faqs = [
+  { pregunta: '¿Necesito experiencia previa?', respuesta: 'No, los talleres están pensados para todos los niveles.' },
+  { pregunta: '¿Cuántas personas pueden participar?', respuesta: 'Desde talleres individuales hasta grupos grandes. Lo adapto a cada caso.' },
+  { pregunta: '¿Incluyes todos los materiales?', respuesta: 'Sí, flores, herramientas y todo lo necesario para crear.' },
+  { pregunta: '¿Puedo regalar un taller?', respuesta: 'Sí, preparo tarjetas regalo personalizadas.' },
+  { pregunta: '¿Dónde ser realizan los talleres?', respuesta: 'Muchos en Madrid capital y alrededores, aunque se ha celebrado también en otras ciudades. También colaboro con espacios donde podemos organizar la experiencia.' },
+  { pregunta: '¿Ofreces talleres temáticos?', respuesta: 'Sí, puedo diseñar experiencias según la estación, un estilo o una ocasión especial.' }
+];
 ---
 
 <div class="space-y-12">
@@ -110,67 +120,7 @@ const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
     </div>
   </ContentSection>
 
-  <ContentSection class="highlighted-section">
-    <div class="content-wrapper">
-        <SectionTitle>Preguntas frecuentes</SectionTitle>
-        <div class="space-y-4">
-            <details>
-                <summary class="flex-container">
-                    ¿Necesito experiencia previa?
-                    <span>+</span>
-                </summary>
-                <p>
-                    No, los talleres están pensados para todos los niveles.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Cuántas personas pueden participar?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Desde talleres individuales hasta grupos grandes. Lo adapto a cada caso.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Incluyes todos los materiales?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, flores, herramientas y todo lo necesario para crear.
-                </p>
-            </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Puedo regalar un taller?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, preparo tarjetas regalo personalizadas.
-                </p>
-            </details>
-            <details>
-              <summary class="flex-container">
-                  ¿Dónde ser realizan los talleres?
-                  <span>+</span>
-              </summary>
-              <p>
-                Muchos en Madrid capital y alrededores, aunque se la celebrado otros en otras ciudades. También colaboro con espacios donde podemos organizar la experiencia.
-              </p>
-          </details>
-            <details>
-                <summary class="flex-container">
-                    ¿Ofreces talleres temáticos?
-                    <span>+</span>
-                </summary>
-                <p>
-                    Sí, puedo diseñar experiencias según la estación, un estilo o una ocasión especial.
-                </p>
-            </details>
-        </div>
-    </div>
-  </ContentSection>
+  <FaqSection title="Preguntas frecuentes" faqs={faqs} />
 
   <ContentSection>
     <SectionTitle>Contacto</SectionTitle>

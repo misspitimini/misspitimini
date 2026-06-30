@@ -51,7 +51,7 @@ if (allImages[imagePath]) {
               alt={currentSlide.imgAlt} 
               class="h-full w-full object-cover object-center" 
               src={imageSrc}
-              loading={currentSlide.id === 1 ? 'eager' : 'lazy'}
+              loading={'eager'}
               fetchpriority={'high'}
               quality="mid"
             />

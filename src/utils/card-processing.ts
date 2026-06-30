@@ -1,48 +1,45 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 
-const images = import.meta.glob<ImageMetadata>('/src/assets/images/carrusel/*.{jpeg,jpg,png,gif}');
+// Standardize glob import to be used server-side
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/carrusel/*.{jpeg,jpg,png,gif}');
 
 // Define the shape of the card data from the collection
 type HomeCardCollectionData = CollectionEntry<'homecards'>['data'];
 
 // Define the final shape of the card data returned by the function
-export type HomeCard = HomeCardCollectionData & {
+export type HomeCardData = HomeCardCollectionData & {
   imgSrc: ImageMetadata | null;
 };
 
 /**
  * Fetches and processes home cards from the content collection.
+ * This function is designed to be run on the server-side, within Astro's frontmatter.
  * @param {string[]} [filterIds] - Optional array of card IDs to fetch.
- * @returns {Promise<HomeCard[]>} Processed card data with image sources.
+ * @returns {Promise<HomeCardData[]>} Processed card data with image sources.
  */
-export async function getHomeCards(filterIds?: string[]): Promise<HomeCard[]> {
+export async function processHomeCards(filterIds?: string[]): Promise<HomeCardData[]> {
   const homeCardsData = await getCollection('homecards', ({ id }: CollectionEntry<'homecards'>) => {
     if (!filterIds) return true; // Return all if no filter is provided
     return filterIds.includes(id);
   });
 
-  const homeCards: HomeCard[] = await Promise.all(
-    homeCardsData.map(async (card: CollectionEntry<'homecards'>) => {
+  return Promise.all(
+    homeCardsData.map(async (card) => {
       const imagePath = `/src/assets/images/carrusel/${card.data.img_slug}.jpg`;
-      
-      if (!images[imagePath]) {
+      let imgSrc: ImageMetadata | null = null;
+
+      if (images[imagePath]) {
+        const imageModule = await images[imagePath]();
+        imgSrc = imageModule.default;
+      } else {
         console.warn(`Image not found for slug: ${card.data.img_slug}`);
-        return { ...card.data, imgSrc: null };
       }
-  
-      // Ejecutamos la función de importación
-      const imageModule: any = await images[imagePath]();
-  
-      // En Astro, si el glob no tiene opciones extra, 
-      // a veces la metadata está en .default y a veces es el objeto raíz.
-      const imgSrc = imageModule.default || imageModule;
-  
+
       return {
         ...card.data,
         imgSrc,
       };
     })
   );
-
-  return homeCards;
 }
