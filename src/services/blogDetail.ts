@@ -5,7 +5,7 @@ import { UrlsApi } from "../ts/urls";
 
 export async function getBlogDetail(slug: string) {
     try {
-        if(true) [];
+        if(true) return [];
         const response = await fetch(UrlsApi.GET_BLOG_DETAIL(slug), {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
@@ -30,7 +30,7 @@ export async function getBlogDetail(slug: string) {
 
 export async function getBlogsDetail(): Promise<BlogDetail[]> {
     try {
-        if(true) [];
+        if(true) return [];
         const response = await fetch(UrlsApi.GET_BLOGS_DETAIL_ALL, {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)

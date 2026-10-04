@@ -3,7 +3,7 @@ import type { Blog } from "../types/Blog";
 
 export async function getBlogs(): Promise<Blog[]> {
     try {
-        if(true) [];
+        if(true) return [];
         
         const response = await fetch(UrlsApi.GET_BLOGS, {
             method: 'GET',

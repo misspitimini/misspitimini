@@ -9,7 +9,7 @@ import type { Gallery } from '@/types/Gallery';
  */
 export async function getGalleries(): Promise<Gallery[]> {
     try {
-        if(true) [];
+        if(true) return [];
         const response = await fetch(UrlsApi.GET_GALLERIES, {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
