@@ -13,7 +13,11 @@ const mostrar = (disable == null || disable == "false" );
 			 Próximo taller "Corona de Otoño y Desayuno Buffet"
 	 </h3>
    <p class="card-date font-display text-4xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Sábado 24 de octubre</p>
-	 <h4 class="card-title font-display text-3xl mb-4"> Una experiencia creativa en la que aprenderás a crear <strong>tu propia corona de otoño</strong>, explorando las flores, los follajes y los elementos más bonitos de esta época del año.</h4>
+	 <div class="card-title content-wrapper default-text-container">
+    <p>
+     Una experiencia creativa en la que aprenderás a crear <strong>tu propia corona de otoño</strong>, explorando las flores, los follajes y los elementos más bonitos de esta época del año.
+    </p>
+    </div>
 	 <OptimizedImage 
    class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
    src={tallerOtoñoBuffet}
@@ -90,28 +94,36 @@ const mostrar = (disable == null || disable == "false" );
         </div>
       </div>
     </div>
-    <div class="py-4 text-left">
-      <p class="text-sm text-stone-600 mb-2">
+    <div class="card-title content-wrapper default-text-container">
+      <p>
         Nos encontraremos en un <strong>espacio precioso de Madrid</strong>, especialmente elegido para esta experiencia, donde además disfrutaremos de un delicioso <strong>desayuno buffet</strong> preparado para la ocasión.
+      </p>
+      <p>
         Trabajaremos con follajes, flores y elementos propios de la temporada, seleccionados especialmente por su belleza y porque permiten un secado natural, para que puedas <strong></strong>conservar tu corona</strong> y disfrutarla durante mucho tiempo.
         <strong>Te guiaré</strong> paso a paso durante todo el proceso, compartiendo contigo técnicas y pequeños trucos para que puedas crear una  <strong>composición bonita</strong>, equilibrada y muy tuya.
+      </p>
+      <p>
         Yo facilitaré todos los materiales y herramientas necesarios, así que solo tendrás que <strong>venir, disfrutar y dejarte llevar</strong> por la creatividad.
         Y, por supuesto, <strong></strong>te llevarás a casa tu propia corona de otoño</strong>, creada por ti.
       </p>
-      <p class="text-sm text-stone-600 mb-2">
+      <p>
         Una experiencia cuidada al detalle en todos sus aspectos, pensada para quienes disfrutan de las flores, de las cosas bonitas y de esos momentos que hacen especial una mañana de otoño.
       </p>
-    </div> 
-    <div class="py-4 text-left mx-20">
-						<div class="pt-4">
+      </div>
+
+    {!mostrar && ( 
+    <div class="py-4 text-left">
+
 							 <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
 								 <span>📝</span> Condiciones
 							 </h3>
-							 <div class="text-xs text-stone-500 mb-1">La reserva del taller no es reembolsable.</div>
-							 <div class="text-xs text-stone-500 mb-1">Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</div>
-							 <div class="text-xs text-stone-500">Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</div>
-						 </div>
-
+              <div class="py-4 text-left">
+             <ul>
+              <li class="text-xs text-stone-500 mb-1">La reserva del taller no es reembolsable.</li>
+              <li class="text-xs text-stone-500 mb-1">Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</li>
+              <li class="text-xs text-stone-500 mb-1">Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</li>
+            </ul>
+            </div>
 		</div>
    
     <div class="py-4 text-left">
@@ -125,8 +137,9 @@ const mostrar = (disable == null || disable == "false" );
          </p>
     </div>
    </div>
-  </div>
+  )}
   {mostrar && (
+    <br>
    <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 
       href="#" 
