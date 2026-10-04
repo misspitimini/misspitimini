@@ -9,6 +9,7 @@ import type { Workshop } from '@/types/Workshop';
  */
 export async function getWorkshops(): Promise<Workshop[]> {
     try {
+        if(true) return [];
         const response = await fetch(UrlsApi.GET_WORKSHOPS, {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
