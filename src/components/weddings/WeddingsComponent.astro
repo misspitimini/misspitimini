@@ -177,32 +177,12 @@ const faqs = [
   <!-- Proceso de Preparación Section -->
   <ContentSection>
       <SectionTitle>Proceso de preparación</SectionTitle>
-      <div class="content-wrapper default-text-container">
-        <p>
-          Sabemos que la organización de una boda puede parecer un laberinto. Por eso, hemos perfeccionado un método de trabajo para que disfrutéis del proceso tanto como del resultado. Filtramos las tendencias para encontrar lo que realmente os representa, asegurando que cada arreglo floral sea un reflejo fiel de vuestra esencia.
-        </p>
-        <ul>
-          <li><strong>Primera reunión</strong> y toma de contacto.</li>
-          <li>Representación <strong>visual</strong> de conceptos.</li>
-          <li><strong>Propuesta personalizada</strong> y presupuesto.</li>
-          <li><strong>Prueba</strong> de ramo.</li>
-          <li><strong>Montaje</strong> el día de la boda.</li>
-        </ul>
-      </div>
-    <div class="grid grid-cols-2 gap-2 md:gap-4 pt-4">
-      {loadedImages.detallismoMesaBuffet && imageData.detallismoMesaBuffet && (
-          <div class="relative w-full pt-4 overflow-hidden"> 
-           <FogImage 
-            alt={imageData.detallismoMesaBuffet.alt}
-            class="w-full aspect-square object-cover" 
-            src={loadedImages.detallismoMesaBuffet}
-            widths={[400, 800, 1200]}
-            sizes="50vw"
-          />
-        </div>
-      )}
-      {loadedImages.SaraLaínezSupervisando && imageData.SaraLaínezSupervisando && (
-        <div class="relative w-full pt-4 overflow-hidden"> 
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4 pt-2 md:pt-4">
+  
+        {loadedImages.SaraLaínezSupervisando && imageData.SaraLaínezSupervisando && (
+          <div class="relative w-full pt-4 overflow-hidden col-span-2 md:col-span-2"> 
+
+
             <FogImage 
             alt={imageData.SaraLaínezSupervisando.alt}
             class="w-full aspect-square object-cover" 
@@ -210,9 +190,23 @@ const faqs = [
             widths={[400, 800, 1200]}
             sizes="50vw"
           />
-        </div>
-      )}
-    </div>
+
+          </div>
+        )}
+          <div class="relative w-full text-floral-dark/80 leading-relaxed space-y-4 text-justify md:pl-0 col-span-2 md:col-span-3">
+            <p>
+              Sabemos que la organización de una boda puede parecer un laberinto. Por eso, hemos perfeccionado un método de trabajo para que disfrutéis del proceso tanto como del resultado. Filtramos las tendencias para encontrar lo que realmente os representa, asegurando que cada arreglo floral sea un reflejo fiel de vuestra esencia.
+            </p>
+            <ul>
+              <li><strong>Primera reunión</strong> y toma de contacto.</li>
+              <li>Representación <strong>visual</strong> de conceptos.</li>
+              <li><strong>Propuesta personalizada</strong> y presupuesto.</li>
+              <li><strong>Prueba</strong> de ramo.</li>
+              <li><strong>Montaje</strong> el día de la boda.</li>
+            </ul>
+          </div>
+    </div>     
+
   </ContentSection>
   <ContentSection>
     <SectionTitle>Zonas donde trabajo</SectionTitle>

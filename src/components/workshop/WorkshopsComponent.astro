@@ -1,5 +1,6 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
+import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.astro';
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
 import { getWorkshops } from '@/services/workshops';
 import CustomLink from '@/components/commons/CustomLink.astro';
@@ -89,7 +90,9 @@ const faqs = [
 
   <ContentSection>
     <SectionTitle>Próximas experiencias:</SectionTitle>
+
     <div id="upcomingWorkshops-container">
+   <WorkshopCardNextProv />
     {upcomingWorkshops.map((workshop) => ( 
     <WorkshopCardNext
         slug={workshop.slug}

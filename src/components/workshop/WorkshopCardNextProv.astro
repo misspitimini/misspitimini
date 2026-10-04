@@ -1,0 +1,135 @@
+---
+import OptimizedImage from "@/components/commons/OptimizedImage.astro";
+import proximaExperiencia from "@/content/nextworkshop/proxima-experiencia.json";
+import tallerOtoñoBuffet from '@/assets/images/body/experiencias/tallerOtoñoBuffet.jpg';
+---
+
+<section id="octubre" class="space-y-10 py-10 bg-gray-100">
+  <div class="space-y-4">
+    <h3 class="font-display text-4xl font-semibold mb-4 tracking-wide text-amber-800">
+			 Próximo taller "Corona de Otoño y Desayuno Buffet"
+	 </h3>
+   <p class="card-date font-display text-4xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Sábado 24 de octubre</p>
+	 <h4 class="card-title font-display text-3xl mb-4"> Una experiencia creativa en la que aprenderás a crear <strong>tu propia corona de otoño</strong>, explorando las flores, los follajes y los elementos más bonitos de esta época del año.</h4>
+	 <OptimizedImage 
+   class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+   src={tallerOtoñoBuffet}
+   alt="imagen del evento" 
+   decoding="async" 
+   loading="lazy" 
+   sizes="100vw"
+    />
+	 <div class="flex-1 text-center"> 
+    <div class="flex justify-center w-full"> 
+      <!-- Tarjeta de Detalles del Evento -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-y border-stone-100 text-sm">
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200zm0-80h560v-400H200v400zm0-480h560v-80H200v80zm0 0v-80 80z"/>
+            </svg>
+          </span>
+          <span><strong>Sábado 24 de octubre</strong> · 10:30 h</span>
+        </div>
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="m612-292 56-56-148-148v-184h-80v216l172 172zM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T920-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93zm0-320z"/>
+            </svg>
+          </span>
+          <span>Duración: ~2.5 horas</span>
+        </div>
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47zM160-120v-480h80v168q-39-35-59.5-83T160-592q0-131 83-222.5T440-904v84q-99 14-166.5 91.5T200-560q0 39 14 74t41 64h-95v320h640v-80H160z"/>
+            </svg>
+          </span>
+          <span>Espacio exclusivo en Madrid</span>
+        </div>
+    
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600zM200-80q-33 0-56.5-23.5T120-160v-640q0-33 23.5-56.5T200-880h560q33 0 56.5 23.5T840-800v640q0 33-23.5 56.5T760-80H200zm0-80h560v-640H200v640z"/>
+            </svg>
+          </span>
+          <span>Aforo limitado</span>
+        </div>
+    
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="M240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h360l240 240v560q0 33-23.5 56.5T760-80H240zm320-520v-80H240v640h520v-480H560z"/>
+            </svg>
+          </span>
+          <span>Todos los materiales incluidos</span>
+        </div>
+    
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor">
+              <path d="M720-40H240q-33 0-56.5-23.5T160-120v-240q0-33 23.5-56.5T240-440h80v-40q0-117 81.5-198.5T600-760q117 0 198.5 81.5T880-480v40h80q33 0 56.5 23.5T1040-360v240q0 33-23.5 56.5T960-40H720zM600-480q-83 0-141.5-58.5T400-680v40h400v-40q0-83-58.5-141.5T600-680zm-280 80v240h520v-240H320z"/>
+            </svg>
+          </span>
+          <span>No se necesitan conocimientos previos</span>
+        </div>
+        <div class="flex items-center space-x-3 text-stone-700">
+          <span class="material-symbols-outlined text-amber-800 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Tarjeta -->
+              <rect width="20" height="12" x="2" y="9" rx="2" />
+              <line x1="2" x2="22" y1="13" y2="13" />
+              <line x1="6" x2="10" y1="17" y2="17" />
+              <!-- Billete asomando arriba -->
+              <path d="M6 9V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" />
+              <circle cx="12" cy="6" r="1" />
+            </svg>                     
+          </span>
+          <strong>105 € por persona</strong>
+        </div>
+      </div>
+    </div>
+    <div class="py-4 text-left">
+      <p class="text-sm text-stone-600 mb-2">
+        Nos encontraremos en un <strong>espacio precioso de Madrid</strong>, especialmente elegido para esta experiencia, donde además disfrutaremos de un delicioso <strong>desayuno buffet</strong> preparado para la ocasión.
+        Trabajaremos con follajes, flores y elementos propios de la temporada, seleccionados especialmente por su belleza y porque permiten un secado natural, para que puedas <strong></strong>conservar tu corona</strong> y disfrutarla durante mucho tiempo.
+        <strong>Te guiaré</strong> paso a paso durante todo el proceso, compartiendo contigo técnicas y pequeños trucos para que puedas crear una  <strong>composición bonita</strong>, equilibrada y muy tuya.
+        Yo facilitaré todos los materiales y herramientas necesarios, así que solo tendrás que <strong>venir, disfrutar y dejarte llevar</strong> por la creatividad.
+        Y, por supuesto, <strong></strong>te llevarás a casa tu propia corona de otoño</strong>, creada por ti.
+      </p>
+      <p class="text-sm text-stone-600 mb-2">
+        Una experiencia cuidada al detalle en todos sus aspectos, pensada para quienes disfrutan de las flores, de las cosas bonitas y de esos momentos que hacen especial una mañana de otoño.
+      </p>
+    </div> 
+     <div class="py-4 text-left">
+						<div class="pt-4">
+							 <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
+								 <span>📝</span> Condiciones
+							 </h3>
+							 <div class="text-xs text-stone-500 mb-1">La reserva del taller no es reembolsable.</div>
+							 <div class="text-xs text-stone-500 mb-1">Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</div>
+							 <div class="text-xs text-stone-500">Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</div>
+						 </div>
+
+						 <div class="pt-4">
+							 <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
+								 <span>🎁</span> ¿Quieres regalar esta experiencia?
+							 </h3>
+							 <p class="text-sm text-stone-600 mb-2">
+                Puedes indicarlo en los comentarios al realizar tu reserva y prepararemos una tarjeta regalo digital personalizada, que recibirás por email para que puedas imprimirla y entregársela a esa persona especial.
+                Una forma bonita de regalar flores, creatividad y una experiencia para recordar.
+							 </p>
+						 </div>
+					 </div>
+	 </div>
+   <div class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+    <a 
+      href="/solicitaPresupuesto/" 
+      class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
+    >
+      Reserva Ahora
+    </a>
+  </div>
+ </div>
+</section>
