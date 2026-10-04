@@ -3,6 +3,8 @@ import type { Blog } from "../types/Blog";
 
 export async function getBlogs(): Promise<Blog[]> {
     try {
+        if(true) [];
+        
         const response = await fetch(UrlsApi.GET_BLOGS, {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
