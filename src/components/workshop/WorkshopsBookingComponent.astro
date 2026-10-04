@@ -9,16 +9,10 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
     <SectionTitle>Solicita presupuesto para disfrutar de tu expericia con ramos florales</SectionTitle>
     <WorkshopCardNextProv disable="true"/>
     <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-      <p>
-        Una vez enviada la solicitud, recibirás un correo electrónico de control. Posteriormente, contactaremos contigo por el medio que nos hayas indicado.
-      </p>
-    </div>
-    <br/>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
       <form id="formularioReserva" class="w-full" novalidate>
         <div class="flex-1 text-center">
         <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-0 sm:pb-12 md:pb-12">
-         Datos necesarios para comenzar a disfrutar de esta experiencia florales:
+         Datos necesarios para comenzar a disfrutar de esta experiencia floral:
         </h2>
         <div
         id="message-success"
@@ -133,13 +127,18 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
           <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
             <span>📝</span> Condiciones
           </h3>
-         <div class="py-4 text-left">
-        <ul>
-         <li class="text-xs text-stone-500 mb-1">La reserva del taller no es reembolsable.</li>
-         <li class="text-xs text-stone-500 mb-1">Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</li>
-         <li class="text-xs text-stone-500 mb-1">Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</li>
-       </ul>
-       </div>
+        </div>
+        <div class="pl-5 flex items-start text-left">
+          <div class="ml-3 items-start"> 
+            <label for="privacy" class="cursor-pointer">
+              <p>
+                Una vez enviada la solicitud, recibirás un correo electrónico de control. Posteriormente, contactaremos contigo por el medio que nos hayas indicado.
+              </p>
+              <p>La reserva del taller no es reembolsable.</p>
+              <p>Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</p>
+              <p>Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</p>
+            </label>
+          </div>
         </div>
         <PrivacyPolicy>
           <div class="md:flex">
