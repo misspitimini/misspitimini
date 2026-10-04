@@ -2,6 +2,9 @@
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 import proximaExperiencia from "@/content/nextworkshop/proxima-experiencia.json";
 import tallerOtoñoBuffet from '@/assets/images/body/experiencias/tallerOtoñoBuffet.jpg';
+
+const {  disable } = Astro.props;
+const mostrar = (disable == null || disable == "false" );
 ---
 
 <section id="octubre" class="space-y-10 py-10 bg-gray-100">
@@ -123,7 +126,8 @@ import tallerOtoñoBuffet from '@/assets/images/body/experiencias/tallerOtoñoBu
     </div>
    </div>
   </div>
-   <div class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
+  {mostrar && (
+   <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 
       href="/solicitaPresupuesto/" 
       class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
@@ -131,5 +135,6 @@ import tallerOtoñoBuffet from '@/assets/images/body/experiencias/tallerOtoñoBu
       Reserva Ahora
     </a>
   </div>
+  )}
  </div>
 </section>

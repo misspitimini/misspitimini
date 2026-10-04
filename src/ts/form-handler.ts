@@ -11,20 +11,29 @@ interface FormFields {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Setear el timestamp inicial
+    const timestampInput = document.getElementById("form_timestamp") as HTMLInputElement | null;
+    if (timestampInput) {
+        timestampInput.value = Date.now().toString();
+    }
     const formulario = document.getElementById('formularioContacto');
     if (!formulario) return;
+
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evita que la página se refresque
 
         // 1. Captura de elementos con el tipo definido.
-        const campos: FormFields = {
-            nombre: document.getElementById('nombre') as HTMLInputElement | null,
-            email: document.getElementById('email') as HTMLInputElement | null,
-            telefono: document.getElementById('telefono') as HTMLInputElement | null,
-            mensaje: document.getElementById('mensaje') as HTMLTextAreaElement | null,
-            privacy: document.getElementById('privacy') as HTMLInputElement | null,
-            newsletter: document.getElementById('newsletter') as HTMLInputElement | null
-        };
+        const campos = {
+            nombre: document.getElementById("nombre") as HTMLInputElement | null,
+            apellidos: document.getElementById("apellidos") as HTMLInputElement | null, // Honeypot / Campo opcional
+            email: document.getElementById("email") as HTMLInputElement | null,
+            confirm_email: document.getElementById("confirm_email") as HTMLInputElement | null, // Honeypot
+            telefono: document.getElementById("telefono") as HTMLInputElement | null,
+            mensaje: document.getElementById("mensaje") as HTMLTextAreaElement | null,
+            privacy: document.getElementById("privacy") as HTMLInputElement | null,
+            newsletter: document.getElementById("newsletter") as HTMLInputElement | null,
+            form_timestamp: document.getElementById("form_timestamp") as HTMLInputElement | null
+          };
 
         // 2. Limpiar estados previos (Éxito y Errores)
         ocultarElemento('message-success');
@@ -41,11 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Preparar datos
         const datos = {
             nombre: campos.nombre?.value.trim() || '',
+            apellidos: campos.apellidos ? campos.apellidos.value.trim() : '',
             email: campos.email?.value.trim() || '',
             telefono: campos.telefono?.value.trim() || '',
             mensaje: campos.mensaje?.value.trim() || '',
+            
+            // Tratar checkboxes como Booleans
             privacy: campos.privacy?.checked || false,
             newsletter: campos.newsletter?.checked || false,
+            
+            // Convertir timestamp a Entero (Milisegundos)
+            form_timestamp: campos.form_timestamp ? parseInt(campos.form_timestamp.value, 10) : 0
         };
         
         try {
