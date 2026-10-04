@@ -3,6 +3,7 @@ import { UrlsApi } from './urls.ts';
 // Define an interface for the form fields to ensure type safety.
 interface FormFields {
     nombre: HTMLInputElement | null;
+    apellidos: HTMLInputElement | null;
     email: HTMLInputElement | null;
     confirm_email: HTMLInputElement | null; // Honeypot
     telefono: HTMLInputElement | null;
