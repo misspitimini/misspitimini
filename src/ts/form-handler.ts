@@ -4,10 +4,12 @@ import { UrlsApi } from './urls.ts';
 interface FormFields {
     nombre: HTMLInputElement | null;
     email: HTMLInputElement | null;
+    confirm_email: HTMLInputElement | null;
     telefono: HTMLInputElement | null;
     mensaje: HTMLTextAreaElement | null;
     privacy: HTMLInputElement | null;
     newsletter: HTMLInputElement | null;
+    form_timestamp: HTMLInputElement | null;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
