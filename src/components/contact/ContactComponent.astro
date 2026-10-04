@@ -49,6 +49,10 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+            <div style="display:none !important; visibility:hidden !important; position:absolute !important; left:-9999px !important;" aria-hidden="true">
+              <label for="website">Apellidos:</label>
+              <input type="text" id="apellidos" name="apellidos" tabindex="-1" autocomplete="off" value="Apellidos">
+            </div>
           </div>
         </p>
         <br />
@@ -77,6 +81,11 @@ import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+          <!-- Ht 2:  -->
+          <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;" aria-hidden="true">
+            <label for="confirm_email">Confirme su Email (dejar vacío):</label>
+            <input type="email" id="confirm_email" name="confirm_email" tabindex="-1" autocomplete="off">
+          </div>
           </div>
         </p>
         <br />
