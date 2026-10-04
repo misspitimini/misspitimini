@@ -111,41 +111,14 @@ const mostrar = (disable == null || disable == "false" );
       </p>
       </div>
 
-    {!mostrar && ( 
-    <div class="py-4 text-left">
-
-							 <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
-								 <span>📝</span> Condiciones
-							 </h3>
-              <div class="py-4 text-left">
-             <ul>
-              <li class="text-xs text-stone-500 mb-1">La reserva del taller no es reembolsable.</li>
-              <li class="text-xs text-stone-500 mb-1">Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</li>
-              <li class="text-xs text-stone-500 mb-1">Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</li>
-            </ul>
-            </div>
-		</div>
-   
-    <div class="py-4 text-left">
-       <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
-         <span>🎁</span> ¿Quieres regalar esta experiencia?
-       </h3>
-       <div class="py-4 text-left">
-        <p class="text-sm text-stone-600 mb-2">
-          Puedes indicarlo en los comentarios al realizar tu reserva y prepararemos una tarjeta regalo digital personalizada, que recibirás por email para que puedas imprimirla y entregársela a esa persona especial.
-          Una forma bonita de regalar flores, creatividad y una experiencia para recordar.
-         </p>
-    </div>
-   </div>
-  )}
   {mostrar && (
     <br>
    <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 
-      href="#" 
+      href="/solicitaPresupuesto/" 
       class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
     >
-      A partir del día 7 de Obtubre se podrá reservar plazas en esta web
+      Reserva Ahora
     </a>
   </div>
   )}
