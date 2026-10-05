@@ -5,29 +5,16 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
 ---
 
 <section class="space-y-6">
-  <div class="px-6">
-    <SectionTitle>Solicita presupuesto para disfrutar de tu expericia con ramos florales</SectionTitle>
-    <WorkshopCardNextProv disable="true"/>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+  <WorkshopCardNextProv disable="true"/>
+    <!--SectionTitle>Solicita presupuesto para disfrutar de tu expericia con ramos florales</SectionTitle-->
+    <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 mx-auto px-2 tracking-wide pb-0 sm:pb-12 md:pb-12">
+      Datos necesarios para comenzar a disfrutar de esta experiencia floral:
+     </h2>
+     <div class="flex justify-center w-full">
+    <div class="max-w-5xl md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
       <form id="formularioReserva" class="w-full" novalidate>
-        <div class="flex-1 text-center">
-        <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 tracking-wide pb-0 sm:pb-12 md:pb-12">
-         Datos necesarios para comenzar a disfrutar de esta experiencia floral:
-        </h2>
-        <div
-        id="message-success"
-        class="hidden flex items-center gap-2 p-2.5 mt-2 text-green-700 bg-green-50 border border-green-200 rounded-md transition-all duration-200 ease-in-out"
-        role="alert">
-        <div class="flex-shrink-0 text-green-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-          </svg>
-        </div>
-        <span class="text-sm font-medium"></span>
-        </div>
-
-        <div class="flex-1 text-center">
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <div class="flex-1 text-center mx-1">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
             <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre y Apellidos (*):</label>
             <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
             <div
@@ -45,7 +32,7 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
           </div>
         </p>
         <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
           <label for="telefono" class="block text-[#2c3e50] mb-2">Teléfono / WhatsApp (*):</label>
           <input type="tel" id="telefono" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
           <div
@@ -59,7 +46,7 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
         </div>
         </p>
         <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
             <label for="email" class="block text-[#2c3e50] mb-2">Email (*):</label>
             <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
             <div
@@ -78,7 +65,7 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
         </div>
         </p>
         <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
           <label for="numero_plazas" class="block text-[#2c3e50] mb-2">Número de plazas (*):</label>
           <input type="number" id="numero_plazas" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black" min="1" value="1">
           <div
@@ -93,14 +80,13 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
         </p>
         <br />
         <div id="additional-attendees-container"></div>
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
             <label for="es_regalo" class="inline-flex items-center gap-2 text-[#2c3e50] mb-2">
-                <span>🎁</span>
                 <span>¿Es un regalo?</span>
             </label>
             <input type="checkbox" id="es_regalo" class="h-6 w-6 border border-gray-300 focus:outline-none focus:border-black">
         </p>
-        <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+        <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4 italic">
           <p>
             Puedes indicarlo en los comentarios al realizar tu reserva y prepararemos una tarjeta regalo digital personalizada, que recibirás por email para que puedas imprimirla y entregársela a esa persona especial.
             Una forma bonita de regalar flores, creatividad y una experiencia para recordar.
@@ -108,7 +94,7 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
         </div>
 
         <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
             <label for="mensaje" class="block text-[#2c3e50] mb-2">Observacones:</label>
             <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
             <div
@@ -122,42 +108,48 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
           </div>
         </p>
         </div>
+        <h3 class="font-display text-2xl font-semibold text-gray-900 mb-4 mx-auto px-2 tracking-wide pb-0 sm:pb-12 md:pb-12">
+          Condiciones
+        </h3>
+        <div class="ml-3 items-start italic"> 
 
-        <div class="py-4 text-left">
-          <h3 class="font-semibold text-stone-800 text-sm mb-2 text-center flex items-center justify-center gap-1">
-            <span>📝</span> Condiciones
-          </h3>
-        </div>
-        <div class="pl-5 flex items-start text-left">
-          <div class="ml-3 items-start"> 
-            <label for="privacy" class="cursor-pointer">
-              <p>
-                Una vez enviada la solicitud, recibirás un correo electrónico de control. Posteriormente, contactaremos contigo por el medio que nos hayas indicado.
-              </p>
-              <p>La reserva del taller no es reembolsable.</p>
-              <p>Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</p>
-              <p>Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</p>
-            </label>
-          </div>
-        </div>
+          <p>
+            Una vez enviada la solicitud, recibirás un correo electrónico de control. Posteriormente, contactaremos contigo por el medio que nos hayas indicado.
+          </p>
+          <p>La reserva del taller no es reembolsable.</p>
+          <p>Si finalmente no puedes asistir, puedes ceder tu plaza a otra persona, avisándome previamente.</p>
+          <p>Las cancelaciones deberán comunicarse con 72 horas de antelación. En ese caso, se facilitará un bono por el importe de la reserva para utilizar en otro taller Misspitimini, sujeto a disponibilidad.</p>
+      </div>
+
+
         <PrivacyPolicy>
-          <div class="md:flex">
-            <div class="my-8 md:flex-1 md:text-center  md:text-end md:mx-8">
-              <input type="hidden" id="form_timestamp" name="form_timestamp">
-              <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase px-10">Enviar solicitud</button>
-            </div>
-            <div class="my-8 md:flex-1 text-center md:text-start md:mx-8">
-              <a href="/experiencias/"
-              class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95 px-12">
+          <div class="flex flex-row justify-center items-center gap-6 my-8 w-full">
+            <input type="hidden" id="form_timestamp" name="form_timestamp">
+          
+            <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase">
+              Enviar solicitud
+            </button>
+          
+            <a href="/experiencias/" class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
               Volver
-              </a>
-            </div>
+            </a>
           </div>
         </PrivacyPolicy>
       </form>
+      <div
+      id="message-success"
+      class="hidden flex items-center gap-2 p-2.5 mt-2 text-green-700 bg-green-50 border border-green-200 rounded-md transition-all duration-200 ease-in-out"
+      role="alert">
+      <div class="flex-shrink-0 text-green-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <span class="text-sm font-medium"></span>
+      </div>
     </div>
   </div>
-</section>
+  </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -177,7 +169,7 @@ import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.ast
             const attendeeBlock = document.createElement('div');
             attendeeBlock.classList.add('additional-attendee', 'mb-4');
             attendeeBlock.innerHTML = `
-              <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
+              <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
                 <label for="nombre_asistente_${i}" class="block text-[#2c3e50] mb-2">Nombre y Apellidos Asistente ${i} (*):</label>
                 <input type="text" id="nombre_asistente_${i}" name="nombre_asistente_${i}" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
                 <div
