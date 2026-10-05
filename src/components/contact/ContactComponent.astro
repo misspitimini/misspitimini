@@ -9,164 +9,163 @@ import centroMesa from '@/assets/images/body/contacto/centroMesa.jpg';
 import floresSecas from '@/assets/images/body/contacto/floresSecas.jpg';
 import ramosFlores from '@/assets/images/body/contacto/ramosFlores.jpg';
 ---
-<div class="space-y-12">
-
-  <ContentSection>
-    <SectionTitle>Ponte en contacto con Sara Laínez</SectionTitle>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+<section class="space-y-6">
+  <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 mx-auto px-2 tracking-wide pb-0 sm:pb-12 md:pb-12">
+    Ponte en contacto con Sara Laínez
+  </h2>
+  <div class="flex justify-center w-full">
+    <div class="max-w-5xl md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
       <p>
-        Cada proyecto comienza con una <strong>conversación</strong>. Si buscas <strong>una mirada experta</strong>  que transforme tu idea en una atmósfera viva, estás en el lugar adecuado. <strong>Sara Laínez</strong>  te ofrece un <strong>asesoramiento</strong> personalizado para dar con la narrativa floral que tu evento o espacio necesita. Cuéntanos qué tienes en mente y permítenos <strong>guiarte</strong> en el proceso de dar vida a tu visión.
+        Cada proyecto comienza con una <strong>conversación</strong>. Si buscas <strong>una mirada experta</strong> que transforme tu idea en una atmósfera viva, estás en el lugar adecuado. <strong>Sara Laínez</strong> te ofrece un <strong>asesoramiento</strong> personalizado para dar con la narrativa floral que tu evento o espacio necesita. Cuéntanos qué tienes en mente y permítenos <strong>guiarte</strong> en el proceso de dar vida a tu visión.
       </p>
-    </div>
-  </ContentSection>
 
-  <ContentSection>
-    <SectionTitle>Enviando un mensaje:</SectionTitle>
-    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
       <form id="formularioContacto" class="w-full" novalidate>
-        <div class="flex-1 text-center">
-      
-        <div 
-        id="message-success" 
+        <div class="flex-1 text-center mx-1">
+          <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
+            <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre (*):</label>
+            <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+            <div
+              id="error-nombre"
+              class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
+              role="alert" >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+              <div style="display:none !important; visibility:hidden !important; position:absolute !important; left:-9999px !important;" aria-hidden="true">
+                <label for="website">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" tabindex="-1" autocomplete="off" value="Apellidos">
+              </div>
+            </div>
+          </p>
+          <br />
+          <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
+            <label for="telefono" class="block text-[#2c3e50] mb-2">Teléfono (*):</label>
+            <input type="tel" id="telefono" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+            <div
+              id="error-telefono"
+              class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
+              role="alert" >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+            </div>
+          </p>
+          <br />
+          <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
+            <label for="email" class="block text-[#2c3e50] mb-2">Email (*):</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
+            <div
+              id="error-email"
+              class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
+              role="alert" >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+              <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;" aria-hidden="true">
+                <label for="confirm_email">Confirme su Email (dejar vacío):</label>
+                <input type="email" id="confirm_email" name="confirm_email" tabindex="-1" autocomplete="off">
+              </div>
+            </div>
+          </p>
+          <br />
+          <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
+            <label for="mensaje" class="block text-[#2c3e50] mb-2">Comentario (*):</label>
+            <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
+            <div
+              id="error-mensaje"
+              class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
+              role="alert" >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
+            </div>
+          </p>
+        </div>
+        <PrivacyPolicy>
+          <div class="flex flex-row justify-center items-center gap-6 my-8 w-full">
+            <input type="hidden" id="form_timestamp" name="form_timestamp">
+            <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full uppercase">
+              Enviar
+            </button>
+             <a href="/" class="inline-block bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-transform active:scale-95">
+              Volver
+            </a>
+          </div>
+        </PrivacyPolicy>
+      </form>
+
+      <div
+        id="message-success"
         class="hidden flex items-center gap-2 p-2.5 mt-2 text-green-700 bg-green-50 border border-green-200 rounded-md transition-all duration-200 ease-in-out"
-        role="alert" >
+        role="alert">
         <div class="flex-shrink-0 text-green-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
         </div>
         <span class="text-sm font-medium"></span>
-        </div>
-        <div class="flex-1 text-center">
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-          <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre (*):</label>
-          <input type="text" id="nombre" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
-          <div 
-            id="error-nombre" 
-            class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
-            role="alert" >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
-            <div style="display:none !important; visibility:hidden !important; position:absolute !important; left:-9999px !important;" aria-hidden="true">
-              <label for="website">Apellidos:</label>
-              <input type="text" id="apellidos" name="apellidos" tabindex="-1" autocomplete="off" value="Apellidos">
-            </div>
-          </div>
-        </p>
-        <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-          <label for="telefono" class="block text-[#2c3e50] mb-2">Teléfono (*):</label>
-          <input type="tel" id="telefono" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
-          <div 
-          id="error-telefono" 
-          class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
-          role="alert" >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
-        </div>
-        </p>
-        <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-            <label for="email" class="block text-[#2c3e50] mb-2">Email (*):</label>
-            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black">
-            <div 
-            id="error-email" 
-            class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
-            role="alert" >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
-          <!-- Ht 2:  -->
-          <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; overflow: hidden;" aria-hidden="true">
-            <label for="confirm_email">Confirme su Email (dejar vacío):</label>
-            <input type="email" id="confirm_email" name="confirm_email" tabindex="-1" autocomplete="off">
-          </div>
-          </div>
-        </p>
-        <br />
-        <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide">
-            <label for="mensaje" class="block text-[#2c3e50] mb-2">Comentario (*):</label>
-            <textarea id="mensaje" rows="5" class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-black"></textarea>
-            <div 
-            id="error-mensaje" 
-            class="hidden flex items-center gap-1.5 text-red-600 transition-all duration-200 ease-in-out"
-            role="alert" >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="text-xs font-medium italic">Este campo es obligatorio.</span>
-          </div>
-        </p>
-        </div>
-        <PrivacyPolicy>
-          <div class="text-center">
-            <input type="hidden" id="form_timestamp" name="form_timestamp">
-            <button type="submit" class="bg-black text-white font-bold py-3 px-8 rounded-full">Enviar</button>
-          </div>
-        </PrivacyPolicy>
-        
-      </form>
-    </div>
-  </ContentSection>
+      </div>
 
-  <section class="space-y-6">
-    <div class="px-6">
-        <SectionTitle>También puedes contactar medianta una llamada telefónica o un correo electrónico:</SectionTitle>
     </div>
-    <div class="px-0">
-      <div class="grid grid-cols-2 gap-0.5 md:gap-2">
-        <ContactCard 
+  </div>
+</section>
+
+<section class="space-y-6">
+  <div class="px-6">
+      <SectionTitle>También puedes contactar medianta una llamada telefónica o un correo electrónico:</SectionTitle>
+  </div>
+  <div class="px-0">
+    <div class="grid grid-cols-2 gap-0.5 md:gap-2">
+      <ContactCard
         platform="email"
-        label="hola@misspitimini.com" 
-        imgSrc={floresSecas} 
+        label="hola@misspitimini.com"
+        imgSrc={floresSecas}
         alt="Email de contacto Misspitimini"
-        />
-        <ContactCard 
+      />
+      <ContactCard
         platform="phone"
-        label="(+34) 684340789"  
-        imgSrc={centroMesa} 
+        label="(+34) 684340789"
+        imgSrc={centroMesa}
         alt="Teléfono de contacto Misspitimini"
-        />
-      </div>
+      />
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="space-y-6">
-    <div class="px-6">
-      <SectionTitle>Síguenos en nuestras redes sociales:</SectionTitle>
-      <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
-        <p>
-          El universo de <strong>Sara Laínez</strong> es una ventana abierta a la naturaleza y la creatividad. Te invitamos a seguir nuestro día a día, donde compartimos procesos creativos, la llegada de nuevas temporadas y el detrás de escena de nuestros montajes más especiales. <strong>Únete a nuestra comunidad</strong> y deja que la inspiración floral forme parte de tu rutina.
-        </p>
-      </div>
-      <br/>
+<section class="space-y-6">
+  <div class="px-6">
+    <SectionTitle>Síguenos en nuestras redes sociales:</SectionTitle>
+    <div class="max-w-5xl mx-auto px-2 md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
+      <p>
+        El universo de <strong>Sara Laínez</strong> es una ventana abierta a la naturaleza y la creatividad. Te invitamos a seguir nuestro día a día, donde compartimos procesos creativos, la llegada de nuevas temporadas y el detrás de escena de nuestros montajes más especiales. <strong>Únete a nuestra comunidad</strong> y deja que la inspiración floral forme parte de tu rutina.
+      </p>
     </div>
-    <div class="px-0">
-      <div class="grid grid-cols-3 gap-0.5 md:gap-2">
-          <ContactCard 
+    <br/>
+  </div>
+  <div class="px-0">
+    <div class="grid grid-cols-3 gap-0.5 md:gap-2">
+        <ContactCard
           platform="facebook"
-          label="facebook" 
-          imgSrc={centroMesa} 
+          label="facebook"
+          imgSrc={centroMesa}
           alt="Talleres Misspitimini: Proceso de trabajo floral."
-          />
-          <ContactCard 
+        />
+        <ContactCard
           platform="tiktok"
-          label="tiktok" 
-          imgSrc={floresSecas} 
+          label="tiktok"
+          imgSrc={floresSecas}
           alt="Flores secas Misspitimini."
-          />
-          <ContactCard 
+        />
+        <ContactCard
           platform="instagram"
-          label="instagram" 
-          imgSrc={ramosFlores} 
+          label="instagram"
+          imgSrc={ramosFlores}
           alt="Ramos exclusivos Misspitimini."
-          />
-      </div>
+        />
     </div>
-  </section>
-</div>
+  </div>
+</section>
