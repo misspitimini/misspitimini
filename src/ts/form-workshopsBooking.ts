@@ -2,6 +2,7 @@ import { UrlsApi } from './urls.ts';
 
 // Define an interface for the form fields to ensure type safety.
 interface FormFields {
+    fecha: HTMLSelectElement | null;
     nombre: HTMLInputElement | null;
     apellidos: HTMLInputElement | null;
     email: HTMLInputElement | null;
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Captura de elementos con el tipo definido.
         const campos: FormFields = {
+            fecha: document.getElementById("fecha") as HTMLSelectElement | null,
             nombre: document.getElementById("nombre") as HTMLInputElement | null,
             apellidos: document.getElementById("apellidos") as HTMLInputElement | null, // Honeypot / Campo opcional
             email: document.getElementById("email") as HTMLInputElement | null,
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Preparar datos
         const datos = {
+            fecha: campos.fecha?.value.trim() || '',
             nombre: campos.nombre?.value.trim() || '',
             apellidos: campos.apellidos ? campos.apellidos.value.trim() : '', // Honeypot
             email: campos.email?.value.trim() || '',
@@ -132,6 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function validarFormulario(campos: FormFields): boolean {
 
     let esValido = true;
+
+    if (!campos.fecha?.value.trim()) {
+        mostrarError('error-fecha', 'Este campo es obligatorio.');
+        if (campos.fecha) marcarInputError(campos.fecha);
+        esValido = false;
+    } else {
+        quitarError('error-fecha', campos.fecha);
+    }
 
     if (!campos.nombre?.value.trim()) {
         mostrarError('error-nombre', 'Este campo es obligatorio.');
