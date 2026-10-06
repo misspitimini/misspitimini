@@ -1,6 +1,8 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
 import WorkshopCardNextProv from '@/components/workshop/WorkshopCardNextProv.astro';
+import WorkshopCardNextProv02 from '@/components/workshop/WorkshopCardNextProv02.astro';
+import WorkshopCardNextProv03 from '@/components/workshop/WorkshopCardNextProv03.astro';
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
 import { getWorkshops } from '@/services/workshops';
 import CustomLink from '@/components/commons/CustomLink.astro';
@@ -93,6 +95,10 @@ const faqs = [
 
     <div id="upcomingWorkshops-container">
    <WorkshopCardNextProv />
+   <br/>
+   <WorkshopCardNextProv02 />
+   <br/>
+   <WorkshopCardNextProv03 />
     {upcomingWorkshops.map((workshop) => ( 
     <WorkshopCardNext
         slug={workshop.slug}
@@ -131,7 +137,7 @@ const faqs = [
       <p>
         Si quieres vivir una experiencia floral diferente o estás organizando un evento especial, estaré encantada de ayudarte.
       </p>
-      <CustomLink href="/solicitaPresupuesto/">Cuéntame tu idea y diseñamos el taller perfecto</CustomLink>
+      <CustomLink href="/contacto/">Cuéntame tu idea y diseñamos el taller perfecto</CustomLink>
     </div>
   </ContentSection>
 
