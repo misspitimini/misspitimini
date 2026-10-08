@@ -104,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ? `Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '${datos.email}'.`
                 : "Formulario enviado correctamente.";
             
+            window.dispatchEvent(new CustomEvent('abrir-modal-success', { detail: true }));
             mostrarExito('message-success', mensajeExito);
 
             (Object.keys(campos) as Array<keyof FormFields>).forEach(key => {
