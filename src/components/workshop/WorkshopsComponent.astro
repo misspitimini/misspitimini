@@ -37,7 +37,30 @@ const faqs = [
 ];
 ---
 
+
+<SectionTitle>Próximas experiencias:</SectionTitle>
+  <div id="upcomingWorkshops-container">
+ <WorkshopCardNextProv01 />
+ <br/>
+ <WorkshopCardNextProv02 />
+ <br/>
+ <WorkshopCardNextProv03 />
+  {upcomingWorkshops.map((workshop) => ( 
+  <WorkshopCardNext
+      slug={workshop.slug}
+      imgSrc={workshop.imgSrc}
+      imgAlt={workshop.imgAlt}
+      title4={workshop.title}
+      title5={workshop.subtitle}
+      date={workshop.date}
+      description={workshop.description}   
+      />
+  ))}
+  </div>
+
+
 <div class="space-y-12">
+  
   <ContentSection>
     <SectionTitle>Experiencias Florales y Gastronómicas</SectionTitle>
     <div class="content-wrapper default-text-container">
@@ -87,29 +110,6 @@ const faqs = [
       <p>
         Cada experiencia combina aprendizaje, estética y conexión, creando un ambiente relajado y estimulante donde el equipo puede disfrutar y crear algo con sus propias manos.
       </p>
-    </div>
-  </ContentSection>
-
-  <ContentSection>
-    <SectionTitle>Próximas experiencias:</SectionTitle>
-
-    <div id="upcomingWorkshops-container">
-   <WorkshopCardNextProv01 />
-   <br/>
-   <WorkshopCardNextProv02 />
-   <br/>
-   <WorkshopCardNextProv03 />
-    {upcomingWorkshops.map((workshop) => ( 
-    <WorkshopCardNext
-        slug={workshop.slug}
-        imgSrc={workshop.imgSrc}
-        imgAlt={workshop.imgAlt}
-        title4={workshop.title}
-        title5={workshop.subtitle}
-        date={workshop.date}
-        description={workshop.description}   
-        />
-    ))}
     </div>
   </ContentSection>
 
