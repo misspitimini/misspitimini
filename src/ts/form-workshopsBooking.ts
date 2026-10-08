@@ -28,11 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault(); // Evita que la página se refresque
-        const submitButton = formulario.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-
-        if (submitButton) {
-            submitButton.disabled = true;
-        }
 
         // 1. Captura de elementos con el tipo definido.
         const campos: FormFields = {
@@ -61,12 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (!validarFormulario(campos)) {
-            if (submitButton) {
-                submitButton.disabled = false;
-            }
-            return;
-        }
+        if (!validarFormulario(campos)) return;
 
         const numeroPlazas = campos.numero_plazas ? parseInt(campos.numero_plazas.value, 10) : 1;
         const asistentesAdicionales = [];
@@ -136,10 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             if (campos.nombre) {
                 mostrarError('error-nombre', 'Hubo un problema al enviar. Inténtalo de nuevo.');
-            }
-        } finally {
-            if (submitButton) {
-                submitButton.disabled = false;
             }
         }
     });
