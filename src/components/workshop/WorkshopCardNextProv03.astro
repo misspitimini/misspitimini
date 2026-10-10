@@ -1,7 +1,7 @@
 ---
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
 import proximaExperiencia from "@/content/nextworkshop/proxima-experiencia.json";
-import arbolNavidad from '@/assets/images/body/experiencias/arbolNavidad.jpg';
+import tallerNavidad from '@/assets/images/body/experiencias/tallerNavidad.jpg';
 
 const {  disable } = Astro.props;
 const mostrar = (disable == null || disable == "false" );
@@ -22,7 +22,7 @@ const mostrar = (disable == null || disable == "false" );
     </div>
 	 <OptimizedImage 
    class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-   src={arbolNavidad}
+   src={tallerNavidad}
    alt="imagen del evento" 
    decoding="async" 
    loading="lazy" 
