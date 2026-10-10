@@ -33,19 +33,7 @@ if (allImages[imagePath]) {
 <div class="w-full bg-[#f3f4f6] flex justify-center"> 
   <section class="relative h-[85vh] w-full overflow-hidden">
     {imageSrc && (
-      <>
-        {currentSlide.id === 5 ? (
-          <div class="absolute inset-0 w-full bg-white">
-            <OptimizedImage 
-              alt={currentSlide.imgAlt} 
-              class="h-full w-full object-contain object-[75%_25%] md:object-center" 
-              decoding="async" 
-              src={imageSrc}
-              fetchpriority={'high'}
-              quality="mid"
-            />
-          </div>
-        ) : (
+
           <div class="absolute inset-0 w-full">
             <FogImageCarrusel 
               alt={currentSlide.imgAlt} 
@@ -57,8 +45,7 @@ if (allImages[imagePath]) {
             />
             <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white opacity-80"></div>
           </div>
-        )}
-      </>
+
     )}
     <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-8 pb-15 text-center items-center">
       {currentSlide.id === 1 ? (
