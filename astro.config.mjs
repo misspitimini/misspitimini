@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import alpine from '@astrojs/alpinejs';
-// import sitemap from '@astrojs/sitemap';
+import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -17,9 +17,12 @@ export default defineConfig({
   integrations: [
     tailwind(),
     alpine(),
-    // sitemap(),
+    sitemap(),
     icon()
   ],
+  devToolbar: {
+    enabled: false
+  },
   build: {
     inlineStylesheets: 'always'
   },

@@ -107,9 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             window.dispatchEvent(new CustomEvent('abrir-modal-success', { detail: true }));
             mostrarExito('message-success', mensajeExito);
-
+            
             (Object.keys(campos) as Array<keyof FormFields>).forEach(key => {
                 const campo = campos[key];
+                if (campo && campo.type === 'hidden') {
+                    return;
+                }
                 if (campo && 'value' in campo) {
                     (campo as HTMLInputElement).value = '';
                 }
