@@ -95,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            if (campos.newsletter) {
+                campos.newsletter.checked = true;
+            }
+
         } catch (error) {
             if (campos.nombre) {
                 mostrarError('error-nombre', 'Hubo un problema al enviar. Inténtalo de nuevo.');

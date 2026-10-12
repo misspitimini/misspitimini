@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             const urlDominio = UrlsApi.SEND_BOOKING_FORM;
+            
             const respuesta = await fetch(urlDominio, {
                 method: 'POST',
                 headers: {
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             if (!respuesta.ok) throw new Error('Error en el servidor');
-
+            
             // 5. Gestión de Éxito
             const mensajeExito = (campos.email?.value.trim())
                 ? `Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '${datos.email}'.`
@@ -120,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     (campo as HTMLInputElement).checked = false;
                 }
             });
+
+            if (campos.newsletter) {
+                campos.newsletter.checked = true;
+            }
 
             if (campos.numero_plazas) {
                 campos.numero_plazas.value = '1';
@@ -206,7 +211,7 @@ function validarFormulario(campos: FormFields): boolean {
             }
         }
     }
-
+    
     if (campos.privacy?.checked === false) {
         window.dispatchEvent(new CustomEvent('abrir-modal-privacidad', { detail: true }));
         esValido = false;
