@@ -15,6 +15,31 @@ const homeCardsCollection = defineCollection({
   }),
 });
 
+// Schema for the workshops
+const nextWorkshopCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    imgSrc: image(),
+    imgAlt: z.string(),
+    pubDate: z.string(),
+    dateText: z.string(),
+    hour: z.string(),
+    title: z.string(),
+    sumary: z.object({
+      duration: z.string(),
+      materials: z.string(),
+      experiences: z.string(),
+      price: z.string(),
+      location: z.string(),
+      capacity: z.string(),
+    }),
+    pompadour: z.string(),
+    tags: z.array(z.string()),
+    isDraft: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   'homecards': homeCardsCollection,
+  'nextworkshop': nextWorkshopCollection,
 };

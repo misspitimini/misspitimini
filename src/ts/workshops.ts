@@ -34,8 +34,8 @@ async function renderWorkshops() {
         files.forEach((post: Workshop) => {
 
           // Clonamos el molde
-          const template= (post.date < now)?templatePastWorkshops: templateUpcomingWorkshops;
-          const container = (post.date < now)?containerPastWorkshops: containerUpcomingWorkshops;
+          const template= (post.pubDate < now)?templatePastWorkshops: templateUpcomingWorkshops;
+          const container = (post.pubDate < now)?containerPastWorkshops: containerUpcomingWorkshops;
 
           const clone = template.content.cloneNode(true) as DocumentFragment;
 

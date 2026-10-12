@@ -1,5 +1,6 @@
 import { UrlsApi } from '@/ts/urls.ts';
 import type { Workshop } from '@/types/Workshop';
+import { getCollection } from 'astro:content';
 
 /**
  * Obtiene y transforma los datos de la galería desde la API.
@@ -9,6 +10,7 @@ import type { Workshop } from '@/types/Workshop';
  */
 export async function getWorkshops(): Promise<Workshop[]> {
     try {
+        /*
         if(true) return [];
         const response = await fetch(UrlsApi.GET_WORKSHOPS, {
             method: 'GET',
@@ -35,8 +37,14 @@ export async function getWorkshops(): Promise<Workshop[]> {
         // Transformamos los datos de la API a la estructura que necesitan los componentes.
         // Esto añade una capa de protección y consistencia.
         const posts: Workshop[] = apiPosts.map((post: any) => {
+        */
+       
+        const tallerFiles = await getCollection('nextworkshop');
+
+        const posts: Workshop[] = tallerFiles.map((post: any) => {
             return parseWorkshop(post);
         });
+        
         return posts;
     } catch (error) {
         console.error("Fallo crítico al hacer fetch de los talleres:", error);
@@ -48,12 +56,23 @@ export async function getWorkshops(): Promise<Workshop[]> {
 function parseWorkshop(entry: any): Workshop {
 
     return {
-        slug: entry.id,
-        title: entry.data?.title || 'Post sin título',
-        subtitle: entry.data?.subtitle || 'Post sin subtítulo',
-        description: entry.data?.description || 'Ver más...',
-        date: new Date(entry.data?.pubDate),
-        imgSrc: entry.data?.url || UrlsApi.DEFAULT_IMAGE,
-        imgAlt: entry.data?.alt || 'Imagen de la galería de mispitimini',
-    };
+        slug: entry.slug,
+        imgSrc: entry.data?.imgSrc || UrlsApi.DEFAULT_IMAGE,
+        imgAlt: entry.data?.imgAlt || 'Imagen de la galería de mispitimini',
+        pubDate: entry.data?.pubDate || '',
+        dateText: entry.data?.dateText || '',
+        hour: entry.data?.hour || '',
+        title:  entry.data?.title || '',
+        sumary: {
+          duration: entry.data?.sumary?.duration || '',
+          materials: entry.data?.sumary?.materials || '',
+          experiences: entry.data?.sumary?.experiences || '',
+          price: entry.data?.sumary?.price || '',
+          location: entry.data?.sumary?.location || '',
+          capacity: entry.data?.sumary?.capacity || ''
+        },
+        pompadour: entry.data?.pompadour || '',
+        content: entry.body || '',
+        tags: entry.data?.tags || []
+      };
 }

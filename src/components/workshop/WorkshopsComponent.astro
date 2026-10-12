@@ -17,7 +17,7 @@ const now = new Date();
 
 const { upcomingWorkshops, pastWorkshops } = workshops.reduce(
   (acc, workshop) => {
-    if (workshop.date < now) {
+    if (workshop.pubDate < now) {
       acc.pastWorkshops.push(workshop);
     } else {
       acc.upcomingWorkshops.push(workshop);
@@ -37,24 +37,33 @@ const faqs = [
 ];
 ---
 
-
 <SectionTitle>Próximas experiencias:</SectionTitle>
   <div id="upcomingWorkshops-container">
- <WorkshopCardNextProv01 />
- <br/>
- <WorkshopCardNextProv02 />
- <br/>
- <WorkshopCardNextProv03 />
+    <WorkshopCardNextProv01 />
+    <br/>
+    <WorkshopCardNextProv02 />
+    <br/>
+    <WorkshopCardNextProv03 />   
   {upcomingWorkshops.map((workshop) => ( 
   <WorkshopCardNext
-      slug={workshop.slug}
-      imgSrc={workshop.imgSrc}
-      imgAlt={workshop.imgAlt}
-      title4={workshop.title}
-      title5={workshop.subtitle}
-      date={workshop.date}
-      description={workshop.description}   
-      />
+    slug={workshop.slug}
+    imgSrc={workshop.imgSrc}
+    imgAlt={workshop.imgAlt}
+    pubDate={workshop.pubDate}
+    dateText={workshop.dateText}
+    hour={workshop.hour}
+    title={workshop.title}
+    duration={workshop.sumary.duration}
+    materials={workshop.sumary.materials}
+    experiences={workshop.sumary.experiences}
+    price={workshop.sumary.price}
+    location={workshop.sumary.location}
+    capacity={workshop.sumary.capacity}
+    pompadour={workshop.pompadour}
+    content={workshop.content}
+    tags={workshop.tags}
+    disable={true}
+    />
   ))}
   </div>
 
@@ -116,16 +125,7 @@ const faqs = [
   <ContentSection>
     <SectionTitle>Otras experiencias:</SectionTitle>
     <div id="pastWorkshops-container" class="grid gap-8 grid-cols-1 md:grid-cols-2">
-      {pastWorkshops.map((workshop) => (
-       <WorkshopCard
-        slug={workshop.slug}
-        imgSrc={workshop.imgSrc}
-        imgAlt={workshop.imgAlt}
-        title4={workshop.title}
-        title5={workshop.subtitle}
-        description={workshop.description}
-        />
-      ))}
+
     </div>
   </ContentSection>
 
@@ -143,15 +143,7 @@ const faqs = [
 
 </div>
 <template id="card-upcomingWorkshops-template" class="hidden">
-  <WorkshopCardNext
-  slug=""
-  imgSrc=""
-  imgAlt=""
-  title4=""
-  title5=""
-  date={now}
-  description=""   
-  />
+
 </template>
 
 <template id="card-pastWorkshops-template" class="hidden">

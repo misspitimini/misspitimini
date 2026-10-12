@@ -1,13 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import logo from '@/assets/images/logos/logoReducido.png';
-import bookingImage from '@/assets/images/carrusel/09_ramosFlores.jpg';
+
 import LayoutWorkshopsBooking from '@/layouts/LayoutWorkshopsBooking.astro';
 import WorkshopsBookingComponent from '@/components/workshop/WorkshopsBookingComponent.astro';
 import Footer from '@/components/footer/Footer.astro';
 
-const title = "misspitimini | Reserva de asistencia a experiencias florales con Sara Laínez"
-const description = "Reserva tu plaza en nuestros talleres y experiencias florales."
+const title = "misspitimini | Reserva de asistencia a experiencias florales con Sara Laínez";
+const description = "Reserva tu plaza en nuestros talleres y experiencias florales.";
+
+export async function getStaticPaths() {
+  // Fetch all workshops, including those with future dates
+  const tallerFiles = await getCollection('nextworkshop', ({ data }) => {
+    return true; // Return all entries
+  });
+  
+  return tallerFiles.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
 ---
 
 <LayoutWorkshopsBooking title={title} description={description}>
@@ -43,12 +57,11 @@ const description = "Reserva tu plaza en nuestros talleres y experiencias floral
 	<main class="relative pt-20 pb-12"> 
 
 	<h1 class="sr-only">Solicita un presupuesto para talleres en Madrid por Sara Laínez, mispitimini</h1>
-
-	<div class="px-0 py-2 md:py-10 space-y-12"> 
+	 <div class="px-0 py-2 md:py-10 space-y-12"> 
 		<div class="space-y-12"> 
-            <WorkshopsBookingComponent taller="taller03" />
+            <WorkshopsBookingComponent taller={slug} />
 		</div>
 	</div>
 </main>
 <Footer />
-</LayoutBooking>
+</LayoutWorkshopsBooking>
