@@ -121,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     (campo as HTMLInputElement).checked = false;
                 }
             });
+
+            
+            if (campos.form_timestamp) {
+                campos.form_timestamp.value = Date.now().toString();
+            }
             
             if (campos.apellidos) {
                 campos.apellidos.value = datos.apellidos;
