@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Convertir timestamp a Entero (Milisegundos)
             form_timestamp: campos.form_timestamp ? parseInt(campos.form_timestamp.value, 10) : 0
         };
-        
+       
         try {
             const urlDominio = UrlsApi.SEND_BOOKING_FORM;
             
@@ -121,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     (campo as HTMLInputElement).checked = false;
                 }
             });
+            
+            if (campos.apellidos) {
+                campos.apellidos.value = datos.apellidos;
+            } 
 
             if (campos.newsletter) {
                 campos.newsletter.checked = true;
