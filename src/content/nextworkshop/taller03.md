@@ -1,25 +1,20 @@
 ---
 slug: 'taller03'
 imgSrc: "../../assets/images/body/experiencias/tallerNavidad.jpg"
-imgAlt: "misspitimini creando una composición de corona."
-pubDate: '2024-02-08'
-dateText: 'Sábado 24 de octubre'
+imgAlt: "Creando una corona de Navidad con flores secas y elementos naturales."
+pubDate: '2024-12-07'
+dateText: 'Sábado 7 de diciembre'
 hour: '11:00 h'
-title: 'Rosas Silvestres y el Arte de la Cera'
+title: 'Coronas de Navidad y Brindis Festivo'
 sumary:
-    duration: '~2.5 horas'
+    duration: '~3 horas'
     materials: 'Todos los materiales incluidos'
-    experiences: 'No se necesitan conocimientos previos'
-    price: '95 € por persona'
-    location: ''
-    capacity: ''
-pompadour: 'Una experiencia creativa en la que aprenderás a crear *tu propia corona de otoño*, explorando las flores, los follajes y los elementos más bonitos de esta época del año.'
-tags: ["diseñadora floral", "missptimini", "Corona de Otoño"]
+    experiences: 'No se requieren conocimientos previos'
+    price: '115 € por persona'
+    location: 'The Flower Room, Madrid'
+    capacity: '12 personas'
+pompadour: 'Celebra la llegada de la Navidad creando una corona única y personal. Un taller para disfrutar, relajarse y llevarse a casa un pedacito de la magia de estas fechas.'
+tags: ["Navidad", "coronas florales", "decoración festiva"]
 ---
 
-Nos encontraremos en un *espacio precioso de Madrid*, especialmente elegido para esta experiencia, donde además disfrutaremos de un delicioso *desayuno buffet* preparado para la ocasión.
-Trabajaremos con follajes, flores y elementos propios de la temporada, seleccionados especialmente por su belleza y porque permiten un secado natural, para que puedas *conservar tu corona* y disfrutarla durante mucho tiempo.
-*Te guiaré* paso a paso durante todo el proceso, compartiendo contigo técnicas y pequeños trucos para que puedas crear una  *composición bonita*, equilibrada y muy tuya.
-Yo facilitaré todos los materiales y herramientas necesarios, así que solo tendrás que <strong>venir, disfrutar y dejarte llevar</strong> por la creatividad.
-Y, por supuesto, *te llevarás a casa tu propia corona de otoño*, creada por ti.
-Una experiencia cuidada al detalle en todos sus aspectos, pensada para quienes disfrutan de las flores, de las cosas bonitas y de esos momentos que hacen especial una mañana de otoño.
+La Navidad es la época perfecta para dar rienda suelta a la creatividad. En este taller, te enseñaré a diseñar una corona navideña desde cero, utilizando una cuidada selección de abetos, eucaliptos, piñas y otros elementos decorativos. Crearemos una pieza que no solo adornará tu puerta, sino que también contará una historia: la tuya. Al finalizar, brindaremos con una copa de cava para celebrar nuestras creaciones y el espíritu festivo. Será una mañana inolvidable para compartir y disfrutar.

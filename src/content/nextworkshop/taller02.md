@@ -1,25 +1,20 @@
 ---
 slug: 'taller02'
-imgSrc: "../../assets/images/body/experiencias/tallerHortensias.jpg"
-imgAlt: "misspitimini creando una composición de corona."
-pubDate: '2024-02-08'
-dateText: 'Sábado 24 de octubre'
-hour: '11:00 h'
-title: 'Rosas Silvestres y el Arte de la Cera'
+imgSrc: "../../assets/images/body/bodas/ramoNovia.jpg"
+imgAlt: "Elaboración de un ramo con rosas silvestres."
+pubDate: '2025-05-15'
+dateText: 'Sábado 15 de mayo'
+hour: '17:00 h'
+title: 'El Arte de las Rosas Silvestres'
 sumary:
-    duration: '~2.5 horas'
+    duration: '~3 horas'
     materials: 'Todos los materiales incluidos'
-    experiences: 'No se necesitan conocimientos previos'
-    price: '95 € por persona'
-    location: ''
-    capacity: ''
-pompadour: 'Una experiencia creativa en la que aprenderás a crear *tu propia corona de otoño*, explorando las flores, los follajes y los elementos más bonitos de esta época del año.'
-tags: ["diseñadora floral", "missptimini", "Corona de Otoño"]
+    experiences: 'Ideal para amantes de las flores con o sin experiencia'
+    price: '120 € por persona'
+    location: 'Jardín Botánico de Madrid'
+    capacity: '15 personas'
+pompadour: 'Un taller inmersivo para descubrir la belleza atemporal de las rosas silvestres y aprender a crear ramos desestructurados y llenos de encanto.'
+tags: ["rosas silvestres", "diseño floral", "ramos de autor"]
 ---
 
-Nos encontraremos en un *espacio precioso de Madrid*, especialmente elegido para esta experiencia, donde además disfrutaremos de un delicioso *desayuno buffet* preparado para la ocasión.
-Trabajaremos con follajes, flores y elementos propios de la temporada, seleccionados especialmente por su belleza y porque permiten un secado natural, para que puedas *conservar tu corona* y disfrutarla durante mucho tiempo.
-*Te guiaré* paso a paso durante todo el proceso, compartiendo contigo técnicas y pequeños trucos para que puedas crear una  *composición bonita*, equilibrada y muy tuya.
-Yo facilitaré todos los materiales y herramientas necesarios, así que solo tendrás que <strong>venir, disfrutar y dejarte llevar</strong> por la creatividad.
-Y, por supuesto, *te llevarás a casa tu propia corona de otoño*, creada por ti.
-Una experiencia cuidada al detalle en todos sus aspectos, pensada para quienes disfrutan de las flores, de las cosas bonitas y de esos momentos que hacen especial una mañana de otoño.
+Sumérgete en el universo de las rosas silvestres en un entorno único como el Jardín Botánico de Madrid. Este taller es una oda a la belleza natural y a la creación de ramos que parecen recién cogidos del campo. Aprenderás a combinar diferentes variedades de rosas con follajes y flores de temporada para lograr composiciones orgánicas y llenas de vida. No solo te llevarás a casa un ramo espectacular, sino también una nueva forma de mirar y entender el arte floral.
