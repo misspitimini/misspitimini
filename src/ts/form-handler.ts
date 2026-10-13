@@ -95,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            if (campos.apellidos) {
+                campos.apellidos.value = datos.apellidos;
+            } 
+
             if (campos.newsletter) {
                 campos.newsletter.checked = true;
             }
