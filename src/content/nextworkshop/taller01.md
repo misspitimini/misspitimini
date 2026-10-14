@@ -5,7 +5,7 @@ imgAlt: "misspitimini creando una composición de corona."
 pubDate: '2026-02-08'
 dateText: 'Sábado 24 de octubre'
 hour: '11:00 h'
-title: 'Corona de Otoño y Desayuno Buffet'
+title: 'Corona de Otoño & Desayuno Buffet'
 sumary:
     duration: '~2.5 horas'
     materials: 'Todos los materiales incluidos'
