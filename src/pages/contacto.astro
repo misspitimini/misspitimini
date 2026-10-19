@@ -15,7 +15,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <LayoutEmail title={title} description={description} canonicalUrl={canonicalUrl}>
-	<Header href={href} h1="{h1}" />
+	<Header href={href} h1={h1} />
 	<main class="relative pt-20 pb-12">
 		<h1 class="sr-only"></h1>
 		<Carrusel href={href} />
