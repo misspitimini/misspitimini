@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, canonicalUrl } = Astro.props;
 ---
-<Layout title={title} description={description} keywords={keywords}>
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
     <slot />
 </Layout>
