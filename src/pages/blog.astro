@@ -8,20 +8,20 @@ import Footer from '@/components/footer/Footer.astro';
 
 const href="/blog/";
 
-const title="mispitimini | Blog de Diseño Floral de Sara Laínez" 
-const description="Explora el blog de Sara Laínez para obtener ideas y consejos sobre diseño floral, decoración de bodas, eventos y talleres creativos en Madrid."
+const title = "mispitimini | Blog de Diseño Floral de Sara Laínez" 
+const h1 = "Blog de Diseño Floral de Sara Laínez, mispitimini"
+const description = "Explora el blog de Sara Laínez para obtener ideas y consejos sobre diseño floral, decoración de bodas, eventos y talleres creativos en Madrid."
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const keywords = "blog, diseño floral, bodas, eventos, experiencias, talleres, Madrid, Sara Laínez, inspiración, consejos"
 
 ---
 
 <LayoutBlog title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
-	<Header href={href} />
+	<Header href={href} h1="{h1}" />
+	<div class="sr-only">
+		<p class="text-lg text-floral-dark/80 mt-2">Ideas y consejos sobre diseño floral</p>
+	</div>
 	<main class="relative pt-20 pb-12">
-        <div class="sr-only">
-		    <h1 class="text-4xl font-serif font-bold text-floral-dark">Blog de Diseño Floral de Sara Laínez, mispitimini</h1>
-            <p class="text-lg text-floral-dark/80 mt-2">Ideas y consejos sobre diseño floral</p>
-        </div>
 		<Carrusel href={href} />
 		<SectionContainer>
 			<BlogComponent />

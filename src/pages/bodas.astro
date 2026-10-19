@@ -8,16 +8,16 @@ import Footer from '@/components/footer/Footer.astro';
 
 const href="/bodas/";
 
-const title="mispitimini | Ramos y Decoración Floral para Bodas por Sara Laínez en Madrid"
-const description="Diseño floral personalizado para bodas: Ramos de novia, ceremonias, centros, estructuras florales, montajes y más."
+const title = "mispitimini | Ramos y Decoración Floral para Bodas por Sara Laínez en Madrid"
+const h1 = "Decoración floral para bodas en Madrid"
+const description = "Diseño floral personalizado para bodas: Ramos de novia, ceremonias, centros, estructuras florales, montajes y más."
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const keywords = "florista, bodas, eventos, talleres florales, experiencias, Madrid, diseño floral, ramos de novia, decoración floral"
 ---
 
 <Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
-	<Header href={href} />
+	<Header href={href} h1="{h1}" />
 	<main class="relative pt-20 pb-12">
-		<h1 class="sr-only">Decoración floral para bodas en Madrid</h1>
 		<Carrusel href={href} />
 		<SectionContainer>
 			<WeddingComponent />

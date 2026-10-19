@@ -8,15 +8,16 @@ import Footer from '@/components/footer/Footer.astro';
 
 const href="/contacto/";
 
-const title="misspitimini | Contacta con Sara Laínez"
-const description="Contacta para solicitar presupuesto o información sobre nuestros servicios de diseño floral."
+const title = "misspitimini | Contacta con Sara Laínez"
+const h1 = "Contacta con Diseñora Floral para eventos, bodas y experiencias en Madrid"
+const description = "Contacta para solicitar presupuesto o información sobre nuestros servicios de diseño floral."
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <LayoutEmail title={title} description={description} canonicalUrl={canonicalUrl}>
-	<Header href={href}  />
+	<Header href={href} h1="{h1}" />
 	<main class="relative pt-20 pb-12">
-		<h1 class="sr-only">Contacta con Diseñora Floral para eventos, bodas y experiencias en Madrid</h1>
+		<h1 class="sr-only"></h1>
 		<Carrusel href={href} />
 		<SectionContainer>
 			<ContactComponent />

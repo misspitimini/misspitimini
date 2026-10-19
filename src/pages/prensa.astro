@@ -7,19 +7,20 @@ import Footer from '@/components/footer/Footer.astro';
 import PressComponent from '@/components/press/PressComponent.astro';
 
 const href = "/prensa/";
-const title = "mispitimini | Contacto de Prensa y Colaboraciones";
-const description = "Información de contacto para prensa, medios y colaboraciones. Descubre cómo podemos trabajar juntos.";
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
-const keywords = "prensa, mispitimini, contacto, medios, colaboraciones, diseño floral, Madrid";
+
+const title = "mispitimini | Contacto de Prensa y Colaboraciones"
+const h1 = "Contacto de Prensa"
+const description = "Información de contacto para prensa, medios y colaboraciones. Descubre cómo podemos trabajar juntos."
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href
+const keywords = "prensa, mispitimini, contacto, medios, colaboraciones, diseño floral, Madrid"
 
 ---
 <Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
-	<Header href={href} />
+	<Header href={href} h1="{h1}" />
+	<div class="sr-only">
+		<p class="text-lg text-floral-dark/80 mt-2">Creaciones únicas y personalizadas para momentos inolvidables</p>
+	</div>
 	<main class="relative pt-20 pb-12">
-		<div class="sr-only">
-			<h1 class="text-4xl font-serif font-bold text-floral-dark">Contacto de Prensa</h1>
-			<p class="text-lg text-floral-dark/80 mt-2">Creaciones únicas y personalizadas para momentos inolvidables</p>
-		</div>
 		<Carrusel href={href} />
 		<SectionContainer>
             <PressComponent />
