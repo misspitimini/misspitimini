@@ -6,6 +6,38 @@ const {  disable } = Astro.props;
 const mostrar = (disable == null || disable == "false" );
 ---
 
+<script type="application/ld+json">
+	{{
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Corona de Otoño & Desayuno Buffet",
+		"description": "Una experiencia creativa en la que aprenderás a crear tu propia corona de otoño, explorando las flores, los follajes y los elementos más bonitos de esta época del año.",
+		"startDate": "2026-10-24T11:00-05:00",
+		"endDate": "2026-10-24T13:30-05:00",
+		"location": {{
+			"@type": "Place",
+			"name": "Espacio por confirmar",
+			"address": {{
+				"@type": "PostalAddress",
+				"addressLocality": "Madrid",
+				"addressCountry": "ES"
+			}}
+		}},
+		"image": [tallerOtoñoBuffet.src],
+		"offers": {{
+			"@type": "Offer",
+			"price": "105",
+			"priceCurrency": "EUR",
+			"availability": "https://schema.org/InStock",
+			"url": "/solicitaPresupuesto/taller01"
+		}},
+		"organizer": {{
+			"@type": "Organization",
+			"name": "misspitimini",
+			"url": "https://misspitimini.com"
+		}}
+	}}
+</script>
 <section id="taller01" class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <p class="font-display md:text-5xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Próximo taller </p>

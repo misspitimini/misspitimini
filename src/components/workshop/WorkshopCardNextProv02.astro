@@ -6,6 +6,38 @@ const {  disable } = Astro.props;
 const mostrar = (disable == null || disable == "false" );
 ---
 
+<script type="application/ld+json">
+	{{
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": "Hortensias y Experiencia Gastronómica Gallega",
+		"description": "Una experiencia inspirada en Galicia, sus paisajes, sus hortensias y esa manera tan especial de disfrutar de las cosas bonitas.",
+		"startDate": "2026-11-27T18:30-05:00",
+		"endDate": "2026-11-27T21:00-05:00",
+		"location": {{
+			"@type": "Place",
+			"name": "Un rincón encantador cerca de El Retiro",
+			"address": {{
+				"@type": "PostalAddress",
+				"addressLocality": "Madrid",
+				"addressCountry": "ES"
+			}}
+		}},
+		"image": [tallerHortensias.src],
+		"offers": {{
+			"@type": "Offer",
+			"price": "125",
+			"priceCurrency": "EUR",
+			"availability": "https://schema.org/InStock",
+			"url": "/solicitaPresupuesto/taller02"
+		}},
+		"organizer": {{
+			"@type": "Organization",
+			"name": "misspitimini",
+			"url": "https://misspitimini.com"
+		}}
+	}}
+</script>
 <section id="taller02" class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <p class="font-display md:text-5xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Próximo taller </p>
