@@ -9,8 +9,9 @@ const {href, h1} = Astro.props;
 
 ---
 <header>
+    <h1 class="absolute z-0">{h1}</h1> 
     <div class="fixed top-0 inset-x-0 z-40 bg-white/80 backdrop-blur-md border-b border-floral-dark/5">
-        <MenuBar href={href} h1={h1} />
+        <MenuBar href={href}  />
         <!-- Mobile Menu Container: This will be populated by menu.js -->
          <div id="mobile-menu-container"></div>
     </div>

@@ -5,9 +5,8 @@ import { menuItems } from '@/data/menuData.ts';
 
 interface Props {
     href: string;
-    h1: string;
 }
-const { href, h1 } = Astro.props;
+const { href } = Astro.props;
 ---
 
 <div class="relative flex items-center h-20 max-w-7xl mx-auto px-6">
@@ -15,7 +14,6 @@ const { href, h1 } = Astro.props;
         <button id="menu-button" class="flex md:hidden items-center justify-center p-2 -ml-2 rounded-full text-gray-800" aria-label="Abrir menú">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
-        <h1 class="sr-only" >{h1}</h1>    
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 md:flex-shrink-0 md:min-w-[220px]">
             <a href="/" class="block">
                 <OptimizedImage 
