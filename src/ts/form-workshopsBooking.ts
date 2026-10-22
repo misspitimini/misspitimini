@@ -103,8 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 5. Gestión de Éxito
             const mensajeExito = (campos.email?.value.trim())
-                ? `Formulario enviado correctamente. Compruebe que ha recibido un email en la dirección facilitada '${datos.email}'.`
-                : "Formulario enviado correctamente.";
+                ? `Formulario enviado correctamente. \r\n` +
+                `Compruebe que ha recibido un email en  \r\n ` +
+                `la dirección facilitada '${datos.email}'.`
+                : `Formulario enviado correctamente.`;
             
             window.dispatchEvent(new CustomEvent('abrir-modal-success', { detail: true }));
             mostrarExito('message-success', mensajeExito);
