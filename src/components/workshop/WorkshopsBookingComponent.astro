@@ -14,7 +14,8 @@ const { taller } = Astro.props;
 <section class="space-y-6">
     {taller === 'taller01' && <WorkshopCardNextProv01 disable={true} />}
     {taller === 'taller02' && <WorkshopCardNextProv02 disable={true} />}
-    {taller === 'taller03' && <WorkshopCardNextProv03 disable={true} />} 
-    <Form id={taller} />
+    {taller === 'taller03' && <WorkshopCardNextProv03 disable={true} />}
+    {taller === 'taller02' && <Form id={taller} />}
+    {taller === 'taller03' && <Form id={taller} />}    
 </section>
 
