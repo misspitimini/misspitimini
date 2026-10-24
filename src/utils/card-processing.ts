@@ -26,7 +26,6 @@ export async function processHomeCards(filterIds?: string[]): Promise<HomeCardDa
     if (!filterIds) return true; // Return all if no filter is provided
     return filterIds.includes(id);
   });
-}
 
   return Promise.all(
     homeCardsData.map(async (card) => {
