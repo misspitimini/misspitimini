@@ -20,9 +20,6 @@ export type HomeCardData = HomeCardCollectionData & {
  */
 export async function processHomeCards(filterIds?: string[]): Promise<HomeCardData[]> {
   const homeCardsData = await getCollection('homecards', ({ id }: CollectionEntry<'homecards'>) => {
-    // Excluir 'taller01' en cualquier caso
-    if (id === 'taller01') return false;
-
     if (!filterIds) return true; // Return all if no filter is provided
     return filterIds.includes(id);
   });
