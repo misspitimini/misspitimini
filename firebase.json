@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site": "misspitimini-89791554-8ac99",
     "ignore": [
       "firebase.json",
       "**/.*",
