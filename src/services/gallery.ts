@@ -51,6 +51,6 @@ function parseGallery(entry: any): Gallery {
         title: entry.data?.title || 'Post sin título',
         description: entry.data?.description || 'Ver más...',
         imgSrc: entry.data?.url || UrlsApi.DEFAULT_IMAGE,
-        imgAlt: entry.data?.alt || 'Imagen de la galería de mispitimini',
+        imgAlt: entry.data?.alt || 'Imagen de la galería de misspitimini',
     };
 }

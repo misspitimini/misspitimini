@@ -50,7 +50,7 @@ function parseBlog(entry: any): Blog {
         title: attributes.title || 'Post sin título',
         description: attributes.description || 'Entrada del blog de misspitimini.',
         imgSrc: attributes.url || UrlsApi.DEFAULT_IMAGE,
-        imgAlt: attributes.alt || 'Imagen del blog de mispitimini',
+        imgAlt: attributes.alt || 'Imagen del blog de misspitimini',
         author: attributes.author || 'Sara Laínez',
         pubDate: pubDate
     };

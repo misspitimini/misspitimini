@@ -58,7 +58,7 @@ function parseWorkshop(entry: any): Workshop {
     return {
         slug: entry.slug,
         imgSrc: entry.data?.imgSrc || UrlsApi.DEFAULT_IMAGE,
-        imgAlt: entry.data?.imgAlt || 'Imagen de la galería de mispitimini',
+        imgAlt: entry.data?.imgAlt || 'Imagen de la galería de misspitimini',
         pubDate: entry.data?.pubDate || '',
         dateText: entry.data?.dateText || '',
         hour: entry.data?.hour || '',
