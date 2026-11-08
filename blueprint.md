@@ -29,3 +29,4 @@ The `WorkshopsComponent` has been updated to use the new data fetching system, a
 - **Dependency Installation**: `npm install` executed successfully installing Astro v5 and dependencies (@astrojs/alpinejs, @astrojs/sitemap, @astrojs/tailwind, astro-icon).
 - **Build Verification**: `npm run build` executed successfully, generating 15 static routes and optimized media in `dist/`.
 - **Local Dev Server**: Executed with `npm run dev -- --host 127.0.0.1 --port 4321` for local preview and development.
+- **Git & Remote Sync**: Git configured locally, remote origin linked to `https://github.com/misspitimini/misspitimini.git`. Branch `main` successfully pushed and synchronized with GitHub, with credentials securely managed via Windows Credential Manager.
