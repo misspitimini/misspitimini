@@ -30,4 +30,4 @@ The `WorkshopsComponent` has been updated to use the new data fetching system, a
 - **Build Verification**: `npm run build` executed successfully, generating 15 static routes and optimized media in `dist/`.
 - **Local Dev Server**: Executed with `npm run dev -- --host 127.0.0.1 --port 4321` for local preview and development.
 - **Git & Remote Sync**: Git configured locally, remote origin linked to `https://github.com/misspitimini/misspitimini.git`. Branch `main` successfully pushed and synchronized with GitHub, with credentials securely managed via Windows Credential Manager.
-- **IDE Setup**: Visual Studio Code v1.145.2 (x64) installed with official extensions for Astro (`astro-build.astro-vscode`) and Tailwind CSS (`bradlc.vscode-tailwindcss`). Desktop shortcut configured to open the project workspace directly.
+- **IDE Setup**: Visual Studio Code v1.145.2 (x64) installed with official extensions for Astro (`astro-build.astro-vscode`), Tailwind CSS (`bradlc.vscode-tailwindcss`), GitLens (`eamodio.gitlens`), and Git Graph (`mhutchie.git-graph`). Desktop shortcut configured to open the project workspace directly.
