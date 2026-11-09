@@ -1,34 +1,54 @@
 ---
-import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import OptimizedImage from "@/components/commons/OptimizedImage.astro";
+import { addHour } from "@/ts/utils";
+import type { Workshop } from '@/types/Workshop';
+import { marked } from 'marked';
 
 interface Props {
-  slug: string;
-  imgSrc: string;
-  imgAlt: string;
-  title4: string;
-  title5: string;
-  description: string;
+    workshop: Workshop;
 }
+const { workshop } = Astro.props;
 
-const { slug, imgSrc, imgAlt, title4, title5, description } = Astro.props;
+const {
+  slug,
+  imgSrc,
+  imgAlt,
+  pubDate,
+  dateText,
+  hour,
+  title,
+  pompadour,
+  content
+ } = workshop;
+
+ const pompadourHtml = pompadour ? await marked.parse(pompadour) : '';
+ const contentHtml = content ? await marked.parse(content) : '';
+
 ---
 
+<section id="{slug}" class="space-y-10 py-10 bg-gray-100">
+  <div class="space-y-4">
+    <p class="font-display md:text-5xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Próximo taller </p>
+    <h3 class="font-serif text-4xl md:text-5xl  tracking-tight leading-tight italic mb-3 text-amber-800">
+      {title}
+	 </h3>
+   <p class="card-date font-display text-2xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">{dateText}</p>
+   <p class="card-date font-display text-2xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">{hour}</p>
+   <div class="card-title content-wrapper default-text-container">
+    <div set:html={pompadourHtml}></div>
+    </div>
+	 <OptimizedImage 
+   class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+   src={imgSrc}
+   alt="{imgAlt}" 
+   decoding="async" 
+   loading="lazy" 
+   sizes="100vw"
+    />
+	 <div class="flex-1 text-center"> 
 
-<div id={slug} class="overflow-hidden w-fit">
-  <OptimizedImage 
-    class="card-img h-2/3 w-full object-cover"  
-    src={imgSrc} 
-    alt={imgAlt}  
-    decoding="async" 
-    loading="lazy" 
-    sizes="(max-width: 768px) 100vw, 50vw"
-  />
-  
-  <div class="px-2 py-4">
-    <h3 class="card-title text-xl md:text-3xl font-serif italic text-gray-800">{title4}</h4>
-    <h4 class="card-subtitle font-display text-4xl font-semibold mb-4 tracking-wide">{title5}</h5>
-    <p class="card-description text-floral-dark/80 text-base text-gray-600 leading-relaxed justify-center items-center tracking-wide">
-      {description}
-    </p>
-  </div>
-</div>
+    <div class="card-title content-wrapper default-text-container">
+      <div set:html={contentHtml}></div>
+    </div>
+ </div>
+</section>

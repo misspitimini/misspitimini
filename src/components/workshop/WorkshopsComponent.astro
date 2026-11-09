@@ -1,6 +1,5 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
-import WorkshopCardNextProv01 from '@/components/workshop/WorkshopCardNextProv01.astro';
 
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
 import { getWorkshops } from '@/services/workshops';
@@ -116,7 +115,7 @@ const faqs = [
   </ContentSection>
 
   {pastWorkshops.map((workshop) => ( 
-        <WorkshopCardNext workshop={workshop} isDisable={true} />
+        <WorkshopCard workshop={workshop} />
         <br/>
   ))}
 
@@ -134,16 +133,9 @@ const faqs = [
 
 </div>
 <template id="card-upcomingWorkshops-template" class="hidden">
-
+<!-- WorkshopCardNext /> -->
 </template>
 
 <template id="card-pastWorkshops-template" class="hidden">
-  <WorkshopCard
-  slug=""
-  imgSrc=""
-  imgAlt=""
-  title4=""
-  title5=""
-  description=""
-  />
+  <!-- WorkshopCard /> -->
 </template>

@@ -27,11 +27,10 @@ const {
     capacity
   }, 
   pompadour,
-  content,
-  tags
+  content
  } = workshop;
 
- const offersUrl = "/solicitaPresupuesto/{slug}"
+ const offersUrl = "/experiencias/{slug}"
  const pompadourHtml = pompadour ? await marked.parse(pompadour) : '';
  const contentHtml = content ? await marked.parse(content) : '';
  const startDate = "{pubDate}T{hour}+01:00";
@@ -175,7 +174,7 @@ const {
     <br>
    <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 
-      href={`/solicitaPresupuesto/${slug}`}
+      href={offersUrl}
       class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
     >
       Reserva Ahora

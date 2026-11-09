@@ -45,3 +45,5 @@ The Astro image allowlist includes `content.misspitimini.com` so workshop images
 The legacy `/solicitaPresupuesto/` page continues to show its original static first-workshop card, while using the current booking layout.
 
 Workshop reservation links use Astro expression syntax and route to `/solicitaPresupuesto/{slug}`, matching the dynamic booking pages.
+
+The three static workshop card components (`WorkshopCardNextProv01`, `WorkshopCardNextProv02`, and `WorkshopCardNextProv03`) are restored because existing pages still import them.
