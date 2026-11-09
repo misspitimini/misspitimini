@@ -1,28 +1,14 @@
 ---
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
-
+import type { Workshop } from '@/types/Workshop';
 
 interface Props {
-  slug: string;
-  imgSrc: string;
-  imgAlt: string;
-  pubDate:Date;
-  dateText: string;
-  hour: string;
-  title: string;
-  duration: string,
-  materials: string,
-  experiences: string,
-  price: string,
-  location: string,
-  capacity: string
-  pompadour: string;
-  content: string;
-  tags:[],
-  disable:boolean
+    workshop: Workshop;
+    isDisable?: boolean;
 }
+const { workshop, isDisable } = Astro.props;
 
-const { 
+const {
   slug,
   imgSrc,
   imgAlt,
@@ -30,18 +16,19 @@ const {
   dateText,
   hour,
   title,
-  duration,
-  materials,
-  experiences,
-  price,
-  location,
-  capacity,
+  sumary: {
+    duration,
+    materials,
+    experiences,
+    price,
+    location,
+    capacity
+  }, 
   pompadour,
   content,
-  tags,
-  disable
-} = Astro.props;
-
+  tags
+ } = workshop;
+ 
 ---
 
 <section id="{slug}" class="space-y-10 py-10 bg-gray-100">
@@ -147,7 +134,7 @@ const {
       {content}
     </div>
 
-  {!disable && (
+  {!isDisable && (
     <br>
    <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 

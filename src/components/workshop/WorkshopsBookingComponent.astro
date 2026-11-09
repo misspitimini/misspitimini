@@ -1,21 +1,27 @@
 ---
+import type { Workshop } from '@/types/Workshop';
 import WorkshopCardNext from "./WorkshopCardNext.astro";
 import Form from "@/components/commons/Form.astro";
-import WorkshopCardNextProv01 from "./WorkshopCardNextProv01.astro";
-import WorkshopCardNextProv02 from "./WorkshopCardNextProv02.astro";
-import WorkshopCardNextProv03 from "./WorkshopCardNextProv03.astro";
 
 interface Props {
-    taller: string;
+    workshop: Workshop;
 }
+const { workshop } = Astro.props;
 
-const { taller } = Astro.props;
+const isPastWorkshop = new Date(workshop.pubDate) < new Date();
+const fecha = `${workshop.dateText} - ${workshop.hour}`;
+    
 ---
 <section class="space-y-6">
-    {taller === 'taller01' && <WorkshopCardNextProv01 disable={true} />}
-    {taller === 'taller02' && <WorkshopCardNextProv02 disable={true} />}
-    {taller === 'taller03' && <WorkshopCardNextProv03 disable={true} />}
-    {taller === 'taller02' && <Form id={taller} />}
-    {taller === 'taller03' && <Form id={taller} />}    
+{isPastWorkshop && (
+    <Form id="{workshop.slug}"
+        title="{workshop.title}"
+        fecha="{fecha}">
+            <WorkshopCardNext workshop={workshop} isDisable={true} />
+    </Form>
+)}
+{!isPastWorkshop && (
+    <WorkshopCardNext workshop={workshop} isDisable={true} />
+)}
 </section>
 

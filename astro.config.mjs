@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: 'https://misspitimini.com',
   image: {
-    domains: ['misspitimini.com'],
+    domains: ['misspitimini.com', 'content.misspitimini.com'],
   },
   integrations: [
     tailwind(),

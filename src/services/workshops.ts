@@ -10,8 +10,7 @@ import { getCollection } from 'astro:content';
  */
 export async function getWorkshops(): Promise<Workshop[]> {
     try {
-        /*
-        if(true) return [];
+        
         const response = await fetch(UrlsApi.GET_WORKSHOPS, {
             method: 'GET',
             // Deja el objeto headers vacío o pon solo lo estrictamente necesario (ej: Authorization)
@@ -37,14 +36,9 @@ export async function getWorkshops(): Promise<Workshop[]> {
         // Transformamos los datos de la API a la estructura que necesitan los componentes.
         // Esto añade una capa de protección y consistencia.
         const posts: Workshop[] = apiPosts.map((post: any) => {
-        */
-       
-        const tallerFiles = await getCollection('nextworkshop');
-
-        const posts: Workshop[] = tallerFiles.map((post: any) => {
             return parseWorkshop(post);
         });
-        
+
         return posts;
     } catch (error) {
         console.error("Fallo crítico al hacer fetch de los talleres:", error);

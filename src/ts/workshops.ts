@@ -49,14 +49,14 @@ async function renderWorkshops() {
           img.alt = post.imgAlt;
           
           if (title) title.textContent = post.title;
-          if (subtitle) subtitle.textContent = post.subtitle;
-          const pubDate = (post.date).toLocaleDateString('es-ES', {
+          if (subtitle) subtitle.textContent = post.dateText;
+          const pubDate = new Date(post.pubDate).toLocaleDateString('es-ES', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           });
           if (date) date.textContent = pubDate;  
-          if (desc) desc.textContent = post.description;
+          if (desc) desc.textContent = post.sumary.experiences;
 
           // Añadimos el clon al contenedor
           container.appendChild(clone);

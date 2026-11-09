@@ -1,8 +1,6 @@
 ---
 import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
 import WorkshopCardNextProv01 from '@/components/workshop/WorkshopCardNextProv01.astro';
-import WorkshopCardNextProv02 from '@/components/workshop/WorkshopCardNextProv02.astro';
-import WorkshopCardNextProv03 from '@/components/workshop/WorkshopCardNextProv03.astro';
 
 import WorkshopCard from '@/components/workshop/WorkshopCard.astro';
 import { getWorkshops } from '@/services/workshops';
@@ -41,29 +39,10 @@ const faqs = [
 
 <SectionTitle>Próximas experiencias:</SectionTitle>
     <div id="upcomingWorkshops-container">
-      <WorkshopCardNextProv02 />
-      <br/>
-      <WorkshopCardNextProv03 />   
+   
       {upcomingWorkshops.map((workshop) => ( 
-        <WorkshopCardNext
-        slug={workshop.slug}
-        imgSrc={workshop.imgSrc}
-        imgAlt={workshop.imgAlt}
-        pubDate={workshop.pubDate}
-        dateText={workshop.dateText}
-        hour={workshop.hour}
-        title={workshop.title}
-        duration={workshop.sumary.duration}
-        materials={workshop.sumary.materials}
-        experiences={workshop.sumary.experiences}
-        price={workshop.sumary.price}
-        location={workshop.sumary.location}
-        capacity={workshop.sumary.capacity}
-        pompadour={workshop.pompadour}
-        content={workshop.content} 
-        tags={workshop.tags}
-        disable={true}
-        />
+        <WorkshopCardNext workshop={workshop} isDisable={true} />
+        <br/>
       ))}
   
   </div>

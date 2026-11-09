@@ -4,19 +4,14 @@ import PrivacyPolicy from '@/components/commons/PrivacyPolicy.astro';
 
 interface Props extends HTMLAttributes<'form'> {
   id?: string;
+  title?: string;
+  fecha?: string;
 }
 
-const { id } = Astro.props;
-
-const tallerDates: { [key: string]: string } = {
-  taller01: "Sábado 24 de octubre - 11:00 h",
-  taller02: "Sábado 28 de noviembre - 11:30 h",
-  taller03: "Sábado 12 de diciembre  - 11:00 h",
-};
-
-const fecha = id ? tallerDates[id] : "";
+const {title, fecha} = Astro.props;
 
 ---
+    <slot />
     <!--SectionTitle>Solicita presupuesto para disfrutar de tu expericia con ramos florales</SectionTitle-->
     <h2 class="font-display text-4xl font-semibold text-gray-900 mb-4 mx-auto px-2 tracking-wide pb-0 sm:pb-12 md:pb-12">
       Datos necesarios para comenzar a disfrutar de esta experiencia floral:
@@ -25,6 +20,7 @@ const fecha = id ? tallerDates[id] : "";
     <div class="max-w-5xl md:px-10 text-justify text-floral-dark/80 leading-relaxed space-y-4">
       <form id="formularioReserva" class="w-full" novalidate>
         <div class="flex-1 text-center mx-1">
+        <input type="hidden" id="titulo_taller" name="titulo_taller" value={fecha} />
         <input type="hidden" id="fecha" name="fecha" value={fecha} />
         <p class="indent-2 font-body text-base text-gray-600 leading-relaxed text-justify tracking-wide m-0">
             <label for="nombre" class="block text-[#2c3e50] mb-2">Nombre y Apellidos (*):</label>

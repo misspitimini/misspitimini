@@ -31,3 +31,15 @@ The `WorkshopsComponent` has been updated to use the new data fetching system, a
 - **Local Dev Server**: Executed with `npm run dev -- --host 127.0.0.1 --port 4321` for local preview and development.
 - **Git & Remote Sync**: Git configured locally, remote origin linked to `https://github.com/misspitimini/misspitimini.git`. Branch `main` successfully pushed and synchronized with GitHub, with credentials securely managed via Windows Credential Manager.
 - **IDE Setup**: Visual Studio Code v1.145.2 (x64) installed with official extensions for Astro (`astro-build.astro-vscode`), Tailwind CSS (`bradlc.vscode-tailwindcss`), GitLens (`eamodio.gitlens`), Git Graph (`mhutchie.git-graph`), Gemini Code Assist (`google.geminicodeassist`), Node.js essentials (NPM Intellisense, Path Intellisense, Version Lens, Prettier), and TypeScript / Linting (Pretty TypeScript Errors, ESLint). Desktop shortcut configured to open the project workspace directly.
+
+## Current Change: Workshop Booking Page Title
+
+The dynamic booking page at `src/pages/solicitaPresupuesto/[slug].astro` passes each workshop's title from `getStaticPaths()` into the page layout metadata, followed by the misspitimini brand. The existing generic reservation title remains as a fallback when a workshop title is missing.
+
+## Current Change: Workshop Build Compatibility
+
+The experiences page passes each workshop as the `workshop` prop expected by `WorkshopCardNext`, keeping dynamic workshop cards compatible with the component interface.
+
+The Astro image allowlist includes `content.misspitimini.com` so workshop images served by the content host can be optimized during static builds.
+
+The legacy `/solicitaPresupuesto/` page continues to show its original static first-workshop card, while using the current booking layout.
