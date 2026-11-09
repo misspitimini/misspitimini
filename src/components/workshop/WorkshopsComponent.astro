@@ -37,17 +37,24 @@ const faqs = [
 ];
 ---
 
-<SectionTitle>Próximas experiencias:</SectionTitle>
+<SectionTitle class="text-center pt-8 pb-2">Próximas experiencias:</SectionTitle>
+<div class="text-center pt-2 pb-2">
+  <h2 class="font-serif text-2xl md:text-3xl text-floral-dark tracking-tight leading-tight italic mb-3">
+    Talleres Navidad
+  </h2>
+  <div class="flex items-center justify-center gap-3 text-floral-dark/50 text-xs">
+      <span class="w-8 h-[1px] bg-current"></span>
+      <span>♦</span>
+      <span class="w-8 h-[1px] bg-current"></span>
+  </div>
+</div>
+
     <div id="upcomingWorkshops-container">
-   
-      {upcomingWorkshops.map((workshop) => ( 
-        <WorkshopCardNext workshop={workshop} isDisable={true} />
+      {[...upcomingWorkshops].reverse().map((workshop) => ( 
+        <WorkshopCardNext workshop={workshop} />
         <br/>
       ))}
-  
-  </div>
-
-
+    </div>
 <div class="space-y-12">
   
   <ContentSection>
@@ -107,7 +114,11 @@ const faqs = [
     <div id="pastWorkshops-container" class="grid gap-8 grid-cols-1 md:grid-cols-2">
     </div>
   </ContentSection>
-  <WorkshopCardNextProv01 disable=true />
+
+  {pastWorkshops.map((workshop) => ( 
+        <WorkshopCardNext workshop={workshop} isDisable={true} />
+        <br/>
+  ))}
 
   <FaqSection title="Preguntas frecuentes" faqs={faqs} />
 

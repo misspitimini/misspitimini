@@ -14,14 +14,14 @@ const fecha = `${workshop.dateText} - ${workshop.hour}`;
 ---
 <section class="space-y-6">
 {isPastWorkshop && (
+    <WorkshopCardNext workshop={workshop} isDisable={true} />
+)}
+{!isPastWorkshop && (
     <Form id="{workshop.slug}"
         title="{workshop.title}"
         fecha="{fecha}">
             <WorkshopCardNext workshop={workshop} isDisable={true} />
-    </Form>
-)}
-{!isPastWorkshop && (
-    <WorkshopCardNext workshop={workshop} isDisable={true} />
+    </Form>    
 )}
 </section>
 

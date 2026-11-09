@@ -1,6 +1,8 @@
 ---
 import OptimizedImage from "@/components/commons/OptimizedImage.astro";
+import { addHour } from "@/ts/utils";
 import type { Workshop } from '@/types/Workshop';
+import { marked } from 'marked';
 
 interface Props {
     workshop: Workshop;
@@ -28,9 +30,46 @@ const {
   content,
   tags
  } = workshop;
- 
----
 
+ const offersUrl = "/solicitaPresupuesto/{slug}"
+ const pompadourHtml = pompadour ? await marked.parse(pompadour) : '';
+ const contentHtml = content ? await marked.parse(content) : '';
+ const startDate = "{pubDate}T{hour}+01:00";
+ const endHour = addHour(hour, Number(duration));
+ const endDate = "{pubDate}T{endHour}+01:00";
+---
+<script type="application/ld+json">
+	{{
+		"@context": "https://schema.org",
+		"@type": "Event",
+		"name": title,
+		"description": pompadour,
+		"startDate": startDate,
+		"endDate": endDate,
+		"location": {{
+			"@type": "Place",
+			"name": location,
+			"address": {{
+				"@type": "PostalAddress",
+				"addressLocality": "Madrid",
+				"addressCountry": "ES"
+			}}
+		}},
+		"image": [tallerOtoñoBuffet.src],
+		"offers": {{
+			"@type": "Offer",
+			"price": "105",
+			"priceCurrency": "EUR",
+			"availability": "https://schema.org/InStock",
+			"url": offersUrl
+		}},
+		"organizer": {{
+			"@type": "Organization",
+			"name": "misspitimini",
+			"url": "https://misspitimini.com"
+		}}
+	}}
+</script>
 <section id="{slug}" class="space-y-10 py-10 bg-gray-100">
   <div class="space-y-4">
     <p class="font-display md:text-5xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">Próximo taller </p>
@@ -40,9 +79,7 @@ const {
    <p class="card-date font-display text-2xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">{dateText}</p>
    <p class="card-date font-display text-2xl font-semibold mb-4 tracking-wide text-grey-600/60 text-center">{hour}</p>
    <div class="card-title content-wrapper default-text-container">
-    <p>
-      {pompadour}
-    </p>
+    <div set:html={pompadourHtml}></div>
     </div>
 	 <OptimizedImage 
    class="card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
@@ -70,7 +107,7 @@ const {
               <path d="m612-292 56-56-148-148v-184h-80v216l172 172zM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T920-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93zm0-320z"/>
             </svg>
           </span>
-          <span>Duración: {duration}</span>
+          <span>Duración: ~{duration} horas</span>
         </div>
         {location !== '' && (
         <div class="flex items-center space-x-3 text-stone-700">
@@ -125,20 +162,20 @@ const {
               <circle cx="12" cy="6" r="1" />
             </svg>                     
           </span>
-          <strong>{price}</strong>
+          <strong>{price} € por persona</strong>
         </div>
         )}
       </div>
     </div>
     <div class="card-title content-wrapper default-text-container">
-      {content}
+      <div set:html={contentHtml}></div>
     </div>
 
   {!isDisable && (
     <br>
    <div  class="inset-0 flex items-end justify-center pb-[10px] md:pb-[54px]">
     <a 
-      href="/solicitaPresupuesto/taller01" 
+      href={`/solicitaPresupuesto/${slug}`}
       class="inline-block bg-white/95 backdrop-blur-sm text-floral-dark px-10 py-4 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-xl active:scale-95 transition-all"
     >
       Reserva Ahora

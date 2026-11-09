@@ -43,3 +43,5 @@ The experiences page passes each workshop as the `workshop` prop expected by `Wo
 The Astro image allowlist includes `content.misspitimini.com` so workshop images served by the content host can be optimized during static builds.
 
 The legacy `/solicitaPresupuesto/` page continues to show its original static first-workshop card, while using the current booking layout.
+
+Workshop reservation links use Astro expression syntax and route to `/solicitaPresupuesto/{slug}`, matching the dynamic booking pages.
