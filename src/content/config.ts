@@ -38,3 +38,12 @@ const nextWorkshopCollection = defineCollection({
     isDraft: z.boolean().optional(),
   }),
 });
+
+const blogCollection = defineCollection({
+  type: 'content',
+});
+
+export const collections = {
+  blog: blogCollection,
+  homecards: homeCardsCollection,
+};
