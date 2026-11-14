@@ -3,12 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 1, title: 'Inicio', url: '/' },
         { id: 2, title: 'Bodas', url: '/bodas/' },
         { id: 3, title: 'Eventos', url: '/eventos/' },
-        { id: 4, title: 'Experiencias', url: '/experiencias/' },
-        { id: 5, title: 'Galería', url: '/galeria/' },
-        { id: 6, title: 'Contacto', url: '/contacto/' },
-        { id: 7, title: 'Prensa', url: '/prensa/' },
-        { id: 8, title: 'Sobre mí', url: '/sobre-mi/' },
-        { id: 9, title: 'Blog', url: '/blog/' }
+        { id: 4, title: 'Coronas de Navidad', url: '/coronasNavidad/' }, 
+        { id: 5, title: 'Experiencias y Talleres', url: '/experiencias/' },
+        { id: 6, title: 'Galería', url: '/galeria/' },
+        { id: 7, title: 'Contacto', url: '/contacto/' },
+        { id: 8, title: 'Prensa', url: '/prensa/' },
+        { id: 9, title: 'Sobre mí', url: '/sobre-mi/' },
+        { id: 10, title: 'Blog', url: '/blog/' }
     ];
 
     const menuButton = document.getElementById('menu-button');

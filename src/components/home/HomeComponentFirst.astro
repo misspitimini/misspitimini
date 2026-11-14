@@ -5,7 +5,7 @@ import SectionTitle from '../commons/SectionTitle.astro';
 import ContentSection from '../layout/ContentSection.astro';
 
 const homeCards = await processHomeCards(['2-bodas', '3-eventos']);
-const homeCardsTalleres = await processHomeCards(['4-talleres']);
+
 ---
 
 <ContentSection>
@@ -19,12 +19,5 @@ const homeCardsTalleres = await processHomeCards(['4-talleres']);
       widths={[412]}
       sizes="(max-width: 768px) 50vw, 412px"
     />
-  ))}
-  {homeCardsTalleres.map(card => (
-    <HomeCard
-     card={card}
-       widths={[412, 1280]}
-       sizes="(max-width: 768px) 50vw, 1280px"
-       />
   ))}
 </div>

@@ -1,0 +1,121 @@
+---
+import OptimizedImage from '@/components/commons/OptimizedImage.astro';
+import FogImage from '@/components/commons/FogImage.astro';
+import CustomLink from '@/components/commons/CustomLink.astro';
+import SectionTitle from '@/components/commons/SectionTitle.astro';
+import ContentSection from '@/components/layout/ContentSection.astro';
+import FaqSection from '@/components/commons/FaqSection.astro';
+import imageData from '@/data/wreaths-images.json'; // Corrected: The file is plural!
+import { loadImage } from '@/utils/imageLoader';
+
+// Load all images for this component using the centralized loader and correct keys
+const loadedImages = {
+
+  coronaNavidad: await loadImage('wreaths', imageData.coronaNavidad?.src),
+  coronaFloral: await loadImage('wreaths', imageData.coronaFloral?.src),
+  };
+  const faqs = [
+    {
+        pregunta: "¿Cuál es el estilo floral de misspitimini?",
+        respuesta: "Trabajamos un estilo natural, orgánico y elegante, protagonizado por flores y verdes de temporada con composiciones equilibradas, ligeras y llenas de movimiento."
+    },
+    {
+        pregunta: "¿Cuánto cuesta una corona floral navideña en Madrid?",
+        respuesta: "El precio varía según el tamaño, la técnica y los materiales seleccionados: Coronas de temporada o diseños sencillos: entre 70 € y 120 €. Diseños de autor o composiciones silvestres elaboradas: entre 130 € y 200 €. Piezas exclusivas a medida o con flor de importación: a partir de 200 € – 250 €."
+    },
+    {
+        pregunta: "¿Cuánto dura una corona floral?",
+        respuesta: "Coronas de flor fresca (para eventos y tocados): Lucen impecables entre 12 y 24 horas tras su confección. ecomendando mantenerlas en un lugar fresco hasta el momento de ponértelas para que cada pétalo esté turgente. Coronas decorativas (con verde preservado y flor seca): Al estar elaboradas con materiales botánicos preservados y secos, mantienen su aspecto intacto durante varias semanas o incluso meses si se conservan alejadas de la humedad directa."
+    }
+];
+--- 
+
+<div class="space-y-12">
+
+  <!-- Intro Section -->
+  <ContentSection>
+    <SectionTitle>Coronas Florales de Navidad</SectionTitle>
+    <div class="content-wrapper default-text-container">
+        <p>
+          La esencia pura de <strong>misspitimini</strong> es el amor incondicional por la naturaleza viva, la botánica de temporada y el diseño artesanal hecho a mano en Madrid.
+        </p>
+        <p>
+          Hablar de nuestras <strong>coronas de Navidad</strong> es hablar de aroma a invierno, textura, movimiento y ese aire silvestre, desmelenado y romántico tan característico de nuestro estudio. Huyendo de las composiciones rígidas y las simetrías artificiales, cada pieza se teje a mano para llevar la magia botánica real a tu hogar o celebración.
+          </p>
+    </div>
+  </ContentSection>
+  <div class="px-0 md:px-16">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+    <div>
+        {loadedImages.coronaNavidad && imageData.coronaNavidad && (
+            <FogImage 
+              alt={imageData.coronaNavidad.alt}
+              class="w-full h-[32rem] object-cover" 
+              src={loadedImages.coronaNavidad}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+        )}
+        <div class="p-4">
+            <h3 class="text-3xl md:text-3xl font-serif italic text-gray-800">Coronas de Regalo</h3>
+            <p class="text-[16px] text-floral-dark/80 text-center">Coronas de flores para cualquier ocasión especial.</p>
+        </div>
+    </div>
+    <div>
+        {loadedImages.coronaFloral && imageData.coronaFloral && (
+            <FogImage 
+              alt={imageData.coronaFloral.alt}
+              class="w-full h-[32rem] object-cover" 
+              src={loadedImages.coronaFloral}
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+        )}
+        <div class="p-4">
+            <h3 class="text-3xl md:text-3xl font-serif italic text-gray-800">Corona Floral</h3>
+            <p class="text-[16px] text-floral-dark/80 text-center">Coronas florales para eventos.</p>
+        </div>
+    </div>
+  </div>
+  <ContentSection>
+    <SectionTitle>Coronas de Navidad para puertas y centros de mesa</SectionTitle>
+    <div class="content-wrapper default-text-container">
+        <p>
+          Diseñadas para dar la bienvenida <CustomLink href="/eventos/">fiestas</CustomLink> o vestir mesas navideñas con calidez. Elaboradas artesanalmente sobre bases de mimbre natural con eucalipto aromático, pino preservado, flor seca de temporada y rematadas con delicados lazos de terciopelo. Una apuesta duradera que conserva su belleza durante toda la Navidad.
+        </p>
+    </div>
+</ContentSection>
+
+<ContentSection>
+    <SectionTitle>Coronas de flor fresca para eventos y ocasiones especiales</SectionTitle>
+    <div class="content-wrapper default-text-container">
+        <p>
+          Un estallido de color vivo para lucir en <CustomLink href="/bodas/">bodas de invierno</CustomLink>, cenas de gala, sesiones fotográficas o <CustomLink href="/bodas/">celebraciones navideñas</CustomLink>. Trabajamos con flor fresca cortada de temporada para crear tocados y coronas florales ligeras, elegantes y llenas de movimiento, adaptando el diseño a tu estilo: desde lo más silvestre y campestre hasta propuestas minimalistas o contemporáneas.
+        </p>
+    </div>
+</ContentSection>
+ 
+<ContentSection>
+  <SectionTitle>Coronas para regalar</SectionTitle>
+  <div class="content-wrapper default-text-container">
+      <p>
+        El detalle botánico perfecto para sorprender en estas fiestas o en cualquier ocasión especial. Piezas únicas pensadas para emocionar y llenar de vida cualquier rincón.
+      </p>
+  </div>
+</ContentSection>
+
+  <!-- FAQ Section -->
+  <FaqSection title="Preguntas frecuentes" faqs={faqs} />
+
+  <!-- Contact Section -->
+  <ContentSection>
+    <SectionTitle>Contacto</SectionTitle>
+    <div class="content-wrapper default-text-container text-center">
+      <p>
+        Si buscas una florista especializada en bodas en Madrid, puedo ayudarte a encontrar la combinación perfecta de flores, colores y texturas para que tu corona navideña sea única.
+      </p>
+      <CustomLink href="/contacto/">Escríbeme y empezamos a diseñar tu corona de Navidad.</CustomLink>
+    </div>
+  </ContentSection>
+</div>
+

@@ -1,0 +1,27 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/header/Header.astro';
+import Carrusel from '@/components/header/Carrusel.astro';
+import WreathsComponent from '@/components/wreaths/WreathsComponent.astro';
+import SectionContainer from '@/components/layout/SectionContainer.astro';
+import Footer from '@/components/footer/Footer.astro';
+
+const href="/coronasNavidad/";
+
+const title = "misspitimini | Coronas Florales de Navidad en Madrid"
+const h1 = "Encargo de Ramos y Coronas florales en Madrid"
+const description = "Diseño de ramos de novia, ramos de flores y coronas florales artesanales en Madrid. Creaciones personalizadas con flor fresca de temporada por Sara Laínez."
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const keywords = "coronas florales de Navidad, coronas navideñas, coronas de regalo, diseño floral"
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} keywords={keywords}>
+	<Header href={href} h1={h1} />
+	<main class="relative pt-20 pb-12">
+		<Carrusel href={href} />
+		<SectionContainer>
+			<WreathsComponent />
+		</SectionContainer>
+	</main>
+	<Footer />
+</Layout>

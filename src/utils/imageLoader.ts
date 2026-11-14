@@ -12,6 +12,11 @@ const eventsImageModules = import.meta.glob<ImageMetadata>(
   { import: 'default' }
 );
 
+const wreathsImageModules = import.meta.glob<ImageMetadata>(
+  '/src/assets/images/body/coronasNavidad/*.{jpeg,jpg,png,gif}',
+  { import: 'default' }
+);
+
 // Organize the modules by category for easy access.
 const modules = {
   weddings: {
@@ -21,6 +26,10 @@ const modules = {
   events: {
     basePath: '/src/assets/images/body/eventos/',
     collection: eventsImageModules,
+  },
+  wreaths: {
+    basePath: '/src/assets/images/body/coronasNavidad/',
+    collection: wreathsImageModules,
   },
 };
 

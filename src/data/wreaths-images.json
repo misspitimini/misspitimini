@@ -1,0 +1,10 @@
+{
+  "coronaNavidad": {
+    "src": "coronaHortensias.jpg",
+    "alt": "Coronas de hortensias con flor fresca"
+  }, 
+  "coronaFloral": {
+    "src": "coronaNavidad.jpg",
+    "alt": "Elegante corona con un fondo rosa."
+  }
+}

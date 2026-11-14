@@ -6,6 +6,8 @@ This project is a static-first web application for a floral design business, bui
 
 The application features a dynamic blog, a gallery of floral designs, and a section for workshops and experiences. The workshop data is fetched from a content collection, allowing for easy updates and management of workshop information.
 
+The application features a dynamic blog, a gallery of floral designs, a section for workshops and experiences, and a new page dedicated to wreaths and floral crowns.
+
 ## Project Structure
 
 *   `src/pages/`: Contains the Astro pages for the site, including a dynamic blog.
@@ -14,6 +16,22 @@ The application features a dynamic blog, a gallery of floral designs, and a sect
 *   `src/assets/`: Contains static assets like images and fonts.
 *   `src/services/`: Contains services for fetching data from external APIs.
 *   `src/content/`: Contains the content collections for the site, including `homecards` and `nextworkshop`.
+
+
+## Recent Changes
+
+### New "Coronas de Navidad" Page
+
+A new page, `coronasNavidad.astro`, has been created to showcase a catalog of wreaths and floral crowns. This page is similar in structure to the `bodas.astro` page and includes a new `WreathsComponent` to display the catalog.
+
+### `WreathsComponent`
+
+The `WreathsComponent` has been created to display a grid of products, each with an image, title, and description. The component is located in `src/components/wreaths/WreathsComponent.astro`.
+
+### Navigation
+
+The navigation has been updated to include a link to the new "Ramos y Coronas" page.
+
 
 ## Workshop Data Migration
 
