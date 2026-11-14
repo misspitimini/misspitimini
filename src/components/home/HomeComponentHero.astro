@@ -1,16 +1,28 @@
 ---
-import { processHomeCards } from '@/utils/card-processing';
-import HomeCard from '@/components/home/HomeCard.astro';
+import WorkshopCardNext from '@/components/workshop/WorkshopCardNext.astro';
+
+import { getWorkshops } from '@/services/workshops';
 import OptimizedImage from '@/components/commons/OptimizedImage.astro';
 import heroImage from '@/assets/images/carrusel/01_misspitimini.jpg';
 import CustomLink from '@/components/commons/CustomLink.astro';
+import type { Workshop } from "@/types/Workshop";
 
-import WorkshopCardNextProv01 from '@/components/workshop/WorkshopCardNextProv01.astro';
-import WorkshopCardNextProv02 from '@/components/workshop/WorkshopCardNextProv02.astro';
-import WorkshopCardNextProv03 from '@/components/workshop/WorkshopCardNextProv03.astro';
+const workshops = await getWorkshops();
 
-const homeCardsTalleres = await processHomeCards(['5-talleres']);
+const now = new Date();
 
+const { upcomingWorkshops } = workshops.reduce(
+  (acc, workshop) => {
+    // Correctly parse the workshop's publication date string into a Date object for comparison
+    if (new Date(workshop.pubDate) < now) {
+      acc.pastWorkshops.push(workshop);
+    } else {
+      acc.upcomingWorkshops.push(workshop);
+    }
+    return acc;
+  },
+  { upcomingWorkshops: [] as Workshop[], pastWorkshops: [] as Workshop[] }
+);
 ---
 
 <section class="space-y-6">
@@ -38,12 +50,6 @@ const homeCardsTalleres = await processHomeCards(['5-talleres']);
       </div>
   </div>    
 </section>
-{homeCardsTalleres.map(card => (
-  <HomeCard
-   card={card}
-     widths={[412, 1280]}
-     sizes="(max-width: 768px) 50vw, 1280px"
-     />
-))}
-<WorkshopCardNextProv02 />
-<WorkshopCardNextProv03 />
+  {[...upcomingWorkshops].reverse().map((workshop) => ( 
+        <WorkshopCardNext workshop={workshop} />
+   ))}
